@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="with=device-width, initial-scale = 1.0">
+  <title>Garrett Lee</title>
+  <link rel = "stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+
+<body>
+<section class = "header">
+   <nav>
+    <a href = "GLPortfolio.html"><img src="images/logo/bearlogo.png"></a>
+    <div class="nav-links" id="navLinks">
+      <i class="fa fa-times" onclick="hideMenu()"></i>
+      <ul>
+        <li><a href=""><span class="currentpage">Work</span></a></li>
+        <li><a href="">About</a></li>
+      </ul>
+    </div>
+    <i class="fa fa-bars" onclick="showMenu()"></i>
+  </nav>
+
+<div class="text-box">
+  <h1>Hi, I'm Garrett. <br> I'm currently studying <a href="https://design.cmu.edu/" class="h-emphasis-link"><span class="h-emphasis">Design</span></a> at <span class = "h-emphasis">Carnegie Mellon University</span>.</h1>
+  <p>Here are some of the <span class="p-emphasis"> things</span> I've made.<i class="fa fa-long-arrow-right"></i></p>
+</div>
+</section>
+
+<!----Portfolio Gallery---->
+<section class="PortGal">
+  <div class="columns hundred">
+    <ul class="columns">
+      <!---PROJECT 3-->
+        <div id="project3" class="hundred" onpointerenter="gc()" onpointerleave="gc2()">
+            <a href="GLPortfolio.html" class="projecthome">
+                <div class="sixty"> 
+                  <img id="stillImage3" src="images/covers/chocolate bars/chococococo.jpg" style="display: block;">
+                  <img id="movingImage3" src="images/covers/chocolate bars/chococococo (1).gif" style="display: none;">
+                </div>
+                <div class="forty">
+                  <p>Mindful Sensing Device, Butterfly, Stick/Stone/Leaf, Perspective, Stories Imagined</p>
+                  <h3>First-Year Fall Semester | F2023</h3>
+                  <sub>Graphic, Product, Experience Design</sub>
+                </div>
+            </a>
+            <!---JavaScript to make elements on top of one another--->
+            <script>
+                function gc() {
+                    var gif = document.getElementById('movingImage3');
+                    var image = document.getElementById('stillImage3');
+                    gif.style.display = 'block';
+                    image.style.display = 'none'
+
+                }
+                function gc2() {
+                    var gif = document.getElementById('movingImage3');
+                    var image = document.getElementById('stillImage3');
+                    gif.style.display='none'
+                    image.style.display = 'block';
+                }
+            </script>
+        </div>
+        <!---PROJECT 2-->
+        <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
+          <a href="GLPortfolio.html" class="projecthome">
+              <div class="sixty"> 
+                <img id="stillImage2" src="images/covers/ecaar/ecaarstill.jpg" style="display: block;">
+                <img id="movingImage2" src="images/covers/ecaar/ecaargif.gif" style="display: none;">
+              </div>
+              <div class="forty">
+                <p>Practicing Intuition</p>
+                <h3>Education Coalition for Asian American Representation</h3>
+                <sub>Graphic/Visual Identity/Experience</sub>
+              </div>
+          </a>
+          <!---JavaScript to make elements on top of one another--->
+          <script>
+              function gb() {
+                  var gif = document.getElementById('movingImage2');
+                  var image = document.getElementById('stillImage2');
+                  gif.style.display = 'block';
+                  image.style.display = 'none'
+
+              }
+              function gb2() {
+                  var gif = document.getElementById('movingImage2');
+                  var image = document.getElementById('stillImage2');
+                  gif.style.display='none'
+                  image.style.display = 'block';
+              }
+          </script>
+      </div>
+      <!---PROJECT 1-->
+      <div id="project1" class="hundred" onpointerenter="ga()" onpointerleave="ga2()">
+        <a href="GLPortfolio.html" class="projecthome">
+            <div class="sixty"> 
+              <img id="stillImage1" src="images/covers/chocolate bars/chococococo.jpg" style="display: block;">
+              <img id="movingImage1" src="images/covers/chocolate bars/chococococo (1).gif" style="display: none;">
+            </div>
+            <div class="forty">
+              <p>Practicing Fundamentals</p>
+              <h3>Happy Bear Chocolate Bars</h3>
+              <sub>Packaging/Brand</sub>
+            </div>
+        </a>
+        <!---JavaScript to make elements on top of one another--->
+        <script>
+            function ga() {
+                var gif = document.getElementById('movingImage1');
+                var image = document.getElementById('stillImage1');
+                gif.style.display = 'block';
+                image.style.display = 'none'
+
+            }
+            function ga2() {
+                var gif = document.getElementById('movingImage1');
+                var image = document.getElementById('stillImage1');
+                gif.style.display='none'
+                image.style.display = 'block';
+            }
+        </script>
+    </div>
+    </ul>
+</div>
+</section>
+
+<!------JavaScript for Toggle Menu ------>
+<script>
+  var navLinks =  document.getElementById("navLinks")
+
+  function showMenu(){
+    navLinks.style.right = "0";
+  }
+  function hideMenu(){
+    navLinks.style.right = "-250px";
+  }
+</script>
+</body>
+</html>
