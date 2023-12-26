@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="with=device-width, initial-scale = 1.0">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0">
   <title>Garrett Lee</title>
   <link rel = "stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <!--SCROLL PERCENTAGE CALCULATION-->
+  <script src="jv.js"></script>
 </head>
 
-<body>
+<body id = "wholepage">
+  <div id="loadOverlay" style="background-color:#333; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;"></div>
 <section class = "header">
    <nav>
-    <a href = "GLPortfolio.html"><img src="images/logo/bearlogo.png"></a>
+    <a href = "GLPortfolio.html"><img src="images/logo/bearlogo.webp"></a>
     <div class="nav-links" id="navLinks">
       <i class="fa fa-times" onclick="hideMenu()"></i>
       <ul>
-        <li><a href=""><span class="currentpage">Work</span></a></li>
-        <li><a href="">About</a></li>
+        <li><a href="" class="linkhover"><span class="currentpage">Work</span></a></li>
+        <li><a href="" class="linkhover">About</a></li>
       </ul>
     </div>
     <i class="fa fa-bars" onclick="showMenu()"></i>
   </nav>
 
 <div class="text-box">
-  <h1>Hi, I'm Garrett. <br> I'm currently studying <a href="https://design.cmu.edu/" class="h-emphasis-link"><span class="h-emphasis">Design</span></a> at <span class = "h-emphasis">Carnegie Mellon University</span>.</h1>
+  <h1>Hi, I'm Garrett. <br> I'm currently studying <a href="https://design.cmu.edu/" class="h-emphasis-link linkhover"><span class="h-emphasis">Design</span></a> at <span class = "h-emphasis">Carnegie Mellon University</span>.</h1>
   <p>Here are some of the <span class="p-emphasis"> things</span> I've made.<i class="fa fa-long-arrow-right"></i></p>
 </div>
 </section>
@@ -34,7 +37,7 @@
     <ul class="columns">
       <!---PROJECT 3-->
         <div id="project3" class="hundred" onpointerenter="gc()" onpointerleave="gc2()">
-            <a href="GLPortfolio.html" class="projecthome">
+            <a href="GLPortfolio.html" class="projecthome linkhover">
                 <div class="sixty"> 
                   <img id="stillImage3" src="images/covers/chocolate bars/chococococo.jpg" style="display: block;">
                   <img id="movingImage3" src="images/covers/chocolate bars/chococococo (1).gif" style="display: none;">
@@ -64,7 +67,7 @@
         </div>
         <!---PROJECT 2-->
         <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
-          <a href="GLPortfolio.html" class="projecthome">
+          <a href="GLPortfolio.html" class="projecthome linkhover">
               <div class="sixty"> 
                 <img id="stillImage2" src="images/covers/ecaar/ecaarstill.jpg" style="display: block;">
                 <img id="movingImage2" src="images/covers/ecaar/ecaargif.gif" style="display: none;">
@@ -94,7 +97,7 @@
       </div>
       <!---PROJECT 1-->
       <div id="project1" class="hundred" onpointerenter="ga()" onpointerleave="ga2()">
-        <a href="GLPortfolio.html" class="projecthome">
+        <a href="GLPortfolio.html" class="projecthome linkhover">
             <div class="sixty"> 
               <img id="stillImage1" src="images/covers/chocolate bars/chococococo.jpg" style="display: block;">
               <img id="movingImage1" src="images/covers/chocolate bars/chococococo (1).gif" style="display: none;">
@@ -124,6 +127,514 @@
     </div>
     </ul>
 </div>
+</section>
+
+<!---mischelaneous label--->
+<section class="background2">
+
+<div class="text-box2">
+  <h1>I also like to <span class="h-emphasis"> experiment</span> and <span class="h-emphasis">create</span> things that require little explanation.</h1>
+  <p>Here's a small archive of fine art, illustration, commission work, form, and graphics. <br><br><span class="p-emphasis">Experiment for yourself —</span>Drag stuff around!</p>
+</div>
+
+  <section class="misc">
+      <div id="image1" class="miscimages pos1">
+        <img src="images/misc/1boxboat.gif">
+        <p>Box Boat (2022) | 6.5x6.5", opens to 18.5x18.5"</p>
+        <script>
+          dragElement(document.getElementById("image1"));
+
+          function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+              // if present, the header is where you move the DIV from:
+              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+              // otherwise, move the DIV from anywhere inside the DIV:
+              elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // get the mouse cursor position at startup:
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              document.onmouseup = closeDragElement;
+              // call a function whenever the cursor moves:
+              document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // calculate the new cursor position:
+              pos1 = pos3 - e.clientX;
+              pos2 = pos4 - e.clientY;
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              // set the element's new position:
+              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+              // stop moving when mouse button is released:
+              document.onmouseup = null;
+              document.onmousemove = null;
+            }
+          }
+        </script>
+      </div>    
+      <div id="image2" class="miscimages pos2">
+        <img src="images/misc/3smallthings.webp">
+        <p>Small Things (2022) | Storyboard: 21x30"</p>
+        <script>
+          dragElement(document.getElementById("image2"));
+
+          function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+              // if present, the header is where you move the DIV from:
+              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+              // otherwise, move the DIV from anywhere inside the DIV:
+              elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // get the mouse cursor position at startup:
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              document.onmouseup = closeDragElement;
+              // call a function whenever the cursor moves:
+              document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // calculate the new cursor position:
+              pos1 = pos3 - e.clientX;
+              pos2 = pos4 - e.clientY;
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              // set the element's new position:
+              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+              // stop moving when mouse button is released:
+              document.onmouseup = null;
+              document.onmousemove = null;
+            }
+          }
+        </script>
+      </div>    
+      <div id="image3" class="miscimages pos3">
+        <img src="images/misc/4-animals.webp">
+        <p>Four Animals (2023)</p>
+        <script>
+          dragElement(document.getElementById("image3"));
+
+          function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+              // if present, the header is where you move the DIV from:
+              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+              // otherwise, move the DIV from anywhere inside the DIV:
+              elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // get the mouse cursor position at startup:
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              document.onmouseup = closeDragElement;
+              // call a function whenever the cursor moves:
+              document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // calculate the new cursor position:
+              pos1 = pos3 - e.clientX;
+              pos2 = pos4 - e.clientY;
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              // set the element's new position:
+              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+              // stop moving when mouse button is released:
+              document.onmouseup = null;
+              document.onmousemove = null;
+            }
+          }
+        </script>
+      </div>    
+      <div id="image4" class="miscimages pos4">
+        <img src="images/misc/5x10 circles.webp">
+        <p>Circle Progression (2021)</p>
+        <script>
+          dragElement(document.getElementById("image4"));
+
+          function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+              // if present, the header is where you move the DIV from:
+              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+              // otherwise, move the DIV from anywhere inside the DIV:
+              elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // get the mouse cursor position at startup:
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              document.onmouseup = closeDragElement;
+              // call a function whenever the cursor moves:
+              document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // calculate the new cursor position:
+              pos1 = pos3 - e.clientX;
+              pos2 = pos4 - e.clientY;
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              // set the element's new position:
+              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+              // stop moving when mouse button is released:
+              document.onmouseup = null;
+              document.onmousemove = null;
+            }
+          }
+        </script>
+      </div>    
+      <div id="image5" class="miscimages pos5">
+        <img src="images/misc/9x12-skull-print.webp">
+        <p>Watercolor Skull (2021) | 11x17"</p>
+        <script>
+          dragElement(document.getElementById("image5"));
+
+          function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+              // if present, the header is where you move the DIV from:
+              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+              // otherwise, move the DIV from anywhere inside the DIV:
+              elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // get the mouse cursor position at startup:
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              document.onmouseup = closeDragElement;
+              // call a function whenever the cursor moves:
+              document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // calculate the new cursor position:
+              pos1 = pos3 - e.clientX;
+              pos2 = pos4 - e.clientY;
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              // set the element's new position:
+              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+              // stop moving when mouse button is released:
+              document.onmouseup = null;
+              document.onmousemove = null;
+            }
+          }
+        </script>
+      </div>    
+      <div id="image6" class="miscimages pos6">
+        <img src="images/misc/aslmockups.webp">
+        <p>ASL Club Logo (2022) | Timeline: 2 days</p>
+        <script>
+          dragElement(document.getElementById("image6"));
+
+          function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+              // if present, the header is where you move the DIV from:
+              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+              // otherwise, move the DIV from anywhere inside the DIV:
+              elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // get the mouse cursor position at startup:
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              document.onmouseup = closeDragElement;
+              // call a function whenever the cursor moves:
+              document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // calculate the new cursor position:
+              pos1 = pos3 - e.clientX;
+              pos2 = pos4 - e.clientY;
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              // set the element's new position:
+              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+              // stop moving when mouse button is released:
+              document.onmouseup = null;
+              document.onmousemove = null;
+            }
+          }
+        </script>
+      </div>    
+      <div id="image7" class="miscimages pos7">
+        <img src="images/misc/croc8x8-print.webp">
+        <p>Crocodile Boba Shop (2023)</p>
+        <script>
+          dragElement(document.getElementById("image7"));
+
+          function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+              // if present, the header is where you move the DIV from:
+              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+              // otherwise, move the DIV from anywhere inside the DIV:
+              elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // get the mouse cursor position at startup:
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              document.onmouseup = closeDragElement;
+              // call a function whenever the cursor moves:
+              document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // calculate the new cursor position:
+              pos1 = pos3 - e.clientX;
+              pos2 = pos4 - e.clientY;
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              // set the element's new position:
+              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+              // stop moving when mouse button is released:
+              document.onmouseup = null;
+              document.onmousemove = null;
+            }
+          }
+        </script>
+      </div>    
+      <div id="image8" class="miscimages pos8">
+        <img src="images/misc/e3dmodeling.webp">
+        <p>3D Modeling Experiments (2022)</p>
+        <script>
+          dragElement(document.getElementById("image8"));
+
+          function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+              // if present, the header is where you move the DIV from:
+              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+              // otherwise, move the DIV from anywhere inside the DIV:
+              elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // get the mouse cursor position at startup:
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              document.onmouseup = closeDragElement;
+              // call a function whenever the cursor moves:
+              document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // calculate the new cursor position:
+              pos1 = pos3 - e.clientX;
+              pos2 = pos4 - e.clientY;
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              // set the element's new position:
+              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+              // stop moving when mouse button is released:
+              document.onmouseup = null;
+              document.onmousemove = null;
+            }
+          }
+        </script>
+      </div>    
+      <div id="image9" class="miscimages pos9">
+        <img src="images/misc/waterbear.webp">
+        <p>Water Bear (2023)</p>
+        <script>
+          dragElement(document.getElementById("image9"));
+
+          function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+              // if present, the header is where you move the DIV from:
+              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+              // otherwise, move the DIV from anywhere inside the DIV:
+              elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // get the mouse cursor position at startup:
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              document.onmouseup = closeDragElement;
+              // call a function whenever the cursor moves:
+              document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // calculate the new cursor position:
+              pos1 = pos3 - e.clientX;
+              pos2 = pos4 - e.clientY;
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              // set the element's new position:
+              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+              // stop moving when mouse button is released:
+              document.onmouseup = null;
+              document.onmousemove = null;
+            }
+          }
+        </script>
+      </div>    
+      <div id="image10" class="miscimages pos10">
+        <img src="images/misc/1703542273956-056f7a50-fa0a-47b2-8051-51a8e6384794_1.webp">
+        <p>Greeting Card Designs (2023)</p>
+        <script>
+          dragElement(document.getElementById("image10"));
+
+          function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+              // if present, the header is where you move the DIV from:
+              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+              // otherwise, move the DIV from anywhere inside the DIV:
+              elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // get the mouse cursor position at startup:
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              document.onmouseup = closeDragElement;
+              // call a function whenever the cursor moves:
+              document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
+              // calculate the new cursor position:
+              pos1 = pos3 - e.clientX;
+              pos2 = pos4 - e.clientY;
+              pos3 = e.clientX;
+              pos4 = e.clientY;
+              // set the element's new position:
+              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+              // stop moving when mouse button is released:
+              document.onmouseup = null;
+              document.onmousemove = null;
+            }
+          }
+        </script>
+      </div>    
+
+  </section>
+</section>
+
+<section class = "footer">
+  <p>© 2023 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+  <p>Last updated: December 27, 2023</p>
+  <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> | <span id="backtotop" class="footerlink linkhover" onclick = "totop()">Back to Top</span></p>
+  <script>
+    function totop(){
+      window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth'
+      });
+    }
+  </script>
 </section>
 
 <!------JavaScript for Toggle Menu ------>
