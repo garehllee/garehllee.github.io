@@ -5,7 +5,7 @@
 
 
 function checkScroll(){
-  let compscroll = .45;
+  let compscroll = .425;
   let wholepage = document.getElementById('wholepage');
   let colorreg = getComputedStyle(document.body).getPropertyValue('--reg');
     if ((window.pageYOffset / (document.body.offsetHeight - window.innerHeight))>compscroll && colorreg=="black"){

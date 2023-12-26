@@ -28,6 +28,15 @@
     --lightaccent: rgb(143, 194, 218);
     --reg: black;
     --gridcolor: #242424;
+    --h1: 47.78px;
+    --h2: 39.81px;
+    --h3:33.18px;
+    --h4:27.65px;
+    --h5:23.04px;
+    --h6:19.2px;
+    --p:16px;
+    --small:13.33px;
+    --comment:11.11px;
 }
 @keyframes bg{
     0%{
@@ -97,7 +106,7 @@ nav img:hover {
     font-weight:500;
     color: var(--reg);
     text-decoration: none;
-    font-size: 20px;
+    font-size: var(--h6);
     transition: .3s;
 }
 .currentpage{
@@ -109,7 +118,6 @@ nav img:hover {
     font-weight:500;
     color: var(--accent);
     text-decoration: none;
-    font-size: 20px;
 }
 
 /*TEXT BOX*/
@@ -119,15 +127,13 @@ nav img:hover {
     color: var(--reg);
     position: sticky;
     top: 5%;
-    left: 2%;
     text-align:left;
     padding-left:100px;
-    padding-top:100px;
+    padding-top: 30px;
     padding-bottom:100px;
-    padding-right:18px;
 }
 .text-box h1{
-    font-size:30px;
+    font-size:var(--h1);
     font-family: "Degular-text", sans-serif;
     font-weight: 500;
 }
@@ -135,18 +141,18 @@ nav img:hover {
     margin: 30px 0 50px;
     font-family: "degular-text", sans-serif;
     font-weight: 500;
-    font-size: 14px;
+    font-size: var(--p);
     color: var(--reg);
 }
 .h-emphasis{
-    font-size: 33px;
+    font-size: calc(var(--h1) + 3px);
     font-family:"amandine", sans-serif;
     font-weight: 400;
     font-style: italic;
     text-decoration:none;
 }
 .h-emphasis-link{
-    font-size: 33px;
+    font-size: calc(var(--h1) + 3px);
     color:var(--reg);
     font-family:"amandine", sans-serif;
     font-weight: 400;
@@ -154,7 +160,7 @@ nav img:hover {
     text-decoration:none;
 }
 .h-emphasis-link:hover{
-    font-size: 33px;
+    font-size: calc(var(--h1) + 3px);
     color:var(--accent);
     font-family:"amandine", sans-serif;
     font-weight: 400;
@@ -163,7 +169,7 @@ nav img:hover {
     text-decoration-thickness:2px;
 }
 .p-emphasis{
-    font-size: 17px;
+    font-size: calc((var(--p) + 3px));
     font-family:"amandine", sans-serif;
     font-weight: 400;
     font-style: italic;
@@ -236,18 +242,18 @@ nav .fa{
     font-family: "Degular-text", sans-serif;
     font-weight:500;
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--p);
 }
 .PortGal p{
     display:block;
     font-family: "Degular-text", sans-serif;
     font-weight:500;
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--small);
 }
 
 .PortGal h3{
-    font-size:33px;
+    font-size: calc(var(--h4) + 3px);
     font-family: "amandine", sans-serif;
     font-weight: 400;
     font-style: italic;
@@ -277,7 +283,7 @@ img{
     text-decoration:none;
 }
 .miscimages{
-    width:20vw;
+    width:25vw;
     position:absolute;
     max-height:min-content;
 }
@@ -287,24 +293,28 @@ img{
 .miscimages img{
     outline:solid 1px white;
     display:block;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
 }
 .misc p{
     position: absolute;
     font-family: "degular-text", sans-serif;
     font-weight: 500;
-    font-size: 14px;
-    width:20vw;
+    font-size: var(--p);
+    width:25vw;
     outline:solid 1px white;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
 }
 
 .pos1{
     top:-35vh;
-    left:45vw;
+    left:40vw;
 }
 
 .pos2{
     top:-10vh;
-    left: 70vw;
+    left: 63vw;
 }
 .pos3{
     top:10vh;
@@ -312,15 +322,15 @@ img{
 }
 .pos4{
     top:30vh;
-    left: 75vw;
+    left: 72vw;
 }
 .pos5{
     top:60vh;
-    left: 45vw;
+    left: 40vw;
 }
 .pos6{
-    top:55vh;
-    left: 70vw;
+    top:62vh;
+    left: 67vw;
 }
 .pos7{
     top:10vh;
@@ -331,37 +341,40 @@ img{
     left:10vw;
 }
 .pos9{
-    top:100vh;
+    top:103vh;
     left:20vw;
 }
 .pos10{
     top:100vh;
-    left:60vw;
+    left:71vw;
 }
 .text-box2{
     width: 30%;
     color: var(--lightaccent);
-    position: sticky;
+    position: relative;
     top: 0%;
-    left: 2%;
     text-align:left;
     padding-left:100px;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-right:20px;
 }
-.text-box2 h1{
-    margin: 30px 0 50px;
-    font-size:30px;
+.text-box2 h2{
+    margin-bottom:30px;
+    font-size:var(--h2);
     font-family: "Degular-text", sans-serif;
     font-weight: 500;
     color: var(--lightaccent);
 }
+.text-box2 .h2-emphasis{
+    font-size: calc(var(--h2) + 3px);
+    font-family:"amandine", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    text-decoration:none;
+}
 .text-box2 p{
-    margin: 30px 0 50px;
+    margin-bottom:30px;
     font-family: "degular-text", sans-serif;
     font-weight: 500;
-    font-size: 14px;
+    font-size: var(--p);
     color: var(--reg);
 }
 
@@ -369,7 +382,7 @@ img{
     margin: 30px;
     font-family: "degular-text", sans-serif;
     font-weight: 500;
-    font-size: 14px;
+    font-size: var(--p);
     color: var(--reg);
 }
 .footerlink{
@@ -395,7 +408,7 @@ img{
         padding:10px;
     }
     .text-box h1{
-        font-size:35px;
+        font-size:var(--h1);
         font-family: "Degular-text", sans-serif;
         font-weight: 500;
     }
@@ -403,17 +416,17 @@ img{
         margin: 30px 0 50px;
         font-family: "degular-text", sans-serif;
         font-weight: 500;
-        font-size: 15px;
+        font-size: var(--p);
         color: var(--reg);
     }
     .h-emphasis{
-        font-size: 38px;
+        font-size: calc(var(--h1) + 3px);
         font-family:"amandine", sans-serif;
         font-weight: 400;
         font-style: italic;
     }
     .p-emphasis{
-        font-size: 18px;
+        font-size: calc(var(--p) + 3px);
         font-family:"amandine", sans-serif;
         font-weight: 400;
         font-style: italic;
@@ -439,7 +452,7 @@ img{
         display: block;
         color: var(--reg);
         margin: 10px;
-        font-size: 22px;
+        font-size: var(--h6);
     }
     .nav-links ul{
         padding: 30px;
@@ -500,19 +513,19 @@ img{
         font-family: "Degular-text", sans-serif;
         font-weight:500;
         text-decoration: none;
-        font-size: 14px;
+        font-size: var(--p);
     }
     .PortGal p{
         display:block;
         font-family: "Degular-text", sans-serif;
         font-weight:500;
         text-decoration: none;
-        font-size: 14px;
+        font-size: var(--p);
         margin-top:20px;
     }
 
     .PortGal h3{
-        font-size:30px;
+        font-size:var(--h4);
         font-family: "amandine", sans-serif;
         font-weight: 400;
         font-style: italic;
@@ -537,7 +550,7 @@ img{
         padding:10px;
     }
     .text-box h1{
-        font-size:35px;
+        font-size:var(--h1);
         font-family: "Degular-text", sans-serif;
         font-weight: 500;
     }
@@ -545,17 +558,17 @@ img{
         margin: 30px 0 50px;
         font-family: "degular-text", sans-serif;
         font-weight: 500;
-        font-size: 15px;
+        font-size: var(--p);
         color: black;
     }
     .h-emphasis{
-        font-size: 38px;
+        font-size: calc(var(--h1) + 3px);
         font-family:"amandine", sans-serif;
         font-weight: 400;
         font-style: italic;
     }
     .p-emphasis{
-        font-size: 18px;
+        font-size: calc(var(--p) + 3px);
         font-family:"amandine", sans-serif;
         font-weight: 400;
         font-style: italic;
@@ -581,7 +594,7 @@ img{
         display: block;
         color: var(--reg);
         margin: 10px;
-        font-size: 22px;
+        font-size: var(--h6);
     }
     .nav-links ul{
         padding: 30px;
@@ -642,19 +655,19 @@ img{
         font-family: "Degular-text", sans-serif;
         font-weight:500;
         text-decoration: none;
-        font-size: 14px;
+        font-size: var(--p);
     }
     .PortGal p{
         display:block;
         font-family: "Degular-text", sans-serif;
         font-weight:500;
         text-decoration: none;
-        font-size: 14px;
+        font-size: var(--p);
         margin-top:20px;
     }
 
     .PortGal h3{
-        font-size:30px;
+        font-size:var(--h4);
         font-family: "amandine", sans-serif;
         font-weight: 400;
         font-style: italic;
