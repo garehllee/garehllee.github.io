@@ -38,6 +38,7 @@
     --p:16px;
     --small:13.33px;
     --comment:11.11px;
+    --colorturnpoint:.425;
 }
 @keyframes bg{
     0%{
@@ -474,14 +475,75 @@ img{
 #loadOverlay{display: none;}
 /*MOBILE ADJUSTMENTS*/
 @media(max-width: 860px){
+    *{
+        overflow-x: clip;
+        --colorturnpoint:.6;
+    }
+    .wholepagedark{
+        animation: bg .5s ease-in;
+        animation-iteration-count:1;
+        animation-fill-mode:both;
+        background-size:5% .5%;
+        background-image: linear-gradient(var(--gridcolor) 0.5px, transparent 0.5px, transparent calc(100% - 0.5px), var(--gridcolor) calc(100% - 0.5px)), linear-gradient(90deg, var(--gridcolor) 0.5px, transparent 0.5px, transparent calc(100% - 0.5px), var(--gridcolor) calc(100% - 0.5px));
+    }
+    
+    .wholepagelight{
+        animation:bgreverse .5s ease-out;
+        animation-iteration-count:1;
+        animation-fill-mode:both;
+        background-size:5% .5%;
+        background-image: linear-gradient(var(--gridcolor) 0.5px, transparent 0.5px, transparent calc(100% - 0.5px), var(--gridcolor) calc(100% - 0.5px)), linear-gradient(90deg, var(--gridcolor) 0.5px, transparent 0.5px, transparent calc(100% - 0.5px), var(--gridcolor) calc(100% - 0.5px));
+    }
+    .hr{
+        display:none;
+    }
+    .nav{
+        position:sticky;
+    }
+    .nav-links ul li a{
+        display: block;
+        font-size:var(--h3);
+        font-weight:700;
+    }
+    .nav-links{
+        position:absolute;
+        background-color:white;
+        background-size: cover;
+        border-style:solid;
+        border-color:var(--reg);
+        border-width:1px;
+        height:100vh;
+        width:80vw;
+        top:0;
+        right:-100vw;
+        z-index:1;
+        opacity: 1;
+        transition:.5s;
+    }    
+    nav .fa{
+        display: inline-flex;
+        color: var(--reg);
+        margin:10px;
+        font-size: var(--h3);
+    }
+    nav .fa-times{
+        margin:30px;
+    }
+    .nav-links ul{
+        padding-left: 15px;
+        width:40vw;
+        background-image:white;
+        text-align:left;
+    }
+    .fixed-position{
+        overflow:hidden;
+        touch-action:none;
+    }
     .text-box{
         width: 90%;
-        position: absolute;
-        top: 25%;
-        left:2%;
-        transform: translate(0,-25%);
+        position: static;
         text-align:left;
-        padding:10px;
+        padding:20px;
     }
     .text-box h1{
         font-size:var(--h1);
@@ -507,50 +569,28 @@ img{
         font-weight: 400;
         font-style: italic;
     }
-    .nav-links ul li{
-        display: block;
-    }
-    .nav-links{
-        position:absolute;
-        background: white;
-        border-style:solid;
-        border-color:var(--reg);
-        border-width:1px;
-        height:100vh;
-        width:200px;
-        top:0;
-        right:-200px;
-        text-align:left;
-        z-index:2;
-        transition:.5s;
-    }    
-    nav .fa{
-        display: block;
-        color: var(--reg);
-        margin: 10px;
-        font-size: var(--h6);
-    }
-    .nav-links ul{
-        padding: 30px;
+    .header{
+        min-height:10vh;
     }
     /*PORTFOLIO GALLERY*/
         /*Outer Box*/
     .PortGal{
-        width:90%;
-        color:black;
-        position:absolute;
-        top:50%;
-        left:0%;
+        width:90vw;
+        position:static;
         text-align:left;
         padding:10px;
         text-decoration:none;
+        left: 0%;
+        top: 0%;
+        margin: 10px;
+        display: flex;
     }
     .columns{
         display: flex;
         flex-wrap:wrap;
         justify-content: space-between;
-        row-gap: 48px;
-        flex-direction: row; 
+        row-gap: 25px;
+        flex-direction: column; 
         text-decoration:none;
     }
         /*Individual Box*/
@@ -562,14 +602,16 @@ img{
         color:var(--reg);
         align-items: center;
         justify-items: 10px;
+        padding-top:15px;
+        padding-bottom:15px;
+        border-radius:5px;
+        border:var(--lightaccent) solid 1px;
     }
-
     .projecthome:hover{
         color:var(--accent);
     }
         /*Box Sizes*/
     .hundred{
-        display: flex;
         flex-direction: column;
         text-decoration:none;
         
@@ -612,146 +654,51 @@ img{
     img{
         width:100%;
     }
-}
-
-/*MOBILE ADJUSTMENTS*/
-@media(max-width: 380px){
-    .text-box{
+    .text-box2{
         width: 90%;
-        position: absolute;
-        top: 25%;
-        left:2%;
-        transform: translate(0,-25%);
+        position: static;
         text-align:left;
-        padding:10px;
+        padding:20px;
     }
-    .text-box h1{
-        font-size:var(--h1);
-        font-family: "Degular-text", sans-serif;
-        font-weight: 500;
+    .misc{
+        position:static;
+        display:flex;
+        flex-direction: row;
+        row-gap: 3.3vw;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100vw;
+        max-height: min-content;
+        align-content: center;
+        column-gap: 3.3vw;
+        padding-left:0px;
+        padding-right:0px;
     }
-    .text-box p{
-        margin: 30px 0 50px;
-        font-family: "degular-text", sans-serif;
-        font-weight: 500;
-        font-size: var(--p);
-        color: black;
-    }
-    .h-emphasis{
-        font-size: calc(var(--h1) + 3px);
-        font-family:"amandine", sans-serif;
-        font-weight: 400;
-        font-style: italic;
-    }
-    .p-emphasis{
-        font-size: calc(var(--p) + 3px);
-        font-family:"amandine", sans-serif;
-        font-weight: 400;
-        font-style: italic;
-    }
-    .nav-links ul li{
-        display: block;
-    }
-    .nav-links{
-        position:absolute;
-        background: white;
-        border-style:solid;
-        border-color:var(--reg);
-        border-width:1px;
-        height:100vh;
-        width:200px;
-        top:0;
-        right:-200px;
-        text-align:left;
-        z-index:2;
-        transition:.5s;
-    }    
-    nav .fa{
-        display: block;
-        color: var(--reg);
-        margin: 10px;
-        font-size: var(--h6);
-    }
-    .nav-links ul{
-        padding: 30px;
-    }
-    /*PORTFOLIO GALLERY*/
-        /*Outer Box*/
-    .PortGal{
-        width:90%;
-        color:var(--reg);
-        position:absolute;
-        top:55%;
-        left:0%;
-        text-align:left;
-        padding:10px;
-        text-decoration:none;
-    }
-    .columns{
-        display: flex;
+    .miscimages{
+        position:static;
+        display:flex;
         flex-wrap:wrap;
-        justify-content: space-between;
-        row-gap: 48px;
-        flex-direction: row; 
-        text-decoration:none;
+        flex-direction:row;
+        width:45vw;
+        align-self: center;
     }
-        /*Individual Box*/
-    .projecthome {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-decoration:none;
-        color:var(--reg);
-        align-items: center;
-        justify-items: 10px;
+    .misc p{
+        position: static;
+        width:45vw;
+        border: solid 1px white;
+        outline: none;
     }
-
-    .projecthome:hover{
-        color:var(--accent);
+    .miscimages img{
+        outline:none;
+        display:flex;
+        width:45vw;
+        border-top-left-radius:5px;
+        border-top-right-radius:5px;
+        justify-content:center;
+        flex-wrap:wrap;
+        border:solid 1px white;
     }
-        /*Box Sizes*/
-    .hundred{
-        display: flex;
-        flex-direction: column;
-        text-decoration:none;
-        
-    }
-    .sixty{
-        width: 90%;
-    }
-
-    .forty{
-        width:90%;
-        text-decoration:none;
-        vertical-align: center;
-    }
-        /*Fonts*/
-    .PortGal sub{
-        display:block;
-        font-family: "Degular-text", sans-serif;
-        font-weight:500;
-        text-decoration: none;
-        font-size: var(--p);
-    }
-    .PortGal p{
-        display:block;
-        font-family: "Degular-text", sans-serif;
-        font-weight:500;
-        text-decoration: none;
-        font-size: var(--p);
-        margin-top:20px;
-    }
-
-    .PortGal h3{
-        font-size:var(--h4);
-        font-family: "amandine", sans-serif;
-        font-weight: 400;
-        font-style: italic;
-        margin-top: 20px;
-        margin-bottom:20px;
-    }
-
-    img{
-        width:100%;
+    .hideonmobile{
+        display:none;
     }
 }

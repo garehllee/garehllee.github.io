@@ -25,11 +25,11 @@
     </div>
     <i class="fa fa-bars" onclick="showMenu()"></i>
   </nav>
-<hr style="margin-left:100px; margin-right:100px;">
-<div class="text-box">
-  <h1>Hi, I'm Garrett. <br> I'm currently studying <a href="https://design.cmu.edu/" class="h-emphasis-link linkhover"><span class="h-emphasis">Design</span></a> at <span class = "h-emphasis">Carnegie Mellon</span>.</h1>
-  <p>Here are some of the <span class="p-emphasis"> things</span> I've made.<i class="fa fa-long-arrow-right"></i></p>
-</div>
+  <hr class= "hr" style="margin-left:100px; margin-right:100px;">
+  <div class="text-box">
+    <h1>Hi, I'm Garrett. <br> I'm currently studying <a href="https://design.cmu.edu/" class="h-emphasis-link linkhover"><span class="h-emphasis">Design</span></a> at <span class = "h-emphasis">Carnegie Mellon</span>.</h1>
+    <p>Here are some of the <span class="p-emphasis"> things</span> I've made.<i class="fa fa-long-arrow-right"></i></p>
+  </div>
 </section>
 
 <!----Portfolio Gallery---->
@@ -135,7 +135,8 @@
 
 <div class="text-box2">
   <h2>I also like to make, learn about, and play with stuff that requires little explanation.</h2>
-  <p>Here's a small archive of fine art 🖌, illustration 📖, commission work 🧧, form 🪞, and graphics 🎞. <br><br>Experiment for yourself — <span class="p-emphasis">Drag stuff around!</span></p>
+  <p>Here's a small archive of fine art 🖌, illustration 📖, commission work 🧧, form 🪞, and graphics 🎞. <br><br></p>
+  <p class="hideonmobile">Experiment for yourself — <span class="p-emphasis">Drag stuff around!</span></p>
 </div>
 
   <section class="misc">
@@ -143,8 +144,9 @@
         <img src="images/misc/1boxboat.gif">
         <p>Box Boat (2022) | 6.5x6.5", opens to 18.5x18.5"</p>
         <script>
+          if(window.innerWidth>840){
           dragElement(document.getElementById("image1"));
-
+          }
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -191,8 +193,9 @@
         <img src="images/misc/3smallthings.webp">
         <p>Small Things (2022) | Storyboard: 21x30"</p>
         <script>
-          dragElement(document.getElementById("image2"));
-
+          if(window.innerWidth>840){
+            dragElement(document.getElementById("image2"));
+          }
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -239,8 +242,9 @@
         <img src="images/misc/4-animals.webp">
         <p>Four Animals (2023)</p>
         <script>
-          dragElement(document.getElementById("image3"));
-
+          if(window.innerWidth>840){
+            dragElement(document.getElementById("image3"));
+          }
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -287,8 +291,9 @@
         <img src="images/misc/5x10 circles.webp">
         <p>Circle Progression (2021)</p>
         <script>
+          if(window.innerWidth>840){
           dragElement(document.getElementById("image4"));
-
+          }
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -335,8 +340,9 @@
         <img src="images/misc/9x12-skull-print.webp">
         <p>Watercolor Skull (2021) | 11x17"</p>
         <script>
+          if(window.innerWidth>840){
           dragElement(document.getElementById("image5"));
-
+          }
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -383,8 +389,9 @@
         <img src="images/misc/aslmockups.webp">
         <p>ASL Club Logo (2022) | Timeline: 2 days</p>
         <script>
+          if(window.innerWidth>840){
           dragElement(document.getElementById("image6"));
-
+          }
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -431,8 +438,9 @@
         <img src="images/misc/croc8x8-print.webp">
         <p>Crocodile Boba Shop (2023)</p>
         <script>
+          if(window.innerWidth>840){
           dragElement(document.getElementById("image7"));
-
+          }
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -479,8 +487,9 @@
         <img src="images/misc/e3dmodeling.webp">
         <p>3D Modeling Experiments (2022)</p>
         <script>
+          if(window.innerWidth>840){
           dragElement(document.getElementById("image8"));
-
+          }
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -527,8 +536,9 @@
         <img src="images/misc/waterbear.webp">
         <p>Water Bear (2023)</p>
         <script>
+          if(window.innerWidth>840){
           dragElement(document.getElementById("image9"));
-
+          }
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -575,8 +585,9 @@
         <img src="images/misc/1703542273956-056f7a50-fa0a-47b2-8051-51a8e6384794_1.webp">
         <p>Greeting Card Designs (2023)</p>
         <script>
+          if(window.innerWidth>840){
           dragElement(document.getElementById("image10"));
-
+          }
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -644,9 +655,11 @@
 
   function showMenu(){
     navLinks.style.right = "0";
+    wholepage.classList.add("fixed-position");
   }
   function hideMenu(){
-    navLinks.style.right = "-250px";
+    navLinks.style.right = "-100vw";
+    wholepage.classList.remove("fixed-position");
   }
 </script>
 </body>
