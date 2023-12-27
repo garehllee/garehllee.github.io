@@ -206,6 +206,7 @@ nav .fa{
     display: flex;
     flex-wrap:wrap;
     justify-content: space-between;
+    align-items:center;
     row-gap: 48px;
     flex-direction: row; 
     text-decoration:none;
@@ -215,6 +216,7 @@ nav .fa{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items:center;
     text-decoration:none;
     color:var(--reg);
 }
@@ -386,6 +388,7 @@ img{
     font-weight: 500;
     font-size: var(--p);
     color: var(--reg);
+    width:auto;
 }
 .footerlink{
     font-style:italic;
@@ -546,7 +549,7 @@ img{
         padding:20px;
     }
     .text-box h1{
-        font-size:var(--h1);
+        font-size:var(--h2);
         font-family: "Degular-text", sans-serif;
         font-weight: 500;
     }
@@ -558,7 +561,7 @@ img{
         color: var(--reg);
     }
     .h-emphasis{
-        font-size: calc(var(--h1) + 3px);
+        font-size: calc(var(--h2) + 3px);
         font-family:"amandine", sans-serif;
         font-weight: 400;
         font-style: italic;
@@ -573,11 +576,11 @@ img{
         min-height:10vh;
     }
     .fa-long-arrow-right{
-        transform:rotate(90deg);
+        display:none;
+        color:white;
     }
     .fa-long-arrow-right:hover{
-        transform:rotate(90deg) translateX(10px);
-        margin-left:10px
+        display:none;
     }
     /*PORTFOLIO GALLERY*/
         /*Outer Box*/
@@ -666,6 +669,9 @@ img{
         position: static;
         text-align:left;
         padding:20px;
+    }
+    .footer{
+        height:15vh;
     }
     .misc{
         position:static;
