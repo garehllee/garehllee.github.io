@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="icon" href="images/logo/bearfavicon.ico">
 </head>
-<body>
+<body id="wholepage">
     <nav>
         <a href = "index.html"><img src="images/logo/bearlogo.webp"></a>
         <div class="nav-links" id="navLinks">
@@ -37,10 +37,10 @@
         </div>
     </div>  
 </section>
-<section class = "footer">
+<section class = "footer de-emphasize">
     <p>© 2023 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
     <p>Last updated: December 27, 2023</p>
-    <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> | <span id="backtotop" class="footerlink2" onclick = "totop()">Back to Top</span></p>
+    <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover de-emphasize">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover de-emphasize">Instagram</a> | <span id="backtotop" class="footerlink2 de-emphasize" onclick = "totop()">Back to Top</span></p>
     <script>
       function totop(){
         window.scroll({
@@ -50,6 +50,18 @@
         });
       }
     </script>
-  </section>
+</section>
+<script>
+  var navLinks =  document.getElementById("navLinks")
+
+  function showMenu(){
+    navLinks.style.right = "0";
+    wholepage.classList.add("fixed-position");
+  }
+  function hideMenu(){
+    navLinks.style.right = "-100vw";
+    wholepage.classList.remove("fixed-position");
+  }
+</script>
 </body>
 </html>

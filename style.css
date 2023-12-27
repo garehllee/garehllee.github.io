@@ -176,12 +176,12 @@ nav img:hover {
     font-weight: 400;
     font-style: italic;
 }
-.fa{
+.fa-long-arrow-right{
     margin-left:10px;
     transition:.2s ease-in-out;
     color: var(--accent);
 }
-.fa:hover{
+.fa-long-arrow-right:hover{
     margin-left:20px;
     transform: rotate(-10deg);
 }
@@ -494,7 +494,7 @@ img{
         background-size:5% .5%;
         background-image: linear-gradient(var(--gridcolor) 0.5px, transparent 0.5px, transparent calc(100% - 0.5px), var(--gridcolor) calc(100% - 0.5px)), linear-gradient(90deg, var(--gridcolor) 0.5px, transparent 0.5px, transparent calc(100% - 0.5px), var(--gridcolor) calc(100% - 0.5px));
     }
-    .hr{
+    hr{
         display:none;
     }
     .nav{
@@ -571,6 +571,13 @@ img{
     }
     .header{
         min-height:10vh;
+    }
+    .fa-long-arrow-right{
+        transform:rotate(90deg);
+    }
+    .fa-long-arrow-right:hover{
+        transform:rotate(90deg) translateX(10px);
+        margin-left:10px
     }
     /*PORTFOLIO GALLERY*/
         /*Outer Box*/
@@ -700,5 +707,43 @@ img{
     }
     .hideonmobile{
         display:none;
+    }
+    .aboutcontainer{
+        padding:5px;
+        padding-top:0px;
+        flex-direction:column;
+        align-items:center;
+    }
+    .aboutimage{
+        margin:10px;
+        margin-top:60px;
+        margin-bottom:30px;
+        width:90%;
+        height:40vh;
+    }
+    .aboutimage img{
+        height:40vh;
+        object-fit:cover;
+    }
+    .aboutparagraph{
+        width:90vw;
+        margin-top:30px;
+        margin:10px;
+        margin-bottom:100px;
+    }
+    .aboutparagraph h2{
+        font-size:var(--h3);
+    }
+    .h2-emphasis{
+        font-size: calc(var(--h3) + 3px);
+    }
+    .h2-emphasis-link{
+        font-size: calc(var(--h3) + 3px);
+    }
+    .h2-emphasis-link:hover{
+        font-size: calc(var(--h3) + 3px);
+    }
+    .de-emphasize{
+        color:var(--lightaccent);
     }
 }
