@@ -4,6 +4,7 @@
     max-width:100vw;
     /* overflow-x:hidden; */
     /* border:solid red 1px; */
+    scroll-behavior:smooth;
     
 }
 
