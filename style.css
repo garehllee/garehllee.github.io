@@ -562,13 +562,13 @@ img{
         color: var(--reg);
     }
     .h-emphasis{
-        font-size: calc(var(--h2) + 3px);
+        font-size: calc(var(--h2));
         font-family:"amandine", sans-serif;
         font-weight: 400;
         font-style: italic;
     }
     .p-emphasis{
-        font-size: calc(var(--p) + 3px);
+        font-size: calc(var(--p));
         font-family:"amandine", sans-serif;
         font-weight: 400;
         font-style: italic;
@@ -742,13 +742,13 @@ img{
         font-size:var(--h3);
     }
     .h2-emphasis{
-        font-size: calc(var(--h3) + 3px);
+        font-size: calc(var(--h3));
     }
     .h2-emphasis-link{
-        font-size: calc(var(--h3) + 3px);
+        font-size: calc(var(--h3));
     }
     .h2-emphasis-link:hover{
-        font-size: calc(var(--h3) + 3px);
+        font-size: calc(var(--h3));
     }
     .de-emphasize{
         color:var(--lightaccent);
