@@ -478,11 +478,16 @@ img{
 }
 #loadOverlay{display: none;}
 /*MOBILE ADJUSTMENTS*/
-@media(max-width: 860px){
+@media(max-width: 1025px){
     *{
         overflow-x: clip;
-        --colorturnpoint:.6;
+        --colorturnpoint:.52;
         --gridcolor: #161616;
+    }
+    @media(max-width:539px){
+        *{
+            --colorturnpoint:.6;
+        }
     }
     .wholepagedark{
         animation: bg .5s ease-in;
@@ -712,6 +717,12 @@ img{
         justify-content:center;
         flex-wrap:wrap;
         border:solid 1px white;
+    }
+    .miscimages img:hover{
+        scale:200%;
+        position: absolute;
+        left:50%;
+        transform:translateX(-25%);
     }
     .hideonmobile{
         display:none;

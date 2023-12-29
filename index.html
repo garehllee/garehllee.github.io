@@ -140,13 +140,21 @@
 </div>
 
   <section class="misc">
-      <div id="image1" class="miscimages pos1">
+      <div id="image1" class="miscimages pos1 thumbnail">
         <img src="images/misc/1boxboat.gif">
         <p>Box Boat (2022) | 6.5x6.5", opens to 18.5x18.5"</p>
         <script>
-          if(window.innerWidth>840){
-          dragElement(document.getElementById("image1"));
-          }
+            dragElement(document.getElementById("image1"));
+            // var box = document.getElementById('image1');
+            // box.addEventListener('touchmove', function(e) {
+            //   var touchLocation = e.targetTouches[0];
+            //   box.style.left = touchLocation.pageX + 'px';
+            //   box.style.top = touchLocation.pageY + 'px';
+            // })
+            // box.addEventListener('touchend', function(e) {
+            //   var x = parseInt(box.style.left);
+            //   var y = parseInt(box.style.top);
+            // })
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -193,9 +201,7 @@
         <img src="images/misc/3smallthings.webp">
         <p>Small Things (2022) | Storyboard: 21x30"</p>
         <script>
-          if(window.innerWidth>840){
-            dragElement(document.getElementById("image2"));
-          }
+         dragElement(document.getElementById("image2"));
           function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             if (document.getElementById(elmnt.id + "header")) {
@@ -208,6 +214,7 @@
 
             function dragMouseDown(e) {
               e = e || window.event;
+              passive:false;
               e.preventDefault();
               // get the mouse cursor position at startup:
               pos3 = e.clientX;
