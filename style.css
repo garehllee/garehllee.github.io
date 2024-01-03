@@ -476,6 +476,171 @@ img{
 .aboutparagraph .footerlink{
     color:var(--accent);
 }
+
+.titletextbox{
+    color:var(--reg);
+    margin-top:20px;
+}
+.titletextbox .leftside{
+    margin-top:65px;
+    color:var(--accent);
+}
+.titletextbox .leftside p span:hover{
+    text-decoration:underline wavy;
+    color:var(--lightaccent);
+    cursor:pointer;
+}
+.leftside{
+    width:20vw;
+    padding-left: 100px;
+    color:var(--reg);
+}
+.rightpart{
+    width:80vw;
+    height:fit-content;
+}
+.rightpart img{
+    margin: 50px;
+    width: 72vw;
+}
+.rightside{
+    display:flex;
+    flex-direction:row;
+}
+.photosflex{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-evenly;
+    width:72vw;
+    margin:50px;
+    column-gap:15px;
+}
+.photosflex div{
+    flex: 1 1 0;
+    object-fit:contain;
+}
+.photosflex div img{
+    object-fit:contain;
+    width: 100%;
+    margin:0px;
+}
+.textspace{
+    width:30vw;
+    padding-left:50px;
+    padding-right:50px;
+}
+.otherspace{
+    width:45vw;
+    display:flex;
+    flex-direction:row;
+    align-items:end;
+    padding-left:50px;
+    padding-right:50px;
+    justify-content:left;
+    column-gap:75px;
+}
+.otherspace img{
+    width:35vw;
+}
+.rightleft{
+    display:flex;
+    flex-direction:row;
+}
+.rightleft h1{
+    font-size:var(--h1);
+    font-family: "Degular-text", sans-serif;
+    font-weight: 700;
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.rightleft p{
+    font-size:var(--p);
+    font-family: "Degular-text", sans-serif;
+    font-weight: 500;
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.rightleft h3{
+    font-size:var(--h3);
+    font-family: "Degular-text", sans-serif;
+    font-weight: 500;
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.divider{
+    border-top:1px var(--accent) dashed;
+    border-bottom:1px var(--accent) dashed;
+    font-size:var(--h3);
+    font-family: "amandine", sans-serif;
+    font-weight: 400;
+    font-style:italic;
+    padding-top:15px;
+    padding-bottom:15px;
+    text-align:center;
+    margin-top:30px;
+    margin-bottom:30px;
+    color:var(--accent);
+}
+/* Slideshow container */
+.slideshow-container {
+    width:72vw;
+    position: relative;
+    margin-left:50px;
+  }
+.slideshow-container img{
+    margin:0px;
+    border-radius: 10px;
+    border:1px black solid;
+}
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: var(--accent);
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: var(--lightaccent);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: var(--accent);
+  }
+
 #loadOverlay{display: none;}
 /*MOBILE ADJUSTMENTS*/
 @media(max-width: 1025px){
