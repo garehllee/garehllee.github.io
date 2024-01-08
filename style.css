@@ -39,7 +39,7 @@
     --p:16px;
     --small:13.33px;
     --comment:11.11px;
-    --colorturnpoint:.425;
+    --colorturnpoint:.25;
 }
 @keyframes bg{
     0%{
@@ -67,7 +67,7 @@
     }
 }
 .header{
-    min-height: 150vh;
+    min-height: 110vh;
     width: 100%;
     background-position:center;
     background-size:cover;
@@ -271,7 +271,7 @@ img{
 }
 .background2{
     color:white;
-    min-height:200vh;
+    min-height:300vh;
     max-width:100vw;
     background-position:center;
     position:relative;
@@ -352,6 +352,30 @@ img{
 .pos10{
     top:90vh;
     left:71vw;
+}
+.pos11{
+    top:150vh;
+    left:30vw;
+}
+.pos12{
+    top: 140vh;
+    left: 10vw;
+}
+.pos13{
+    top:168vh;
+    left:65vw;
+}
+.pos14{
+    top: 215vh;
+    left:70vw;
+}
+.pos15{
+    top:200vh;
+    left:40vw;
+}
+.pos16{
+    top:210vh;
+    left:5vw;
 }
 .text-box2{
     width: 30%;
@@ -646,12 +670,12 @@ img{
 @media(max-width: 1025px){
     *{
         overflow-x: clip;
-        --colorturnpoint:.52;
+        --colorturnpoint:.3;
         --gridcolor: #161616;
     }
     @media(max-width:539px){
         *{
-            --colorturnpoint:.6;
+            --colorturnpoint:.4;
         }
     }
     .wholepagedark{
