@@ -63,8 +63,26 @@
                     <p>DESIGN TEAM- <br><br>Garrett Lee, Lee Hardisty, May Tran, Priya Bhananker</p>
                 </div>
             </div>
-          </div>
-          <img loading="lazy" src="images/covers/ecaar/ecaargif.gif">
+        </div>
+            <div onpointerenter="gb()" onpointerleave="gb2()">
+                <img id="stillImageECAAR" src="images/covers/ecaar/ecaarstill.webp" alt="ECAAR Logo" style="display: block;">
+                <img id="movingImageECAAR" src="images/covers/ecaar/ecaargif.gif" alt="Montage of ECAAR work" style="display: none;">
+                <script>
+                function gb() {
+                    var gif = document.getElementById('movingImageECAAR');
+                    var image = document.getElementById('stillImageECAAR');
+                    gif.style.display = 'block';
+                    image.style.display = 'none'
+    
+                }
+                function gb2() {
+                    var gif = document.getElementById('movingImageECAAR');
+                    var image = document.getElementById('stillImageECAAR');
+                    gif.style.display='none'
+                    image.style.display = 'block';
+                }
+                </script>
+            </div>
         </div>
   </section>
   <section class="overview rightleft">
