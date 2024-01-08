@@ -527,6 +527,11 @@ img{
     margin: 50px;
     width: 72vw;
 }
+.rightpart object{
+    margin: 50px;
+    width: 72vw;
+    height:72vw;
+}
 .rightside{
     display:flex;
     flex-direction:row;
@@ -973,6 +978,11 @@ img{
     .rightpart img{
         width:90vw;
         margin: 5vw;
+    }
+    .rightpart object{
+        margin: 5vw;
+        width: 90vw;
+        height:90vw;
     }
     .rightside{
         flex-wrap:wrap;
