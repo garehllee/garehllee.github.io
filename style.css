@@ -756,7 +756,7 @@ img{
     .h-emphasis{
         font-size: var(--h2);
         font-family:var(--headerfam);
-        font-weight: var(--bold);
+        font-weight: var(--regular);
     }
     .h-emphasis-link{
         font-size: var(--h2);
