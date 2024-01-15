@@ -672,7 +672,7 @@ img{
     }
     @media(max-width:539px){
         *{
-            --colorturnpoint:.4;
+            --colorturnpoint:.35;
         }
     }
     .wholepagedark{
