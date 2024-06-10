@@ -6,7 +6,7 @@
   <link rel = "stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-  <link rel="icon" href="images/logo/bearfavicon.ico">
+  <link rel="icon" href="images/logo/bearfavi2.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
   <!--LINKING JAVASCRIPT-->
   <script src="jv.js"></script>
@@ -21,15 +21,17 @@
       <i class="fa fa-times" onclick="hideMenu()"></i>
       <ul>
         <li><a href="" class="linkhover"><span class="currentpage">Work</span></a></li>
+        <li><a href="play.html" class="linkhover">Play</a></li>
         <li><a href="about.html" class="linkhover">About</a></li>
+        <li><a href="images/about/GL resume.pdf" class="linkhover">Resume</a></li>
       </ul>
     </div>
     <i class="fa fa-bars" onclick="showMenu()"></i>
   </nav>
   <hr class= "hr" style="margin-left:100px; margin-right:100px;">
   <div class="text-box">
-    <h1><span class="h-emphasis">Hi, I'm Garrett.</span> I'm currently studying <a href="https://design.cmu.edu/" class="h-emphasis-link linkhover"><span class="h-emphasis">Design @ Carnegie Mellon</span></a>.</h1>
-    <p>Here are some of the <span class="p-emphasis"> things</span> I've made.<i class="fa fa-long-arrow-right hideonmobile"></i></p>
+    <h1><span class="h-emphasis">Hi, I'm Garrett. </span> I'm a designer creating artifacts that connect ideas and services to people they can help.</h1>
+    <p>I'm currently studying Design, HCI, and CS at Carnegie Mellon University. <br><br>Here are some of the <span class="p-emphasis"> things</span> I've made.<i class="fa fa-long-arrow-right hideonmobile"></i></p>
   </div>
 </section>
 
@@ -37,47 +39,17 @@
 <section class="PortGal">
   <div class="columns hundred">
     <ul class="columns">
-      <!---PROJECT 3-->
-        <div id="project3" class="hundred" onpointerenter="gc()" onpointerleave="gc2()">
-            <a href="semester1.html" class="projecthome linkhover">
-                <div class="sixty"> 
-                  <img id="stillImage3" src="images/covers/sem1/sem1.webp" alt="Collage of Semester 1 Projects" style="display: block;">
-                  <img id="movingImage3" src="images/covers/sem1/semester1.gif" alt="Montage of Semester 1 Projects"style="display: none;">
-                </div>
-                <div class="forty">
-                  <p>Mindful Sensing Device, Stick/Stone/Leaf, Butterfly, Perspective, Stories Imagined</p>
-                  <h3>First-Year Fall Semester | F2023</h3>
-                  <sub>Graphic, Product, Experience Design</sub>
-                </div>
-            </a>
-            <!---JavaScript to make elements on top of one another--->
-            <script>
-                function gc() {
-                    var gif = document.getElementById('movingImage3');
-                    var image = document.getElementById('stillImage3');
-                    gif.style.display = 'block';
-                    image.style.display = 'none'
-
-                }
-                function gc2() {
-                    var gif = document.getElementById('movingImage3');
-                    var image = document.getElementById('stillImage3');
-                    gif.style.display='none'
-                    image.style.display = 'block';
-                }
-            </script>
-        </div>
         <!---PROJECT 2-->
         <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
           <a href="ecaar.html" class="projecthome linkhover">
               <div class="sixty"> 
-                <img id="stillImage2" src="images/covers/ecaar/ecaarstill.webp" alt="ECAAR Logo" style="display: block;">
+                <img id="stillImage2" src="images/covers/ecaar/ecaarstill.png" alt="ECAAR Logo" style="display: block;">
                 <img id="movingImage2" src="images/covers/ecaar/ecaargif.gif" alt="Montage of ECAAR work" style="display: none;">
               </div>
               <div class="forty">
                 <!-- <p></p> -->
-                <h3>Education Coalition for Asian American Representation</h3>
-                <sub>Graphic, Visual Identity, Experience Design</sub>
+                <h3>A Brand, Event, and Book for an Award-Winning Student Organization</h3>
+                <sub>Education Coalition for Asian American Representation</sub>
               </div>
           </a>
           <!---JavaScript to make elements on top of one another--->
@@ -97,6 +69,33 @@
               }
           </script>
       </div>
+      <div id="project1" class="hundred" onpointerenter="g2b()" onpointerleave="g2b2()">
+        <a href="internationaldistrict.html" class="projecthome linkhover">
+        <div class="sixty">
+          <img id="stillImage" src="images/Pages/SID/SIDmockup.jpg" style="display:block">
+          <img id="movingImage" src="images/Pages/SID/SIDcovergif.gif" style="display:none;">
+        </div>
+        <div class="forty">
+          <h3>A Collaborative Mural Connecting One Community to Another</h3>
+          <sub>South King Street Elementary School Mural</sub>
+        </div>
+        <script>
+          function g2b() {
+              var gif = document.getElementById('movingImage');
+              var image = document.getElementById('stillImage');
+              gif.style.display = 'block';
+              image.style.display = 'none'
+
+          }
+          function g2b2() {
+              var gif = document.getElementById('movingImage');
+              var image = document.getElementById('stillImage');
+              gif.style.display='none'
+              image.style.display = 'block';
+          }
+      </script>
+      </a>
+      </div>
     </ul>
 </div>
 </section>
@@ -106,7 +105,7 @@
 
 <div class="text-box2">
   <h2>I also like to make, learn about, and play with stuff that requires little explanation.</h2>
-  <p>Here's a small archive of fine art 🖌, illustration 📖, commission work 🧧, form 🪞, and graphics 🎞. <br><br></p>
+  <p>Here's a small archive of fine art 🖌, illustration 📖, commission work 🧧, form 🪞, and graphics 🎞. <br><br> <a href = "play.html" class = "p-emphasis footerlink linkhover">More experimentation can be found here.</a><br></p>
   <p class="hideonmobile">Experiment for yourself — <span class="p-emphasis">Drag stuff around!</span></p>
 </div>
 
@@ -217,8 +216,8 @@
         </script>
       </div>    
       <div id="image3" class="miscimages pos3">
-        <img src="images/misc/4-animals.webp" alt="A series of four drawings of animal families, including bears, ducks, herons, and squids.">
-        <p>Four Animals (2023)</p>
+        <img src="images/misc/photosforwebsite/starkie/starkie7.jpg">
+        <p>Photo Campaign for a Mental Health Plushie (2024)</p>
         <script>
           if(window.innerWidth>840){
             dragElement(document.getElementById("image3"));
@@ -266,8 +265,8 @@
         </script>
       </div>    
       <div id="image4" class="miscimages pos4">
-        <img src="images/misc/5x10 circles.webp" alt="Five black-and-white square compositions of overlapping circles.">
-        <p>Circle Progression (2021)</p>
+        <img src="images/misc/photosforwebsite/lettertoself/a.png">
+        <p>Letter to My Future Self (2024)</p>
         <script>
           if(window.innerWidth>840){
           dragElement(document.getElementById("image4"));
@@ -462,8 +461,8 @@
         </script>
       </div>    
       <div id="image8" class="miscimages pos8">
-        <img src="images/misc/e3dmodeling.webp" alt="Small cardboard and paper models of characters, cars, sculptures, and more.">
-        <p>3D Modeling Experiments (2022)</p>
+        <img src="images/misc/photosforwebsite/song/33god6.jpg">
+        <p>Photo based on "33 'God'" by Bon Iver (2024)</p>
         <script>
           if(window.innerWidth>840){
           dragElement(document.getElementById("image8"));
@@ -560,8 +559,8 @@
         </script>
       </div>    
       <div id="image10" class="miscimages pos10">
-        <img src="images/misc/1703542273956-056f7a50-fa0a-47b2-8051-51a8e6384794_1.webp" alt="Two greeting card designs, one an illustration of Earth, and the other a sketch of a crosswalk.">
-        <p>Greeting Card Designs (2023)</p>
+        <img src="images/misc/spacial experiences/vending machine.png">
+        <p>Salad Vending Machine Concept Render (2024)</p>
         <script>
           if(window.innerWidth>840){
           dragElement(document.getElementById("image10"));
@@ -756,8 +755,8 @@
         </script>
       </div>    
       <div id="image14" class="miscimages pos14">
-        <img src="images/misc/finalimage.webp" alt="Seattle's S. King Street with fingerprint figures.">
-        <p>Seattle International District Children's Mural (2023)</p>
+        <img src="images/misc/spacial experiences/Study Booths.jpg" alt="Seattle's S. King Street with fingerprint figures.">
+        <p>Study Booth Concept Render (2024)</p>
         <script>
           if(window.innerWidth>840){
           dragElement(document.getElementById("image14"));
@@ -905,9 +904,13 @@
   </section>
 </section>
 
+<section class="button">
+  <a href="play.html" class="button-content"><p>See More!</p></a>
+</section>
+
 <section class = "footer">
-  <p>© 2023 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
-  <p>Last updated: January 2024</p>
+  <p>© 2024 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+  <p>Last updated: June 2024</p>
   <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> | <span id="backtotop" class="footerlink2" onclick = "totop()">Back to Top</span></p>
   <script>
     function totop(){

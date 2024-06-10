@@ -142,7 +142,7 @@ nav img:hover {
     padding-bottom:100px;
 }
 .text-box h1{
-    font-size:var(--h1);
+    font-size:var(--h2);
     font-family: var(--headerfam);
     font-weight: var(--regular);
 }
@@ -154,20 +154,20 @@ nav img:hover {
     color: var(--reg);
 }
 .h-emphasis{
-    font-size: var(--h1);
+    font-size: var(--h2);
     font-family:var(--emphasisfam);
     font-weight: var(--emphasisweight);
     text-decoration:none;
 }
 .h-emphasis-link{
-    font-size: var(--h1);
+    font-size: var(--h2);
     color:var(--reg);
     font-family:var(--emphasisfam);
     font-weight: var(--emphasisweight);
     text-decoration:none;
 }
 .h-emphasis-link:hover{
-    font-size: var(--h1);
+    font-size: var(--h2);
     color:var(--accent);
     font-family:var(--emphasisfam);
     font-weight: var(--emphasisweight);
@@ -223,6 +223,18 @@ nav .fa{
 }
 
 .projecthome:hover{
+    color:var(--accent);
+}
+.projecthome2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    text-decoration:none;
+    color:var(--reg);
+}
+
+.projecthome2:hover{
     color:var(--accent);
 }
     /*Box Sizes*/
@@ -613,7 +625,161 @@ img{
     border-radius: 10px;
     border:1px black solid;
 }
+.button{
+    width:fit-content;
+    padding:10px;
+    padding-left:15px;
+    padding-right:15px;
+    margin:50px;
+    margin-left:30px;
+    border: 1px var(--reg) solid;
+    border-radius:30px;
+    text-align:center;
+}
+.button-content{
+    font-size:var(--h4);
+    font-family: var(--headerfam);
+    font-weight: var(--bold);
+    text-decoration:none;
+    color:white;
+}
+
+.button:hover{
+    padding:15px;
+    padding-left:20px;
+    padding-right:20px;
+    border-radius:40px;
+    transition-duration:0.2s;
+    border: 1px var(--lightaccent) solid;
+    color:var(--lightaccent);
+    transform:rotate(-10deg);
+    cursor: url(images/cursor/cursorselectaccent.svg) -10 -10, pointer;
+}
+.button:hover .button-content{
+    color:var(--lightaccent);
+    font-size:var(--h3);
+    transform:rotate(-10deg);
+    transition-duration:.2s;
+    cursor: url(images/cursor/cursorselectaccent.svg) -10 -10, pointer;
+}
+
+/*Play Page*/
+.triflex {
+    margin-left: 30px;
+    margin-right:30px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    align-items:top;
+    gap: 20px;
+}
+.singleflex{
+    width:32%;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.triflex .playitems {
+    width: 100%;
+    border:1px solid var(--reg);
+}
+.triflex .playitems video{
+    width: 100%;
+}
+.triflex .playitems-emphasis{
+    width: 64%;
+    border:1px solid var(--reg);
+}
+.triflex .playclickable{
+    border:1px solid var(--lightaccent);
+    color: var(--lightaccent);
+}
+.playparagraph{
+    margin:100px;
+}
+.playparagraph h2{
+    font-size:var(--h2);
+    font-family: var(--headerfam);
+    font-weight: var(--bold);
+    color: var(--reg);
+}
+.playparagraph p{
+    font-size:var(--p);
+    font-family: var(--paragraphfam);
+    font-weight: var(--regular);
+    color: var(--reg);
+    padding-left:2px;
+}
+.playparagraph p .colorchange{
+    color: var(--lightaccent);
+    font-weight: var(--bold);
+}
+.triflex .slideshow-container{
+    width:100%;
+    position: relative;
+    margin-left:0px;
+    border:1px solid var(--reg);
+}
+.triflex .slideshow-container-clickable{
+    width:100%;
+    position: relative;
+    margin-left:0px;
+    border:1px solid var(--lightaccent);
+}
+.triflex .slideshow-container-emphasis{
+    width:64%;
+    position: relative;
+    margin-left:0px;
+    border:1px solid var(--reg);
+}
+.triflex .slideshow-container img{
+    border-radius: 0px;
+    border:none;
+}
+.triflex p{
+    font-family: var(--paragraphfam);
+    font-weight: var(--regular);
+    font-size: var(--p);
+    padding-top:10px;
+    padding-bottom:20px;
+    padding-left:10px;
+    padding-right:10px;
+}
+.triflex .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: var(--bold);
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
   
+  /* Position the "next button" to the right */
+ .triflex .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .triflex .prev:hover, .next:hover {
+    background-color: var(--accent);
+  }
+.blockpage{
+    margin-left: 100px;
+    margin-right:100px;
+    display:block;
+}
+.blockitems{
+    width: 100%;
+    height:max-content;
+}
   /* Hide the images by default */
   .mySlides {
     display: none;
@@ -675,6 +841,23 @@ img{
             --colorturnpoint:.35;
         }
     }
+    .projecthome{
+        border:none;
+    }
+    .playparagraph{
+        margin:20px;
+    }
+    .singleflex{
+        width:auto;
+        padding:10px;
+    }
+    .triflex{
+        display:block;
+        margin:10px;
+    }
+    .triflex .playitems{
+        width:100%;
+    }
     .wholepagedark{
         animation: bg .5s ease-in;
         animation-iteration-count:1;
@@ -705,7 +888,7 @@ img{
         position:absolute;
         background-color:white;
         background-size: cover;
-        border-style:solid;
+        border-left:solid;
         border-color:var(--reg);
         border-width:1px;
         height:100vh;
@@ -756,7 +939,7 @@ img{
     .h-emphasis{
         font-size: var(--h2);
         font-family:var(--headerfam);
-        font-weight: var(--bold);
+        font-weight: var(--regular);
     }
     .h-emphasis-link{
         font-size: var(--h2);
@@ -767,6 +950,10 @@ img{
         font-size: calc(var(--p));
         font-family:var(--emphasisfam);
         font-weight: var(--emphasisweight);
+    }
+    .linkswithoutdecor{
+        text-decoration:none;
+        color: var(--reg)
     }
     .header{
         min-height:10vh;
