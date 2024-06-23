@@ -920,6 +920,7 @@ img{
         position: static;
         text-align:left;
         padding:20px;
+        padding-bottom:0px;
     }
     .text-box h1{
         font-size:var(--h5);
@@ -930,7 +931,7 @@ img{
         margin: 30px 0 50px;
         font-family: var(--paragraphfam);
         font-weight: var(--regular);
-        font-size: var(--p);
+        font-size: 14.375px;
         color: var(--regular);
     }
     .h-emphasis{
@@ -942,7 +943,7 @@ img{
         font-weight: var(--bold);
     }
     .p-emphasis{
-        font-size: calc(var(--p));
+        font-size: 14.375;
         font-family:var(--emphasisfam);
         font-weight: var(--emphasisweight);
     }
