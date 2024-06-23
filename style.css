@@ -1193,4 +1193,8 @@ img{
     .slideshow-container img{
         margin:0px;
     }
+    .blockpage{
+        margin-left: 20px;
+        margin-right:20px;
+    }
 }
