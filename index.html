@@ -39,8 +39,37 @@
 <section class="PortGal">
   <div class="columns hundred">
     <ul class="columns">
+      <div id="project3" class="hundred" onpointerenter="gb3()" onpointerleave="g2b3()">
+        <a href="cococo.html" class="projecthome linkhover">
+            <div class="sixty"> 
+              <img id="stillImage3" src="images/covers/Cococo/cocococover.webp" alt="Popup shop" style="display: block;">
+              <img id="movingImage3" src="images/covers/Cococo/cococoanimated.gif" alt="Animated Cococo Logo" style="display: none;">
+            </div>
+            <div class="forty">
+              <!-- <p></p> -->
+              <h3>Experience & Branding Design about Coconuts & Filipino Culture</h3>
+              <sub>Coco Co.</sub>
+            </div>
+        </a>
+        <!---JavaScript to make elements on top of one another--->
+        <script>
+            function gb3() {
+                var gif = document.getElementById('movingImage3');
+                var image = document.getElementById('stillImage3');
+                gif.style.display = 'block';
+                image.style.display = 'none'
+
+            }
+            function g2b3() {
+                var gif = document.getElementById('movingImage3');
+                var image = document.getElementById('stillImage3');
+                gif.style.display='none'
+                image.style.display = 'block';
+            }
+        </script>
+    </div>
         <!---PROJECT 2-->
-        <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
+      <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
           <a href="ecaar.html" class="projecthome linkhover">
               <div class="sixty"> 
                 <img id="stillImage2" src="images/covers/ecaar/ecaarstill.png" alt="ECAAR Logo" style="display: block;">

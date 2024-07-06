@@ -73,7 +73,7 @@
     }
 }
 .header{
-    min-height: 110vh;
+    min-height: 150vh;
     width: 100%;
     background-position:center;
     background-size:cover;
@@ -528,6 +528,10 @@ img{
 .rightpart img{
     margin: 50px;
     width: 72vw;
+}
+.rightpart video{
+    margin:50px;
+    width:72vw;
 }
 .rightpart object{
     margin: 50px;
@@ -1184,6 +1188,10 @@ img{
         flex-wrap:wrap;
     }
     .otherspace img{
+        width:90vw;
+        margin:0vw;
+    }
+    .otherspace video source{
         width:90vw;
         margin:0vw;
     }

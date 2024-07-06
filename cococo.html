@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8">
+  <title>Coco Co.</title>
+  <link rel = "stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="icon" href="images/logo/bearfavi2.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+</head>
+<body id="wholepage">
+    <!-- NAVIGATION -->
+    <nav>
+        <a href = "index.html"><img src="images/logo/bearlogo.webp"></a>
+        <div class="nav-links" id="navLinks">
+          <i class="fa fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="index.html" class="linkhover">Work</a></li>
+            <li><a href="play.html" class="linkhover">Play</a></li>
+            <li><a href="about.html" class="linkhover">About</a></li>
+            <li><a href="images/about/GL resume.pdf" class="linkhover">Resume</a></li>
+          </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <hr style="margin-left:100px; margin-right:100px;">
+
+    <section>
+        <section class="titletextbox rightleft">
+            <div class="leftside">
+              <p style="text-decoration:dashed;">ARTIFACTS <br></p>
+                <p><span onclick="tobrandidentity()">1. Brand Identity </span><br><span onclick="towebsite()">2. Website</span><br><span onclick="toprocess()">3. Process/Explorations</span></p>
+                <script>
+                  function tobrandidentity(){
+                    const element = document.getElementById("brandidentity");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function towebsite(){
+                    const element = document.getElementById("website");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function toprocess(){
+                    const element = document.getElementById("process");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                </script>        
+              </div>
+            <div class="rightpart">
+              <div class="rightside">
+                <div class="textspace">
+                    <p>Brand Identity, Experience Design, UX Design</p>
+                    <hr style="border-left:none; border-right:none; border-bottom:none; border-top:1px dashed var(--lightaccent);background-color:transparent;">
+                    <h1>Coco Co.</h1>
+                    <p><br>
+                        Coco Co. is a pop-up that guides guests through the practical uses of coconuts, drawing heavily on Filipino tradition. With interaction, choice, and a take-home product, the experience educates and excites visitors while uplifting Filipino culture. 
+                        </p>
+                </div>
+                <br>
+                <div class="otherspace">
+                    <div>
+                        <p>TIMELINE- <br><br>4 weeks</p>
+                    </div>
+                    <div>
+                        <p>ROLE- <br><br>Sole Designer</p>
+                    </div>
+                </div>
+            </div>
+                <div onpointerenter="gb()" onpointerleave="gb2()">
+                    <img id="stillImageECAAR" src="images/covers/Cococo/cocococover.webp" alt="Cococo Experience" style="display: block;">
+                    <img id="movingImageECAAR" src="images/covers/Cococo/cococoanimated.gif" alt="Animated Cococo Logo" style="display: none;">
+                    <script>
+                    function gb() {
+                        var gif = document.getElementById('movingImageECAAR');
+                        var image = document.getElementById('stillImageECAAR');
+                        gif.style.display = 'block';
+                        image.style.display = 'none'
+        
+                    }
+                    function gb2() {
+                        var gif = document.getElementById('movingImageECAAR');
+                        var image = document.getElementById('stillImageECAAR');
+                        gif.style.display='none'
+                        image.style.display = 'block';
+                    }
+                    </script>
+                </div>
+            </div>
+      </section>
+      <section class="overview rightleft">
+          <div class="leftside">
+              <p>CONTEXT</p>
+          </div>
+          <div class="rightpart">
+            <div class="rightside">
+              <div class="textspace">
+                <h3>An identity and website that excites guests about Filipino culture.</h3>
+                <p>While most people have tried a coconut, sellers typically leave out the significance of the coconut to cultures who regularly consume it. In the Philippines, for example, one third of the population receives their livelihood from the coconut industry. Linguistically, Tagalog has at least five different words for types of coconuts, and buko, young coconuts, are offered as symbols of hospitality and goodwill. 
+                </p>
+              </div>
+              <br>
+              <div class="otherspace">
+              </div>
+            </div>
+          </div>
+      </section>
+      <div id="brandidentity" class="divider">
+        <h3>1. Brand Identity</h3>
+      </div>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>LOGOS</p>
+            </div>
+            <div class="rightpart">
+              <div class="rightside">
+                <div class="textspace">
+                    <h3>An adaptable logo that sparks curiosity, built on an adaptable symbol.
+                    </h3>
+                    <p>Coconuts are the fruit of life in Filipino tradition, providing food, water, fuel, fertilizer, bowls, and more. The adaptability of coconuts inspired the rotating coconut-shaped “o” type treatment, while the punctuation mark can be adapted into an independent logomark. </p>
+                </div>
+                <div class="otherspace">
+                </div>
+              </div>
+                <img loading="lazy" src="images/Pages/Cococo/wordmarklogo.webp">
+                <img loading="lazy" src="images/Pages/Cococo/secondary logos.webp">
+              </div>
+            </div>
+        </section>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>PATTERN</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>A pattern to uplift Filipino culture.</h3>
+                        <p>Coco Co. utilizes a simplified Linuhhung pattern, which originates from the Ifugao people, a Filipino ethnic group. The Ifugao believed wearing the Linuhhung pattern honored the agricultural gods and would lead to good harvests. 
+                        </p>
+                    </div>
+                    <div class="otherspace">
+                    </div>
+                </div>
+                <img loading="lazy" src="images/Pages/Cococo/linuhhungpattern.webp" alt="">
+            </div>
+        </section>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>TOUCHPOINTS</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>Touchpoints that promote human connection.</h3>
+                        <p>The pop-up provides 360-degree transparency and invites people to walk up and inquire about Coco Co. Signage is inviting and informational. Various materials, lights, textures, and patterns create a unique but comfortable, down-to-earth image.
+                        </p>
+                    </div>
+                    <div class="otherspace">
+                        <img loading="lazy" src="images/Pages/Cococo/cocostand mockup.webp" alt="">
+                    </div>
+                </div>
+                <div class="photosflex">
+                    <div>
+                        <img loading="lazy" src="images/Pages/Cococo/renders1.webp" alt="">
+                    </div>
+                    <div>
+                        <img loading="lazy" src="images/Pages/Cococo/renders2.webp" alt="">
+                    </div>
+                </div>
+                <img loading="lazy" src="images/Pages/Cococo/apparel/apparel1.webp" alt="">
+                <div class="photosflex">
+                    <div>
+                        <img loading="lazy" src="images/Pages/Cococo/apparel/apparel2.webp" alt="">
+                    </div>
+                    <div>
+                        <img loading="lazy" src="images/Pages/Cococo/apparel/apparel3.webp" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>FULL BRIEF</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>Colors, digital applications, and more are specified in the full branding brief below.
+                        </h3>
+                    </div>
+                    <div class="otherspace">
+                    </div>
+                </div>
+                <object data="images/Pages/Cococo/cococo brand guidelines.pdf" type="application/pdf" width="100%" height="200px">
+                    <p>Unable to display PDF file. <a href="images/Pages/Cococo/cococo brand guidelines.pdf">Download</a> instead.</p>
+                </object>
+            </div>
+        </section>
+        <div id="website" class="divider">
+            <h3>2. Website</h3>
+        </div>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>INTERACTION</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>Simple, engaging interaction to quickly convert interested users into customers.
+                        </h3>
+                        <p>The tagline and call-to-action button on the landing page increase customer turnover and prioritize essential information. Moving text, symbols, textures, and images drive engagement while minimal text avoids boring the user. Although all information lies on a single page, navigation is present but not obstructive to maximize immersion while preserving convenience.
+                            <br><br>
+                            On desktops, horizontal scrolling piques customer interest, and visual cues immerse the user in the unique scrolling method. Phone scrolling is standard since alternate gestures are harder to imply and could cause disorientation or frustration.
+                        </p>
+                    </div>
+                    <div class="otherspace">
+                    </div>
+                </div>
+                <video muted controls autoplay loop>
+                    <source src="images/Pages/Cococo/cococoux.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>KEYFRAMES</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>Key informative pages simplified to screens.
+                        </h3>
+                        <p>To maximize user retention, simplified, essentials-only headlines and short paragraphs are preferred over whole pages of informative text, images, and more. The approach also encourages person-to-person sharing, which minimizes misunderstanding and humanizes culture, rather than online dissemination of impersonal, complex information.
+                        </p>
+                    </div>
+                    <div class="otherspace">
+                    </div>
+                </div>
+                <img loading="lazy" src="images/Pages/Cococo/UX/keyframes.webp" alt="">
+            </div>
+        </section>
+        <div id="process" class="divider">
+            <h3>3. Process/Explorations</h3>
+        </div>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>COMPETITIVE RESEARCH</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>Setting Coco Co. apart from the crowd.
+                        </h3>
+                        <p><span class="p-emphasis">Wordmark:</span> due to the fleeting nature of pop-ups, a memorable, readable wordmark logo is ideal for customer recognizability. Without a wordmark, finding pop-ups is a game of “is this the correct place?”
+                            <br><br><span class="p-emphasis">Simplicity:</span> while some pop-ups had expansive websites, for a first-time guest, all the pages are overwhelming and most are never used. Since pop-ups grow through word-of-mouth and social media, website visitors look for key information, especially surrounding logistics.
+                            <br><br><span class="p-emphasis">Cultural Connection:</span> cultural connection is the humanity behind experiences, and what elevates a pop-up from a fun time to a place guests recommend to their friends.
+                            <br><br><span class="p-emphasis">Energy:</span> high-contrast colors, moving text and images, and actionable words promote conversion from viewer to guest. Headlines like “visit us” are nonspecific and uninspiring.
+                        </p>
+                    </div>
+                    <div class="otherspace">
+                    </div>
+                </div>
+                <img loading="lazy" src="images/Pages/Cococo/cococo process.webp" alt="">
+                <img loading="lazy" src="images/Pages/Cococo/cococobrandprocess.webp" alt="">
+            </div>
+        </section>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>EXPLORATION</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>A trendy iteration.
+                        </h3>
+                        <p>The original version of the Coco Co. website was very trendy and bright, and attempted to sell a product rather than an experience. After the first attempt, I simplified the “keyframes” and reorganized to create a better user experience and align the website with the brand identity.</p>
+                    </div>
+                    <div class="otherspace">
+                    </div>
+                </div>
+                <img loading="lazy" src="images/Pages/Cococo/trendyversion.webp" alt="">
+            </div>
+        </section>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>STRATEGIZING</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>Keyframes for visual hierarchy.
+                        </h3>
+                        <p>Since the website scrolls horizontally, to make sure all information fits properly on devices, keyframes were developed before assembling finalized graphics.</p>
+                    </div>
+                    <div class="otherspace">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>DEVELOPMENT</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>User testing & iteration.
+                        </h3>
+                        <p>User testing helped refine button placement, navigation postage, color choices, movement speed, element sizes, and textures. Wording and layout changed constantly throughout iterations. This was especially important for the mobile application.</p>
+                    </div>
+                    <div class="otherspace">
+                    </div>
+                </div>
+                <img loading="lazy" src="images/Pages/Cococo/webprocess.webp" alt="">
+            </div>
+        </section>
+    </section>
+    <section class = "footer de-emphasize">
+        <p>© 2024 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+        <p>Last updated: July 2024</p>
+        <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover de-emphasize">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover de-emphasize">Instagram</a> | <span id="backtotop" class="footerlink2 de-emphasize" onclick = "totop()">Back to Top</span></p>
+        <script>
+          function totop(){
+            window.scroll({
+              top: 0, 
+              left: 0, 
+              behavior: 'smooth'
+            });
+          }
+        </script>
+    </section>
+</body>
+</html>
