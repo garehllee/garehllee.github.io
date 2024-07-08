@@ -842,6 +842,10 @@ img{
             --colorturnpoint:.35;
         }
     }
+    .blockitems{
+        width: 100%;
+        height:auto;
+    }
     .projecthome{
         border:none;
     }
