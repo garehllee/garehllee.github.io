@@ -696,6 +696,16 @@ img{
     border:1px solid var(--lightaccent);
     color: var(--lightaccent);
 }
+.triflex .playclickable .link{
+    font-size:var(--p);
+    font-family: var(--paragraphfam);
+    font-weight: var(--regular);
+    color: var(--lightaccent);
+    text-decoration:none;
+}
+.triflex .playclickable .link:hover{
+    cursor:url(images/cursor/cursorselectaccent.svg) -10 -10, pointer;
+}
 .playparagraph{
     margin:100px;
 }
