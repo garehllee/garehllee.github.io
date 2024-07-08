@@ -39,7 +39,7 @@
     --p:16px;
     --small:13.33px;
     --comment:11.11px;
-    --colorturnpoint:.25;
+    --colorturnpoint:.3;
     --headerfam: "Inter", sans-serif;
     --paragraphfam: "Inter", sans-serif;
     --emphasisfam: "Inter", sans-serif;
@@ -834,7 +834,7 @@ img{
 @media(max-width: 1025px){
     *{
         overflow-x: clip;
-        --colorturnpoint:.3;
+        --colorturnpoint:.42;
         --gridcolor: #161616;
     }
     @media(max-width:539px){
