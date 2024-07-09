@@ -1,11 +1,11 @@
-//  window.addEventListener('scroll', () => {
+// window.addEventListener('scroll', () => {
 //     document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
 //    }, false);
 
 
 
 function checkScroll(){
-  let compscroll = getComputedStyle(document.body).getPropertyValue('--colorturnpoint');
+  let compscroll = getComputedStyle(document.body).getPropertyValue('--colorturnpointplay');
   let wholepage = document.getElementById('wholepage');
   let colorreg = getComputedStyle(document.body).getPropertyValue('--reg');
     if ((window.pageYOffset / (document.body.offsetHeight - window.innerHeight))>compscroll && colorreg=="black"){
@@ -25,4 +25,3 @@ function checkScroll(){
   };
 
 window.addEventListener('scroll', checkScroll);
-

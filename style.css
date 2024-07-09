@@ -40,6 +40,7 @@
     --small:13.33px;
     --comment:11.11px;
     --colorturnpoint:.3;
+    --colorturnpointplay:0.04;
     --headerfam: "Inter", sans-serif;
     --paragraphfam: "Inter", sans-serif;
     --emphasisfam: "Inter", sans-serif;
@@ -752,6 +753,7 @@ img{
     font-family: var(--paragraphfam);
     font-weight: var(--regular);
     font-size: var(--p);
+    color:var(--reg);
     padding-top:10px;
     padding-bottom:20px;
     padding-left:10px;
@@ -845,6 +847,7 @@ img{
     *{
         overflow-x: clip;
         --colorturnpoint:.42;
+        --colorturnpointplay:0;
         --gridcolor: #161616;
     }
     @media(max-width:539px){
