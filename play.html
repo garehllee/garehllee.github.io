@@ -176,6 +176,46 @@
           </div>
             </div>
             <div class="singleflex">
+              <div class="slideshow-container playitems">
+                <div id="mouse">
+                  <!-- Full-width images with number and caption text -->
+                  <div class="mySlides12 fade">
+                    <img loading="eager" src="images/misc/typeface draft.webp" style="width:100%">
+                  </div>
+                  <div class="mySlides12 fade">
+                    <img loading="eager" src="images/misc/e.webp" style="width:100%">
+                    </div>
+                  <!-- Next and previous buttons -->
+                  <a class="prev" onclick="plusSlides12(-1)">&#10094;</a>
+                  <a class="next" onclick="plusSlides12(1)">&#10095;</a>
+                </div>
+                  <p>Bug-inspired typeface (2024)</p>        
+              <script>
+                let slideIndex12 = 1;
+                showSlides12(slideIndex12);
+                      
+                // Next/previous controls
+                function plusSlides12(n) {
+                  showSlides12(slideIndex12 += n);
+                }
+                      
+                // Thumbnail image controls
+                function currentSlide12(n) {
+                  showSlides12(slideIndex12 = n);
+                }
+                      
+                function showSlides12(n) {
+                  let i;
+                  let slides = document.getElementsByClassName("mySlides12");
+                  if (n > slides.length) {slideIndex12 = 1}
+                  if (n < 1) {slideIndex12 = slides.length}
+                  for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                  }
+                  slides[slideIndex12-1].style.display = "block";
+                }
+              </script>
+              </div>
               <div class="playitems">
                 <video muted controls autoplay loop>
                   <source src="images/misc/spacial experiences/ProjectionLIghting.mp4" type="video/mp4">
