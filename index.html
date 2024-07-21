@@ -70,6 +70,35 @@
             }
         </script>
     </div>
+    <div id="project4" class="hundred" onpointerenter="gb4()" onpointerleave="g2b4()">
+      <a href="lwop.html" class="projecthome linkhover">
+          <div class="sixty"> 
+            <img id="stillImage4" src="images/covers/LWOP/lwopcover.webp" style="display: block;">
+            <img id="movingImage4" src="images/covers/LWOP/ezgif.com-animated-gif-maker (7).gif" style="display: none;">
+          </div>
+          <div class="forty">
+            <p>Motion Graphics, Data Visualization, Research</p>
+            <h3>Visualizing Racial Disparities in the Criminal Justice System</h3>
+            <sub>Life in Prison Without Parole</sub>
+          </div>
+      </a>
+      <!---JavaScript to make elements on top of one another--->
+      <script>
+          function gb4() {
+              var gif = document.getElementById('movingImage4');
+              var image = document.getElementById('stillImage4');
+              gif.style.display = 'block';
+              image.style.display = 'none'
+
+          }
+          function g2b4() {
+              var gif = document.getElementById('movingImage4');
+              var image = document.getElementById('stillImage4');
+              gif.style.display='none'
+              image.style.display = 'block';
+          }
+      </script>
+  </div>
         <!---PROJECT 2-->
       <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
           <a href="ecaar.html" class="projecthome linkhover">

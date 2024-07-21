@@ -39,7 +39,7 @@
     --p:16px;
     --small:13.33px;
     --comment:11.11px;
-    --colorturnpoint:.3;
+    --colorturnpoint:.35;
     --colorturnpointplay:0.04;
     --headerfam: "Inter", sans-serif;
     --paragraphfam: "Inter", sans-serif;
@@ -74,7 +74,7 @@
     }
 }
 .header{
-    min-height: 150vh;
+    min-height: 175vh;
     width: 100%;
     background-position:center;
     background-size:cover;
@@ -846,13 +846,13 @@ img{
 @media(max-width: 1025px){
     *{
         overflow-x: clip;
-        --colorturnpoint:.42;
+        --colorturnpoint:.43;
         --colorturnpointplay:0;
         --gridcolor: #161616;
     }
     @media(max-width:539px){
         *{
-            --colorturnpoint:.35;
+            --colorturnpoint:.47;
         }
     }
     .blockitems{
