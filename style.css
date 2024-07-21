@@ -44,9 +44,9 @@
     --headerfam: "Inter", sans-serif;
     --paragraphfam: "Inter", sans-serif;
     --emphasisfam: "Inter", sans-serif;
-    --regular: 500;
-    --bold:700;
-    --emphasisweight:700;
+    --regular: 400;
+    --bold:750;
+    --emphasisweight:750;
 }
 @keyframes bg{
     0%{
