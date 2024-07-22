@@ -191,11 +191,11 @@ nav .fa{
 /*PORTFOLIO GALLERY*/
     /*Outer Box*/
 .PortGal{
-    width:45%;
+    width:50%;
     color:var(--reg);
     position:absolute;
     top:10%;
-    left:40%;
+    left:36%;
     text-align:left;
     padding:50px;
     margin:50px;
@@ -243,11 +243,11 @@ nav .fa{
     
 }
 .sixty{
-    width: 58%;
+    width: 60%;
 }
 
 .forty{
-    width:38%;
+    width:36%;
     text-decoration:none;
     vertical-align: center;
 }
@@ -255,7 +255,7 @@ nav .fa{
 .PortGal sub{
     display:block;
     font-family: var(--paragraphfam);
-    font-weight:var(--regular);
+    font-weight:var(--bold);
     text-decoration: none;
     font-size: var(--p);
 }
@@ -949,7 +949,7 @@ img{
         font-weight: var(--regular);
     }
     .text-box p{
-        margin: 30px 0 50px;
+        margin: 30px 0 30px;
         font-family: var(--paragraphfam);
         font-weight: var(--regular);
         font-size: 14.375px;
@@ -1012,10 +1012,10 @@ img{
         color:var(--reg);
         align-items: center;
         justify-items: 10px;
-        padding-top:15px;
+        /* padding-top:15px; */
         padding-bottom:15px;
-        border-radius:5px;
-        border:var(--lightaccent) solid 1px;
+        /* border-radius:5px; */
+        border: gray solid 1px;
     }
     .projecthome:hover{
         color:var(--accent);
@@ -1027,7 +1027,7 @@ img{
         
     }
     .sixty{
-        width: 90%;
+        width: 100%;
     }
 
     .forty{
