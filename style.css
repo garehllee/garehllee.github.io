@@ -73,12 +73,18 @@
         --gridcolor:white;
     }
 }
+@keyframes AnimationName {
+    0% {
+      background-position: calc(200vw/sin(90deg)) 0;
+    }
+  }
 .header{
     min-height: 175vh;
     width: 100%;
     background-position:center;
     background-size:cover;
     position:relative;
+    margin:5px;
 }
 
 .linkhover:hover{
@@ -186,6 +192,29 @@ nav img:hover {
 }
 nav .fa{
     display: none;
+}
+
+.top-thing{
+    height: 5px;
+    position:fixed;
+    width:100vw;
+    background: repeating-linear-gradient(90deg, var(--lightaccent), #ACD8A1, #FFEF75, #E47B7B, #BFACE4, var(--lightaccent) 200vw);
+    background-size: calc(200vw/sin(90deg)) 100%;
+    animation: AnimationName 15s linear infinite reverse;
+    top:0;
+    overflow:hidden;
+    z-index:1;
+}
+
+.top-thing2{
+    height: 5px;
+    position:fixed;
+    width:100vw;
+    background: repeating-linear-gradient(90deg, var(--lightaccent), var(--accent), var(--lightaccent) 200vw);
+    background-size: calc(200vw/sin(90deg)) 100%;
+    top:0;
+    overflow:hidden;
+    z-index:1;
 }
 
 /*PORTFOLIO GALLERY*/
