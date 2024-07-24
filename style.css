@@ -883,6 +883,9 @@ img{
         *{
             --colorturnpoint:.47;
         }
+        nav{
+            margin-top:20px;
+        }
     }
     .blockitems{
         width: 100%;
