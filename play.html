@@ -13,7 +13,7 @@
   <script src="jv2.js"></script>
 </head>
 <body id="wholepage">
-  <div class="top-thing"></div>
+    <div class="top-thing"></div>
     <nav>
         <a href = "index.html"><img src="images/logo/bearlogo.webp"></a>
         <div class="nav-links" id="navLinks">
@@ -105,29 +105,6 @@
             }
           </script>
           </div>
-            <div id="project3" class="playitems playclickable" onpointerenter="gc()" onpointerleave="gc2()">
-                <a href="semester1.html" class="projecthome2 linkhover">
-                      <img id="stillImage3" src="images/covers/sem1/sem1.webp" alt="Collage of Semester 1 Projects" style="display: block;">
-                      <img id="movingImage3" src="images/covers/sem1/semester1.gif" alt="Montage of Semester 1 Projects"style="display: none;">
-                </a>
-                <!---JavaScript to make elements on top of one another--->
-                <script>
-                    function gc() {
-                        var gif = document.getElementById('movingImage3');
-                        var image = document.getElementById('stillImage3');
-                        gif.style.display = 'block';
-                        image.style.display = 'none'
-    
-                    }
-                    function gc2() {
-                        var gif = document.getElementById('movingImage3');
-                        var image = document.getElementById('stillImage3');
-                        gif.style.display='none'
-                        image.style.display = 'block';
-                    }
-                </script>
-            <a href="semester1.html" class="link"><p>Semester 1 @ CMU Design (2023)</p></a>
-            </div>
             <script>
               let slideIndex9 = 1;
               showSlides9(slideIndex9);
@@ -232,6 +209,70 @@
             <img src="images/misc/laserbook.webp">
             <p>Laser-cut book (2024)</p>
           </div>
+          <div class="slideshow-container playitems">
+            <div id="mouse">
+              <!-- Full-width images with number and caption text -->
+              <div class="mySlides6 fade">
+                <img loading="eager" src="images/misc/photosforwebsite/lovehate/a.webp" style="width:100%">
+              </div>
+              <div class="mySlides6 fade">
+                <img loading="eager" src="images/misc/photosforwebsite/lovehate/b.webp" style="width:100%">
+              </div>
+              <div class="mySlides6">
+                <img loading="eager" src="images/misc/photosforwebsite/lovehate/c.webp" style="width:100%">
+              </div>
+              <div class="mySlides6">
+                <img loading="eager" src="images/misc/photosforwebsite/lovehate/d.webp" style="width:100%">
+              </div>
+              <div class="mySlides6">
+                <img loading="eager" src="images/misc/photosforwebsite/lovehate/e.webp" style="width:100%">
+              </div>
+              <div class="mySlides6">
+                <img loading="eager" src="images/misc/photosforwebsite/lovehate/f.webp" style="width:100%">
+              </div>
+              <div class="mySlides6">
+                <img loading="eager" src="images/misc/photosforwebsite/lovehate/g.webp" style="width:100%">
+              </div>
+              <div class="mySlides6">
+                <img loading="eager" src="images/misc/photosforwebsite/lovehate/h.webp" style="width:100%">
+              </div>
+              <div class="mySlides6">
+                <img loading="eager" src="images/misc/photosforwebsite/lovehate/i.webp" style="width:100%">
+              </div>
+              <div class="mySlides6">
+                <img loading="eager" src="images/misc/photosforwebsite/lovehate/j.webp" style="width:100%">
+              </div>
+              <!-- Next and previous buttons -->
+              <a class="prev" onclick="plusSlides6(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides6(1)">&#10095;</a>
+            </div>
+              <p>Photos of something I love & hate (2024)</p>        
+          </div>
+          <script>
+            let slideIndex6 = 1;
+            showSlides6(slideIndex6);
+                  
+            // Next/previous controls
+            function plusSlides6(n) {
+              showSlides6(slideIndex6 += n);
+            }
+                  
+            // Thumbnail image controls
+            function currentSlide6(n) {
+              showSlides6(slideIndex6 = n);
+            }
+                  
+            function showSlides6(n) {
+              let i;
+              let slides = document.getElementsByClassName("mySlides6");
+              if (n > slides.length) {slideIndex6 = 1}
+              if (n < 1) {slideIndex6 = slides.length}
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+              }
+              slides[slideIndex6-1].style.display = "block";
+            }
+          </script>
             </div>
             <div class="singleflex">
               <div class="slideshow-container playitems">
@@ -539,6 +580,29 @@
                 slides[slideIndex-1].style.display = "block";
               }
             </script>
+            <div id="project3" class="playitems playclickable" onpointerenter="gc()" onpointerleave="gc2()">
+              <a href="semester1.html" class="projecthome2 linkhover">
+                    <img id="stillImage3" src="images/covers/sem1/sem1.webp" alt="Collage of Semester 1 Projects" style="display: block;">
+                    <img id="movingImage3" src="images/covers/sem1/semester1.gif" alt="Montage of Semester 1 Projects"style="display: none;">
+              </a>
+              <!---JavaScript to make elements on top of one another--->
+              <script>
+                  function gc() {
+                      var gif = document.getElementById('movingImage3');
+                      var image = document.getElementById('stillImage3');
+                      gif.style.display = 'block';
+                      image.style.display = 'none'
+  
+                  }
+                  function gc2() {
+                      var gif = document.getElementById('movingImage3');
+                      var image = document.getElementById('stillImage3');
+                      gif.style.display='none'
+                      image.style.display = 'block';
+                  }
+              </script>
+          <a href="semester1.html" class="link"><p>Semester 1 @ CMU Design (2023)</p></a>
+          </div>
             </div>
             <div class="singleflex">
             <div class="playitems">
@@ -800,70 +864,6 @@
                   slides[i].style.display = "none";
                 }
                 slides[slideIndex5-1].style.display = "block";
-              }
-            </script>
-            <div class="slideshow-container playitems">
-              <div id="mouse">
-                <!-- Full-width images with number and caption text -->
-                <div class="mySlides6 fade">
-                  <img loading="eager" src="images/misc/photosforwebsite/lovehate/a.webp" style="width:100%">
-                </div>
-                <div class="mySlides6 fade">
-                  <img loading="eager" src="images/misc/photosforwebsite/lovehate/b.webp" style="width:100%">
-                </div>
-                <div class="mySlides6">
-                  <img loading="eager" src="images/misc/photosforwebsite/lovehate/c.webp" style="width:100%">
-                </div>
-                <div class="mySlides6">
-                  <img loading="eager" src="images/misc/photosforwebsite/lovehate/d.webp" style="width:100%">
-                </div>
-                <div class="mySlides6">
-                  <img loading="eager" src="images/misc/photosforwebsite/lovehate/e.webp" style="width:100%">
-                </div>
-                <div class="mySlides6">
-                  <img loading="eager" src="images/misc/photosforwebsite/lovehate/f.webp" style="width:100%">
-                </div>
-                <div class="mySlides6">
-                  <img loading="eager" src="images/misc/photosforwebsite/lovehate/g.webp" style="width:100%">
-                </div>
-                <div class="mySlides6">
-                  <img loading="eager" src="images/misc/photosforwebsite/lovehate/h.webp" style="width:100%">
-                </div>
-                <div class="mySlides6">
-                  <img loading="eager" src="images/misc/photosforwebsite/lovehate/i.webp" style="width:100%">
-                </div>
-                <div class="mySlides6">
-                  <img loading="eager" src="images/misc/photosforwebsite/lovehate/j.webp" style="width:100%">
-                </div>
-                <!-- Next and previous buttons -->
-                <a class="prev" onclick="plusSlides6(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides6(1)">&#10095;</a>
-              </div>
-                <p>Photos of something I love & hate (2024)</p>        
-            </div>
-            <script>
-              let slideIndex6 = 1;
-              showSlides6(slideIndex6);
-                    
-              // Next/previous controls
-              function plusSlides6(n) {
-                showSlides6(slideIndex6 += n);
-              }
-                    
-              // Thumbnail image controls
-              function currentSlide6(n) {
-                showSlides6(slideIndex6 = n);
-              }
-                    
-              function showSlides6(n) {
-                let i;
-                let slides = document.getElementsByClassName("mySlides6");
-                if (n > slides.length) {slideIndex6 = 1}
-                if (n < 1) {slideIndex6 = slides.length}
-                for (i = 0; i < slides.length; i++) {
-                  slides[i].style.display = "none";
-                }
-                slides[slideIndex6-1].style.display = "block";
               }
             </script>
             <div class="playitems">
