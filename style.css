@@ -260,7 +260,9 @@ nav .fa{
     text-decoration:none;
     color:var(--reg);
 }
-
+body{
+    overflow-x:hidden;
+}
 .projecthome2:hover{
     color:var(--accent);
 }
