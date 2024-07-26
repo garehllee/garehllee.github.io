@@ -1054,11 +1054,12 @@ img{
         justify-items: 10px;
         /* padding-top:15px; */
         padding-bottom:15px;
-        /* border-radius:5px; */
+        border-radius:5px;
         border: gray solid 1px;
     }
     .projecthome:hover{
         color:var(--accent);
+        border: var(--accent) solid 1px;
     }
         /*Box Sizes*/
     .hundred{
