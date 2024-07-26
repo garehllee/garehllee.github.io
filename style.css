@@ -910,6 +910,12 @@ img{
     .triflex .playitems{
         width:100%;
     }
+    .top-thing{
+        height:2px;
+    }
+    .top-thing2{
+        height:2px;
+    }
     .wholepagedark{
         animation: bg .5s ease-in;
         animation-iteration-count:1;
