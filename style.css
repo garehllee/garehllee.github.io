@@ -39,7 +39,7 @@
     --p:16px;
     --small:13.33px;
     --comment:11.11px;
-    --colorturnpoint:.35;
+    --colorturnpoint:.42;
     --colorturnpointplay:0.04;
     --headerfam: "Inter", sans-serif;
     --paragraphfam: "Inter", sans-serif;
@@ -79,7 +79,7 @@
     }
   }
 .header{
-    min-height: 175vh;
+    min-height: 220vh;
     width: 100%;
     background-position:center;
     background-size:cover;
@@ -871,19 +871,25 @@ img{
   .active, .dot:hover {
     background-color: var(--accent);
   }
+  .rightpart iframe{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 50px;
+    width: 72vw;
+    height:90vh;
+  }
 
 #loadOverlay{display: none;}
 /*MOBILE ADJUSTMENTS*/
 @media(max-width: 1025px){
     *{
         overflow-x: clip;
-        --colorturnpoint:.43;
+        --colorturnpoint:.5;
         --colorturnpointplay:0;
         --gridcolor: #161616;
     }
     @media(max-width:539px){
         *{
-            --colorturnpoint:.47;
+            --colorturnpoint:.5;
         }
         nav{
             margin-top:20px;

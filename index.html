@@ -98,7 +98,36 @@
               image.style.display = 'block';
           }
       </script>
-  </div>
+    </div>
+    <div id="project5" class="hundred" onpointerenter="gb5()" onpointerleave="g2b5()">
+      <a href="screentime.html" class="projecthome linkhover">
+          <div class="sixty"> 
+            <img id="stillImage5" src="images/covers/screen time 2.0/screentime cover.webp" style="display: block;">
+            <img id="movingImage5" src="images/covers/screen time 2.0/Sequence 01_1.gif" style="display: none;">
+          </div>
+          <div class="forty">
+            <p>UX Design, User Research, Prototyping</p>
+            <h3>Combatting Screen Addiction to Keep Phones Tools Rather than Distractions</h3>
+            <sub>Screen Time 2.0</sub>
+          </div>
+      </a>
+      <!---JavaScript to make elements on top of one another--->
+      <script>
+          function gb5() {
+              var gif = document.getElementById('movingImage5');
+              var image = document.getElementById('stillImage5');
+              gif.style.display = 'block';
+              image.style.display = 'none'
+
+          }
+          function g2b5() {
+              var gif = document.getElementById('movingImage5');
+              var image = document.getElementById('stillImage5');
+              gif.style.display='none'
+              image.style.display = 'block';
+          }
+      </script>
+    </div>
         <!---PROJECT 2-->
       <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
           <a href="ecaar.html" class="projecthome linkhover">
