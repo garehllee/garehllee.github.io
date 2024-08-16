@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8">
+  <title>Screentime 2.0</title>
+  <link rel = "stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="icon" href="images/logo/bearfavi2.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body id="wholepage">
+    <div class="top-thing2"></div>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href = "index.html"><img src="images/logo/bearlogo.webp"></a>
+        <div class="nav-links" id="navLinks">
+          <i class="fa fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="index.html" class="linkhover">Work</a></li>
+            <li><a href="play.html" class="linkhover">Play</a></li>
+            <li><a href="about.html" class="linkhover">About</a></li>
+            <li><a href="images/about/GL resume.pdf" class="linkhover" target="_blank">Resume</a></li>
+          </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <hr style="margin-left:100px; margin-right:100px;">
+
+    <section>
+        <section class="titletextbox rightleft">
+            <div class="leftside">
+              <p style="text-decoration:dashed;">PROCESS <br></p>
+                <p><span onclick="tost()">1. Screentime 2.0 </span><br><span onclick="toobservations()">2. Observations & User Research</span><br><span onclick="toproblem()">3. Defining the Problem</span><br><span onclick="torapid()">4. Rapid Iteration & Concept Development</span><br><span onclick="tousertests()">5. User Testing & Final Design</span><br><span onclick="toconclusion()">6. Conclusion</span></p>
+                <script>
+                  function tost(){
+                    const element = document.getElementById("st");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function toobservations(){
+                    const element = document.getElementById("observations");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function toproblem(){
+                    const element = document.getElementById("problem");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function torapid(){
+                    const element = document.getElementById("rapid");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function tousertests(){
+                    const element = document.getElementById("usertests");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function toconclusion(){
+                    const element = document.getElementById("conclusion");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                </script>        
+              </div>
+            <div class="rightpart">
+              <div class="rightside">
+                <div class="textspace">
+                    <p>UX Design, User Research, Prototyping</p>
+                    <hr style="border-left:none; border-right:none; border-bottom:none; border-top:1px dashed var(--lightaccent);background-color:transparent;">
+                    <h1>Screen Time 2.0</h1>
+                    <p><br>
+                        Coco Co. is a pop-up that guides guests through the practical uses of coconuts, drawing heavily on Filipino tradition. With interaction, choice, and a take-home product, the experience educates and excites visitors while uplifting Filipino culture. 
+                        </p>
+                </div>
+                <br>
+                <div class="otherspace">
+                    <div>
+                        <p>TIMELINE- <br><br>4 weeks</p>
+                    </div>
+                    <div>
+                        <p>ROLE- <br><br>Sole Designer</p>
+                    </div>
+                </div>
+            </div>
+                <div onpointerenter="gb()" onpointerleave="gb2()">
+                    <img id="stillImageECAAR" src="images/covers/Cococo/cocococover.webp" alt="Cococo Experience" style="display: block;">
+                    <img id="movingImageECAAR" src="images/covers/Cococo/cococoanimated.gif" alt="Animated Cococo Logo" style="display: none;">
+                    <script>
+                    function gb() {
+                        var gif = document.getElementById('movingImageECAAR');
+                        var image = document.getElementById('stillImageECAAR');
+                        gif.style.display = 'block';
+                        image.style.display = 'none'
+        
+                    }
+                    function gb2() {
+                        var gif = document.getElementById('movingImageECAAR');
+                        var image = document.getElementById('stillImageECAAR');
+                        gif.style.display='none'
+                        image.style.display = 'block';
+                    }
+                    </script>
+                </div>
+            </div>
+      </section>
+    </section>
+    <section class = "footer de-emphasize">
+        <p>© 2024 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+        <p>Last updated: July 2024</p>
+        <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover de-emphasize">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover de-emphasize">Instagram</a> | <span id="backtotop" class="footerlink2 de-emphasize" onclick = "totop()">Back to Top</span></p>
+        <script>
+          function totop(){
+            window.scroll({
+              top: 0, 
+              left: 0, 
+              behavior: 'smooth'
+            });
+          }
+        </script>
+    </section>
+    </body>
+    </html>
