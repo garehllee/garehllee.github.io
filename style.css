@@ -198,7 +198,7 @@ nav .fa{
     height: 5px;
     position:fixed;
     width:100vw;
-    background: repeating-linear-gradient(90deg, var(--lightaccent), #ACD8A1, #FFEF75, #E47B7B, #BFACE4, var(--lightaccent) 200vw);
+    background: repeating-linear-gradient(90deg, var(--lightaccent), #33ff00, #ffe100, #f32121, #5703ff, var(--lightaccent) 200vw);
     background-size: calc(200vw/sin(90deg)) 100%;
     animation: AnimationName 15s linear infinite reverse;
     top:0;
