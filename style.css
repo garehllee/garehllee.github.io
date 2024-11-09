@@ -341,15 +341,28 @@ img{
     border-top-left-radius:5px;
     border-top-right-radius:5px;
 }
+.miscimages{
+    width:25vw;
+    position:absolute;
+    max-height:min-content;
+}
+.miscimages video{
+    width:25vw;
+    outline:solid 1px white;
+    display:block;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
 .misc p{
     position: absolute;
     font-family: var(--paragraphfam);
     font-weight: var(--regular);
     font-size: var(--p);
-    width:25vw;
+    width:24vw;
     outline:solid 1px white;
     border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
+    padding:0.5vw;
 }
 
 .pos1{
