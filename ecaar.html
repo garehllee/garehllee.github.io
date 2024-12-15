@@ -48,7 +48,9 @@
     <section class="titletextbox rightleft">
         <div class="leftside">
           <p style="text-decoration:dashed;">ARTIFACTS <br></p>
-            <p><span onclick="tobrandidentity()">1. Brand Identity </span><br><span onclick="tonightmarket()">2. Night Market</span><br><span onclick="tocookbook()">3. Cookbook</span></p>
+            <p><span onclick="tobrandidentity()">1. Brand Identity </span><br><span onclick="tonightmarket()">2. Night Market</span>
+                <!-- <br><span onclick="tocookbook()">3. Cookbook</span> -->
+            </p>
             <script>
               function tobrandidentity(){
                 const element = document.getElementById("brandidentity");
@@ -58,10 +60,10 @@
                 const element = document.getElementById("nightmarket");
                   element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
               }
-              function tocookbook(){
-                const element = document.getElementById("cookbook");
-                  element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
-              }
+            //   function tocookbook(){
+            //     const element = document.getElementById("cookbook");
+            //       element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+            //   }
             </script>        
           </div>
         <div class="rightpart">
@@ -413,7 +415,7 @@
             </div>
         </div>
     </section>
-    <div id="cookbook" class="divider">
+    <!-- <div id="cookbook" class="divider">
         <h3>3. Cookbook</h3>
     </div>
     <section class="rightleft">
@@ -534,7 +536,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 </section>
 <!-- FOOTER -->
 <section class = "footer de-emphasize">
