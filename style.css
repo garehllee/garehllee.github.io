@@ -1170,6 +1170,16 @@ img{
         flex-wrap:wrap;
         border:solid 1px white;
     }
+    .miscimages video{
+        outline:none;
+        display:flex;
+        width:45vw;
+        border-top-left-radius:5px;
+        border-top-right-radius:5px;
+        justify-content:center;
+        flex-wrap:wrap;
+        border:solid 1px white;
+    }
     .miscimages img:hover{
         scale:200%;
         position: absolute;
