@@ -39,7 +39,7 @@
     --p:16px;
     --small:13.33px;
     --comment:11.11px;
-    --colorturnpoint:.42;
+    --colorturnpoint:.3;
     --colorturnpointplay:0.04;
     --headerfam: "Inter", sans-serif;
     --paragraphfam: "Inter", sans-serif;
@@ -79,7 +79,7 @@
     }
   }
 .header{
-    min-height: 220vh;
+    min-height: 150vh;
     width: 100%;
     background-position:center;
     background-size:cover;
@@ -901,13 +901,13 @@ img{
 @media(max-width: 1025px){
     *{
         overflow-x: clip;
-        --colorturnpoint:.5;
+        --colorturnpoint:.4;
         --colorturnpointplay:0;
         --gridcolor: #161616;
     }
     @media(max-width:539px){
         *{
-            --colorturnpoint:.5;
+            --colorturnpoint:.4;
         }
         nav{
             margin-top:20px;
