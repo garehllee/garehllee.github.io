@@ -891,6 +891,11 @@ img{
     height:90vh;
   }
 
+  .rightpart .vimeo{
+    border:none;
+    margin:0px;
+  }
+
 #loadOverlay{display: none;}
 /*MOBILE ADJUSTMENTS*/
 @media(max-width: 1025px){
