@@ -321,6 +321,12 @@
                 <div id="mouse">
                   <!-- Full-width images with number and caption text -->
                   <div class="mySlides8">
+                    <img loading="eager" src="images/misc/janelle concert yellow.png" style="width:100%">
+                  </div>
+                  <div class="mySlides8">
+                    <img loading="eager" src="images/misc/picnic collage.jpg" style="width:100%">
+                  </div>
+                  <div class="mySlides8">
                     <img loading="eager" src="images/misc/graphic design/chinese new year.webp" style="width:100%">
                   </div>
                   <div class="mySlides8">
@@ -411,7 +417,7 @@
                   <a class="prev" onclick="plusSlides8(-1)">&#10094;</a>
                   <a class="next" onclick="plusSlides8(1)">&#10095;</a>
                 </div>
-                  <p>Miscellaneous posters, infographics, instagram posts, and other graphic items (2020-2023)</p>        
+                  <p>Miscellaneous posters, infographics, instagram posts, and other graphic items (2020-2025)</p>        
               </div>
               <script>
                 let slideIndex8 = 1;
@@ -574,8 +580,47 @@
                             <p>Skull still-life painted in watercolor (2021)</p>
                         </div>
             </div>
-            
             <div class="singleflex">
+            <div class="slideshow-container playitems">
+              <div id="mouse">
+                <!-- Full-width images with number and caption text -->
+                <div class="mySlides19 fade">
+                  <img loading="eager" src="images/misc/product diaries channellogo-04-blueonwhite.png" style="width:100%">
+                </div>
+                <div class="mySlides19 fade">
+                  <img loading="eager" src="images/misc/product diaries channellogo-05-brownonwhite.png" style="width:100%">
+                  </div>
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides19(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides19(1)">&#10095;</a>
+              </div>
+                <p>Podcast Channel Logo Options for Client(2024)</p>        
+            <script>
+              let slideIndex19 = 1;
+              showSlides19(slideIndex19);
+                    
+              // Next/previous controls
+              function plusSlides19(n) {
+                showSlides19(slideIndex19 += n);
+              }
+                    
+              // Thumbnail image controls
+              function currentSlide19(n) {
+                showSlides19(slideIndex19 = n);
+              }
+                    
+              function showSlides19(n) {
+                let i;
+                let slides = document.getElementsByClassName("mySlides19");
+                if (n > slides.length) {slideIndex19 = 1}
+                if (n < 1) {slideIndex19 = slides.length}
+                for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";
+                }
+                slides[slideIndex19-1].style.display = "block";
+              }
+            </script>
+            </div>
             <div class="playitems">
               <div style="padding:56.04% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1039476881?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Finisterrai by Ricardo Mollá Animation | Moving Pictures to Music"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
               <p>Hand-Drawn Animation to Music ~ Sound ON (2024)</p>
