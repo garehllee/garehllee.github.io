@@ -26,8 +26,8 @@
 }
 
 :root{
-    --accent: rgb(96, 138, 157);
-    --lightaccent: rgb(143, 194, 218);
+    --accent: rgb(86, 126, 187);
+    --lightaccent: rgb(120, 192, 238);
     --reg: black;
     --gridcolor: #242424;
     --h1: 47.78px;
@@ -36,14 +36,14 @@
     --h4:27.65px;
     --h5:23.04px;
     --h6:19.2px;
-    --p:16px;
+    --p:17px;
     --small:13.33px;
     --comment:11.11px;
     --colorturnpoint:.3;
     --colorturnpointplay:0.04;
-    --headerfam: "Inter-tight", sans-serif;
-    --paragraphfam: "Inter", sans-serif;
-    --emphasisfam: "Inter-tight", sans-serif;
+    --headerfam: "archivo-variable", sans-serif;
+    --paragraphfam: "archivo-variable", sans-serif;
+    --emphasisfam: "archivo-variable", sans-serif;
     --regular: 400;
     --bold:750;
     --emphasisweight:750;
