@@ -39,7 +39,7 @@
     --p:17px;
     --small:13.33px;
     --comment:11.11px;
-    --colorturnpoint:.3;
+    --colorturnpoint:.4;
     --colorturnpointplay:0.04;
     --headerfam: "archivo-variable", sans-serif;
     --paragraphfam: "archivo-variable", sans-serif;
@@ -79,7 +79,7 @@
     }
   }
 .header{
-    min-height: 150vh;
+    min-height: 200vh;
     width: 100%;
     background-position:center;
     background-size:cover;
@@ -901,13 +901,13 @@ img{
 @media(max-width: 1025px){
     *{
         overflow-x: clip;
-        --colorturnpoint:.4;
+        --colorturnpoint:.5;
         --colorturnpointplay:0;
         --gridcolor: #161616;
     }
     @media(max-width:539px){
         *{
-            --colorturnpoint:.4;
+            --colorturnpoint:.5;
         }
         nav{
             margin-top:20px;
