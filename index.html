@@ -213,6 +213,34 @@
           </div>
       </a>
     </div>
+    <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
+      <a class="projecthome">
+          <div class="sixty"> 
+            <img id="stillImage2" src="images/covers/lg/eaclipsedraft3.png" alt="" style="display: block;">
+            <img id="movingImage2" src="images/covers/lg/ezgif.com-video-to-gif-converter (6).gif" alt="" style="display: none;">
+          </div>
+          <div class="forty">
+            <p>Motion Graphics</p>
+            <h3>Elysium (Coming March 2025)</h3>
+            <sub>Lunar Gala 2025</sub>
+          </div>
+      </a>
+      <script>
+          function gb() {
+              var gif = document.getElementById('movingImage2');
+              var image = document.getElementById('stillImage2');
+              gif.style.display = 'block';
+              image.style.display = 'none'
+
+          }
+          function gb2() {
+              var gif = document.getElementById('movingImage2');
+              var image = document.getElementById('stillImage2');
+              gif.style.display='none'
+              image.style.display = 'block';
+          }
+      </script>
+  </div>
     <div id="project5" class="hundred">
       <a class="projecthome">
           <div class="sixty"> 
