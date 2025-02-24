@@ -213,10 +213,11 @@
           </div>
       </a>
     </div> -->
-    <div id="project2" class="hundred">
+    <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
       <a class="projecthome">
           <div class="sixty"> 
-            <img id="movingImage2" src="images/covers/lunargala/ezgif.com-video-to-gif-converter (12).gif" alt="" style="display: block;">
+            <img id="stillImage2" src="images/covers/lunargala/LunarGala.webp" alt="" style="display:block">
+            <img id="movingImage2" src="images/covers/lunargala/ezgif.com-video-to-gif-converter (12).gif" alt="" style="display: none;">
           </div>
           <div class="forty">
             <p>Motion Graphics</p>
@@ -224,7 +225,7 @@
             <sub>Lunar Gala 2025</sub>
           </div>
       </a>
-      <!-- <script>
+      <script>
           function gb() {
               var gif = document.getElementById('movingImage2');
               var image = document.getElementById('stillImage2');
@@ -238,12 +239,13 @@
               gif.style.display='none'
               image.style.display = 'block';
           }
-      </script> -->
+      </script>
   </div>
-    <div id="project5" class="hundred">
+    <div id="project5" class="hundred" onpointerenter="gb4()" onpointerleave="g2b4()">
       <a class="projecthome">
           <div class="sixty"> 
-            <img id="movingImage4" src="images/covers/tedxcmu/tedxcmu.gif" style="display: block;">
+            <img id="stillImage4" src="images/covers/tedxcmu/tedxcmu.webp" alt="" style="display:block">
+            <img id="movingImage4" src="images/covers/tedxcmu/tedxcmu.gif" style="display: none;">
           </div>
           <div class="forty">
             <p>Identity, Motion Graphics, Print</p>
@@ -253,6 +255,21 @@
       </a>
     </div>
     </ul>
+    <script>
+      function gb4() {
+          var gif = document.getElementById('movingImage4');
+          var image = document.getElementById('stillImage4');
+          gif.style.display = 'block';
+          image.style.display = 'none'
+
+      }
+      function g2b4() {
+          var gif = document.getElementById('movingImage4');
+          var image = document.getElementById('stillImage4');
+          gif.style.display='none'
+          image.style.display = 'block';
+      }
+  </script>
 </div>
 </section>
 
