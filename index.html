@@ -48,24 +48,28 @@
     <i class="fa fa-bars" onclick="showMenu()"></i>
   </nav>
   <hr class= "hr" style="margin-left:100px; margin-right:100px;">
-  <div class="text-box">
-    <h1><span class="h-emphasis">Hi, I'm Garrett. </span> I design artifacts that connect ideas and services to people they can help.</h1>
-    <p>CURRENTLY <br><br>Leading Motion Design @ Lunar Gala <br>Freelancing Identities & Posters<br>Studying Design & HCI @ Carnegie Mellon University<br><i class="fa fa-long-arrow-right hideonmobile"></i></p>
-  </div>
 </section>
 
 <!----Portfolio Gallery---->
 <section class="PortGal">
-  <div class="columns hundred">
-    <ul class="columns">
-      <div id="project3" class="hundred" onpointerenter="gb3()" onpointerleave="g2b3()">
+  <div class="text-box">
+    <h1><span class="h-emphasis">Hi, I'm Garrett. </span> I design experiences that connect ideas and services to people they can help.</h1>
+  </div>
+  <div class="text-box">
+    <p>CURRENTLY <br><br>Leading Motion Design @ Lunar Gala <br>Freelancing Identities & Posters<br>Studying Design & HCI @ Carnegie Mellon University<br></p>
+  </div>
+  <!-- <div class="columns hundred"> -->
+    <!-- <ul class="columns"> -->
+      <div id="project3" class="" onpointerenter="gb3()" onpointerleave="g2b3()">
         <a href="cococo.html" class="projecthome linkhover">
             <div class="sixty"> 
               <img id="stillImage3" src="images/covers/Cococo/cocococover.webp" alt="Popup shop" style="display: block;">
               <img id="movingImage3" src="images/covers/Cococo/cococoanimated.gif" alt="Animated Cococo Logo" style="display: none;">
             </div>
             <div class="forty">
-              <p>Identity, Experience, UX Design</p>
+              <div class="inner">
+                <p class="pillshape">Identity </p><p class="pillshape">Experience</p><p class="pillshape">User Experience</p>
+              </div>
               <h3>Sharing Coconuts to Celebrate Filipino Culture</h3>
               <sub>Coco Co. </sub>
             </div>
@@ -115,14 +119,16 @@
           }
       </script>
     </div>  -->
-    <div id="project5" class="hundred" onpointerenter="gb5()" onpointerleave="g2b5()">
+    <div id="project5" class="" onpointerenter="gb5()" onpointerleave="g2b5()">
       <a href="screentime.html" class="projecthome linkhover">
           <div class="sixty"> 
             <img id="stillImage5" src="images/covers/screen time 2.0/screentime cover.webp" style="display: block;">
             <img id="movingImage5" src="images/covers/screen time 2.0/Sequence 01_1.gif" style="display: none;">
           </div>
           <div class="forty">
-            <p>UX Design, User Research, Prototyping</p>
+            <div class="inner">
+              <p class="pillshape">User Experience</p><p class="pillshape">User Research</p>
+            </div>
             <h3>Fighting Screen Addiction with Behavioral Psychology</h3>
             <sub>Screen Time 2.0</sub>
           </div>
@@ -144,6 +150,36 @@
           }
       </script>
     </div>
+    <div id="project6" class="" onpointerenter="gb6()" onpointerleave="g2b6()">
+      <a href="scottydonates.html" class="projecthome linkhover">
+          <div class="sixty"> 
+            <img id="stillImage6" src="images/covers/scottydonates/scottydonatescover.png" style="display: block;">
+            <img id="movingImage6" src="images/covers/scottydonates/ezgif.com-video-to-gif-converter (15).gif" style="display: none;">
+          </div>
+          <div class="forty">
+            <div class="inner">
+              <p class="pillshape">Identity </p><p class="pillshape">User Experience</p>
+            </div>
+            <h3>Making Donation a Part of Students' Routines</h3>
+            <sub>ScottyDonates</sub>
+          </div>
+      </a>
+      <script>
+          function gb6() {
+              var gif = document.getElementById('movingImage6');
+              var image = document.getElementById('stillImage6');
+              gif.style.display = 'block';
+              image.style.display = 'none'
+
+          }
+          function g2b6() {
+              var gif = document.getElementById('movingImage6');
+              var image = document.getElementById('stillImage6');
+              gif.style.display='none'
+              image.style.display = 'block';
+          }
+      </script>
+    </div> 
         <!---PROJECT 2-->
       <!-- <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
           <a href="ecaar.html" class="projecthome linkhover">
@@ -173,14 +209,16 @@
               }
           </script>
       </div> -->
-      <div id="project1" class="hundred" onpointerenter="g2b()" onpointerleave="g2b2()">
+      <div id="project1" class="" onpointerenter="g2b()" onpointerleave="g2b2()">
         <a href="internationaldistrict.html" class="projecthome linkhover">
         <div class="sixty">
           <img id="stillImage" src="images/Pages/SID/SIDmockup.jpg" style="display:block">
           <img id="movingImage" src="images/Pages/SID/SIDcovergif.gif" style="display:none;">
         </div>
         <div class="forty">
-          <p>Illustration, Interaction Design</p>
+          <div class="inner">
+            <p class="pillshape">Illustration</p><p class="pillshape">Interaction</p>
+          </div>
           <h3>A Collaborative Mural Connecting One Community to Another</h3>
           <sub>South King Street Elementary School Mural</sub>
         </div>
@@ -213,14 +251,16 @@
           </div>
       </a>
     </div> -->
-    <div id="project2" class="hundred" onpointerenter="gb()" onpointerleave="gb2()">
+    <div id="project2" class="" onpointerenter="gb()" onpointerleave="gb2()">
       <a class="projecthome">
           <div class="sixty"> 
             <img id="stillImage2" src="images/covers/lunargala/LunarGala.webp" alt="" style="display:block">
             <img id="movingImage2" src="images/covers/lunargala/ezgif.com-video-to-gif-converter (12).gif" alt="" style="display: none;">
           </div>
           <div class="forty">
-            <p>Motion Graphics</p>
+            <div class="inner">
+              <p class="pillshape">Motion Graphics</p>
+            </div>
             <h3>🔒Elysium</h3>
             <sub>Lunar Gala 2025</sub>
           </div>
@@ -241,36 +281,38 @@
           }
       </script>
   </div>
-    <div id="project5" class="hundred" onpointerenter="gb4()" onpointerleave="g2b4()">
+    <div id="project5" class="" onpointerenter="gb4()" onpointerleave="g2b4()">
       <a class="projecthome">
           <div class="sixty"> 
             <img id="stillImage4" src="images/covers/tedxcmu/tedxcmu.webp" alt="" style="display:block">
             <img id="movingImage4" src="images/covers/tedxcmu/tedxcmu.gif" style="display: none;">
           </div>
           <div class="forty">
-            <p>Identity, Motion Graphics, Print</p>
+            <div class="inner">
+                <p class="pillshape">Identity </p><p class="pillshape">Experience</p><p class="pillshape">Print</p>
+              </div>
             <h3>🔒Parallax</h3>
             <sub>TEDxCMU 2025</sub>
           </div>
       </a>
+      <script>
+        function gb4() {
+            var gif = document.getElementById('movingImage4');
+            var image = document.getElementById('stillImage4');
+            gif.style.display = 'block';
+            image.style.display = 'none'
+  
+        }
+        function g2b4() {
+            var gif = document.getElementById('movingImage4');
+            var image = document.getElementById('stillImage4');
+            gif.style.display='none'
+            image.style.display = 'block';
+        }
+    </script>
     </div>
-    </ul>
-    <script>
-      function gb4() {
-          var gif = document.getElementById('movingImage4');
-          var image = document.getElementById('stillImage4');
-          gif.style.display = 'block';
-          image.style.display = 'none'
-
-      }
-      function g2b4() {
-          var gif = document.getElementById('movingImage4');
-          var image = document.getElementById('stillImage4');
-          gif.style.display='none'
-          image.style.display = 'block';
-      }
-  </script>
-</div>
+  <!-- </ul> -->
+<!-- </div> -->
 </section>
 
 <!---mischelaneous label--->
