@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8">
+  <title>Elysium</title>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
+    <!-- End Google Tag Manager -->
+  <link rel = "stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="icon" href="images/logo/bearfavi2.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLXKYF9R4Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CLXKYF9R4Y');
+</script>
+<body id="wholepage">
+    <div class="top-thing2"></div>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href = "index.html"><img src="images/logo/bearlogo.webp"></a>
+        <div class="nav-links" id="navLinks">
+          <i class="fa fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="index.html" class="linkhover">Work</a></li>
+            <li><a href="play.html" class="linkhover">Play</a></li>
+            <li><a href="about.html" class="linkhover">About</a></li>
+            <li><a href="images/about/GL resume.pdf" class="linkhover" target="_blank">Resume</a></li>
+          </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <hr style="margin-left:100px; margin-right:100px;">
+
+    <section>
+        <section class="titletextbox rightleft">
+            <div class="leftside">
+              <p style="text-decoration:dashed;">ARTIFACTS <br></p>
+                <p><span onclick="toopening()">1. Opening </span><br><span onclick="toacts()">2. Act Introductions</span><br><span onclick="tolines()">3. Line Backdrops</span><br><span onclick="todance()">4. Dance Backdrops</span><br><span onclick="toreflection()">5. Reflection</span></p>
+                <script>
+                  function toopening(){
+                    const element = document.getElementById("opening");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function toacts(){
+                    const element = document.getElementById("acts");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function tolines(){
+                    const element = document.getElementById("lines");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function todance(){
+                    const element = document.getElementById("dance");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function toreflection(){
+                    const element = document.getElementById("reflection");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                </script>        
+              </div>
+            <div class="rightpart">
+              <div class="rightside">
+                <div class="textspace">
+                    <p>Motion Graphics</p>
+                    <hr style="border-left:none; border-right:none; border-bottom:none; border-top:1px dashed var(--lightaccent);background-color:transparent;">
+                    <h1>Lunar Gala 2025: Elysium</h1>
+                    <p><br>
+                        Lunar Gala is a student-run fashion show with thousands of attendees, celebrating a diverse selection of designers interpreting a single theme. In 2025, I led LG’s 7-person motion team, collaborating closely with other creative departments, including print, web, stage, and photo, and this year’s line designers to create a series of animated visuals. 
+
+                        </p>
+                </div>
+                <br>
+                <div class="otherspace">
+                    <div>
+                        <p>TIMELINE- <br><br>10/2024 - 03/2025</p>
+                    </div>
+                    <div>
+                        <p>ROLE- <br><br>Co-Head of Motion</p>
+                    </div>
+                    <div>
+                        <p>TEAM- <br><br>Isabel Fleck, Emily Lau, Karis Choe, Deeptika Mandha, Silvia Shin, Jeff Ye
+                            </p>
+                    </div>
+                    <div>
+                        <p>TOOLS- <br><br>Blender, Figma, After Effects, Premiere Pro</p>
+                    </div>
+                </div>
+            </div>
+                <div onpointerenter="gb()" onpointerleave="gb2()">
+                    <img id="stillImageECAAR" src="images/covers/lunargala/ezgif-frame-001.jpg" alt="Cococo Experience" style="display: block;">
+                    <img id="movingImageECAAR" src="images/covers/lunargala/ezgif.com-video-to-gif-converter (32).gif" alt="Animated Cococo Logo" style="display: none;">
+                    <script>
+                    function gb() {
+                        var gif = document.getElementById('movingImageECAAR');
+                        var image = document.getElementById('stillImageECAAR');
+                        gif.style.display = 'block';
+                        image.style.display = 'none'
+        
+                    }
+                    function gb2() {
+                        var gif = document.getElementById('movingImageECAAR');
+                        var image = document.getElementById('stillImageECAAR');
+                        gif.style.display='none'
+                        image.style.display = 'block';
+                    }
+                    </script>
+                </div>
+            </div>
+      </section>
+      <section class="overview rightleft">
+          <div class="leftside">
+              <p>CONTEXT</p>
+          </div>
+          <div class="rightpart">
+            <div class="rightside">
+              <div class="textspace">
+                <h3>Reimagining Fashion as Motion</h3>
+                <p>This year’s theme was Elysium, which is the paradise Greek heroes go to after they pass. The show’s producers interpreted Elysium closer to the Judeo-Christian idea of Eden, focusing on universal concepts of humanity, ambition, and acceptance.
+                </p>
+              </div>
+              <br>
+              <div class="otherspace">
+              </div>
+            </div>
+          </div>
+      </section>
+      <div id="opening" class="divider">
+        <h3>1. Opening</h3>
+      </div>
+      <section class="rightleft">
+        <div class="leftside">
+            <p>OPENING</p>
+        </div>
+        <div class="rightpart">
+          <div class="rightside">
+            <div class="textspace">
+                <h3>Establishing the Show
+                </h3>
+                <p>The show’s opening has to build hype, intrigue, and establish the story and brand system for the rest of the show’s motion. Here, I focused on establishing the motif of a snake, for the Year of the Snake, and the recurring circle motif, which references the snake’s coil. I directed, built, and edited this sequence.
+                </p>
+            </div>
+            <div class="otherspace">
+            </div>
+          </div>
+          <div style="padding:50% 0 0 0;position:relative;" ><iframe src="https://player.vimeo.com/video/1068753778?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Elysium Opening" class="vimeo"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+          </div>
+        </div>
+        </section>
+        <div id="acts" class="divider">
+            <h3>2. Act Introductions</h3>
+        </div>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>ACT ANIMATIONS</p>
+            </div>
+        <div class="rightpart">
+            <div class="rightside">
+              <div class="textspace">
+                  <h3>Emergence, Blossom, Hubris, Embrace
+                  </h3>
+                  <p>This year, the show was divided into four acts: emergence, blossom, hubris, and embrace. Each focuses on different themes. To introduce the audience to each act, we created animatics to tell the story of the show’s transformation. Members created many of the animated assets for the act animations. I created a handful of the shots, but mostly focused on creative direction, organization, and editing.
+                  </p>
+              </div>
+              <div class="otherspace">
+              </div>
+            </div>
+            <div style="padding:50% 0 0 0;position:relative;"><iframe class="vimeo" src="https://player.vimeo.com/video/1068754102?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Elysium Act 1"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <div style="padding:50% 0 0 0;position:relative;"><iframe class="vimeo" src="https://player.vimeo.com/video/1068754197?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Elysium Act 2"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <div style="padding:50% 0 0 0;position:relative;"><iframe class="vimeo" src="https://player.vimeo.com/video/1068754257?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Elysium Act 3"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <div style="padding:50% 0 0 0;position:relative;"><iframe class="vimeo" src="https://player.vimeo.com/video/1068754309?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Elysium Act 4"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+          </div>
+          </section>
+          <div id="lines" class="divider">
+            <h3>3. Line Backdrops</h3>
+        </div>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>LINE BACKDROPS</p>
+            </div>
+        <div class="rightpart">
+            <div class="rightside">
+              <div class="textspace">
+                  <h3>Branding Each Line
+                  </h3>
+                  <p>The core challenge of creating line backdrops is celebrating and complimenting without overshadowing. We collaborated very closely with line designers to ensure cohesion. I personally edited and color graded every line and created three line backdrops. We used the sphere in the center of every line to keep the overall show cohesive.
+                  </p>
+              </div>
+              <div class="otherspace">
+              </div>
+            </div>
+            <video muted controls autoplay loop>
+                <source src="images/Pages/Lunar Gala/LGcomp1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video muted controls autoplay loop>
+                <source src="images/Pages/Lunar Gala/LGcomp2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            </div>
+          </div>
+          </section>
+          <div id="dance" class="divider">
+            <h3>4. Dance Backdrops</h3>
+        </div>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>DANCE BACKDROPS</p>
+            </div>
+        <div class="rightpart">
+            <div class="rightside">
+              <div class="textspace">
+                  <h3>Opening & Closing Out The Show
+                  </h3>
+                  <p>Two dance groups, Infra and Soul Stylez, performed before the first line and after the final line, respectively. My co-head, Isabel, and I handled creating these backdrops to align with the overall story and come full-circle.
+                  </p>
+              </div>
+              <div class="otherspace">
+              </div>
+            </div>
+            <video muted controls autoplay loop>
+                <source src="images/Pages/Lunar Gala/dancelines.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            </div>
+          </div>
+          </section>
+          <div id="reflection" class="divider">
+            <h3>5. Reflection</h3>
+        </div>
+        <section class="rightleft">
+            <div class="leftside">
+            </div>
+        <div class="rightpart">
+            <div class="rightside">
+              <div class="textspace">
+              </div>
+              <div class="otherspace">
+              </div>
+            </div>
+            <div class="photosflex">
+                <div>
+                    <img src="images/Pages/Lunar Gala/R0015454.JPG" alt="">
+                </div>
+                <div>
+                    <img src="images/Pages/Lunar Gala/R0015470.JPG" alt="">
+                </div>
+            </div>
+            </div>
+          </div>
+          </section>
+        <section class="rightleft">
+            <div class="leftside">
+            </div>
+        <div class="rightpart">
+            <div class="rightside">
+              <div class="textspace">
+                  <h3>Reflection
+                  </h3>
+                  <p>Going into this role, I had very minimal experience in 3D software. My entire team was also pretty much new to Blender, so it was an organizational challenge to lead everyone through the many steps of 3D animation. We ran into several challenges, from delayed approval from Producers, to adjusting to music, to last-minute aspect ratio and color changes, to finding computers powerful enough to render. Overall, I’m super happy with how the show turned out, and I cannot thank my team enough. 
+<br><br>
+                    Special thanks to Katherine and Jeff, our Producers, Ray and Leslie, our Creative Directors, Dylan, who let us abuse four of his fancy computers every day for weeks to allow us to render, Isabel, my incredible Co-Head, and of course, Karis, Emily, Deeptika, Silvia, and Jeff, the greatest-ever motion team.
+                    
+                  </p>
+              </div>
+              <div class="otherspace">
+              </div>
+            </div>
+            </div>
+          </div>
+          </section>
+          </section>
+          <section class = "footer de-emphasize">
+            <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+            <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover de-emphasize">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover de-emphasize">Instagram</a> | <span id="backtotop" class="footerlink2 de-emphasize" onclick = "totop()">Back to Top</span></p>
+            <script>
+              function totop(){
+                window.scroll({
+                  top: 0, 
+                  left: 0, 
+                  behavior: 'smooth'
+                });
+              }
+            </script>
+        </section>
+          </body>
+          </html>
