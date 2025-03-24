@@ -920,6 +920,11 @@ img{
     margin:0px;
   }
 
+  .vimeovideo{
+    margin-left: 100px;
+    margin-right:100px;
+  }
+
 #loadOverlay{display: none;}
 /*MOBILE ADJUSTMENTS*/
 @media(max-width: 1025px){
@@ -1087,6 +1092,9 @@ img{
     }
     .PortGal div{
         width: auto;
+    }
+    .vimeovideo{
+        margin:20px;
     }
     .forty{
         padding-left:15px;
