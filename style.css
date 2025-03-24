@@ -39,7 +39,7 @@
     --p:17px;
     --small:13.33px;
     --comment:11.11px;
-    --colorturnpoint:.4;
+    --colorturnpoint:.5;
     --colorturnpointplay:0.04;
     --headerfam: "archivo-variable", sans-serif;
     --paragraphfam: "archivo-variable", sans-serif;
@@ -930,13 +930,13 @@ img{
 @media(max-width: 1025px){
     *{
         overflow-x: clip;
-        --colorturnpoint:.5;
+        --colorturnpoint:.6;
         --colorturnpointplay:0;
         --gridcolor: #161616;
     }
     @media(max-width:539px){
         *{
-            --colorturnpoint:.5;
+            --colorturnpoint:.6;
         }
         nav{
             margin-top:20px;
