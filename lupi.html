@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8">
+  <title>Design Hero</title>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
+    <!-- End Google Tag Manager -->
+  <link rel = "stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="icon" href="images/logo/bearfavi2.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLXKYF9R4Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CLXKYF9R4Y');
+</script>
+<body id="wholepage">
+    <div class="top-thing2"></div>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href = "index.html"><img src="images/logo/bearlogo.webp"></a>
+        <div class="nav-links" id="navLinks">
+          <i class="fa fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="index.html" class="linkhover">Work</a></li>
+            <li><a href="play.html" class="linkhover">Play</a></li>
+            <li><a href="about.html" class="linkhover">About</a></li>
+            <li><a href="images/about/GL resume.pdf" class="linkhover" target="_blank">Resume</a></li>
+          </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <hr style="margin-left:100px; margin-right:100px;">
+
+    <section>
+        <section class="titletextbox rightleft">
+            <div class="leftside">
+              <p style="text-decoration:dashed;">ARTIFACTS <br></p>
+                <p><span onclick="tobrandidentity()">1. Poster </span><br><span onclick="toprocess()">2. Booklet</span><br><span onclick="tovideo()">3. Video</span></p>
+                <script>
+                  function tobrandidentity(){
+                    const element = document.getElementById("brandidentity");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function toprocess(){
+                    const element = document.getElementById("process");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function tovideo(){
+                    const element = document.getElementById("video");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                </script>        
+              </div>
+            <div class="rightpart">
+              <div class="rightside">
+                <div class="textspace">
+                    <p>Print, Motion</p>
+                    <hr style="border-left:none; border-right:none; border-bottom:none; border-top:1px dashed var(--lightaccent);background-color:transparent;">
+                    <h1>Giorgia Lupi</h1>
+                    <p><br>
+                        A celebration of my design hero, Giorgia Lupi’s, work and data humanism philosophy through a poster, booklet, and video.                        </p>
+                </div>
+                <br>
+                <div class="otherspace">
+                    <div>
+                        <p>TIMELINE- <br><br>14 weeks</p>
+                    </div>
+                    <div>
+                        <p>ROLE- <br><br>Sole Designer</p>
+                    </div>
+                </div>
+            </div>
+                <div onpointerenter="gb()" onpointerleave="gb2()">
+                    <img id="stillImageECAAR" src="images/covers/Design Hero/Design Hero.webp" alt="" style="display: block;">
+                    <img id="movingImageECAAR" src="images/Pages/lupi/video/ezgif.com-video-to-gif-converter (37).gif" alt="" style="display: none;">
+                    <script>
+                    function gb() {
+                        var gif = document.getElementById('movingImageECAAR');
+                        var image = document.getElementById('stillImageECAAR');
+                        gif.style.display = 'block';
+                        image.style.display = 'none'
+        
+                    }
+                    function gb2() {
+                        var gif = document.getElementById('movingImageECAAR');
+                        var image = document.getElementById('stillImageECAAR');
+                        gif.style.display='none'
+                        image.style.display = 'block';
+                    }
+                    </script>
+                </div>
+            </div>
+      </section>
+      <section class="overview rightleft">
+          <div class="leftside">
+              <p>INTRODUCTION</p>
+          </div>
+          <div class="rightpart">
+            <div class="rightside">
+              <div class="textspace">
+                <h3>“What can we learn from this on a more human level—and what does it mean to the world?”
+                    </h3>
+                <p>Giorgia Lupi is an information designer and Partner at Pentagram whose work aims to bridge the divide between data and the humanity they represent, taking the abstract and making it felt. Her approach, “data humanism,” recognizes that data isn’t perfect — it’s collected by and for imperfect people. In the flaws of data lies the context and humanity that turns data into a tool that connects, exposes, and resonates. 
+                </p>
+              </div>
+              <br>
+              <div class="otherspace">
+              </div>
+            </div>
+          </div>
+      </section>
+      <div id="brandidentity" class="divider">
+        <h3>1. Poster (31.25 x 19.75”)</h3>
+      </div>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>DATA VISUALIZATION</p>
+            </div>
+            <div class="rightpart">
+              <div class="rightside">
+                <div class="textspace">
+                    <h3>Visualizing Giorgia Lupi’s Impact
+                    </h3>
+                    <p>Since Giorgia Lupi is an information designer, no project celebrating her would be complete without a data visualization. I wanted to investigate her impact, both numerically and qualitatively, landing on colorful squares to depict individual pieces. Behind the data lies the tenants of her data humanism manifesto. Read the full process writeup of my original poster (written as it happened!) on Medium, <span><a href="https://medium.com/@glee2_39289/dough-sign-hero-poster-29f869a64b0b" target="_blank">here.</a></span>
+                </p>
+                </div>
+                        <div class="otherspace">
+                </div>
+              </div>
+              </div>
+            </div>
+        </section>
+        <img loading="lazy" src="images/Pages/lupi/poster/poster full.webp">
+        <section class="rightleft">
+            <div class="leftside">
+                <p>DETAIL VIEWS</p>
+            </div>
+            <div class="rightpart">
+              <div class="rightside">
+                <div class="textspace">
+                </div>
+                        <div class="otherspace">
+                </div>
+              </div>
+                <img loading="lazy" src="images/Pages/lupi/poster/detail 1.webp">
+                <img loading="lazy" src="images/Pages/lupi/poster/detail 2.webp">
+                <img src="images/Pages/lupi/poster/mockups.webp" alt="">
+              </div>
+            </div>
+        </section>
+        <div id="process" class="divider">
+            <h3>2. Booklet (8.25x10.5” Trim Size)</h3>
+        </div>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>STORYTELLING</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>Telling Lupi’s Story
+                        </h3>
+                        <p>While the poster is a surface-level introduction to Lupi, the booklet is an opportunity to dive deep into her life, work, philosophy, and legacy (thusfar). I brought through the progression motif of circles and polygons. I used organic shapes to symbolize the messiness of real-life as it permeates data and corporate structures, symbolized by rigid polygons. I selected PP Editorial and PP Nikkei Maru for an edgier take on Lupi’s usual airy style. Read the full process writeup on Medium,<span><a href="https://medium.com/@glee2_39289/design-hero-booklet-5bf0c28790b6">here.</a></span>                        </p>
+                    </div>
+                    <div class="otherspace">
+                    </div>
+                </div>
+                <img loading="lazy" src="images/Pages/lupi/booklet/ezgif.com-animated-gif-maker (9).gif" alt="">
+                <img loading="lazy" src="images/Pages/lupi/booklet/booklet.webp" alt="">
+            </div>
+        </section>
+        <div id="video" class="divider">
+            <h3>3. Video</h3>
+        </div>
+        <section class="rightleft">
+            <div class="leftside">
+                <p>WORLDBUILDING</p>
+            </div>
+            <div class="rightpart">
+                <div class="rightside">
+                    <div class="textspace">
+                        <h3>The World of/is Data
+                        </h3>
+                        <p>My goal with the video was to spark excitement about data. I used Lupi’s talk as scaffolding to build a stylized world that aims to intuitively tell the story of data humanism. Read the full process writeup on Medium, <span>
+                            <a href="https://medium.com/@glee2_39289/design-hero-animation-012deea2d47c">here.</a>
+                        </span>
+                        </p>
+                    </div>
+                    <div class="otherspace">
+                    </div>
+                </div>
+                <div style="padding:50% 0 0 0;position:relative;"><iframe class="vimeo" src="https://player.vimeo.com/video/1080283619?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Giorgia Lupi // Data Humanism"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                                <div class="photosflex">
+                    <div>
+                        <img loading="lazy" src="images/Pages/lupi/video/ezgif.com-video-to-gif-converter (36).gif" alt="">
+                    </div>
+                    <div>
+                        <img loading="lazy" src="images/Pages/lupi/video/ezgif.com-video-to-gif-converter (37).gif" alt="">
+                    </div>
+                </div>
+                <div class="photosflex">
+                    <div>
+                        <img loading="lazy" src="images/Pages/lupi/video/ezgif.com-video-to-gif-converter (38).gif" alt="">
+                    </div>
+                    <div>
+                        <img loading="lazy" src="images/Pages/lupi/video/ezgif.com-video-to-gif-converter (39).gif" alt="">
+                    </div>
+                    <div>
+                        <img loading="lazy" src="images/Pages/lupi/video/ezgif.com-video-to-gif-converter (40).gif" alt="">
+                    </div>
+                </div>
+                </div>
+        </section> 
+    </section>
+    <section class = "footer de-emphasize">
+        <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+        <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover de-emphasize">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover de-emphasize">Instagram</a> | <span id="backtotop" class="footerlink2 de-emphasize" onclick = "totop()">Back to Top</span></p>
+        <script>
+          function totop(){
+            window.scroll({
+              top: 0, 
+              left: 0, 
+              behavior: 'smooth'
+            });
+          }
+        </script>
+    </section>
+</body>
+</html>
