@@ -924,7 +924,11 @@ img{
     margin-left: 100px;
     margin-right:100px;
   }
-
+  .imgmargin{
+    width:95%;
+    padding-left:50px;
+    padding-right:50px;
+}
 #loadOverlay{display: none;}
 /*MOBILE ADJUSTMENTS*/
 @media(max-width: 1025px){
@@ -1336,5 +1340,10 @@ img{
     .blockpage{
         margin-left: 20px;
         margin-right:20px;
+    }
+    .imgmargin{
+        width:100%;
+        padding-left:0px;
+        padding-right:0px;
     }
 }
