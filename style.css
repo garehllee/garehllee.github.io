@@ -231,7 +231,11 @@ nav .fa{
     justify-content:space-between;
     row-gap:48px;
     margin-bottom:100px;
+    align-items:flex-start;
+}
+.portGaltext{
     align-items:flex-end;
+    margin-bottom:48px;
 }
 .PortGal div{
     width:49%;
@@ -1123,11 +1127,10 @@ img{
         /* padding-top:15px; */
         padding-bottom:15px;
         border-radius:5px;
-        border: gray solid 1px;
+        background-color: #f1f0eb;
     }
     .projecthome:hover{
         color:var(--accent);
-        border: var(--accent) solid 1px;
     }
         /*Box Sizes*/
     .hundred{
