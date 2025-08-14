@@ -28,7 +28,7 @@
 :root{
     --accent: rgb(86, 126, 187);
     --lightaccent: rgb(120, 192, 238);
-    --reg: black;
+    --reg: #141414;
     --gridcolor: #242424;
     --h1: 47.78px;
     --h2: 39.81px;
@@ -37,25 +37,25 @@
     --h5:23.04px;
     --h6:19.2px;
     --p:17px;
-    --small:13.33px;
-    --comment:11.11px;
+    --small:14px;
+    --comment:14px;
     --colorturnpoint:.5;
     --colorturnpointplay:0.04;
-    --headerfam: "archivo-variable", sans-serif;
-    --paragraphfam: "archivo-variable", sans-serif;
-    --emphasisfam: "archivo-variable", sans-serif;
+    --headerfam: "forma-djr-text", sans-serif;
+    --paragraphfam: "forma-djr-text", sans-serif;
+    --emphasisfam: "forma-djr-text", sans-serif;
     --regular: 400;
-    --bold:750;
-    --emphasisweight:750;
+    --bold:700;
+    --emphasisweight:700;
 }
 @keyframes bg{
     0%{
         background-color: white;
-        --reg:black;
+        --reg:#141414;
         --gridcolor:white;
     }
     100%{
-        background-color:black;
+        background-color:#141414;
         --reg:white;
         --gridcolor: #242424
     }
@@ -63,13 +63,13 @@
 
 @keyframes bgreverse{
     0%{
-        background-color: black;
+        background-color: #141414;
         --reg:white;
         --gridcolor: #242424;
     }
     100%{
         background-color:white;
-        --reg:black;
+        --reg:#141414;
         --gridcolor:white;
     }
 }
@@ -265,6 +265,7 @@ nav .fa{
 .projecthome:hover{
     color:var(--accent);
 }
+
 .projecthome2 {
     display: flex;
     flex-direction: row;
@@ -697,7 +698,7 @@ img{
 .slideshow-container img{
     margin:0px;
     border-radius: 10px;
-    border:1px black solid;
+    border:1px #141414 solid;
 }
 .button{
     width:fit-content;

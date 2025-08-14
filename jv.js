@@ -8,7 +8,7 @@ function checkScroll(){
   let compscroll = getComputedStyle(document.body).getPropertyValue('--colorturnpoint');
   let wholepage = document.getElementById('wholepage');
   let colorreg = getComputedStyle(document.body).getPropertyValue('--reg');
-    if ((window.pageYOffset / (document.body.offsetHeight - window.innerHeight))>compscroll && colorreg=="black"){
+    if ((window.pageYOffset / (document.body.offsetHeight - window.innerHeight))>compscroll && colorreg=="#141414"){
       if (wholepage.classList.contains('wholepagelight')){
         wholepage.classList.remove('wholepagelight');
       }
