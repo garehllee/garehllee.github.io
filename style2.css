@@ -52,17 +52,20 @@ h2{
     font-family:var(--headerfam);
     font-size: var(--h2);
     font-weight: var(--bold);
+    letter-spacing:.5px;
 }
 h3{
     color:var(--reg);
     font-family:var(--secondaryfamregular);
     font-size: var(--h3);
+    letter-spacing:.5px;
 }
 h4{
     color:var(--reg);
     font-family:var(--headerfam);
     font-size: var(--h4);
     font-weight: var(--bold);
+    letter-spacing:.5px;
 }
 h5{
     color:var(--reg);
@@ -74,11 +77,13 @@ p{
     font-family:var(--paragraphfam);
     font-size: var(--p);
     font-weight: var(--regular);
+    letter-spacing:.75px;
 }
 small{
     color:var(--reg);
     font-family:var(--paragraphfam);
     font-size: var(--small);
+    letter-spacing:.75px;
 }
 .emphasis{
     color:var(--reg);
@@ -218,8 +223,8 @@ nav .fa{
     height: 5px;
     position:fixed;
     width:100vw;
-    background: repeating-linear-gradient(90deg, var(--lightaccent), var(--accent), var(--lightaccent) 200vw);
-    background-size: calc(200vw/sin(90deg)) 100%;
+    background: repeating-linear-gradient(90deg, var(--accent), #4c16ff, #ffe89b 150vw);
+    background-size: calc(150vw/sin(90deg)) 100%;
     top:0;
     overflow:hidden;
     z-index:1;
@@ -366,7 +371,7 @@ nav .fa{
 }
 .pos14{
     top: 130vh;
-    left:24%;
+    left:54%;
 }
 .pos15{
     top:140vh;
@@ -411,6 +416,7 @@ nav .fa{
 }
 .footer{
     margin: 30px;
+    margin-left:0px;
     font-family: var(--paragraphfam);
     font-weight: var(--regular);
     font-size: var(--p);
@@ -425,6 +431,266 @@ nav .fa{
     color: var(--lightaccent);
     text-decoration:underline;
     text-decoration-thickness:2px;
+}
+/*Play Page*/
+.triflex {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    align-items:top;
+    gap: 20px;
+}
+.singleflex{
+    width:32%;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.triflex .playitems {
+    width: 100%;
+    border:1px solid var(--reg);
+}
+.triflex .playitems video{
+    width: 100%;
+}
+.triflex .playitems-emphasis{
+    width: 64%;
+    border:1px solid var(--reg);
+}
+.triflex .playclickable{
+    border:1px solid var(--lightaccent);
+    color: var(--lightaccent);
+}
+.triflex .playclickable .link{
+    font-size:var(--p);
+    font-family: var(--paragraphfam);
+    font-weight: var(--regular);
+    color: var(--lightaccent);
+    text-decoration:none;
+}
+.triflex .playclickable .link:hover{
+    cursor:url(images/cursor/cursorselectaccent.svg) -10 -10, pointer;
+}
+.triflex .slideshow-container{
+    width:100%;
+    position: relative;
+    margin-left:0px;
+    border:1px solid var(--reg);
+}
+.triflex .slideshow-container-clickable{
+    width:100%;
+    position: relative;
+    margin-left:0px;
+    border:1px solid var(--lightaccent);
+}
+.triflex .slideshow-container-emphasis{
+    width:64%;
+    position: relative;
+    margin-left:0px;
+    border:1px solid var(--reg);
+}
+.triflex .slideshow-container img{
+    border-radius: 0px;
+    border:none;
+}
+.triflex p{
+    font-family: var(--paragraphfam);
+    font-weight: var(--regular);
+    font-size: var(--p);
+    color:var(--reg);
+    padding-top:10px;
+    padding-bottom:20px;
+    padding-left:10px;
+    padding-right:10px;
+}
+.triflex .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: var(--bold);
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+ .triflex .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .triflex .prev:hover, .next:hover {
+    background-color: var(--accent);
+  }
+.blockpage{
+    margin-left: 100px;
+    margin-right:100px;
+    display:block;
+}
+.blockitems{
+    width: 100%;
+    height:max-content;
+}
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: var(--bold);
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: var(--accent);
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: var(--lightaccent);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: var(--accent);
+  }
+
+  .vimeovideo{
+    margin-left: 100px;
+    margin-right:100px;
+  }
+  .imgmargin{
+    width:100%;
+    margin: 25px 0px;
+}
+/* Case Studies */
+.titletextbox{
+    color:var(--reg);
+    margin-top:20px;
+}
+.titletextbox .leftside{
+    margin-top:35px;
+    color:var(--accent);
+}
+.titletextbox .leftside p span:hover{
+    text-decoration:underline;
+    color:var(--lightaccent);
+    cursor:pointer;
+}
+.leftside{
+    width: calc(12% - 25px);
+    color:var(--reg);
+}
+.leftside p{
+    margin-top:15px;
+}
+.rightpart{
+    width: calc(88% - 25px);
+}
+.rightpart img{
+    margin: 30px 0px;
+}
+.rightpart video{
+    margin:30px 0px;
+    width:100%
+}
+.rightpart object{
+    margin: 50px 0px;
+}
+.rightside{
+    display:flex;
+    flex-direction:row;
+}
+.photosflex{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-evenly;
+    margin:25px 0px;
+    column-gap:15px;
+}
+.photosflex div{
+    flex: 1 1 0;
+    object-fit:contain;
+}
+.photosflex div img{
+    object-fit:contain;
+    width: 100%;
+    margin:0px;
+}
+.textspace{
+    width:30vw;
+}
+.otherspace{
+    width:45vw;
+    display:flex;
+    flex-direction:row;
+    align-items:end;
+    padding-left:50px;
+    padding-right:50px;
+    justify-content:left;
+    column-gap:75px;
+}
+.otherspace img{
+    width:35vw;
+}
+.rightleft{
+    display:flex;
+    flex-direction:row;
+    column-gap:50px;
+}
+.rightleft h1{
+    margin-bottom:15px;
+}
+.rightleft p{
+    margin-bottom:15px;
+}
+.rightleft h3{
+    font-size:var(--h3);
+    font-family: var(--headerfam);
+    font-weight: var(--bold);
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.casestudydivider{
+    border-top:1px var(--reg) solid;
+    border-bottom:1px var(--reg) solid;
+    padding-top:15px;
+    padding-bottom:15px;
+    text-align:center;
+    margin-top:30px;
+    margin-bottom:30px;
+    color:var(--accent);
 }
 #loadOverlay{display: none;}
 /*MOBILE ADJUSTMENTS*/

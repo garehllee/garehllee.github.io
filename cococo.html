@@ -10,7 +10,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
     <!-- End Google Tag Manager -->
-  <link rel = "stylesheet" href="style.css">
+  <link rel = "stylesheet" href="style2.css">
   <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="icon" href="images/logo/bearfavi2.ico">
@@ -32,26 +32,27 @@
 <body id="wholepage">
     <div class="top-thing2"></div>
     <!-- NAVIGATION -->
+<section class="wholepagemargin">
     <nav>
         <a href = "index.html"><img src="images/logo/bearlogo.webp"></a>
         <div class="nav-links" id="navLinks">
           <i class="fa fa-times" onclick="hideMenu()"></i>
           <ul>
-            <li><a href="index.html" class="linkhover">Work</a></li>
-            <li><a href="play.html" class="linkhover">Play</a></li>
-            <li><a href="about.html" class="linkhover">About</a></li>
+            <li><a href="index.html" class="linkhover">WORK</a></li>
+            <li><a href="play.html" class="linkhover">PLAY</a></li>
+            <li><a href="about.html" class="linkhover">ABOUT</a></li>
             <li><a href="images/about/GL resume.pdf" class="linkhover" target="_blank">Resume</a></li>
           </ul>
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
     </nav>
-    <hr style="margin-left:100px; margin-right:100px;">
+    <hr>
 
     <section>
         <section class="titletextbox rightleft">
             <div class="leftside">
               <p style="text-decoration:dashed;">ARTIFACTS <br></p>
-                <p><span onclick="tobrandidentity()">1. Brand Identity </span><br><span onclick="toprocess()">2. Process/Explorations</span></p>
+                <p><span onclick="tobrandidentity()">1. Brand Identity </span><br><span onclick="toprocess()">2. Explorations</span></p>
                 <script>
                   function tobrandidentity(){
                     const element = document.getElementById("brandidentity");
@@ -66,10 +67,9 @@
             <div class="rightpart">
               <div class="rightside">
                 <div class="textspace">
-                    <p>Brand Identity</p>
-                    <hr style="border-left:none; border-right:none; border-bottom:none; border-top:1px dashed var(--lightaccent);background-color:transparent;">
-                    <h1>Coco Co. is a Pop-Up About Coconuts & Filipino Culture.</h1>
-                    <p><br>
+                    <h5>BRAND IDENTITY</h5>
+                    <h1 style="margin-top:10px;">Coco Co. is a Pop-Up About Coconuts & Filipino Culture.</h1>
+                    <p>
                         Drawing on Filipino tradition in its interactions, the experience educates and excites visitors while uplifting Filipino culture. 
                         </p>
                 </div>
@@ -106,7 +106,7 @@
       </section>
       <section class="overview rightleft">
           <div class="leftside">
-              <p>CONTEXT</p>
+              <p style="margin-top:15px;">CONTEXT</p>
           </div>
           <div class="rightpart">
             <div class="rightside">
@@ -121,8 +121,8 @@
             </div>
           </div>
       </section>
-      <div id="brandidentity" class="divider">
-        <h3>1. Identity</h3>
+      <div id="brandidentity" class="casestudydivider">
+        <h3>1. IDENTITY</h3>
       </div>
         <section class="rightleft">
             <div class="leftside">
@@ -215,8 +215,8 @@
                     </div>
                 </div>
                 <img src="images/Pages/Cococo/apparel/stamps.webp" alt=""class="imgmargin">
-        <div id="process" class="divider">
-            <h3>2. Process/Explorations</h3>
+        <div id="process" class="casestudydivider">
+            <h3>2. PROCESS/EXPLORATIONS</h3>
         </div>
         <section class="rightleft">
             <div class="leftside">
@@ -241,18 +241,32 @@
             </div>
         </section>
     </section>
-    <section class = "footer de-emphasize">
-        <p>© 2024 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
-        <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover de-emphasize">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover de-emphasize">Instagram</a> | <span id="backtotop" class="footerlink2 de-emphasize" onclick = "totop()">Back to Top</span></p>
-        <script>
-          function totop(){
-            window.scroll({
-              top: 0, 
-              left: 0, 
-              behavior: 'smooth'
-            });
-          }
-        </script>
-    </section>
+<section class = "footer">
+  <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+  <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> | <span id="backtotop" class="footerlink linkhover" onclick = "totop()">Back to Top</span></p>
+  <script>
+    function totop(){
+      window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</section>
+</section>
+<!------JavaScript for Toggle Menu ------>
+    <script>
+      var navLinks =  document.getElementById("navLinks")
+    
+      function showMenu(){
+        navLinks.style.right = "0";
+        wholepage.classList.add("fixed-position");
+      }
+      function hideMenu(){
+        navLinks.style.right = "-100vw";
+        wholepage.classList.remove("fixed-position");
+      }
+    </script>
 </body>
 </html>

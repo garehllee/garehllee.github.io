@@ -10,7 +10,7 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
   <!-- End Google Tag Manager -->
-  <link rel = "stylesheet" href="style.css">
+  <link rel = "stylesheet" href="style2.css">
   <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="icon" href="images/logo/bearfavi2.ico">
@@ -31,48 +31,51 @@
 </script>
 <body id="wholepage">
   <div class="top-thing"></div>
+  <section class="wholepagemargin">
     <nav>
         <a href = "index.html"><img src="images/logo/bearlogo.webp"></a>
         <div class="nav-links" id="navLinks">
           <i class="fa fa-times" onclick="hideMenu()"></i>
           <ul>
-            <li><a href="index.html" class="linkhover">Work</a></li>
-            <li><a href="play.html" class="linkhover">Play</a></li>
-            <li><a href="" class="linkhover"><span class="currentpage">About</span></a></li>
-            <li><a href="images/about/GL resume.pdf" class="linkhover" target="_blank">Resume</a></li>
+            <li><a href="index.html" class="linkhover">WORK</a></li>
+            <li><a href="play.html" class="linkhover">PLAY</a></li>
+            <li><a href="" class="linkhover"><span class="currentpage">ABOUT</span></a></li>
+            <li><a href="images/about/GL resume.pdf" class="linkhover" target="_blank">RESUME</a></li>
           </ul>
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
     </nav>
-    <hr style="margin-left:100px; margin-right:100px;">
+    <hr class="divider" style="margin-bottom:50px">
 <section>
-    <div class="aboutcontainer">
-        <div class="aboutimage">
+    <div class="two-column-flex">
+        <div>
             <img src="images/about/DSC02215.jpg" alt="Image of Garrett Lee">
         </div>
-        <div class="aboutparagraph">
+        <div>
             <h2>Hi, I'm Garrett (he/him). <br>I'm studying <a href="https://design.cmu.edu/" class="h2-emphasis-link linkhover"><span class="h2-emphasis">Design</span></a> + HCI @ <span class = "h2-emphasis">Carnegie Mellon University.</span></h2>
             <p>
-                As a designer, I aim to make stuff that improves people's day-to-day lives. In practice, this means creating and adapting ideas, services, and experiences to be aesthetic, usable, and resonant, be it a <a href="animalproject.html" class="p-emphasis footerlink linkhover">silly animation</a> that makes passersby smile, an <a href="ecaar.html" class="p-emphasis footerlink linkhover">identity for a night market</a> that brings revenue to small businesses, a <a href="cococo.html" class="p-emphasis footerlink linkhover">website that excites users</a> about something they've never heard of, or anything in between. 
+              <br>
+                As a designer, I aim to make stuff that improves people's day-to-day lives. In practice, this means creating and adapting ideas, services, and experiences to be aesthetic, usable, and resonant, be it a silly animation that makes passersby smile, an identity for a night market that brings revenue to small businesses, a website that excites users about something they've never heard of, or anything in between. 
                 <br><br>
                 If I'm not designing, I'm probably reading a book (currently "Pachinko" by Min Jin Lee), following a TikTok (or Instagram Reels) coffee recipe, or exploring one of the many wonders Pittsburgh has to offer (most recently, the Zoo).
                 <br><br>
-            <h6><a href="mailto: glee2@andrew.cmu.edu" class="footerlink linkhover">Email</a> | <a href="images/about/GL resume.pdf" class="footerlink linkhover">Resume</a> | <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a></h6>
+            <h5><a href="mailto: glee2@andrew.cmu.edu" class="footerlink linkhover">EMAIL</a> | <a href="images/about/GL resume.pdf" class="footerlink linkhover">RESUME</a> | <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LINKEDIN</a></h5>
         </div>
     </div>  
 </section>
-<section class = "footer de-emphasize">
-    <p>© 2024 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
-    <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover de-emphasize">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover de-emphasize">Instagram</a> | <span id="backtotop" class="footerlink2 de-emphasize" onclick = "totop()">Back to Top</span></p>
-    <script>
-      function totop(){
-        window.scroll({
-          top: 0, 
-          left: 0, 
-          behavior: 'smooth'
-        });
-      }
-    </script>
+<section class = "footer">
+  <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+  <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> | <span id="backtotop" class="footerlink linkhover" onclick = "totop()">Back to Top</span></p>
+  <script>
+    function totop(){
+      window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</section>
 </section>
 <script>
   var navLinks =  document.getElementById("navLinks")
