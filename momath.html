@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8">
+  <title>National Museum of Mathematics</title>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
+  <!-- End Google Tag Manager -->
+  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="icon" href="images/logo/bearfavi2.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/mpo6yqx.css">
+</head>
+
+<!--Linking JavaScript-->
+<script src="jvmomath.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLXKYF9R4Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-CLXKYF9R4Y');
+</script>
+
+<body id="wholepage">
+  <div class="top-thing2"></div>
+
+  <!-- NAVIGATION -->
+  <section class="wholepagemargin">
+    <nav>
+      <a href="index.html"><img src="images/logo/bearlogo.webp" alt="Home"></a>
+      <div class="nav-links" id="navLinks">
+        <i class="fa fa-times" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="index.html" class="linkhover">WORK</a></li>
+          <li><a href="play.html" class="linkhover">PLAY</a></li>
+          <li><a href="about.html" class="linkhover">ABOUT</a></li>
+          <li><a href="images/about/GL resume.pdf" class="linkhover" target="_blank">RESUME</a></li>
+        </ul>
+      </div>
+      <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <hr class="divider">
+
+    <!-- TITLE + SIDENAV -->
+    <section>
+      <section class="titletextbox rightleft">
+        <div class="leftside">
+          <p style="text-decoration:dashed;">ARTIFACTS <br></p>
+          <p>
+            <span onclick="tobrand()">1. Brand Styles</span><br>
+            <span onclick="toexplorations()">2. Explorations</span>
+          </p>
+          <script>
+            function tobrand(){ document.getElementById('brand').scrollIntoView({ behavior: 'instant', block: 'start' }); }
+            function toexplorations(){ document.getElementById('explorations').scrollIntoView({ behavior: 'instant', block: 'start' }); }
+          </script>
+        </div>
+
+        <div class="rightpart">
+          <div class="rightside">
+            <div class="textspace">
+              <h5>IDENTITY • PRINT • MOTION</h5>
+              <h1 style="margin-top:10px">National Museum of Mathematics</h1>
+              <p>An identity that sparks mathematical delight and curiosity for mathematicians and families alike.</p>
+            </div>
+            <br>
+            <div class="otherspace">
+              <div>
+                <p>TIMELINE- <br><br>7 weeks</p>
+              </div>
+              <div>
+                <p>TEAM- <br><br>Serena Cai</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hover swap: still to motion (optional placeholder) -->
+          <div onpointerenter="mmHoverIn()" onpointerleave="mmHoverOut()">
+            <img id="stillImageMM" src="images/Pages/Momath/Momathcover.webp" alt="MoMath Identity Cover" style="display:block;">
+            <img id="movingImageMM" src="images/Pages/Momath/Billboard-ezgif.com-video-to-gif-converter.gif" alt="MoMath Identity Motion" style="display:none;">
+            <script>
+              function mmHoverIn(){
+                var gif = document.getElementById('movingImageMM');
+                var image = document.getElementById('stillImageMM');
+                gif.style.display = 'block';
+                image.style.display = 'none';
+              }
+              function mmHoverOut(){
+                var gif = document.getElementById('movingImageMM');
+                var image = document.getElementById('stillImageMM');
+                gif.style.display = 'none';
+                image.style.display = 'block';
+              }
+            </script>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTEXT -->
+      <section class="overview rightleft">
+        <div class="leftside">
+          <p>CONTEXT</p>
+        </div>
+        <div class="rightpart">
+          <div class="rightside">
+            <div class="textspace">
+              <h3>The National Museum of Math wants to make mathematics accessible, fun, and meaningful.</h3>
+              <p>
+                MoMath is a museum that claims to be “The Coolest Thing That Ever Happened to Math.” Through exhibitions, activities, and showcases, MoMath bridges the abstract world of math to reality. While they are primarily a children and families museum, MoMath brings together people of all ages to celebrate and spark curiosity around mathematics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 1. BRAND STYLES -->
+      <div id="brand" class="casestudydivider"><h3>THE BRAND REIMAGINES MATH AS A BUILDING BLOCK OF THE WORLD</h3></div>
+      <img src="images/Pages/Momath/635-Sixth-Avenue-Render newmathedited.webp" alt="">      
+      <section class="rightleft">
+        <div class="leftside"><p>LOGO</p></div>
+        <div class="rightpart">
+          <div class="rightside">
+            <div class="textspace">
+              <h3>The icon is an abstracted rhomboid prism, encouraging viewers to see math from a new perspective.</h3>
+              <p>Geometry is the first math children learn through play tiles and number building blocks. Geometry is also among the most grounded disciplines in math, so we felt that a building block of some sort served as a strong symbol of curiosity and practicality.</p>
+            </div>
+          </div>
+          <video muted autoplay loop>
+                    <source src="images/Pages/Momath/Full Wordmark_2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            <video muted autoplay loop>
+                    <source src="images/Pages/Momath/WordmarkAbbreviated_1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+            </video>
+        </div>
+      </section>
+      <section class="rightleft">
+        <div class="leftside"></div>
+        <div class="rightpart">
+          <div class="rightside">
+            <div class="textspace">
+              <h3>The icon can also be tessellated, divided, and rearranged to create delightful symbols for exhibitions.</h3>
+              <p>
+The tessellation serves a double purpose. It allows for generative design, like in the case of exhibition icons, and it also serves as a motif for the interconnectedness between the math world and the real world. Most of us wouldn’t typically think of math as a community, but usage of the block to highlight math and people as one aims to bring in a new regular audience.</p>
+            </div>
+          </div>
+<video muted autoplay loop>
+                    <source src="images/Pages/Momath/momathicons.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+            </video>
+        </div>
+      </section>
+      <section class="rightleft">
+        <div class="leftside"><p>TYPEFACE</p></div>
+        <div class="rightpart">
+          <div class="rightside">
+            <div class="textspace">
+              <h3>The header typeface is custom, a variation of Field Gothic by Max Phillips. </h3>
+              <p>
+                We added slight ink traps, moved crossbars up or down to align with the golden ratio, and moved the geometry of rounded letters closer to a normal circle to create a quirkier, math-based typeface.
+              </p>
+            </div>
+          </div>
+          <video muted autoplay loop>
+                    <source src="images/Pages/Momath/MoMathTypeface.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+            </video>
+            <img src="images/Pages/Momath/typesystem.webp" alt="">
+        </div>
+      </section>
+      <section class="rightleft">
+        <div class="leftside"><p>COLOR</p></div>
+        <div class="rightpart">
+          <div class="rightside">
+            <div class="textspace">
+              <h3>The colors are adjusted from Wolfram Alpha’s orange, paying homage to MoMath’s origins, and built into a bright, refreshing palette.</h3>
+            </div>
+          </div>
+                      <img src="images/Pages/Momath/colormomath.webp" alt="">
+          </div>
+          </section>
+            <img src="images/Pages/Momath/full poster mockup.webp" alt="">
+            <div class="photosflex">
+                <div><img src="images/Pages/Momath/momath_signageoutside.webp" alt=""></div>
+                <div>            <img src="images/Pages/Momath/momath_childrenusingexhibit.webp" alt=""></div>
+            </div>
+            <video muted autoplay loop>
+                    <source src="images/Pages/Momath/SubwayBillboardFinal.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+            </video>
+            <div class="photosflex">
+                <div><img src="images/Pages/Momath/momathlaptopmockup.webp" alt=""></div>
+                <div><img src="images/Pages/Momath/momathbrochuremockup.webp" alt="">
+                <img src="images/Pages/Momath/momath_socials.webp" alt="">
+            </div>
+            </div>
+            <img src="images/Pages/Momath/gallerywallmockup1.webp" alt="">
+            <div class="photosflex">
+                <div><img src="images/Pages/Momath/composite mockup.webp" alt=""></div>
+                <div>
+                    <img src="images/Pages/Momath/momath_insideexhibition1.webp" alt="">
+                </div>
+                <div>
+                    <img src="images/Pages/Momath/Momath_insideexhibition2.webp" alt="">
+                </div>
+            </div>
+
+      <!-- 5. EXPLORATIONS -->
+      <div id="explorations" class="casestudydivider"><h3>EXPLORATIONS</h3></div>
+      <section class="rightleft">
+        <div class="leftside"><p>BASELINES</p></div>
+        <div class="rightpart">
+          <div class="rightside">
+            <div class="textspace">
+              <h3>The identity had to spark curiosity, de‑intellectualize math, and remain versatile enough to delight at museum scale.</h3>
+            <p>Through our research, we found the core tenets of MoMath to stretch far beyond simply celebrating math. Much of the programming is oriented toward making math accessible for everyone, even concepts that are typically taught at the college level. 
+            </p>
+            </div>
+          </div>
+          </div>
+          </section>
+    <section class="rightleft">
+        <div class="leftside"><p>THREE DIRECTIONS</p></div>
+        <div class="rightpart">
+        <div class="rightside" style="margin-top:24px;">
+            <div class="textspace">
+              <p>Refresh would lean into the existing MoMath brand system, but use inventive typography to push forward.
+              </p>
+            </div>
+            <div>
+            <img src="images/Pages/Momath/direction 1_ refresh.webp" alt="Direction: Refresh">
+          </div></div>
+    </div>
+        </section> 
+    <section class="rightleft">
+        <div class="leftside"></div>
+        <div class="rightpart">
+          <div class="rightside" style="margin-top:24px;">
+            <div class="textspace">
+                <p>Tessellation focuses on interconnectedness while creating meaning through the form itself.</p>
+            </div>
+            <div>
+                <img src="images/Pages/Momath/direction 2_ tessellations.webp" alt="Direction: Tessellation">
+            </div>
+          </div>
+        </section>
+    <section class="rightleft">
+        <div class="leftside"></div>
+        <div class="rightpart">
+          <div class="rightside" style="margin-top:24px;">
+            <div class="textspace">
+            <p>Paper brings in three dimensions, eliciting the idea of seeing from a new perspective while grounding the identity in the real world.</p>  
+            </div>
+            <div><img src="images/Pages/Momath/direction 3_ paper.webp" alt="Direction: Paper"></div>
+          </div>
+        </div>
+        </section>
+    <section class="rightleft">
+        <div class="leftside"></div>
+        <div class="rightpart">
+          <div class="rightside" style="margin-top:24px;">
+            <div class="textspace">
+              <h3>We ultimately combined Tessellation with Paper to create the final module.</h3>
+            </div>
+          </div>
+          <div class="photosflex">
+            <div><img src="images/Pages/Momath/application explorations.webp" alt="Application Iterations"></div>
+            <div><img src="images/Pages/Momath/momathicons.webp" alt="Final Module"></div>
+          </div>
+          <img src="images/Pages/Momath/color explorations.webp" alt="">
+        </div>
+
+        </section>
+        <img src="images/Pages/Momath/635-Sixth-Avenue-Render newmathedited.webp" alt="">      
+
+    </section>
+
+    <!-- FOOTER -->
+    <section class="footer">
+      <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+      <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> | <span id="backtotop" class="footerlink linkhover" onclick="totop()">Back to Top</span></p>
+      <script>
+        function totop(){ window.scroll({ top: 0, left: 0, behavior: 'smooth' }); }
+      </script>
+    </section>
+  </section>
+
+  <!------JavaScript for Toggle Menu ------>
+  <script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu(){ navLinks.style.right = "0"; wholepage.classList.add("fixed-position"); }
+    function hideMenu(){ navLinks.style.right = "-100vw"; wholepage.classList.remove("fixed-position"); }
+  </script>
+</body>
+</html>

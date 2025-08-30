@@ -19,10 +19,12 @@
     --h4: 1.25rem;
     --p: 1.063rem;
     --small:.875rem;
-    --colorturnpoint:.55;
+    --colorturnpoint:.65;
     --colorturnpointplay:0.04;
     --colorturnpointLG:0.05;
     --colorturnpointLG2:0.9;
+    --colorturnpointMM:0.4;
+    --colorturnpointMM2:0.95;
     --headerfam: "forma-djr-text", sans-serif;
     --paragraphfam: "forma-djr-text", sans-serif;
     --emphasisfam: "forma-djr-text", sans-serif;
@@ -160,6 +162,9 @@ body .wholepagemargin{
 }
 img{
     width:100%;
+}
+video{
+    width:100%
 }
 
 /*NAVIGATION*/
@@ -664,6 +669,9 @@ nav .fa{
     column-gap:75px;
 }
 .otherspace img{
+    width:35vw;
+}
+.otherspace video{
     width:35vw;
 }
 .rightleft{
