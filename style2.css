@@ -23,7 +23,7 @@
     --colorturnpointplay:0.04;
     --colorturnpointLG:0.05;
     --colorturnpointLG2:0.9;
-    --colorturnpointMM:0.4;
+    --colorturnpointMM:0.5;
     --colorturnpointMM2:0.95;
     --headerfam: "forma-djr-text", sans-serif;
     --paragraphfam: "forma-djr-text", sans-serif;
@@ -647,7 +647,7 @@ nav .fa{
     column-gap:15px;
 }
 .photosflex div{
-    flex: 1 1 0;
+    flex: 1;
     object-fit:contain;
 }
 .photosflex div img{
