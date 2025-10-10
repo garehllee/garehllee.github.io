@@ -60,8 +60,7 @@
     }
 
 .cookie{
-    width:50px; 
-    animation: rotate360 10s linear infinite;
+    width:55px; 
 }
 h1{
     color:var(--reg);
@@ -807,6 +806,9 @@ left: 5vw;
         opacity: 1;
         transition:.5s;
     }    
+    .cookie{
+    display:none;
+}
     nav .fa{
         display: inline-flex;
         color: var(--reg);

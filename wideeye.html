@@ -85,9 +85,25 @@
           </div>
 
           <!-- Cover Image Placeholder -->
-          <div>
-            <img src="images/covers/wideeye/wideeyecover.webp" alt="Wide Eye Internship Cover">
-          </div>
+                          <div onpointerenter="gb()" onpointerleave="gb2()">
+                    <img id="stillImageECAAR" src="images/covers/wideeye/wideeyecover.webp" alt="" style="display: block;">
+                    <img id="movingImageECAAR" src="images/covers/wideeye/Recording 2025-10-09 220239.gif" alt="" style="display: none;">
+                    <script>
+                    function gb() {
+                        var gif = document.getElementById('movingImageECAAR');
+                        var image = document.getElementById('stillImageECAAR');
+                        gif.style.display = 'block';
+                        image.style.display = 'none'
+        
+                    }
+                    function gb2() {
+                        var gif = document.getElementById('movingImageECAAR');
+                        var image = document.getElementById('stillImageECAAR');
+                        gif.style.display='none'
+                        image.style.display = 'block';
+                    }
+                    </script>
+                </div>
         </div>
       </section>
 
@@ -115,7 +131,7 @@
         <div class="rightpart">
           <div class="rightside">
             <div class="textspace">
-              <h3>Rapid response graphics need to be delivered before the headlines change.</h3>
+              <h3>Rapid response graphics needed to be delivered before the headlines changed.</h3>
               <p>My manager and I co-led Rapid Response graphics for social media and various other applications. This is a sampling of the graphics I created. Most rapid response graphics had to be completed in 1-2 hours max for us to stay on top of requests. Each graphic involved direct communication with the client, delivery, and revisions.</p>
             </div>
           </div>
@@ -143,6 +159,7 @@
             <div><img src="images/Pages/Portfolio/MOV-061025-MemberSpeakout-Toolkit-A-PlacardPoster.png" alt=""><img src="images/Pages/Portfolio/MOV-061025-MemberSpeakout-Toolkit-C-PlacardPoster.png" alt=""></div>
             <div><img src="images/Pages/Portfolio/MOV-073025-PostCard-Front-1.png" alt=""><img src="images/Pages/Portfolio/MOV-073025-PostCard-Front.png" alt=""></div>
           </div>
+          <img src="images/Pages/Portfolio/gettyimages-2234349326-2048x2048.jpg" alt="">
         </div>
       </section>
 
@@ -174,12 +191,12 @@
             <div><img src="images/Pages/Portfolio/Slide deck/image 41.png" alt=""></div>
           </div>
           <div class="photosflex">
-            <div><img src="images/Pages/Portfolio/Slide deck/image 42.png" alt=""></div>
             <div><img src="images/Pages/Portfolio/Slide deck/image 43.png" alt=""></div>
             <div><img src="images/Pages/Portfolio/Slide deck/Screenshot 2025-08-25 at 5.14.13 PM 1.png" alt=""></div>
             <div><img src="images/Pages/Portfolio/Slide deck/Screenshot 2025-08-25 at 5.26.19 PM 1.png" alt=""></div>
             <div><img src="images/Pages/Portfolio/Slide deck/Screenshot 2025-08-25 at 5.56.58 PM 1.png" alt=""></div>
           </div>
+          <img src="images/Pages/Portfolio/Slide deck/image 42.png" alt="">
         </div>
       </section>
 
