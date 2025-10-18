@@ -169,7 +169,8 @@ body .wholepagemargin{
 }
 body{
     background-color: white;
-    cursor: url(images/cursor/bakingicons-01.svg) 10 10, pointer;
+    /* cursor: url(images/cursor/bakingicons-01.svg) 10 10, pointer; */
+    cursor:none;
     
 }
 .header{
@@ -180,15 +181,45 @@ body{
     position:relative;
 }
 
-.linkhover:hover{
+/* .linkhover:hover{
     cursor:pointer;
-}
+} */
+/* #cursor-site-wide{
+    transition: transform 0.1s ease;
+} */
 img{
     width:100%;
 }
 video{
     width:100%
 }
+
+/*CURSORS*/
+
+.custom-cursor{
+    /* margin:0;
+    padding:0; */
+    position:fixed;
+    top:0;
+    left:0;
+    display:none;
+    z-index:9999;
+    pointer-events:none;
+}
+.site-wide{
+    width:40px;
+    height:40px;
+}
+#cursor-site-wide {
+    /* your existing styles */
+    /* background-image: url('images/cursor/bakingicons-01.svg'); */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* #cursor-site-wide.cursor-hover {
+    background-image: url('images/cursor/bakingicons-02.svg');
+} */
 
 /*NAVIGATION*/
 
@@ -347,7 +378,7 @@ left: 5vw;
     max-height:min-content;
 }
 .miscimages:hover{
-    cursor:url(images/cursor/cursormoveaccent.svg) -10 -10, move;
+    cursor: move;
 }
 .miscimages img{
     outline:solid 1px white;
@@ -465,12 +496,12 @@ left: 5vw;
     transition-duration:0.2s;
     border: 1px var(--lightaccent) solid;
     color:var(--lightaccent);
-    cursor: url(images/cursor/cursorselectaccent.svg) -10 -10, pointer;
+    cursor: pointer;
 }
 .button:hover .button-content{
     color:var(--lightaccent);
     transition-duration:.2s;
-    cursor: url(images/cursor/cursorselectaccent.svg) -10 -10, pointer;
+    cursor: pointer;
 }
 .footer{
     margin: 30px;
@@ -528,7 +559,7 @@ left: 5vw;
     text-decoration:none;
 }
 .triflex .playclickable .link:hover{
-    cursor:url(images/cursor/cursorselectaccent.svg) -10 -10, pointer;
+    cursor: pointer;
 }
 .triflex .slideshow-container{
     width:100%;
