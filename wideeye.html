@@ -87,7 +87,10 @@
           <!-- Cover Image Placeholder -->
                           <div onpointerenter="gb()" onpointerleave="gb2()">
                     <img id="stillImageECAAR" src="images/covers/wideeye/wideeyecover.webp" alt="" style="display: block;">
-                    <img id="movingImageECAAR" src="images/covers/wideeye/Recording 2025-10-09 220239.gif" alt="" style="display: none;">
+                    <video id="movingImageECAAR" muted autoplay loop style="display:none;">
+                <source src="images/covers/wideeye/Recording 2025-10-09 220239.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                    </video>
                     <script>
                     function gb() {
                         var gif = document.getElementById('movingImageECAAR');
