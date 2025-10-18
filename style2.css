@@ -217,9 +217,9 @@ video{
     background-repeat: no-repeat;
 }
 
-/* #cursor-site-wide.cursor-hover {
-    background-image: url('images/cursor/bakingicons-02.svg');
-} */
+#cursor-site-wide.cursor-hover {
+   display:none;
+}
 
 /*NAVIGATION*/
 
