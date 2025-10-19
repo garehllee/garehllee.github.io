@@ -394,6 +394,9 @@ left: 5vw;
     outline:solid 1px white;
     display:block;
 }
+.miscimagees video:hover{
+    cursor:auto;
+}
 .misc p{
     position: absolute;
     font-family: var(--paragraphfam);
@@ -542,6 +545,9 @@ left: 5vw;
 }
 .triflex .playitems video{
     width: 100%;
+}
+.triflex .playitems video:hover{
+    cursor:auto;
 }
 .triflex .playitems-emphasis{
     width: 64%;
@@ -714,6 +720,9 @@ left: 5vw;
     margin:30px 0px;
     width:100%
 }
+.rightpart video:hover{
+    cursor:auto;
+}
 .rightpart object{
     margin: 50px 0px;
 }
@@ -755,6 +764,9 @@ left: 5vw;
 }
 .otherspace video{
     width:35vw;
+}
+.otheerspace video:hover{
+    cursor:auto;
 }
 .rightleft{
     display:flex;

@@ -5,10 +5,11 @@ const site_wide_cursor = document.getElementById('cursor-site-wide');
 let mouseX = parseFloat(sessionStorage.getItem('cursorX')) || 0;
 let mouseY = parseFloat(sessionStorage.getItem('cursorY')) || 0;
 let hasMouseMoved = sessionStorage.getItem('hasMouseMoved') === 'true';
+let isHoveringLink = false; // Track if hovering a .linkhover element
 
 // Track if mouse is currently on the page
 document.addEventListener('mouseenter', () => {
-    if (hasMouseMoved) {
+    if (hasMouseMoved && !isHoveringLink) {
         site_wide_cursor.style.display = 'block';
         updateCursorPosition();
     }
@@ -40,15 +41,17 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function setupHoverListeners() {
-    const elements = document.querySelectorAll('.linkhover');
+    const elements = document.querySelectorAll('.linkhover, .miscimages, .button, nav img, .next, .prev, video, iframe');
     
     elements.forEach(element => {
         element.addEventListener('mouseenter', () => {
-            site_wide_cursor.classList.add('cursor-hover');
+            isHoveringLink = true;
+            site_wide_cursor.style.display = 'none';
         });
         
         element.addEventListener('mouseleave', () => {
-            site_wide_cursor.classList.remove('cursor-hover');
+            isHoveringLink = false;
+            site_wide_cursor.style.display = 'block';
         });
     });
 }
@@ -65,8 +68,10 @@ function TrackCursor(evt) {
     sessionStorage.setItem('cursorY', mouseY);
     sessionStorage.setItem('hasMouseMoved', 'true');
     
-    // Show cursor
-    site_wide_cursor.style.display = 'block';
+    // Show cursor only if not hovering a link
+    if (!isHoveringLink) {
+        site_wide_cursor.style.display = 'block';
+    }
     
     updateCursorPosition();
 }
