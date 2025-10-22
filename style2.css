@@ -67,6 +67,7 @@ h1{
     font-family:var(--headerfam);
     font-size: var(--h1);
     font-weight: var(--bold);
+    
 }
 h2{
     color:var(--reg);
@@ -849,9 +850,9 @@ left: 5vw;
         opacity: 1;
         transition:.5s;
     }    
-    .cookie{
+    /* .cookie{
     display:none;
-}
+} */
     nav .fa{
         display: inline-flex;
         color: var(--reg);
