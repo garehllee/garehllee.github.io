@@ -235,6 +235,9 @@ nav img{
     width: 80px;
     transition: transform .3s ease-in-out;
 }
+nav a div div img:hover{
+    transform: none;
+}
 nav img:hover {
     transform: rotate(-30deg);
 }
