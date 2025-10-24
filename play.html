@@ -38,7 +38,31 @@
   </div>
     <section class="wholepagemargin">
     <nav>
-        <a href = "index.html"><img src="images/logo/bearlogo.webp"></a>
+                  <script>
+            function gbnav1(){
+              var gif = document.getElementById('animation');
+              var bear = document.getElementById('bear');
+            gif.style.display = 'block';
+            bear.style.display = 'none';
+            }
+  
+            function gbnav2(){
+              var gif = document.getElementById('animation');
+              var bear = document.getElementById('bear');
+            gif.style.display = 'none';
+            bear.style.display = 'block';
+            }
+          </script>
+        <a onpointerenter="gbnav1()" onpointerleave="gbnav2()" href="index.html" style="text-decoration:none;">
+          <div id="animation" style="display:none; height:69.02px;">
+            <div>
+<img src="images/about/ezgif.com-animated-gif-maker (9).gif" alt="" style="width:150px; position:absolute; top:5px;">
+            </div>
+          </div>
+          <div id="bear">
+            <img src="images/logo/bearlogo.webp" alt="Bear-themed logo"> <span><img
+              src="images/about/cookie.webp" alt="" class="cookie" style="margin-left:10px;"></span>
+          </div></a>
         <div class="nav-links" id="navLinks">
           <i class="fa fa-times" onclick="hideMenu()"></i>
           <ul>
