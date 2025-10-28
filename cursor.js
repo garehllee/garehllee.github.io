@@ -7,11 +7,34 @@ let mouseY = parseFloat(sessionStorage.getItem('cursorY')) || 0;
 let hasMouseMoved = sessionStorage.getItem('hasMouseMoved') === 'true';
 let isHoveringLink = false; // Track if hovering a .linkhover element
 
+// Check if screen width is less than 539px
+function isSmallScreen() {
+    return window.innerWidth < 539;
+}
+
+// Show cursor only if not on small screen
+function showCursor() {
+    if (!isSmallScreen() && !isHoveringLink) {
+        site_wide_cursor.style.display = 'block';
+        document.body.style.cursor = 'none'; // Hide default cursor
+    }
+}
+
+// Hide custom cursor and show default
+function hideCustomCursor() {
+    site_wide_cursor.style.display = 'none';
+    document.body.style.cursor = 'auto'; // Show default cursor
+}
+
 // Track if mouse is currently on the page
 document.addEventListener('mouseenter', () => {
-    if (hasMouseMoved && !isHoveringLink) {
-        site_wide_cursor.style.display = 'block';
-        updateCursorPosition();
+    if (hasMouseMoved) {
+        if (isSmallScreen()) {
+            hideCustomCursor();
+        } else {
+            showCursor();
+            updateCursorPosition();
+        }
     }
 });
 
@@ -32,12 +55,25 @@ function updateCursorPosition() {
 window.addEventListener('DOMContentLoaded', () => {
     // If we have stored coordinates, show the cursor immediately
     if (hasMouseMoved) {
-        site_wide_cursor.style.display = 'block';
-        updateCursorPosition();
+        if (isSmallScreen()) {
+            hideCustomCursor();
+        } else {
+            showCursor();
+            updateCursorPosition();
+        }
     }
     
     // Add hover listeners for .linkhover elements
     setupHoverListeners();
+});
+
+// Toggle cursor on resize
+window.addEventListener('resize', () => {
+    if (isSmallScreen()) {
+        hideCustomCursor();
+    } else if (hasMouseMoved && !isHoveringLink) {
+        showCursor();
+    }
 });
 
 function setupHoverListeners() {
@@ -47,11 +83,18 @@ function setupHoverListeners() {
         element.addEventListener('mouseenter', () => {
             isHoveringLink = true;
             site_wide_cursor.style.display = 'none';
+            if (!isSmallScreen()) {
+                document.body.style.cursor = 'auto'; // Show default cursor on hover
+            }
         });
         
         element.addEventListener('mouseleave', () => {
             isHoveringLink = false;
-            site_wide_cursor.style.display = 'block';
+            if (isSmallScreen()) {
+                hideCustomCursor();
+            } else {
+                showCursor();
+            }
         });
     });
 }
@@ -68,10 +111,11 @@ function TrackCursor(evt) {
     sessionStorage.setItem('cursorY', mouseY);
     sessionStorage.setItem('hasMouseMoved', 'true');
     
-    // Show cursor only if not hovering a link
-    if (!isHoveringLink) {
-        site_wide_cursor.style.display = 'block';
+    // Show cursor only if not hovering a link and not on small screen
+    if (isSmallScreen()) {
+        hideCustomCursor();
+    } else {
+        showCursor();
+        updateCursorPosition();
     }
-    
-    updateCursorPosition();
 }
