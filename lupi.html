@@ -55,7 +55,7 @@
         <section class="titletextbox rightleft">
             <div class="leftside">
               <p style="text-decoration:dashed;">ARTIFACTS <br></p>
-                <p><span onclick="tovideo()">1. Video </span><br><span onclick="toprocess()">2. Booklet</span><br><span onclick="tobrandidentity()">3. Poster</span></p>
+                <p><span onclick="tovideo()">1. Video </span><br><span onclick="toprocess()">2. Booklet</span><br><span onclick="tobrandidentity()">3. Poster</span><br><span onclick="toreflection()">4. Process & Reflection</span></p>
                 <script>
                   function tobrandidentity(){
                     const element = document.getElementById("brandidentity");
@@ -67,6 +67,10 @@
                   }
                   function tovideo(){
                     const element = document.getElementById("video");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function toreflection(){
+                    const element = document.getElementById("reflection");
                       element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
                   }
                 </script>        
@@ -117,7 +121,7 @@
           <div class="rightpart">
             <div class="rightside">
               <div class="textspace">
-                <h1>Celebrating Giorgia Lupi’s Work and Sharing Her Philosophy</h1>
+                <h3>Celebrating Giorgia Lupi’s Work and Sharing Her Philosophy</h3>
                 <p><span>For Sophomore Spring, I was tasked with creating a video, booklet, and poster to celebrate my chosen “design hero,” Giorgia Lupi. The three artifacts served different intrinsic purposes, but had to stay visually cohesive.
 
 <br><br><a href="https://giorgialupi.com/about" target="_blank">Giorgia Lupi</a></span> is an information designer and Partner at Pentagram whose work aims to bridge the divide between data and the humanity they represent, taking the abstract and making it felt. Her approach, “data humanism,” recognizes that data isn’t perfect — it’s collected by and for imperfect people. In the flaws of data lies the context and humanity that turns data into a tool that connects, exposes, and resonates. 
@@ -226,6 +230,43 @@
               </div>
             </div>
         </section>
+        <div id="reflection" class="casestudydivider">
+        <h3>4. PROCESS & REFLECTION</h3>
+      </div>
+      <section class="rightleft">
+        <div class="leftside"></div>
+        <div class="rightpart">
+          <div class="rightside">
+            <div class="textspace">
+              <h3>Process Gallery</h3>
+            </div>
+          </div>
+          <div class="photosflex">
+            <div><img src="images/Pages/lupi/process/Design Hero.jpg" alt=""></div>
+            <div><img src="images/Pages/lupi/process/Design Hero.png" alt=""></div>
+            <div><img src="images/Pages/lupi/process/Design Hero (1).png" alt=""></div>
+          </div>
+          <div class="photosflex">
+            <div><img src="images/Pages/lupi/process/Design Hero (2).png" alt=""></div>
+            <div><img src="images/Pages/lupi/process/Design Hero (3).png" alt=""></div>
+            <div><img src="images/Pages/lupi/process/Design Hero (4).png" alt=""></div>
+          </div>
+          <div class="photosflex">
+            <div><img src="images/Pages/lupi/process/Design Hero (5).png" alt=""></div>
+            <div><img src="images/Pages/lupi/process/Design Hero (6).png" alt=""></div>
+            <div><img src="images/Pages/lupi/process/Design Hero (7).png" alt=""></div>
+          </div>
+        </div>
+      </section>
+      <section class="rightleft">
+        <div class="leftside"></div>
+        <div class="rightpart">
+          <div class="rightside">
+            <div class="textspace">
+              <p>When I began this project, I was really intimidated by the prospect of creating so many artifacts of consistent quality. Taking it one step at a time, we made it! I learned to get started, even when I didn't feel ready, and various workflows to get unstuck (yay for hand sketching!). If I had to do it all again, I'd think more about a cohesive strategy from the beginning, take risks in new software like Cavalry for data-vis applications, and take myself a little less seriously. <br><br>Special thanks to Yoshi Torralva for speaking with Michele and me about Giorgia Lupi, Brett Yasko for advising this project, and Amber and Caleb for their guidance as TAs.</p>            </div>
+          </div>
+        </div>
+      </section>
     </section>
     <section class = "footer">
   <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
