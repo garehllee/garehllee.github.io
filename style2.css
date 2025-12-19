@@ -165,7 +165,7 @@ small{
 body .wholepagemargin{
     margin:0px auto;
     padding: 0px 1rem;
-    max-width:70rem;
+    max-width:80rem;
     
 }
 body{
@@ -337,7 +337,7 @@ left: 5vw;
     flex-wrap:wrap;
     justify-content:space-between;
     column-gap:50px;
-    row-gap:75px;
+    row-gap:50px;
 }
 .bot-align{
     align-items: flex-end;
