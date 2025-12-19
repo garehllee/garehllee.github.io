@@ -710,25 +710,23 @@ left: 5vw;
 .leftside{
     width: calc(12% - 25px);
     color:var(--reg);
-}
-.leftside p{
-    margin-top:15px;
+    padding-top:25px;
 }
 .rightpart{
     width: calc(88% - 25px);
 }
 .rightpart img{
-    margin: 30px 0px;
+    margin: 10px 0px;
 }
 .rightpart video{
-    margin:30px 0px;
+    margin:10px 0px;
     width:100%
 }
 .rightpart video:hover{
     cursor:auto;
 }
 .rightpart object{
-    margin: 50px 0px;
+    margin: 10px 0px;
 }
 .rightside{
     display:flex;
@@ -738,8 +736,8 @@ left: 5vw;
     display:flex;
     flex-direction:row;
     justify-content:space-evenly;
-    margin:25px 0px;
-    column-gap:15px;
+    margin:10px 0px;
+    column-gap:20px;
 }
 .photosflex div{
     flex: 1;
@@ -748,10 +746,11 @@ left: 5vw;
 .photosflex div img{
     object-fit:contain;
     width: 100%;
-    margin:0px;
+    margin:10px 0px;
 }
 .textspace{
     width:30vw;
+    margin:10px 0px;
 }
 .otherspace{
     width:45vw;
