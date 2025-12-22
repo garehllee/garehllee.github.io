@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8">
+  <title>Through All This Noise</title>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
+  <!-- End Google Tag Manager -->
+  <link rel="stylesheet" href="styletest.css">
+  <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="icon" href="images/logo/bearfavi2.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/mpo6yqx.css">
+</head>
+<div class="grid">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDivs = document.querySelectorAll('.grid div');
+  const columns = 10;
+  const speedUpDuration = 200; // milliseconds to speed up
+  const slowDownDuration = 1000; // milliseconds to slow down
+
+  // Store state for each div
+  const divStates = Array.from(gridDivs).map((div, index) => ({
+    div,
+    varName: `--gradienttime-${index}`,
+    currentTime: 15,
+    targetTime: 15,
+    transitionStart: null,
+    transitionStartValue: 15,
+    transitionDuration: slowDownDuration
+  }));
+
+  // Initialize all divs
+  divStates.forEach(state => {
+    state.div.style.setProperty(state.varName, '15s');
+    state.div.style.animation = `AnimationName var(${state.varName}) linear infinite reverse`;
+  });
+
+  function getNeighborIndices(index) {
+    const row = Math.floor(index / columns);
+    const col = index % columns;
+    const neighbors = [];
+
+    // Adjacent cells (distance 1)
+    if (col > 0) neighbors.push({ index: index - 1, distance: 1 });
+    if (col < columns - 1) neighbors.push({ index: index + 1, distance: 1 });
+    if (index >= columns) neighbors.push({ index: index - columns, distance: 1 });
+    if (index < gridDivs.length - columns) neighbors.push({ index: index + columns, distance: 1 });
+
+    // Diagonal cells (distance 1.4)
+    if (col > 0 && index >= columns) neighbors.push({ index: index - columns - 1, distance: 1.4 });
+    if (col < columns - 1 && index >= columns) neighbors.push({ index: index - columns + 1, distance: 1.4 });
+    if (col > 0 && index < gridDivs.length - columns) neighbors.push({ index: index + columns - 1, distance: 1.4 });
+    if (col < columns - 1 && index < gridDivs.length - columns) neighbors.push({ index: index + columns + 1, distance: 1.4 });
+
+    return neighbors;
+  }
+
+  let rafId = null;
+  
+  function animate() {
+    let needsUpdate = false;
+    
+    divStates.forEach(state => {
+      if (state.currentTime !== state.targetTime) {
+        needsUpdate = true;
+        
+        if (state.transitionStart === null) {
+          state.transitionStart = performance.now();
+          state.transitionStartValue = state.currentTime;
+        }
+        
+        const elapsed = performance.now() - state.transitionStart;
+        const progress = Math.min(elapsed / state.transitionDuration, 1);
+        
+        // Smooth easing
+        const easedProgress = progress < 0.5 
+          ? 2 * progress * progress 
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        
+        state.currentTime = state.transitionStartValue + (state.targetTime - state.transitionStartValue) * easedProgress;
+        state.div.style.setProperty(state.varName, `${state.currentTime}s`);
+        
+        if (progress >= 1) {
+          state.currentTime = state.targetTime;
+          state.transitionStart = null;
+        }
+      }
+    });
+    
+    if (needsUpdate) {
+      rafId = requestAnimationFrame(animate);
+    } else {
+      rafId = null;
+    }
+  }
+
+  divStates.forEach((state, index) => {
+    state.div.addEventListener('mouseenter', () => {
+      state.targetTime = 5;
+      state.transitionStart = null;
+      state.transitionDuration = speedUpDuration; // Use speed-up duration
+
+      const neighbors = getNeighborIndices(index);
+      neighbors.forEach(({ index: neighborIndex, distance }) => {
+        const neighborState = divStates[neighborIndex];
+        const influence = distance === 1 ? 10 : 12;
+        neighborState.targetTime = influence;
+        neighborState.transitionStart = null;
+        neighborState.transitionDuration = speedUpDuration; // Use speed-up duration
+      });
+      
+      if (!rafId) {
+        rafId = requestAnimationFrame(animate);
+      }
+    });
+
+    state.div.addEventListener('mouseleave', () => {
+      state.targetTime = 15;
+      state.transitionStart = null;
+      state.transitionDuration = slowDownDuration; // Use slow-down duration
+
+      const neighbors = getNeighborIndices(index);
+      neighbors.forEach(({ index: neighborIndex }) => {
+        const neighborState = divStates[neighborIndex];
+        neighborState.targetTime = 15;
+        neighborState.transitionStart = null;
+        neighborState.transitionDuration = slowDownDuration; // Use slow-down duration
+      });
+      
+      if (!rafId) {
+        rafId = requestAnimationFrame(animate);
+      }
+    });
+  });
+});
+</script>
+</html>
