@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8">
-  <title>Through All This Noise</title>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
   <!-- End Google Tag Manager -->
@@ -143,10 +142,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const gridDivs = document.querySelectorAll('.grid div');
   const columns = 10;
-  const speedUpDuration = 200; // milliseconds to speed up
-  const slowDownDuration = 1000; // milliseconds to slow down
+  const speedUpDuration = 200;
+  const slowDownDuration = 1000;
+  const updateInterval = 50; // Update every 50ms for smoother discrete steps
 
-  // Store state for each div
   const divStates = Array.from(gridDivs).map((div, index) => ({
     div,
     varName: `--gradienttime-${index}`,
@@ -154,7 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
     targetTime: 15,
     transitionStart: null,
     transitionStartValue: 15,
-    transitionDuration: slowDownDuration
+    transitionDuration: slowDownDuration,
+    lastUpdate: 0
   }));
 
   // Initialize all divs
@@ -168,13 +168,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const col = index % columns;
     const neighbors = [];
 
-    // Adjacent cells (distance 1)
     if (col > 0) neighbors.push({ index: index - 1, distance: 1 });
     if (col < columns - 1) neighbors.push({ index: index + 1, distance: 1 });
     if (index >= columns) neighbors.push({ index: index - columns, distance: 1 });
     if (index < gridDivs.length - columns) neighbors.push({ index: index + columns, distance: 1 });
 
-    // Diagonal cells (distance 1.4)
     if (col > 0 && index >= columns) neighbors.push({ index: index - columns - 1, distance: 1.4 });
     if (col < columns - 1 && index >= columns) neighbors.push({ index: index - columns + 1, distance: 1.4 });
     if (col > 0 && index < gridDivs.length - columns) neighbors.push({ index: index + columns - 1, distance: 1.4 });
@@ -185,32 +183,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let rafId = null;
   
-  function animate() {
+  function animate(timestamp) {
     let needsUpdate = false;
     
     divStates.forEach(state => {
-      if (state.currentTime !== state.targetTime) {
+      if (Math.abs(state.currentTime - state.targetTime) > 0.01) {
         needsUpdate = true;
         
         if (state.transitionStart === null) {
-          state.transitionStart = performance.now();
+          state.transitionStart = timestamp;
           state.transitionStartValue = state.currentTime;
+          state.lastUpdate = timestamp;
         }
         
-        const elapsed = performance.now() - state.transitionStart;
-        const progress = Math.min(elapsed / state.transitionDuration, 1);
-        
-        // Smooth easing
-        const easedProgress = progress < 0.5 
-          ? 2 * progress * progress 
-          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-        
-        state.currentTime = state.transitionStartValue + (state.targetTime - state.transitionStartValue) * easedProgress;
-        state.div.style.setProperty(state.varName, `${state.currentTime}s`);
-        
-        if (progress >= 1) {
-          state.currentTime = state.targetTime;
-          state.transitionStart = null;
+        // Only update at discrete intervals
+        if (timestamp - state.lastUpdate >= updateInterval) {
+          const elapsed = timestamp - state.transitionStart;
+          const progress = Math.min(elapsed / state.transitionDuration, 1);
+          
+          const easedProgress = progress < 0.5 
+            ? 2 * progress * progress 
+            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+          
+          state.currentTime = state.transitionStartValue + (state.targetTime - state.transitionStartValue) * easedProgress;
+          state.div.style.setProperty(state.varName, `${state.currentTime}s`);
+          state.lastUpdate = timestamp;
+          
+          if (progress >= 1) {
+            state.currentTime = state.targetTime;
+            state.div.style.setProperty(state.varName, `${state.currentTime}s`);
+            state.transitionStart = null;
+          }
         }
       }
     });
@@ -224,9 +227,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   divStates.forEach((state, index) => {
     state.div.addEventListener('mouseenter', () => {
-      state.targetTime = 5;
+      state.targetTime = 8;
       state.transitionStart = null;
-      state.transitionDuration = speedUpDuration; // Use speed-up duration
+      state.transitionDuration = speedUpDuration;
 
       const neighbors = getNeighborIndices(index);
       neighbors.forEach(({ index: neighborIndex, distance }) => {
@@ -234,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const influence = distance === 1 ? 10 : 12;
         neighborState.targetTime = influence;
         neighborState.transitionStart = null;
-        neighborState.transitionDuration = speedUpDuration; // Use speed-up duration
+        neighborState.transitionDuration = speedUpDuration;
       });
       
       if (!rafId) {
@@ -245,14 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
     state.div.addEventListener('mouseleave', () => {
       state.targetTime = 15;
       state.transitionStart = null;
-      state.transitionDuration = slowDownDuration; // Use slow-down duration
+      state.transitionDuration = slowDownDuration;
 
       const neighbors = getNeighborIndices(index);
       neighbors.forEach(({ index: neighborIndex }) => {
         const neighborState = divStates[neighborIndex];
         neighborState.targetTime = 15;
         neighborState.transitionStart = null;
-        neighborState.transitionDuration = slowDownDuration; // Use slow-down duration
+        neighborState.transitionDuration = slowDownDuration;
       });
       
       if (!rafId) {
