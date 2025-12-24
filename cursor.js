@@ -119,3 +119,106 @@ function TrackCursor(evt) {
         updateCursorPosition();
     }
 }
+
+//clickable images in flex
+// Image & Video Lightbox Script
+// Add this script at the end of your HTML body, or in a separate .js file
+
+(function() {
+  // Create overlay elements
+  const overlay = document.createElement('div');
+  overlay.id = 'media-overlay';
+  overlay.style.cssText = `
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+  `;
+
+  const img = document.createElement('img');
+  img.style.cssText = `
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    cursor: default;
+    display: none;
+  `;
+
+  const video = document.createElement('video');
+  video.setAttribute('autoplay', '');
+  video.setAttribute('loop', '');
+  video.style.cssText = `
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    cursor: default;
+    display: none;
+  `;
+
+  overlay.appendChild(img);
+  overlay.appendChild(video);
+  document.body.appendChild(overlay);
+
+  // Get all images and videos in photosflex and photosflex2 containers
+  const containers = document.querySelectorAll('.photosflex, .photosflex2');
+  
+  containers.forEach(container => {
+    // Handle images
+    const images = container.querySelectorAll('img');
+    images.forEach(image => {
+      image.style.cursor = 'pointer';
+      
+      image.addEventListener('click', function(e) {
+        e.stopPropagation();
+        img.src = this.src;
+        img.style.display = 'block';
+        video.style.display = 'none';
+        video.pause();
+        video.src = '';
+        overlay.style.display = 'flex';
+      });
+    });
+
+    // Handle videos
+    const videos = container.querySelectorAll('video');
+    videos.forEach(vid => {
+      vid.style.cursor = 'pointer';
+      
+      vid.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const source = this.querySelector('source');
+        if (source) {
+          video.src = source.src;
+        } else {
+          video.src = this.src;
+        }
+        video.style.display = 'block';
+        img.style.display = 'none';
+        overlay.style.display = 'flex';
+      });
+    });
+  });
+
+  // Close overlay when clicking anywhere
+  overlay.addEventListener('click', function() {
+    overlay.style.display = 'none';
+    video.pause();
+    video.src = '';
+  });
+
+  // Close overlay with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.style.display === 'flex') {
+      overlay.style.display = 'none';
+      video.pause();
+      video.src = '';
+    }
+  });
+})();
