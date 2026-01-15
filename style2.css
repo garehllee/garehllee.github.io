@@ -7,6 +7,7 @@
     scroll-behavior:smooth;
     line-height:1.25;
     font-display:swap;
+    box-sizing:border-box;
 }
 :root{
     --accent: rgb(86, 126, 187);
@@ -406,7 +407,7 @@ left: 5vw;
     font-family: var(--paragraphfam);
     font-weight: var(--regular);
     font-size: var(--p);
-    width:290px;
+    width:100%;
     outline:solid 1px white;
     padding:5px;
     background-color:var(--gridcolor);
