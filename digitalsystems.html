@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        GL DS P2
+    </title>
+    <link rel="stylesheet" href="digitalsystems.css">
+</head>
+
+<body>
+    <div id="viewport">
+    </div>
+    <script>
+        const viewport = document.getElementById('viewport');
+        const cWidth = 20;
+        const cHeight = 20;
+
+        let offsetX = 0;
+        let offsetY = 0;
+        const cellData = new Map(); //JS maps allow us to map values to cells
+        
+        function render() {
+
+            const activeCoord = document.activeElement?.dataset?.coord;
+
+            viewport.innerHTML = ''; //makes everything in the viewport empty(?)
+
+            //calculate how many cells fit on the screen by dividing the pixeladge of the viewport by the width/height and rounding up.
+            const cols = Math.ceil(window.innerWidth / cWidth) + 1; //do we need the +1?
+            const rows = Math.ceil(window.innerHeight / cHeight) + 1;
+
+            //checks the offset from the original viewport location and calculates where the rows and cols should begin
+            const startCol = Math.floor(-offsetX / cWidth);
+            const startRow = Math.floor(-offsetY / cHeight);
+
+            //loop through every row
+            for (let r = 0; r <= rows; r++) {
+                for (let c = 0; c <= cols; c++) {
+                    const colIndex = startCol + c;
+                    const rowIndex = startRow + r;
+                    const key = `${colIndex},${rowIndex}`; //${} calls these variables' values
+
+                    const cell = document.createElement('div');
+                    cell.className = 'grid-cell'; //add class to div
+                    cell.contentEditable = true; //attribute that allows the div to be editable by user
+                    cell.dataset.coord = key;
+
+                    //position cell
+                    cell.style.left = `${(colIndex * cWidth) + offsetX}px`; //calculates how many columns we're in on the viewport, then multiplies by col width and adds the offset
+                    cell.style.top = `${(rowIndex * cHeight) + offsetY}px`;
+
+                    //existing data
+                    cell.textContent = cellData.get(key) || ''; //|| is the or operator. set the col content to the existing content at this key, or nothing.
+
+                    //save data
+                    //cell.oninput = () => cellData.set(key, cell.textContent); //on input, sets the current cell to the updated text content
+                    cell.onclick = () => {
+                        // select all the content in the element
+                        document.execCommand('selectAll', false, null);
+                        // collapse selection to the end
+                        document.getSelection().collapseToEnd();
+                    }
+                    cell.oninput = () => {
+                        const val = cell.textContent.slice(-1); //extracts the last item of the string
+                        cell.textContent = val; //set text content to last item
+                        // cellData.set(key, val); 
+                        if (val != "") {
+                            const nextKey = `${colIndex + 1},${rowIndex}`; //finds the next cell's key
+                            const nextCell = document.querySelector(`[data-coord="${nextKey}"]`); // uses the next cell key to find the next cell
+                            if (nextCell) {
+                                nextCell.focus();
+                                // select all the content in the element
+                                document.execCommand('selectAll', false, null);
+                                // collapse selection to the end
+                                document.getSelection().collapseToEnd();
+                            } //focuses the next cell
+                        }
+                    }
+
+                    cell.addEventListener('keydown', function (event) {
+                        if (event.key === 'Backspace') {
+                            const lastKey = `${colIndex - 1},${rowIndex}`;
+                            const lastCell = document.querySelector(`[data-coord="${lastKey}"]`);
+                            if (lastCell) {
+                                lastCell.focus();
+                                document.execCommand('selectAll', false, null);
+                                document.getSelection().collapseToEnd();
+                            }
+                        }
+                    });
+                    viewport.appendChild(cell);
+
+                    //adding ascii art feature
+                    //prevent default browser response to dragover
+                    cell.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                    });
+                    //when the cell has an image dropped in it, activate handleImage function
+                    cell.addEventListener('drop', (e) => {
+                        e.preventDefault();
+
+                        const files = e.dataTransfer.files;
+                        if (files.length > 0) {
+                            handleImage(files[0]);
+                        }
+                    });
+                            function handleImage(file) {
+            if (file.type.startsWith('image/')) {
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
+                img.onload = () => {
+                    const asciiWidth = 30;
+                    const asciiHeight = 30;
+                    const chars = ['$', '@', 'B', '%', '8', '&', 'W', 'M', '#', '*', 'o', 'a', 'h', 'k', 'b', 'd', 'p', 'q', 'w', 'm', 'Z', 'O', '0', 'Q', 'L', 'C', 'J', 'U', 'Y', 'X', 'z', 'c', 'v', 'u', 'n', 'x', 'r', 'j', 'f', 't', '/', '|', '(', ')', '1', '{', '}', '[', ']', '?', '-', '_', '+', '~', '<', '>', 'i', '!', 'l', 'I', ';', ':', ',', '"', '^', '`'];
+
+                    //draw image to canvas at lower res
+                    const canvas = document.createElement('canvas');
+                    canvas.width = asciiWidth;
+                    canvas.height = asciiHeight;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, asciiWidth, asciiHeight);
+
+                    const imageData = ctx.getImageData(0, 0, asciiWidth, asciiHeight).data;
+
+                    //iterate over rows and columns to convert every pixel in the canvas to ASCII
+                    for (let row = 0; row < asciiHeight; row++) {
+                        for (let col = 0; col < asciiWidth; col++) {
+                            const pixelIndex = (row * asciiWidth + col) * 4;
+                            const r = imageData[pixelIndex];
+                            const g = imageData[pixelIndex + 1];
+                            const b = imageData[pixelIndex + 2];
+
+                            const brightness = (0.21 * r + 0.72 * g + 0.07 * b) / 255;
+                            const charIndex = Math.floor(brightness * (chars.length - 1));
+                            const asciiChar = chars[charIndex];
+
+                            // Place character in the correct grid cell relative to drop position
+                            const targetKey = `${colIndex + col},${rowIndex + row}`;
+                            cellData.set(targetKey, asciiChar);
+
+                            const targetCell = document.querySelector(`[data-coord="${targetKey}"]`);
+                            if (targetCell) {
+                                targetCell.textContent = asciiChar;
+                            }
+                        }
+                    }
+                };
+            } else {
+                alert('please drop an image file.');
+            }
+        }
+
+                }
+            }
+        }
+
+        // //panning!
+        // let isDragging = false;
+        // let startX, startY;
+
+
+        // viewport.onmousedown = (e) => {
+        //     isDragging = true;
+        //     startX = e.clientX - offsetX;
+        //     startY = e.clientY - offsetY;
+        // }; // links e to onmousedown (for clarity) then calculates the current position of the viewpoint
+
+        // window.onmousemove = (e) => {
+        //     if (!isDragging) return;
+        //     offsetX = e.clientX - startX;
+        //     offsetY = e.clientY - startY;
+        //     render();
+        // }; // if the mouse is moving and down, calculate how much the viewpoint needs to move.
+
+        // window.onmouseup = () => {
+        //     isDragging = false;
+        // };
+
+        render();
+    </script>
+</body>
+
+</html>
