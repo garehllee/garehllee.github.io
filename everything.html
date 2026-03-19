@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+  <title>Everything</title>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
+  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://use.typekit.net/mpo6yqx.css">
+  <link rel="icon" href="images/logo/bearfavi2.ico">
+  <style>
+    html, body { width:100%; height:100%; overflow:hidden; }
+
+    #nav-section {
+      position: fixed;
+      top: 5px; /* sit below the 5px gradient bar */
+      left: 0; right: 0;
+      z-index: 300;
+      background: white;
+      max-width: none !important; /* override * { max-width:100vw } so it spans full width */
+      width: 100%;
+    }
+    #nav-section nav { position: relative; } /* cancel style2.css sticky */
+
+    #viewport {
+      position:fixed; top:var(--nav-h, 80px); left:0; right:0; bottom:0;
+      overflow:hidden; cursor:grab;
+      user-select:none;
+    }
+    #viewport.dragging { cursor:grabbing; }
+    #canvas { position:absolute; top:0; left:0; transform-origin:0 0; will-change:transform; }
+    #connections { position:absolute; top:0; left:0; pointer-events:none; z-index:0; }
+
+    .cluster { position:absolute; transform:translate(-50%,-50%); }
+    .cluster:hover { z-index:100; }
+
+    .photo-card {
+      position:absolute; cursor:pointer;
+      transition:transform 0.18s ease, box-shadow 0.18s ease; z-index:1;
+    }
+    .photo-card:hover {
+      z-index:10;
+      transform:var(--base-transform) scale(1.07) !important;
+      box-shadow:0 12px 36px rgba(20,20,20,0.18);
+    }
+    .photo-card img {
+      display:block; object-fit:cover; pointer-events:none;
+      width:var(--photo-size); height:var(--photo-size);
+      opacity:0; transition:opacity 0.3s ease;
+    }
+    .photo-card img.loaded { opacity:1; }
+
+    /* Caption that appears on hover */
+    .photo-caption {
+      position:absolute;
+      bottom:calc(100% + 6px);
+      left:50%;
+      transform:translateX(-50%);
+      white-space:nowrap;
+      background:white;
+      color:var(--reg);
+      font-family:var(--paragraphfam);
+      font-size:16px;
+      font-weight:var(--regular);
+      letter-spacing:0.01em;
+      padding:5px 10px;
+      border:1px solid var(--reg);
+      pointer-events:none;
+      opacity:0;
+      transition:opacity 0.15s ease, transform 0.15s ease;
+      transform:translateX(-50%) translateY(4px);
+      z-index:20;
+    }
+    .photo-card:hover .photo-caption {
+      opacity:1;
+      transform:translateX(-50%) translateY(0);
+    }
+
+    #ui { position:fixed; top:var(--nav-h, 80px); left:0; right:0; bottom:0; pointer-events:none; z-index:200; }
+
+    #zoom-controls { position:absolute; bottom:28px; right:28px; pointer-events:all; display:flex; flex-direction:column; }
+    .zoom-btn {
+      width:36px; height:36px; background:white;
+      border:1px solid rgba(20,20,20,0.18); cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--headerfam); font-size:20px; font-weight:var(--regular);
+      color:var(--reg); transition:background 0.15s, color 0.15s; line-height:1;
+    }
+    .zoom-btn:first-child { border-radius:2px 2px 0 0; }
+    .zoom-btn:last-child  { border-radius:0 0 2px 2px; border-top:none; }
+    .zoom-btn:hover { background:var(--reg); color:white; }
+
+    #overlay { position:fixed; top:var(--nav-h, 80px); left:0; right:0; bottom:0; pointer-events:none; z-index:350; }
+
+    #mobile-msg {
+      display:none; position:fixed; inset:0; background:white; z-index:9999;
+      align-items:center; justify-content:center; flex-direction:column;
+      gap:20px; text-align:center; padding:48px;
+    }
+    #mobile-msg p { font-family:var(--paragraphfam); font-size:var(--p); color:var(--reg); opacity:0.55; }
+    #mobile-msg a { font-family:var(--secondaryfamregular); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:2px; }
+
+    @media (max-width:768px) {
+      #mobile-msg { display:flex; }
+      #viewport, #ui, #overlay, #nav-section { display:none; }
+    }
+  </style>
+</head>
+<body id="wholepage">
+  <script src="cursor.js" defer></script>
+  <div class="custom-cursor site-wide" id="cursor-site-wide">
+    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><defs><style>.cls-1{fill:none;stroke:var(--reg);stroke-miterlimit:10;stroke-width:2px;}</style></defs><rect class="cls-1" x="26.16" y="10.52" width="21.57" height="5.08" transform="translate(1.58 29.95) rotate(-45)"/><path class="cls-1" d="M28.35,19.72S-7.98,30.45,5.79,44.21s24.42-22.64,24.42-22.64l-1.85-1.85Z"/><path class="cls-1" d="M28.7,20.07S-3.15,35.28,5.8,44.22c8.94,8.94,24.1-22.95,24.1-22.95l-1.2-1.2Z"/><path class="cls-1" d="M29.07,20.44S2.39,40.81,5.78,44.21c3.39,3.39,23.75-23.31,23.75-23.31l-.46-.46Z"/><circle class="cls-1" cx="45.71" cy="4.29" r="1.62"/></svg>
+  </div>
+
+  <section id="nav-section">
+      <div class="top-thing"></div>
+  <!-- margins -->
+  <section class="wholepagemargin">
+    <section class="header">
+      <nav>
+          <script>
+            function gbnav1(){
+              var gif = document.getElementById('animation');
+              var bear = document.getElementById('bear');
+            gif.style.display = 'block';
+            bear.style.display = 'none';
+            }
+  
+            function gbnav2(){
+              var gif = document.getElementById('animation');
+              var bear = document.getElementById('bear');
+            gif.style.display = 'none';
+            bear.style.display = 'block';
+            }
+          </script>
+        <a onpointerenter="gbnav1()" onpointerleave="gbnav2()" href="index.html" style="text-decoration:none;">
+          <div id="animation" style="display:none; height:68.22px;">
+            <div>
+            <img src="images/about/ezgif.com-animated-gif-maker (9).gif" alt="" style="width:149px; position:absolute; top:5px;">
+            </div>
+          </div>
+          <div id="bear">
+            <img src="images/logo/bearlogo.webp" alt="Bear-themed logo"> <span><img
+              src="images/about/cookie.webp" alt="" class="cookie" style="margin-left:10px;"></span>
+          </div></a>
+        <div class="nav-links" id="navLinks">
+          <i class="fa fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="" class="linkhover">GOODS</a></li>
+            <li><a href="about.html" class="linkhover">BAKER</a></li>
+            <li><a href="play.html" class="linkhover">TEST KITCHEN</a></li>
+            <li><a href="everything.html" class="linkhover"><span class="currentpage">EVERYTHING</span></a></li>
+          </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+      <hr class="divider">
+    </section>
+    </section>
+  </section>
+
+  <div id="mobile-msg">
+    <p>The photo map works best on a larger screen.</p>
+    <a href="index.html">← Back to work</a>
+  </div>
+
+  <div id="viewport">
+    <svg id="connections"></svg>
+    <div id="canvas"></div>
+  </div>
+
+  <div id="ui">
+    <div id="zoom-controls">
+      <button class="zoom-btn" id="zoom-in">+</button>
+      <button class="zoom-btn" id="zoom-out">−</button>
+    </div>
+  </div>
+
+  <div id="overlay"></div>
+
+  <script>
+  const PROJECTS = [
+    {
+      name:"National Museum of Mathematics", url:"momath.html",
+      description:"A brand reimagination that makes mathematics feel accessible, playful, and alive.",
+      x:-560, y:-360,
+      photos:[
+        {src:"images_compressed/Pages/Momath/Momathcover.webp",caption:"Cover"},
+        {src:"images_compressed/Pages/Momath/typesystem.webp",caption:"Type System"},
+        {src:"images_compressed/Pages/Momath/colormomath.webp",caption:"Color"},
+        {src:"images_compressed/Pages/Momath/full poster mockup.webp",caption:"Poster"},
+        {src:"images_compressed/Pages/Momath/gallerywallmockup1.webp",caption:"Gallery Wall"},
+        {src:"images_compressed/Pages/Momath/momathlaptopmockup.webp",caption:"Digital"},
+        {src:"images_compressed/Pages/Momath/momathbrochuremockup.webp",caption:"Brochure"},
+        {src:"images_compressed/Pages/Momath/momath_signageoutside.webp",caption:"Signage"},
+        {src:"images_compressed/Pages/Momath/635-Sixth-Avenue-Render newmathedited.webp",caption:"Building Render"},
+        {src:"images_compressed/Pages/Momath/momath_socials.webp",caption:"Social"},
+        {src:"images_compressed/Pages/Momath/composite mockup.webp",caption:"Composite"},
+        {src:"images_compressed/Pages/Momath/momath_childrenusingexhibit.webp",caption:"Exhibition"},
+        {src:"images_compressed/Pages/Momath/Momath_insideexhibition2.webp",caption:"Inside Exhibition"},
+        {src:"images_compressed/Pages/Momath/application explorations.webp",caption:"App Explorations"},
+        {src:"images_compressed/Pages/Momath/color explorations.webp",caption:"Color Explorations"},
+        {src:"images_compressed/Pages/Momath/direction 1_ refresh.webp",caption:"Direction 1"},
+        {src:"images_compressed/Pages/Momath/direction 2_ tessellations.webp",caption:"Direction 2"},
+        {src:"images_compressed/Pages/Momath/direction 3_ paper.webp",caption:"Direction 3"},
+        {src:"images_compressed/Pages/Momath/momath_insideexhibition1.webp",caption:"Inside Exhibition 1"},
+        {src:"images_compressed/Pages/Momath/momathicons.webp",caption:"Icons"},
+      ]
+    },
+    {
+      name:"Wide Eye Internship", url:"wideeye.html",
+      description:"Client work from a design internship — rapid-response graphics, brand systems, and social campaigns.",
+      x:-700, y:-100,
+      photos:[
+        {src:"images_compressed/Pages/Portfolio/MOV-080125-EpsteinCarousel-A.png",caption:"MoveOn Carousel"},
+        {src:"images_compressed/Pages/Portfolio/MOV-080125-EpsteinCarousel-B.png",caption:"MoveOn Carousel B"},
+        {src:"images_compressed/Pages/Portfolio/MOV-Thisisntnormal.png",caption:"This Isn't Normal"},
+        {src:"images_compressed/Pages/Portfolio/MOV-062625-No-More-Endless-War-E-IG.png",caption:"No More Endless War"},
+        {src:"images_compressed/Pages/Portfolio/MOV-062625-No-More-Endless-War-C-IG.png",caption:"No More Endless War C"},
+        {src:"images_compressed/Pages/Portfolio/MOV-080425-PostcardParty-IGPost-A.png",caption:"Postcard Party"},
+        {src:"images_compressed/Pages/Portfolio/MOV-080425-PostcardParty-IGPost-B.png",caption:"Postcard Party B"},
+        {src:"images_compressed/Pages/Portfolio/MOV-061025-MemberSpeakout-Toolkit-A-IG.png",caption:"Member Speakout"},
+        {src:"images_compressed/Pages/Portfolio/MOV-061025-MemberSpeakout-Toolkit-A-PlacardPoster.png",caption:"Member Speakout Placard"},
+        {src:"images_compressed/Pages/Portfolio/MOV-061025-MemberSpeakout-Toolkit-C-PlacardPoster.png",caption:"Member Speakout C"},
+        {src:"images_compressed/Pages/Portfolio/MOV-061725-SOSHA-Toolkit-A-Story.png",caption:"SOSHA A"},
+        {src:"images_compressed/Pages/Portfolio/MOV-061725-SOSHA-Toolkit-D-Story.png",caption:"SOSHA D"},
+        {src:"images_compressed/Pages/Portfolio/MOV-061725-SOSHA-Toolkit-F-Story.png",caption:"SOSHA F"},
+        {src:"images_compressed/Pages/Portfolio/MOV-062625-No-More-Endless-War-D-IG.png",caption:"No More War D"},
+        {src:"images_compressed/Pages/Portfolio/MOV-062625-No-More-Endless-War-F-IG.png",caption:"No More War F"},
+        {src:"images_compressed/Pages/Portfolio/MOV-071625-GrabBagKit-B.png",caption:"Grab Bag Kit"},
+        {src:"images_compressed/Pages/Portfolio/MOV-070125-FourthJuly-Post-03.png",caption:"Fourth of July"},
+        {src:"images_compressed/Pages/Portfolio/MOV-071725-WontBackDown-Credentials.jpg",caption:"Won't Back Down"},
+        {src:"images_compressed/Pages/Portfolio/MOV-073025-PostCard-Front.png",caption:"Postcard Front"},
+        {src:"images_compressed/Pages/Portfolio/MOV-073025-PostCard-Front-1.png",caption:"Postcard Front 1"},
+        {src:"images_compressed/Pages/Portfolio/MOV-080625-DontMessWithTexas-IGPost.png",caption:"Don't Mess With Texas"},
+        {src:"images_compressed/Pages/Portfolio/CHA-BusinessCards.png",caption:"CHA Business Cards"},
+        {src:"images_compressed/Pages/Portfolio/CHA-LinkedInMockup.png",caption:"CHA LinkedIn"},
+        {src:"images_compressed/Pages/Portfolio/CHA-SM-Templates.png",caption:"CHA Social Templates"},
+        {src:"images_compressed/Pages/Portfolio/CHA-Presentation.png",caption:"CHA Presentation"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-1.webp",caption:"FamFirst 1"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-2.webp",caption:"FamFirst 2"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-3.webp",caption:"FamFirst 3"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-4.webp",caption:"FamFirst 4"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-5.webp",caption:"FamFirst 5"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-6.webp",caption:"FamFirst 6"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-7.webp",caption:"FamFirst 7"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-8.webp",caption:"FamFirst 8"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-9.webp",caption:"FamFirst 9"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-10.webp",caption:"FamFirst 10"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-11.webp",caption:"FamFirst 11"},
+        {src:"images_compressed/Pages/Portfolio/famfirst/ff-12.webp",caption:"FamFirst 12"},
+        {src:"images_compressed/Pages/Portfolio/gettyimages-2234349326-2048x2048.jpg",caption:"Getty"},
+        {src:"images_compressed/Pages/Portfolio/Slide deck/Frame 3.png",caption:"Slide Deck"},
+        {src:"images_compressed/Pages/Portfolio/Slide deck/image 36.png",caption:"Deck Image 36"},
+        {src:"images_compressed/Pages/Portfolio/Slide deck/image 41.png",caption:"Deck Image 41"},
+        {src:"images_compressed/Pages/Portfolio/Slide deck/image 42.png",caption:"Deck Image 42"},
+        {src:"images_compressed/Pages/Portfolio/Slide deck/image 43.png",caption:"Deck Image 43"},
+        {src:"images_compressed/Pages/Portfolio/Slide deck/IMG_0619.JPG",caption:"Deck Photo"},
+        {src:"images_compressed/Pages/Portfolio/Slide deck/539429479_18525276487023103_8490192645712388993_n-1-B 1.png",caption:"Deck Social"},
+        {src:"images_compressed/Pages/Portfolio/Slide deck/Screenshot 2025-08-25 at 5.14.13 PM 1.png",caption:"Deck Screenshot"},
+        {src:"images_compressed/Pages/Portfolio/Slide deck/Screenshot 2025-08-25 at 5.26.19 PM 1.png",caption:"Deck Screenshot 2"},
+        {src:"images_compressed/Pages/Portfolio/Slide deck/Screenshot 2025-08-25 at 5.56.58 PM 1.png",caption:"Deck Screenshot 3"},
+      ]
+    },
+    {
+      name:"Through All This Noise", url:"tatn.html",
+      description:"An exhibition about the moments that shape us — flipbooks, physical artifacts, and personal memory.",
+      x:480, y:-200,
+      photos:[
+        {src:"images_compressed/Pages/tatn/Cover.webp",caption:"Cover"},
+        {src:"images_compressed/Pages/tatn/webp/Front-Full-Wide.webp",caption:"Front Wide"},
+        {src:"images_compressed/Pages/tatn/webp/Front-Full-Narrow.webp",caption:"Front Narrow"},
+        {src:"images_compressed/Pages/tatn/webp/Front-Detail.webp",caption:"Front Detail"},
+        {src:"images_compressed/Pages/tatn/webp/Front-Detail-Shelves.webp",caption:"Shelves"},
+        {src:"images_compressed/Pages/tatn/webp/Back-Full.webp",caption:"Back Full"},
+        {src:"images_compressed/Pages/tatn/webp/Back-Detail.webp",caption:"Back Detail"},
+        {src:"images_compressed/Pages/tatn/webp/Flipbook-Closed.webp",caption:"Flipbook Closed"},
+        {src:"images_compressed/Pages/tatn/webp/Fliipbook-Flipping.webp",caption:"Flipbook Flipping"},
+        {src:"images_compressed/Pages/tatn/webp/Flipbook-Closest.webp",caption:"Flipbook Close"},
+        {src:"images_compressed/Pages/tatn/webp/Flipbooks-Full.webp",caption:"Flipbooks"},
+        {src:"images_compressed/Pages/tatn/webp/Key-Detail.webp",caption:"Key Detail"},
+        {src:"images_compressed/Pages/tatn/webp/090825-C-Studio-Survey.jpg",caption:"Studio Survey"},
+        {src:"images_compressed/Pages/tatn/webp/090825-C-Studio-Survey2.jpg",caption:"Studio Survey 2"},
+        {src:"images_compressed/Pages/tatn/webp/moments.png",caption:"Moments"},
+        {src:"images_compressed/Pages/tatn/webp/moments2.png",caption:"Moments 2"},
+        {src:"images_compressed/Pages/tatn/webp/momentskey2.png",caption:"Moments Key"},
+        {src:"images_compressed/Pages/tatn/webp/Back-Full - Copy.png",caption:"Back Full Copy"},
+        {src:"images_compressed/Pages/tatn/visualizations.png",caption:"Visualizations"},
+      ]
+    },
+    {
+      name:"Lunar Gala: Elysium", url:"elysium.html",
+      description:"Co-creative direction for Lunar Gala's 30th anniversary show — fashion reimagined as motion.",
+      x:260, y:-480,
+      photos:[
+        {src:"images_compressed/Pages/Lunar Gala/elysiumall.webp",caption:"Elysium All"},
+        {src:"images_compressed/Pages/Lunar Gala/DSC04388.jpg",caption:"Show"},
+        {src:"images_compressed/Pages/Lunar Gala/DSCF1690.webp",caption:"Runway"},
+        {src:"images_compressed/Pages/Lunar Gala/DSCF1668.webp",caption:"Detail"},
+        {src:"images_compressed/Pages/Lunar Gala/DSCF1549.webp",caption:"Backstage"},
+        {src:"images_compressed/Pages/Lunar Gala/DSCF2086.jpg",caption:"Finale"},
+        {src:"images_compressed/Pages/Lunar Gala/R0015454.JPG",caption:"Candid"},
+        {src:"images_compressed/Pages/Lunar Gala/R0015470.JPG",caption:"Candid 2"},
+        {src:"images_compressed/Pages/Lunar Gala/IMG_9351.PNG",caption:"Behind the Scenes"},
+        {src:"images_compressed/Pages/Lunar Gala/IMG_9352.jpg",caption:"Behind the Scenes 2"},
+      ]
+    },
+    {
+      name:"Design Hero", url:"lupi.html",
+      description:"A tribute to Giorgia Lupi and data humanism — poster, booklet, and motion pieces.",
+      x:200, y:260,
+      photos:[
+        {src:"images_compressed/Pages/lupi/poster/poster full.webp",caption:"Poster"},
+        {src:"images_compressed/Pages/lupi/poster/detail 1.webp",caption:"Poster Detail 1"},
+        {src:"images_compressed/Pages/lupi/poster/detail 2.webp",caption:"Poster Detail 2"},
+        {src:"images_compressed/Pages/lupi/booklet/booklet.webp",caption:"Booklet"},
+        {src:"images_compressed/Pages/lupi/process/Design Hero.jpg",caption:"Process"},
+        {src:"images_compressed/Pages/lupi/process/Design Hero.png",caption:"Process PNG"},
+        {src:"images_compressed/Pages/lupi/process/Design Hero (1).png",caption:"Exploration 1"},
+        {src:"images_compressed/Pages/lupi/process/Design Hero (2).png",caption:"Exploration 2"},
+        {src:"images_compressed/Pages/lupi/process/Design Hero (3).png",caption:"Exploration 3"},
+        {src:"images_compressed/Pages/lupi/process/Design Hero (4).png",caption:"Exploration 4"},
+        {src:"images_compressed/Pages/lupi/process/Design Hero (5).png",caption:"Exploration 5"},
+        {src:"images_compressed/Pages/lupi/process/Design Hero (6).png",caption:"Exploration 6"},
+        {src:"images_compressed/Pages/lupi/process/Design Hero (7).png",caption:"Exploration 7"},
+      ]
+    },
+    {
+      name:"I'd Like to Give Up", url:"idliketogiveup.html",
+      description:"A 128-page book about living in a world where everything might not be okay.",
+      x:540, y:340,
+      photos:[
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06572.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06574.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06583.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06586.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06590.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06596.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06600.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06606.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06616.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06622.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/DSC06633.webp",caption:"Photo"},
+        {src:"images_compressed/Pages/bookscans/photosedited/book004.webp",caption:"Book Photo"},
+        {src:"images_compressed/Pages/bookscans/book001.webp",caption:"Spread 1"},
+        {src:"images_compressed/Pages/bookscans/book002.webp",caption:"Spread 2"},
+        {src:"images_compressed/Pages/bookscans/book003.webp",caption:"Spread 3"},
+        {src:"images_compressed/Pages/bookscans/book004.webp",caption:"Spread 4"},
+        {src:"images_compressed/Pages/bookscans/book005.webp",caption:"Spread 5"},
+        {src:"images_compressed/Pages/bookscans/book006.webp",caption:"Spread 6"},
+        {src:"images_compressed/Pages/bookscans/book007.webp",caption:"Spread 7"},
+        {src:"images_compressed/Pages/bookscans/book008.webp",caption:"Spread 8"},
+        {src:"images_compressed/Pages/bookscans/book009.webp",caption:"Spread 9"},
+        {src:"images_compressed/Pages/bookscans/book010.webp",caption:"Spread 10"},
+        {src:"images_compressed/Pages/bookscans/book011.webp",caption:"Spread 11"},
+        {src:"images_compressed/Pages/bookscans/book012.webp",caption:"Spread 12"},
+        {src:"images_compressed/Pages/bookscans/book013.webp",caption:"Spread 13"},
+        {src:"images_compressed/Pages/bookscans/book014.webp",caption:"Spread 14"},
+        {src:"images_compressed/Pages/bookscans/book015.webp",caption:"Spread 15"},
+        {src:"images_compressed/Pages/bookscans/book016.webp",caption:"Spread 16"},
+        {src:"images_compressed/Pages/bookscans/book017.webp",caption:"Spread 17"},
+        {src:"images_compressed/Pages/bookscans/book018.webp",caption:"Spread 18"},
+        {src:"images_compressed/Pages/bookscans/book019.webp",caption:"Spread 19"},
+        {src:"images_compressed/Pages/bookscans/book020.webp",caption:"Spread 20"},
+        {src:"images_compressed/Pages/bookscans/book021.webp",caption:"Spread 21"},
+        {src:"images_compressed/Pages/bookscans/book022.webp",caption:"Spread 22"},
+        {src:"images_compressed/Pages/bookscans/book023.webp",caption:"Spread 23"},
+        {src:"images_compressed/Pages/bookscans/book024.webp",caption:"Spread 24"},
+        {src:"images_compressed/Pages/bookscans/book025.webp",caption:"Spread 25"},
+        {src:"images_compressed/Pages/bookscans/book026.webp",caption:"Spread 26"},
+        {src:"images_compressed/Pages/bookscans/book027.webp",caption:"Spread 27"},
+        {src:"images_compressed/Pages/bookscans/book028.webp",caption:"Spread 28"},
+        {src:"images_compressed/Pages/bookscans/book029.webp",caption:"Spread 29"},
+        {src:"images_compressed/Pages/bookscans/book030.webp",caption:"Spread 30"},
+        {src:"images_compressed/Pages/bookscans/book031.webp",caption:"Spread 31"},
+        {src:"images_compressed/Pages/bookscans/book032.webp",caption:"Spread 32"},
+        {src:"images_compressed/Pages/bookscans/book033.webp",caption:"Spread 33"},
+        {src:"images_compressed/Pages/bookscans/book034.webp",caption:"Spread 34"},
+        {src:"images_compressed/Pages/bookscans/book035.webp",caption:"Spread 35"},
+        {src:"images_compressed/Pages/bookscans/book036.webp",caption:"Spread 36"},
+        {src:"images_compressed/Pages/bookscans/book037.webp",caption:"Spread 37"},
+        {src:"images_compressed/Pages/bookscans/book038.webp",caption:"Spread 38"},
+        {src:"images_compressed/Pages/bookscans/book039.webp",caption:"Spread 39"},
+        {src:"images_compressed/Pages/bookscans/book040.webp",caption:"Spread 40"},
+        {src:"images_compressed/Pages/bookscans/book041.webp",caption:"Spread 41"},
+        {src:"images_compressed/Pages/bookscans/book042.webp",caption:"Spread 42"},
+        {src:"images_compressed/Pages/bookscans/book043.webp",caption:"Spread 43"},
+        {src:"images_compressed/Pages/bookscans/book044.webp",caption:"Spread 44"},
+        {src:"images_compressed/Pages/bookscans/book045.webp",caption:"Spread 45"},
+        {src:"images_compressed/Pages/bookscans/book046.webp",caption:"Spread 46"},
+        {src:"images_compressed/Pages/bookscans/book047.webp",caption:"Spread 47"},
+        {src:"images_compressed/Pages/bookscans/book048.webp",caption:"Spread 48"},
+        {src:"images_compressed/Pages/bookscans/book049.webp",caption:"Spread 49"},
+        {src:"images_compressed/Pages/bookscans/book050.webp",caption:"Spread 50"},
+        {src:"images_compressed/Pages/bookscans/book051.webp",caption:"Spread 51"},
+        {src:"images_compressed/Pages/bookscans/book052.webp",caption:"Spread 52"},
+        {src:"images_compressed/Pages/bookscans/book053.webp",caption:"Spread 53"},
+        {src:"images_compressed/Pages/bookscans/book054.webp",caption:"Spread 54"},
+        {src:"images_compressed/Pages/bookscans/book055.webp",caption:"Spread 55"},
+        {src:"images_compressed/Pages/bookscans/book056.webp",caption:"Spread 56"},
+        {src:"images_compressed/Pages/bookscans/book057.webp",caption:"Spread 57"},
+        {src:"images_compressed/Pages/bookscans/book058.webp",caption:"Spread 58"},
+        {src:"images_compressed/Pages/bookscans/book059.webp",caption:"Spread 59"},
+        {src:"images_compressed/Pages/bookscans/book060.webp",caption:"Spread 60"},
+        {src:"images_compressed/Pages/bookscans/book061.webp",caption:"Spread 61"},
+        {src:"images_compressed/Pages/bookscans/book062.webp",caption:"Spread 62"},
+        {src:"images_compressed/Pages/bookscans/book063.webp",caption:"Spread 63"},
+        {src:"images_compressed/Pages/bookscans/book064.webp",caption:"Spread 64"},
+        {src:"images_compressed/Pages/bookscans/book065.webp",caption:"Spread 65"},
+        {src:"images_compressed/Pages/bookscans/book066.webp",caption:"Spread 66"},
+        {src:"images_compressed/Pages/bookscans/book067.webp",caption:"Spread 67"},
+        {src:"images_compressed/Pages/bookscans/book069.webp",caption:"Spread 69"},
+      ]
+    },
+    {
+      name:"Test Kitchen", url:"play.html",
+      description:"Experiments, photography, motion explorations, and things made just to make them.",
+      x:-200, y:420,
+      photos:[
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/a.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/b.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/c.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/d.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/e.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/f.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/g.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/h.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/i.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/j.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/k.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/l.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/lettertoself/m.webp",caption:"Letter to Self"},
+        {src:"images_compressed/misc/photosforwebsite/song/a.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/b.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/c.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/d.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/e.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/f.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/g.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/h.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/i.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/j.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/k.webp",caption:"Song"},
+        {src:"images_compressed/misc/photosforwebsite/song/l.webp",caption:"Song"},
+        {src:"images_compressed/misc/Summer24/DSC03601.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03638.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03672.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03692.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03716.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03729.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03734.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03737.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03738.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03741.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03744.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/Summer24/DSC03774.webp",caption:"Summer 24"},
+        {src:"images_compressed/misc/butterfly/b1.webp",caption:"Butterfly"},
+        {src:"images_compressed/misc/butterfly/b2.webp",caption:"Butterfly"},
+        {src:"images_compressed/misc/butterfly/b3.webp",caption:"Butterfly"},
+        {src:"images_compressed/misc/butterfly/b4.webp",caption:"Butterfly"},
+        {src:"images_compressed/Pages/Sem1/1S Butterfly/butterflyfinalprintfile.webp",caption:"Butterfly Print"},
+        {src:"images_compressed/misc/Lee_Garrett_Final-01.webp",caption:"Poster"},
+        {src:"images_compressed/misc/graphic design/Second Violins Front.webp",caption:"Second Violins"},
+        {src:"images_compressed/misc/graphic design/nightmarketbanner.webp",caption:"Night Market"},
+        {src:"images_compressed/misc/janelle concert yellow.png",caption:"Janelle Concert"},
+        {src:"images_compressed/misc/barkada.webp",caption:"Barkada"},
+        {src:"images_compressed/misc/dayoffriendsgiving.webp",caption:"Friendsgiving"},
+        {src:"images_compressed/misc/picnic collage.jpg",caption:"Picnic"},
+        {src:"images_compressed/Pages/SID/SIDmockup.jpg",caption:"SID Mockup"},
+        {src:"images_compressed/misc/9x12-skull-print.webp",caption:"Skull Print"},
+        {src:"images_compressed/misc/croc8x8-print.webp",caption:"Croc Print"},
+        {src:"images_compressed/misc/waterbear.webp",caption:"Waterbear"},
+        {src:"images_compressed/misc/product diaries channellogo-04-blueonwhite.png",caption:"Product Diaries Blue"},
+        {src:"images_compressed/misc/product diaries channellogo-05-brownonwhite.png",caption:"Product Diaries Brown"},
+      ]
+    },
+  ];
+
+  /* ════════════════════════════════════════════════════════════
+     ⚙️  CONFIG — tweak these two values to taste
+     ════════════════════════════════════════════════════════════
+     PHOTO_SIZE  px  — width & height of each thumbnail square
+                       try: 50 (tiny), 74 (default), 110 (large)
+
+     SPREAD      px  — how far photos scatter from their cluster
+                       center. scales automatically with photo size.
+                       try: 80 (tight), 130 (default), 220 (loose)
+  ════════════════════════════════════════════════════════════ */
+  const PHOTO_SIZE = 100;  // ← change me
+  const SPREAD     = 250;  // ← change me
+
+  // Inject PHOTO_SIZE as a CSS variable so the stylesheet stays in sync
+  document.documentElement.style.setProperty('--photo-size', PHOTO_SIZE + 'px');
+
+  // Measure the actual nav height and set it as a CSS variable so
+  // #viewport, #ui, and #overlay all sit exactly below it.
+  const navSection = document.getElementById('nav-section');
+  const NAV_H = navSection.offsetHeight;
+  document.documentElement.style.setProperty('--nav-h', NAV_H + 'px');
+  const MIN_ZOOM=0.15, MAX_ZOOM=3.5, INITIAL_ZOOM=0.82;
+
+  /* ── Image loading ───────────────────────────────────────────────
+     Images are already compressed to ≤400px. Set src directly and
+     let the browser prioritise — no IntersectionObserver needed
+     (it can't track positions on a CSS-transformed canvas anyway).
+  ─────────────────────────────────────────────────────────────── */
+
+  function photoLayout(i,total){
+    if(total===1) return {dx:0,dy:0,rot:0};
+    const a=i*2.399963, r=SPREAD*0.35*Math.sqrt(i+1);
+    return {dx:Math.cos(a)*r, dy:Math.sin(a)*r*0.82, rot:Math.sin(i*1.618)*5};
+  }
+
+  const canvas=document.getElementById('canvas'), svg=document.getElementById('connections');
+  let vpW=window.innerWidth, vpH=window.innerHeight-NAV_H;
+  let panX=vpW/2, panY=vpH/2, zoom=INITIAL_ZOOM, selectedCard=null;
+
+  PROJECTS.forEach(p=>{
+    const cl=document.createElement('div'); cl.className='cluster';
+    cl.style.left=p.x+'px'; cl.style.top=p.y+'px';
+    p.photos.forEach((ph,i)=>{
+      const {dx,dy,rot}=photoLayout(i,p.photos.length);
+      const card=document.createElement('div'); card.className='photo-card';
+      const bt=`translate(calc(${dx}px - 50%),calc(${dy}px - 50%)) rotate(${rot}deg)`;
+      card.style.cssText=`left:50%;top:50%;--base-transform:${bt};transform:${bt};`;
+      const img=document.createElement('img');
+      img.src=ph.src;
+      img.loading='lazy';
+      img.decoding='async';
+      img.alt=ph.caption||p.name; img.draggable=false;
+      img.width=PHOTO_SIZE; img.height=PHOTO_SIZE;
+      img.onload=()=>img.classList.add('loaded');
+      if(img.complete) img.classList.add('loaded');
+
+      // Hover caption: project name + ↗
+      const caption=document.createElement('div');
+      caption.className='photo-caption';
+      caption.textContent=p.name+' ↗';
+
+      card.appendChild(img);
+      card.appendChild(caption);
+      card.addEventListener('click', e => { e.stopPropagation(); if(!moved) window.location.href=p.url; });
+      cl.appendChild(card);
+    });
+    canvas.appendChild(cl);
+  });
+
+  function drawConnections(){
+    svg.innerHTML='';
+    const th=700;
+    for(let a=0;a<PROJECTS.length;a++) for(let b=a+1;b<PROJECTS.length;b++){
+      const pa=PROJECTS[a],pb=PROJECTS[b], d=Math.hypot(pa.x-pb.x,pa.y-pb.y);
+      if(d<th){
+        const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+        ln.setAttribute('x1',pa.x);ln.setAttribute('y1',pa.y);ln.setAttribute('x2',pb.x);ln.setAttribute('y2',pb.y);
+        ln.setAttribute('stroke','#141414');ln.setAttribute('stroke-width','1');ln.setAttribute('stroke-dasharray','3 7');ln.setAttribute('opacity',(1-d/th)*0.1);
+        svg.appendChild(ln);
+      }
+    }
+    const xs=PROJECTS.map(p=>p.x),ys=PROJECTS.map(p=>p.y),pad=600;
+    const [mnX,mxX]=[Math.min(...xs)-pad,Math.max(...xs)+pad];
+    const [mnY,mxY]=[Math.min(...ys)-pad,Math.max(...ys)+pad];
+    svg.setAttribute('width',mxX-mnX);svg.setAttribute('height',mxY-mnY);
+    svg.style.left=mnX+'px';svg.style.top=mnY+'px';
+    svg.setAttribute('viewBox',`${mnX} ${mnY} ${mxX-mnX} ${mxY-mnY}`);
+  }
+  drawConnections();
+
+  function applyTransform(){
+    const t=`translate(${panX}px,${panY}px) scale(${zoom})`;
+    canvas.style.transform=t; svg.style.transform=t;
+  }
+  applyTransform();
+
+  const vp=document.getElementById('viewport');
+  let drag=false,moved=false,sx=0,sy=0,spx=0,spy=0;
+  vp.addEventListener('mousedown',e=>{if(e.button!==0)return;drag=true;moved=false;sx=e.clientX;sy=e.clientY;spx=panX;spy=panY;vp.classList.add('dragging');});
+  window.addEventListener('mousemove',e=>{if(!drag)return;const dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)>3||Math.abs(dy)>3)moved=true;panX=spx+dx;panY=spy+dy;applyTransform();});
+  window.addEventListener('mouseup',()=>{drag=false;vp.classList.remove('dragging');});
+
+  vp.addEventListener('wheel',e=>{
+    e.preventDefault();
+    const r=vp.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
+    const f=e.deltaY<0?1.1:0.9,pz=zoom;
+    zoom=Math.max(MIN_ZOOM,Math.min(MAX_ZOOM,zoom*f));
+    panX=mx-(mx-panX)*(zoom/pz); panY=my-(my-panY)*(zoom/pz); applyTransform();
+  },{passive:false});
+
+  let lt=null,ltd=null;
+  vp.addEventListener('touchstart',e=>{
+    if(e.touches.length===1){lt=true;moved=false;sx=e.touches[0].clientX;sy=e.touches[0].clientY;spx=panX;spy=panY;}
+    else if(e.touches.length===2) ltd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+  },{passive:true});
+  vp.addEventListener('touchmove',e=>{
+    e.preventDefault();
+    if(e.touches.length===1&&lt){const dx=e.touches[0].clientX-sx,dy=e.touches[0].clientY-sy;if(Math.abs(dx)>4||Math.abs(dy)>4)moved=true;panX=spx+dx;panY=spy+dy;applyTransform();}
+    else if(e.touches.length===2&&ltd!==null){
+      const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+      const cx=(e.touches[0].clientX+e.touches[1].clientX)/2,cy=(e.touches[0].clientY+e.touches[1].clientY)/2;
+      const pz=zoom; zoom=Math.max(MIN_ZOOM,Math.min(MAX_ZOOM,zoom*d/ltd));
+      panX=cx-(cx-panX)*(zoom/pz);panY=cy-(cy-panY)*(zoom/pz);ltd=d;applyTransform();
+    }
+  },{passive:false});
+  vp.addEventListener('touchend',()=>{lt=null;ltd=null;});
+
+  function zoomBy(f){const cx=window.innerWidth/2,cy=(window.innerHeight-NAV_H)/2,pz=zoom;zoom=Math.max(MIN_ZOOM,Math.min(MAX_ZOOM,zoom*f));panX=cx-(cx-panX)*(zoom/pz);panY=cy-(cy-panY)*(zoom/pz);applyTransform();}
+  document.getElementById('zoom-in').addEventListener('click',()=>zoomBy(1.25));
+  document.getElementById('zoom-out').addEventListener('click',()=>zoomBy(0.8));
+  window.addEventListener('resize',()=>{const dw=window.innerWidth-vpW,dh=(window.innerHeight-NAV_H)-vpH;panX+=dw/2;panY+=dh/2;vpW=window.innerWidth;vpH=window.innerHeight-NAV_H;applyTransform();});
+  </script>
+  <script>
+    var navLinks=document.getElementById("navLinks");
+    function showMenu(){navLinks.style.right="0";wholepage.classList.add("fixed-position");}
+    function hideMenu(){navLinks.style.right="-100vw";wholepage.classList.remove("fixed-position");}
+  </script>
+</body>
+</html>
