@@ -237,6 +237,7 @@ body{
 }
 .big{
   transform:scale(120000%);
+  background-color: #E1E1E1;
 }
 #one{
   width:250px;
