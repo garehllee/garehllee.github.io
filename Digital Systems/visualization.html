@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyperlink Rabbit Hole</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="/RabbitCursor.svg">
+    <script src="cursor.js" defer></script>
+</head>
+<body>
+    
+    <div id="pan-zoom-hint" class="pan-zoom-hint">Scroll to Zoom, Drag to Pan</div>
+
+    <div id="container">
+        <!-- Pixel heatmap canvas — sits behind SVG, drawn by JS -->
+        <canvas id="heatmap-canvas"></canvas>
+        
+        <svg id="main-svg"></svg>
+
+        <!-- Custom square cursor -->
+        <!-- <div id="custom-cursor">
+            <img src="RabbitCursor.svg" alt="" style="width:20px; position:absolute; left:-7px; top:-22px;">
+        </div> -->
+        <div id="cursor-site-wide">
+            <img src="RabbitCursor.svg" alt="">
+        </div>
+        <!-- "Not clickable" flash hint -->
+        <div id="click-hint" class="click-hint"></div>
+
+        <!-- Hover tooltip -->
+        <div id="tooltip" class="tooltip"></div>
+        
+        <div id="five" class="textbox" style = "background-color:white; align-items:center;">
+        <div>
+        <div class = "circles">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2 class = "black normtext margins" style="text-align:center;">Each node is an article. Hover on a node to see details. Click on a node to see its hyperlinks. You may zoom and pan.</h2>
+    <p class = "black normtext margins" style="text-align:center"></p>    
+    </div>
+            <div id="fivebutton" class="button margins">
+                <h3 class="blue">Okay</h3>
+            </div>
+    </div>
+    <script>
+        const five = document.getElementById("five");
+        const buttonfive = document.getElementById("fivebutton");
+        buttonfive.addEventListener('mouseenter', () => {
+            buttonfive.classList.add('hover');
+            buttonfive.addEventListener('mouseleave', () => {
+            buttonfive.classList.remove('hover');
+        });
+        });
+        buttonfive.addEventListener('click', () => {
+            buttonfive.classList.add('clicked');
+            five.style.display = 'none';
+        });
+    </script>
+    <a href="index.html">
+    <div id="sixbutton" class="button margins" style = "position:absolute; left:77%; top:85%; transform:translate(50%,50%); z-index: 10;">
+        <h3 class="blue">Back to Landing</h3>
+    </div>
+    </a>
+    <script>
+        const buttonsix = document.getElementById("sixbutton");
+        buttonsix.addEventListener('mouseenter', () => {
+            buttonsix.classList.add('hover');
+            buttonsix.addEventListener('mouseleave', () => {
+            buttonsix.classList.remove('hover');
+        });
+        });
+        buttonsix.addEventListener('click', () => {
+            buttonsix.classList.add('clicked');
+        });
+    </script>
+        <!-- Legend (bottom-left) -->
+        <div id="legend" class="legend">
+            <div class="legend-title">Each Node is a Story. More Points = More Links</div>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <svg class="legend-svg" viewBox="-10 -10 20 20">
+                        <circle r="5" class="legend-shape node-zero"></circle>
+                    </svg>
+                    <span>0 links — circle</span>
+                </div>
+                <div class="legend-item">
+                    <svg class="legend-svg" viewBox="-10 -10 20 20">
+                        <path id="lp-one" class="legend-shape node-one"></path>
+                    </svg>
+                    <span>1 link — tear drop</span>
+                </div>
+                <div class="legend-item">
+                    <svg class="legend-svg" viewBox="-10 -10 20 20">
+                        <path id="lp-two" class="legend-shape node-two"></path>
+                    </svg>
+                    <span>2 links — leaf</span>
+                </div>
+                <div class="legend-item">
+                    <svg class="legend-svg" viewBox="-10 -10 20 20">
+                        <path id="lp-multi" class="legend-shape node-multi"></path>
+                    </svg>
+                    <span>3+ links — N-point star</span>
+                </div>
+            </div>
+
+            <!-- Bias halo gradient strip -->
+            <div class="legend-divider"></div>
+            <div class="legend-bias-title">Halos Denote The Source's Political Bias</div>
+            <div class="legend-bias-bar"></div>
+            <div class="legend-bias-labels">
+                <span>Left</span>
+                <span>Center</span>
+                <span>Right</span>
+            </div>
+
+            <!-- Expand / Collapse controls -->
+            <div class="legend-divider"></div>
+            <div class="legend-controls">
+                <button id="btn-expand-all">Expand All</button>
+                <button id="btn-collapse-all">Collapse All</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+        // ─── Shape Path Generators ────────────────────────────────────────────────
+
+        /**
+         * Asymmetric leaf / teardrop: a circle with one pointed tip.
+         * The tip points upward; the base is rounded.
+         */
+        function tearDropPath(r) {
+            const tip  = -(r * 1.8);
+            const base =  (r * 0);
+            const w    =  (r * 1);
+            return `M 0,${tip}` +
+                   ` C  ${w},${-(r * 0.90)} ${w},${r * 0.15} 0,${base}` +
+                   ` C ${-w},${r * 0.15} ${-w},${-(r * 0.90)} 0,${tip}`;
+        }
+
+        /**
+         * Symmetric leaf / lens: two mirrored arcs, pointed at both ends.
+         */
+        function symmetricLeafPath(r) {
+            const h = r * 1.25;
+            const w = r * 1.5;
+            return `M 0,${-h} Q ${w},0 0,${h} Q ${-w},0 0,${-h}`;
+        }
+
+        /**
+         * N-pointed star. Outer radius is fixed; inner radius adapts so spikes
+         * stay visible even at high point counts.
+         */
+        function starPath(r, n) {
+            const outer     = r * 2;
+            const innerRatio = Math.max(0.28, 0.58 - n * 0.016);
+            const inner     = outer * innerRatio;
+            let d = '';
+            for (let i = 0; i < n * 2; i++) {
+                const angle  = (Math.PI * i / n) - Math.PI / 2;
+                const radius = i % 2 === 0 ? outer : inner;
+                const x = (radius * Math.cos(angle)).toFixed(3);
+                const y = (radius * Math.sin(angle)).toFixed(3);
+                d += i === 0 ? `M${x},${y}` : ` L${x},${y}`;
+            }
+            return d + ' Z';
+        }
+
+        // Inject legend preview paths
+        document.getElementById('lp-one').setAttribute('d',   tearDropPath(5));
+        document.getElementById('lp-two').setAttribute('d',   symmetricLeafPath(5));
+        document.getElementById('lp-multi').setAttribute('d', starPath(5, 5));
+
+        // ─── Logo Helper ──────────────────────────────────────────────────────────
+function getLogoUrl(websiteName) {
+    if (!websiteName) return null;
+    
+    // Map specific CSV "Website Name" entries to your image paths here
+    const logoMap = {
+        "Adobe": "logos/Adobe.png",
+        "Apnorc": "logos/APNORC.jpg",
+        "Arizona Capitol Times": "logos/Arizona-Capitol-Times.jpeg",
+        "Associated Press": "logos/Associated_Press_logo_2012.png",
+        "Brookings": "logos/Brookings.png",
+        "American Progress": "logos/CAP_logo_Nov_2021.png",
+        "CBS News": "logos/CBS_News_logo.png",
+        "CNN": "logos/CNN.png",
+        "Court Listener": "logos/Court-listener.svg",
+        "Equal Justice Initiative": "logos/eji.png",
+        "Fox News": "logos/Fox-News-Logo-1536x864.png",
+        "Futurism": "logos/Futurism_logo.png",
+        "Ipsos": "logos/Ipsos.png",
+        "Mediaite": "logos/mediaite-publisher-logo.png",
+        "National Review": "logos/national-review-logo.png",
+        "NBC Miami": "logos/NBC-miami.png",
+        "NBC News": "logos/NBC-News-Logo-500x281.png",
+        "PBS": "logos/PBS_logo_2019_(Symbol).png",
+        "People": "logos/People_Magazine_logo.png",
+        "Pew Research Center": "logos/Pew-Research.png",
+        "Supreme Court": "logos/Seal_of_the_United_States_Supreme_Court.png",
+        "ICE": "logos/Ice-Logo.png",
+        "The Economist": "logos/Economist.png",
+        "New York Times": "logos/NYT.png",
+        "Washington Post": "logos/WaPo.png",
+        "The Atlantic": "logos/The-Atlantic-logo-vector.png",
+        "The Hill": "logos/The-Hill.png",
+        "Time": "logos/Time_Magazine_logo.png",
+        "U.S. Census Bureau": "logos/U.S._Census_Bureau_logo.svg",
+        "X": "logos/X-Logo.jpg",
+        "Yahoo": "logos/Yahoo.png",
+        "Youtube": "logos/youtube-logo-youtube-icon-transparent-free-png.webp",
+        "MS Now": "logos/MSNow.jpg"
+        // Add more image mappings as needed...
+    };
+
+    if (logoMap[websiteName]) {
+        return logoMap[websiteName];
+    }
+    
+    // Fallback: auto-generate a filename based on the website name
+    // e.g., "Associated Press" -> "logos/associated_press.png"
+    const safeName = websiteName.toLowerCase().replace(/[^a-z0-9]+/g, '_');
+    return `logos/${safeName}.png`;
+}
+
+        // ─── Media Bias Map ───────────────────────────────────────────────────────
+        // Scores range from -1 (Far Left) to +1 (Far Right), 0 = Center.
+        // Sources not listed here default to 0 (centered).
+        // Ratings based on AllSides Media Bias Chart (news category) and
+        // Ad Fontes Media's bias chart. MS Now is treated as MSNBC.
+        const MEDIA_BIAS = {
+            "MS Now":              -0.50,   // MSNBC — Left
+            "American Progress":   -0.5,   // Center for American Progress — Left
+            "Associated Press":    -0.1,   // AP — recently moved to Left/Lean Left
+            "CNN":                 -0.2,   // Lean Left
+            "New York Times":      -0.2,   // Lean Left
+            "Washington Post":     -0.2,   // Lean Left
+            "NBC News":            -0.1,   // Lean Left
+            "NBC Miami":           -0.1,   // NBC affiliate — Lean Left
+            "CBS News":            -0.05,   // Lean Left
+            "The Atlantic":        -0.3,   // Lean Left
+            "Brookings":           0.00,   // Lean Left
+            "Time":                -0.2,   // Lean Left
+            "Mediaite":            -0.3,   // Lean Left
+            "PBS":                 -0.15,   // Lean Left (PBS NewsHour)
+            "Equal Justice Initiative": -0.7, // Advocacy org, Lean Left
+            "Futurism":            -0.5,   // Tech/science, slight Lean Left
+            "Yahoo":               -0.15,   // News aggregator, slight Lean Left
+            "The Hill":            -0.05,   // Center (slight lean left)
+            "The Economist":        0.00,   // Center
+            "Pew Research Center":  0.00,   // Center
+            "Ipsos":                0.00,   // Center (polling firm)
+            "Apnorc":               0.00,   // Center (AP-NORC research)
+            "People":               0.00,   // Entertainment — unrated, center
+            "U.S. Census Bureau":   0.00,   // Nonpartisan government stats
+            "Supreme Court":        0.00,   // Nonpartisan government institution
+            "ICE":                  0.00,   // Government agency
+            "Court Listener":       0.00,   // Legal database
+            "Adobe":                0.00,   // Tech company
+            "X":                    0.00,   // Platform
+            "Arizona Capitol Times": 0.00,  // Local outlet, not on bias charts
+            "National Review":      0.5,   // Lean Right (news)
+            "Fox News":             0.50,   // Right
+        };
+
+        // ─── Main Render ──────────────────────────────────────────────────────────
+
+        async function renderChart() {
+            // ── 1. Load data ──────────────────────────────────────────────────────
+            const [rootData, csvData] = await Promise.all([
+                d3.json("data.json"),
+                d3.csv("Hyperlink.csv")
+            ]);
+
+            // ── 2. Build CSV lookup: story name → row ─────────────────────────────
+            //    If a name appears twice (same story cited in different branches),
+            //    keep the row with the higher total link count.
+            const csvByName = new Map();
+            csvData.forEach(row => {
+                if (!row.STORY) return;
+                const name  = row.STORY.trim();
+                const total = parseInt(row['Total Links']) || 0;
+                const prev  = csvByName.get(name);
+                if (!prev || total > (parseInt(prev['Total Links']) || 0)) {
+                    csvByName.set(name, row);
+                }
+            });
+
+            // ── 3. Build deduplicated graph ───────────────────────────────────────
+            //    Nodes are deduplicated by name. Any edge that already exists
+            //    (same source→target) is skipped so the graph stays clean.
+            const nodeMap  = new Map(); // name → node object
+            const edgeSet  = new Set(); // "srcId~tgtId"
+            const allEdges = [];        // { source: id, target: id }
+            let nextId = 0;
+
+            function getOrCreate(name) {
+                if (!nodeMap.has(name)) {
+                    const csv = csvByName.get(name) || {};
+                    nodeMap.set(name, {
+                        id:       nextId++,
+                        name,
+                        website:  csv['Website Name'] ? csv['Website Name'].trim() : null,
+                        links:    parseInt(csv['Total Links'])             || 0,
+                        selfRef:  parseInt(csv['Self-Referential Links'])  || 0,
+                        external: parseInt(csv['External Links'])          || 0,
+                        broken:   parseInt(csv['Broken Links'])            || 0,
+                        gen:      parseInt(csv['GENERATION'])              || 0,
+                        collapsed: true,
+                        parents:   new Set(),
+                        childIds:  new Set(),
+                        // Force sim position/velocity (D3 will initialize if undefined)
+                        x: undefined, y: undefined, vx: 0, vy: 0
+                    });
+                }
+                return nodeMap.get(name);
+            }
+
+            function traverse(jsonNode, parentNode) {
+                const node = getOrCreate(jsonNode.name);
+                if (parentNode !== null) {
+                    const key = `${parentNode.id}~${node.id}`;
+                    if (!edgeSet.has(key)) {
+                        edgeSet.add(key);
+                        allEdges.push({ source: parentNode.id, target: node.id });
+                        parentNode.childIds.add(node.id);
+                        node.parents.add(parentNode.id);
+                    }
+                }
+                if (jsonNode.children) {
+                    jsonNode.children.forEach(child => traverse(child, node));
+                }
+            }
+
+            // The 3 Gen-1 story nodes become the fixed anchor nodes.
+            const topLevelIds = [];
+            rootData.children.forEach(story => {
+                traverse(story, null);
+                topLevelIds.push(nodeMap.get(story.name).id);
+            });
+
+            const allNodes   = Array.from(nodeMap.values());
+            const nodeById   = new Map(allNodes.map(n => [n.id, n]));
+            const topLevelSet = new Set(topLevelIds);
+
+            // ── 4. Position & fix the 3 root story nodes ──────────────────────────
+            const W = window.innerWidth;
+            const H = window.innerHeight;
+            const cx = W / 2;
+            const cy = H / 2;
+            const spreadR = Math.min(W, H) * 0.24;
+
+            topLevelIds.forEach((id, i) => {
+                const n = nodeById.get(id);
+                const angle = (2 * Math.PI * i / topLevelIds.length) - Math.PI / 2;
+                n.x  = cx + spreadR * Math.cos(angle);
+                n.y  = cy + spreadR * Math.sin(angle);
+                n.fx = n.x;   // Fixed — acts as anchors for the three branches
+                n.fy = n.y;
+                n.vx = 0;
+                n.vy = 0;
+            });
+
+            // ── 5. Visibility computation (respects collapsed state) ──────────────
+            //    A node is visible if it is reachable from any top-level story
+            //    via a path where no ancestor is collapsed.
+            //    In DAG terms: a node stays visible as long as at least one
+            //    uncollapsed parent path leads to it.
+            function getVisibleSet() {
+                const visible = new Set();
+                const queue   = [...topLevelIds];
+                while (queue.length) {
+                    const id = queue.shift();
+                    if (visible.has(id)) continue;
+                    visible.add(id);
+                    const nd = nodeById.get(id);
+                    if (!nd.collapsed) {
+                        nd.childIds.forEach(cid => queue.push(cid));
+                    }
+                }
+                return visible;
+            }
+
+            // ── 6. SVG & zoom setup ───────────────────────────────────────────────
+            const svg = d3.select("#main-svg")
+                .attr("width",  W)
+                .attr("height", H);
+
+            // ── Read halo / pixel / cursor settings from CSS custom properties ──
+            const cssVars      = getComputedStyle(document.documentElement);
+            const colorLeft    = cssVars.getPropertyValue('--bias-color-left').trim();
+            const colorCenter  = cssVars.getPropertyValue('--bias-color-center').trim();
+            const colorRight   = cssVars.getPropertyValue('--bias-color-right').trim();
+            const haloRadius   = parseFloat(cssVars.getPropertyValue('--halo-radius'))  || 60;
+            const haloBlur     = parseFloat(cssVars.getPropertyValue('--halo-blur'))    || 38;
+            const haloOpacity  = parseFloat(cssVars.getPropertyValue('--halo-opacity')) || 0.55;
+            const PIXEL_CELL   = parseInt(cssVars.getPropertyValue('--pixel-cell-size'))       || 20;
+            const PIXEL_RADIUS = parseInt(cssVars.getPropertyValue('--pixel-influence-radius')) || 160;
+
+            // Bias score (−1…+1) → interpolated halo colour
+            const biasColorScale = d3.scaleLinear()
+                .domain([-1, 0, 1])
+                .range([colorLeft, colorCenter, colorRight])
+                .interpolate(d3.interpolateRgb);
+
+            // ── Pixel heatmap canvas setup ─────────────────────────────────────
+            const heatCanvas = document.getElementById('heatmap-canvas');
+            const heatCtx    = heatCanvas.getContext('2d');
+            heatCanvas.width  = W;
+            heatCanvas.height = H;
+
+            // Current zoom transform — updated in zoom handler so canvas can
+            // convert node graph-coords → screen-coords for the pixel grid.
+            let currentTransform = d3.zoomIdentity;
+
+            function drawPixelHeatmap(visNodes) {
+                const { x: tx, y: ty, k } = currentTransform;
+
+                // Scale cell size and influence radius with zoom so the grid
+                // sticks to the canvas (graph-space) rather than the viewport.
+                const scaledCell   = PIXEL_CELL   * k;
+                const scaledRadius = PIXEL_RADIUS * k;
+
+                // Compute canvas-space grid origin aligned to graph-space grid.
+                // We snap the offset so cells are always aligned to graph coords,
+                // preventing the grid from drifting as you pan.
+                const gridOffX = ((tx % scaledCell) + scaledCell) % scaledCell;
+                const gridOffY = ((ty % scaledCell) + scaledCell) % scaledCell;
+
+                const cols = Math.ceil((heatCanvas.width  - gridOffX) / scaledCell) + 2;
+                const rows = Math.ceil((heatCanvas.height - gridOffY) / scaledCell) + 2;
+
+                const rAcc = new Float32Array(cols * rows);
+                const gAcc = new Float32Array(cols * rows);
+                const bAcc = new Float32Array(cols * rows);
+                const wAcc = new Float32Array(cols * rows);
+
+                for (const node of visNodes) {
+                    if (node.x == null || isNaN(node.x)) continue;
+                    // Convert graph coords → screen coords
+                    const [sx, sy] = currentTransform.apply([node.x, node.y]);
+                    const bias = node.website ? (MEDIA_BIAS[node.website] ?? 0) : 0;
+                    const col  = d3.rgb(biasColorScale(bias));
+
+                    // Grid cell range in screen space
+                    const ciL = Math.max(0, Math.floor((sx - scaledRadius - gridOffX) / scaledCell));
+                    const ciR = Math.min(cols - 1, Math.ceil((sx + scaledRadius - gridOffX) / scaledCell));
+                    const cjT = Math.max(0, Math.floor((sy - scaledRadius - gridOffY) / scaledCell));
+                    const cjB = Math.min(rows - 1, Math.ceil((sy + scaledRadius - gridOffY) / scaledCell));
+
+                    for (let ci = ciL; ci <= ciR; ci++) {
+                        for (let cj = cjT; cj <= cjB; cj++) {
+                            // Centre of this cell in screen space
+                            const ccx  = gridOffX + ci * scaledCell + scaledCell / 2;
+                            const ccy  = gridOffY + cj * scaledCell + scaledCell / 2;
+                            const dist = Math.hypot(sx - ccx, sy - ccy);
+                            if (dist >= scaledRadius) continue;
+                            const w = 1 - dist / scaledRadius;
+                            const idx = cj * cols + ci;
+                            rAcc[idx] += col.r * w;
+                            gAcc[idx] += col.g * w;
+                            bAcc[idx] += col.b * w;
+                            wAcc[idx] += w;
+                        }
+                    }
+                }
+
+                heatCtx.clearRect(0, 0, heatCanvas.width, heatCanvas.height);
+                for (let ci = 0; ci < cols; ci++) {
+                    for (let cj = 0; cj < rows; cj++) {
+                        const idx = cj * cols + ci;
+                        const tw  = wAcc[idx];
+                        if (tw < 0.001) continue;
+                        const r = Math.min(255, Math.round(rAcc[idx] / tw));
+                        const g = Math.min(255, Math.round(gAcc[idx] / tw));
+                        const b = Math.min(255, Math.round(bAcc[idx] / tw));
+                        const a = Math.min(haloOpacity, tw * haloOpacity);
+                        heatCtx.fillStyle = `rgba(${r},${g},${b},${a})`;
+                        const px = gridOffX + ci * scaledCell;
+                        const py = gridOffY + cj * scaledCell;
+                        heatCtx.fillRect(px, py, scaledCell, scaledCell);
+                    }
+                }
+            }
+
+            // ── SVG defs: gaussian blur filter (BLUR MODE — commented out by default)
+            // To switch back to blur halos instead of the pixel grid:
+            //   1. Uncomment the defs/filter block below
+            //   2. Uncomment the haloLayer usage in render() (section 12)
+            //   3. Uncomment the haloSel tick update in tick()
+            //   4. Comment out the drawPixelHeatmap() call in tick()
+            const defs = svg.append("defs");
+            /*
+            const filter = defs.append("filter")
+                .attr("id", "halo-blur")
+                .attr("x", "-300%").attr("y", "-300%")
+                .attr("width", "700%").attr("height", "700%");
+            filter.append("feGaussianBlur")
+                .attr("in", "SourceGraphic")
+                .attr("stdDeviation", haloBlur);
+            */
+
+            const zoomLayer = svg.append("g");
+
+            // ── Halo layer (BLUR MODE — commented out; pixel grid is active) ──
+            // Uncomment to re-enable the blurred-circle heatmap.
+            // const haloLayer = zoomLayer.append("g")
+            //     .attr("class", "halo-layer")
+            //     .attr("filter", "url(#halo-blur)");
+
+            svg.call(
+                d3.zoom()
+                    .scaleExtent([0.04, 10])
+                    .on("zoom", ev => {
+                        currentTransform = ev.transform;
+                        zoomLayer.attr("transform", ev.transform);
+                        // Redraw pixel grid immediately on pan/zoom so it never
+                        // drifts or follows the camera — it stays glued to the canvas.
+                        drawPixelHeatmap(currentVisNodes);
+                    })
+            );
+
+            const rootConnLayer = zoomLayer.append("g").attr("class", "root-conn-layer");
+            const edgeLayer = zoomLayer.append("g").attr("class", "edges-layer");
+            const nodeLayer = zoomLayer.append("g").attr("class", "nodes-layer");
+            const titleLayer = zoomLayer.append("g").attr("class", "title-layer");
+
+            const tooltip = d3.select("#tooltip");
+
+            // ── 7. Force simulation ───────────────────────────────────────────────
+            const BASE_R = 5;
+
+            // Bias clustering range: how far left/right nodes are pushed (in px).
+            // A bias score of ±1 maps to ±biasSpread pixels from center.
+            const biasSpread = Math.min(W, H) * 0.38;
+
+            const simulation = d3.forceSimulation()
+                .force("link",   d3.forceLink()
+                    .id(d => d.id)
+                    .distance(100)
+                    .strength(0.5))
+                .force("charge", d3.forceManyBody()
+                    .strength(-200)
+                    .distanceMax(300))
+                .force("center", d3.forceCenter(cx, cy).strength(0))
+                .force("collide", d3.forceCollide(BASE_R * 2.4 * 5/3))
+                // ── Media bias clustering force ──────────────────────────────────
+                // Non-top-level nodes are nudged left or right based on their
+                // source outlet's AllSides / Ad Fontes bias rating (–1 to +1).
+                // Nodes whose website is not in MEDIA_BIAS target cx (center).
+                .force("biasX", d3.forceX(d => {
+                    if (topLevelSet && topLevelSet.has(d.id)) return d.x ?? cx;
+                    const bias = d.website ? (MEDIA_BIAS[d.website] ?? 0) : 0;
+                    return cx + bias * biasSpread;
+                }).strength(d => (topLevelSet && topLevelSet.has(d.id)) ? 0 : 0.10))
+                .alphaDecay(0.02)
+                .velocityDecay(0.4);
+
+            // ── 8. Helper utilities ───────────────────────────────────────────────
+            function nodeRadius(node) {
+                // Top-level nodes: larger, handled via CSS scale
+                return BASE_R;
+            }
+
+            function nodePathData(node) {
+                const r = nodeRadius(node);
+                const l = node.links;
+                if (l === 0) return null;              // renders as <circle>
+                if (l === 1) return tearDropPath(r);
+                if (l === 2) return symmetricLeafPath(r);
+                return starPath(r, l);
+            }
+
+            function nodeClasses(node) {
+    const l = node.links;
+    let cls = 'node-grp';
+
+    if (topLevelSet.has(node.id)) cls += ' node-toplevel';
+
+    cls += l === 0 ? ' shape-zero'
+         : l === 1 ? ' shape-one'
+         : l === 2 ? ' shape-two'
+         : ' shape-multi';
+
+    const hasChildren = node.childIds.size > 0;
+
+    if (hasChildren && node.collapsed) cls += ' is-collapsed';
+    if (!hasChildren) cls += ' is-leaf';
+
+    return cls;
+}
+
+            // ── 9. Snap-to-cursor & custom cursor ────────────────────────────────
+            const SNAP_RADIUS   = 20;   // graph-space px within which snap activates (toned down)
+            const SNAP_STRENGTH = 0.1; // velocity impulse per tick (toned down from 0.2)
+            // Final-approach threshold: within this graph-px distance, teleport the node
+            // exactly onto the cursor so it always sits under the pointer.
+            const SNAP_LOCK_RADIUS = 5;
+            let snapNode = null, snapGX = null, snapGY = null;
+
+            const customCursor = document.getElementById('cursor-site-wide');
+
+            // Track mouse in screen-space; convert to graph-space for snap
+            svg.on("mousemove.cursor", (ev) => {
+                // Move custom cursor (screen coords)
+                // customCursor.style.left = ev.clientX + 'px';
+                // customCursor.style.top  = ev.clientY + 'px';
+
+                // Convert to graph coords for snap
+                const [gx, gy] = currentTransform.invert([ev.clientX, ev.clientY]);
+                snapGX = gx;
+                snapGY = gy;
+
+                // Find nearest visible node within snap radius
+                let nearest = null, nearestDist = SNAP_RADIUS;
+                for (const n of simulation.nodes()) {
+                    if (n.x == null) continue;
+                    const d = Math.hypot(n.x - gx, n.y - gy);
+                    if (d < nearestDist) { nearestDist = d; nearest = n; }
+                }
+                if (nearest !== snapNode) {
+                    snapNode = nearest;
+                    if (snapNode) simulation.alphaTarget(0.08).restart();
+                    else simulation.alphaTarget(0);
+                }
+            });
+
+            svg.on("mouseleave.cursor", () => {
+                snapNode = null; snapGX = null; snapGY = null;
+                simulation.alphaTarget(0);
+                customCursor.classList.remove('is-hovering');
+            });
+
+            // Snap force — applied each tick, pulls snapNode gently toward cursor.
+            // Within SNAP_LOCK_RADIUS the node is locked exactly to the cursor so
+            // it is always under the pointer rather than slightly trailing behind.
+            simulation.force("snap", function() {
+                if (!snapNode || snapGX == null) return;
+                const dx = snapGX - snapNode.x;
+                const dy = snapGY - snapNode.y;
+                const dist = Math.hypot(dx, dy);
+                if (dist < SNAP_LOCK_RADIUS) {
+                    // Hard-lock: teleport the node to the exact cursor position
+                    snapNode.x  = snapGX;
+                    snapNode.y  = snapGY;
+                    snapNode.vx = 0;
+                    snapNode.vy = 0;
+                } else {
+                    snapNode.vx += dx * SNAP_STRENGTH;
+                    snapNode.vy += dy * SNAP_STRENGTH;
+                }
+            });
+
+            // ── 10. Drag behaviour ────────────────────────────────────────────────
+            const drag = d3.drag()
+                .on("start", (ev, d) => {
+                    if (!ev.active) simulation.alphaTarget(0.3).restart();
+                    // Don't fix top-level anchors during drag — they stay put
+                    if (!topLevelSet.has(d.id)) {
+                        d.fx = d.x;
+                        d.fy = d.y;
+                    }
+                })
+                .on("drag", (ev, d) => {
+                    if (!topLevelSet.has(d.id)) {
+                        d.fx = ev.x;
+                        d.fy = ev.y;
+                    }
+                })
+                .on("end", (ev, d) => {
+                    if (!ev.active) simulation.alphaTarget(0);
+                    if (!topLevelSet.has(d.id)) {
+                        d.fx = null;
+                        d.fy = null;
+                    }
+                });
+
+            // ── 11. Tooltip helpers ───────────────────────────────────────────────
+            const clickHint = document.getElementById('click-hint');
+            let clickHintTimer = null;
+
+            function showTooltip(ev, d) {
+                const hasKids  = d.childIds.size > 0;
+                const isLeaf   = d.childIds.size === 0;
+                const genLabel = d.gen ? `Gen ${d.gen}` : '';
+                const collapsed = d.collapsed;
+
+                // Format name as "[Source]: [Title]" when a source is known
+                const displayName = d.website
+                    ? `<span class="tt-source">${d.website}:</span> ${d.name}`
+                    : d.name;
+
+                // Expand cursor
+                customCursor.classList.add('is-hovering');
+
+                // ── Bias score & tooltip background colour ────────────────────
+                const biasScore = d.website ? (MEDIA_BIAS[d.website] ?? null) : null;
+                let biasBg = 'var(--tt-bg)';
+                let biasLabel = '';
+                let biasDisplay = '';
+                if (biasScore !== null) {
+                    // Blend the bias colour with white at low opacity for a subtle tint
+                    const biasRgb = d3.rgb(biasColorScale(biasScore));
+                    biasBg = `rgba(${biasRgb.r},${biasRgb.g},${biasRgb.b},0.2)`;
+
+                    // Human-readable label
+                    if      (biasScore <= -0.65) biasLabel = 'Left';
+                    else if (biasScore <= -0.30) biasLabel = 'Lean Left';
+                    else if (biasScore <=  0.30) biasLabel = 'Center';
+                    else if (biasScore <=  0.65) biasLabel = 'Lean Right';
+                    else                          biasLabel = 'Right';
+
+                    // Score bar (−1 … +1 mapped to 0…100%)
+                    const pct = ((biasScore + 1) / 2 * 100).toFixed(1);
+                    biasDisplay = `
+                        <div class="tt-bias-row">
+                            <span class="tt-labele bold">Media bias: </span>
+                        </div>
+                        <div class="tt-bias-bar-track">
+                            <div class="tt-bias-bar-fill" style="left:${pct}%"></div>
+                        </div>`;
+                }
+                
+                let html = `<div class="tt-name">${displayName}</div>`;
+                if (biasDisplay) html += biasDisplay;
+                let linkFlex = `<div class="link-flex">`;
+                let linkDist = `<div class="link-dist">`;
+                linkFlex += `<div class="tt-row"><span class="tt-label bold">Total links</span><span class="tt-value">${d.links}</span></div>`;
+                if (d.selfRef)  linkDist += `<div class="tt-row"><span class="tt-label">Self-referential</span><span class="tt-value">${d.selfRef}</span></div>`;
+                if (d.external) linkDist += `<div class="tt-row"><span class="tt-label">External</span><span class="tt-value">${d.external}</span></div>`;
+                if (d.broken)   linkDist += `<div class="tt-row"><span class="tt-label">Broken</span><span class="tt-value tt-broken">${d.broken}</span></div>`;
+                linkFlex += linkDist;
+                linkFlex += `</div></div>`
+                html += linkFlex;
+                if (hasKids) {
+                    html += `<div class="tt-hint">${collapsed
+                        ? `Click to expand (${d.childIds.size} children hidden)`
+                        : `Click to collapse children`}</div>`;
+                }
+                
+
+                tooltip
+                    .style("background", biasBg)
+                    .html(html)
+                    .classed("visible", true);
+                positionTooltip(ev);
+            }
+
+            function positionTooltip(ev) {
+                const pad   = 14;
+                const approxW = 270;
+                const approxH = 140;
+                let x = ev.clientX + pad;
+                let y = ev.clientY - pad;
+                if (x + approxW > W) x = ev.clientX - approxW - pad;
+                if (y + approxH > H) y = ev.clientY - approxH - pad;
+                tooltip.style("left", x + "px").style("top", y + "px");
+            }
+
+            function hideTooltip() {
+                tooltip.classed("visible", false).style("background", null);
+                customCursor.classList.remove('is-hovering');
+            }
+
+            function showClickHint(ev) {
+                clearTimeout(clickHintTimer);
+                clickHint.textContent = 'No children to expand';
+                clickHint.style.left = (ev.clientX + 12) + 'px';
+                clickHint.style.top  = (ev.clientY - 28) + 'px';
+                clickHint.classList.add('visible');
+                clickHintTimer = setTimeout(() => clickHint.classList.remove('visible'), 1400);
+            }
+
+            // ── 12. Live selections (updated each render) ─────────────────────────
+            let linkSel, nodeSel, rootConnSel;
+            // BLUR MODE: let haloSel;  ← uncomment to re-enable blur halos
+
+            let pixelTickCount = 0;
+            const PIXEL_TICK_INTERVAL = 3; // redraw pixel grid every N ticks
+            let currentVisNodes = []; // kept in sync so tick can redraw
+
+            // Halo positions are throttled: they're blurry so ~20fps is plenty
+            // and avoids re-triggering the group filter on every simulation tick.
+            let haloTickCount = 0;
+            const HALO_TICK_INTERVAL = 3; // update halos every N ticks
+
+            // Path generator: smooth cubic bezier from (cx,cy) to a top-level node.
+            function rootConnPath(t) {
+                if (t.x == null || isNaN(t.x)) return `M${cx},${cy}`;
+                const dx = t.x - cx, dy = t.y - cy;
+                const len = Math.hypot(dx, dy) || 1;
+                const ux = dx / len, uy = dy / len;
+                const arm = len * 0.45;
+                return `M${cx},${cy} C${cx + ux*arm},${cy + uy*arm} ${t.x - ux*arm},${t.y - uy*arm} ${t.x},${t.y}`;
+            }
+
+            function tick() {
+                if (rootConnSel) {
+                    rootConnSel.attr("d", d => rootConnPath(d));
+                }
+                if (linkSel) {
+                    linkSel
+                        .attr("x1", d => d.source.x)
+                        .attr("y1", d => d.source.y)
+                        .attr("x2", d => d.target.x)
+                        .attr("y2", d => d.target.y);
+                }
+                if (nodeSel) {
+                    nodeSel.attr("transform", d => `translate(${d.x ?? 0},${d.y ?? 0})`);
+                }
+
+                // ── Pixel heatmap (active by default) ─────────────────────────
+                if (++pixelTickCount % PIXEL_TICK_INTERVAL === 0) {
+                    drawPixelHeatmap(currentVisNodes);
+                }
+
+                // ── BLUR MODE halo tick (commented out — swap with pixel above) ─
+                // if (haloSel && (++haloTickCount % HALO_TICK_INTERVAL === 0)) {
+                //     haloSel.attr("cx", d => d.x ?? 0).attr("cy", d => d.y ?? 0);
+                // }
+            }
+
+            // ── 13. Render / re-render ────────────────────────────────────────────
+            function render() {
+                const visSet   = getVisibleSet();
+                const visNodes = allNodes.filter(n => visSet.has(n.id));
+                currentVisNodes = visNodes;
+
+                // ── Seed newly visible nodes near their parent ─────────────────
+                // Prevents children from flying in from (0,0) on first reveal.
+                visNodes.forEach(n => {
+                    if (n.x == null || isNaN(n.x)) {
+                        for (const pid of n.parents) {
+                            const p = nodeById.get(pid);
+                            if (p && p.x != null && !isNaN(p.x)) {
+                                n.x  = p.x + (Math.random() - 0.5) * 12;
+                                n.y  = p.y + (Math.random() - 0.5) * 12;
+                                n.vx = 0; n.vy = 0;
+                                break;
+                            }
+                        }
+                    }
+                });
+
+                // Build visible edge list, resolving IDs to live node objects
+                const visEdges = allEdges
+                    .filter(e => visSet.has(e.source) && visSet.has(e.target))
+                    .map(e => ({
+                        source: nodeById.get(e.source),
+                        target: nodeById.get(e.target)
+                    }));
+
+                // ── BLUR MODE halos (commented out; pixel grid active) ──────────
+                // haloSel = haloLayer
+                //     .selectAll("circle.halo")
+                //     .data(visNodes, d => d.id)
+                //     .join("circle")
+                //     .attr("class", "halo")
+                //     .attr("r",      haloRadius)
+                //     .attr("fill",   d => {
+                //         const bias = d.website ? (MEDIA_BIAS[d.website] ?? 0) : 0;
+                //         return biasColorScale(bias);
+                //     })
+                //     .attr("opacity", haloOpacity);
+
+                // Initial pixel draw on render (then tick keeps it updated)
+                drawPixelHeatmap(visNodes);
+
+                // ── Root connectors (centre title → each top-level node) ───────────
+                rootConnSel = rootConnLayer
+                    .selectAll("path.root-conn")
+                    .data(topLevelIds.map(id => nodeById.get(id)), d => d.id)
+                    .join("path")
+                    .attr("class", "root-conn")
+                    .attr("fill", "none");
+
+                // ── Edges ──────────────────────────────────────────────────────────
+                linkSel = edgeLayer
+                    .selectAll("line.edge")
+                    .data(visEdges)
+                    .join("line")
+                    .attr("class", e =>
+                        "edge" + (isSharedEdge(e) ? " edge-shared" : "")
+                    );
+
+                // ── Nodes ──────────────────────────────────────────────────────────
+                nodeSel = nodeLayer
+                    .selectAll("g.node-grp")
+                    .data(visNodes, d => d.id)
+                    .join(
+                        enter => {
+                            const grp = enter.append("g")
+                                .attr("class", d => nodeClasses(d));
+
+                            grp.each(function(d) {
+                                const sel  = d3.select(this);
+                                const path = nodePathData(d);
+                                if (path) {
+                                    sel.append("path")
+                                       .attr("class", "node-shape")
+                                       .attr("d", path);
+                                } else {
+                                    sel.append("circle")
+                                       .attr("class", "node-shape")
+                                        .attr("r", BASE_R);
+                                }
+                                if (d.website) {
+                                    const logoUrl = getLogoUrl(d.website);
+                                    if (logoUrl) {
+                                        sel.append("image")
+                                            .attr("class", "node-logo")
+                                            .attr("href", logoUrl);
+                                    }
+                                }
+                            });
+
+                            grp
+                                .on("click", (ev, d) => {
+                                    ev.stopPropagation();
+                                    if (d.childIds.size > 0) {
+                                        d.collapsed = !d.collapsed;
+                                        render();
+                                    } else {
+                                        // Non-expandable node — show brief hint
+                                        showClickHint(ev);
+                                    }
+                                })
+                                .on("mouseover", (ev, d) => showTooltip(ev, d))
+                                .on("mousemove", ev => positionTooltip(ev))
+                                .on("mouseout",  ()  => hideTooltip())
+                                .call(drag);
+
+                            return grp;
+                        },
+                        update => {
+                            update.attr("class", d => nodeClasses(d));
+                            return update;
+                        },
+                        exit => exit.remove()
+                    );
+
+                // ── Update simulation ──────────────────────────────────────────────
+                simulation.nodes(visNodes);
+                simulation.force("link").links(visEdges);
+                simulation.alpha(0.35).restart();
+                simulation.on("tick", tick);
+            }
+
+            // Detect if an edge connects nodes from different top-level branches
+            // (used to distinguish cross-tree "shared" edges visually)
+            const storyOf = new Map(); // nodeId → which top-level story id
+            topLevelIds.forEach(sid => {
+                function mark(id) {
+                    if (storyOf.has(id)) return;
+                    storyOf.set(id, sid);
+                    nodeById.get(id).childIds.forEach(mark);
+                }
+                mark(sid);
+            });
+
+            function isSharedEdge(e) {
+                const src = typeof e.source === 'object' ? e.source.id : e.source;
+                const tgt = typeof e.target === 'object' ? e.target.id : e.target;
+                return storyOf.get(src) !== storyOf.get(tgt);
+            }
+
+            // ── 15. Handle window resize ──────────────────────────────────────────
+            window.addEventListener("resize", () => {
+                const nW = window.innerWidth;
+                const nH = window.innerHeight;
+                svg.attr("width", nW).attr("height", nH);
+                heatCanvas.width  = nW;
+                heatCanvas.height = nH;
+                simulation.force("center", d3.forceCenter(nW / 2, nH / 2).strength(0.04));
+                simulation.alpha(0.1).restart();
+            });
+
+            // ── 16. Expand / Collapse All buttons ────────────────────────────────
+            document.getElementById('btn-expand-all').addEventListener('click', () => {
+                allNodes.forEach(n => { n.collapsed = false; });
+                render();
+            });
+            document.getElementById('btn-collapse-all').addEventListener('click', () => {
+                // Collapse every node — top-level nodes are always rendered
+                // (getVisibleSet always seeds them), but setting their collapsed
+                // flag to true prevents their children from being queued.
+                allNodes.forEach(n => { n.collapsed = true; });
+                render();
+            });
+
+            // ── 17. Initial render ────────────────────────────────────────────────
+            render();
+
+            // ── 18. Centre title (once, inside zoomLayer so it sticks to canvas) ─
+            // const titleLines = ["Three News Outlets", "Report on Immigration"];
+            // const lineH = 10;
+            // const titleG = titleLayer.append("g")
+            //     .attr("transform", `translate(${cx},${cy})`);
+
+            // const titleText = titleG.append("text")
+            //     .attr("class", "root-title")
+            //     .attr("text-anchor", "middle");
+
+            // titleLines.forEach((line, i) => {
+            //     titleText.append("tspan")
+            //         .attr("x", 0)
+            //         .attr("dy", i === 0 ? `${-(lineH * (titleLines.length - 1) / 2)}px` : `${lineH}px`)
+            //         .text(line);
+            // });
+        }
+
+        renderChart().catch(err => {
+            console.error("Chart render error:", err);
+            document.getElementById("container").innerHTML =
+                `<div class="error-msg">⚠ Could not load chart data.<br><code>${err.message}</code><br>
+                 Ensure <em>data.json</em> and the CSV file are in the same folder as index.html.</div>`;
+        });
+    </script>
+</body>
+</html>

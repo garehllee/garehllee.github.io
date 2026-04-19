@@ -1,0 +1,835 @@
+/*CSS RESET */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*CUSTOM CSS */
+
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('fonts/NimbusSanL-ReguCond.ttf') format('truetype');
+  font-style: none;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('fonts/NimbusSanL-ReguCondItal.ttf') format('truetype');
+  font-style: italic;
+  font-weight:400;
+}
+
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('fonts/NimbusSanL-BoldCond.ttf') format('truetype');
+  font-style: none;
+  font-weight:600;
+}
+
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('fonts/NimbusSanL-BoldCondItal.ttf') format('truetype');
+  font-style: italic;
+  font-weight:600;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+   Edit these CSS custom properties to change every visual aspect of the graph.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* ── Canvas ────────────────────────────────────────────────────────── */
+    --bg-color:            #f1f1f1;
+
+    /* ── Bias halo colours ──────────────────────────────────────────────
+       These three colours define the heatmap gradient.
+       Edit them to change the halo tint for each region of the spectrum. */
+    --bias-color-left:     #3700ff;   /* Far-left sources               */
+    --bias-color-center:   #ffffff;   /* Centrist / unrated sources     */
+    --bias-color-right:    #ff4d00;   /* Far-right sources              */
+
+    /* ── Halo appearance (blur mode) ────────────────────────────────────
+       --halo-radius  : base disc size in graph px (before blur)
+       --halo-blur    : gaussian blur spread — higher = softer & wider
+       --halo-opacity : peak opacity of each halo (0–1)               */
+    --halo-radius:         60;
+    --halo-blur:           38;
+    --halo-opacity:        0.55;
+
+    /* ── Pixel heatmap appearance ───────────────────────────────────────
+       --pixel-cell-size        : grid square size in screen px
+       --pixel-influence-radius : how far (screen px) each node radiates
+       (reuses --halo-opacity for peak alpha)                          */
+    --pixel-cell-size:         20;
+    --pixel-influence-radius:  160;
+
+    /* ── Custom cursor ──────────────────────────────────────────────────
+       The canvas cursor is a small square that grows on node hover.
+       All values are editable here.                                    */
+    --cursor-size:         7px;       /* side length at rest             */
+    --cursor-hover-size:   12px;      /* side length when over a node    */
+    --cursor-fill:         #ffff4d;
+    --cursor-stroke:       rgba(0, 0, 0, 1);
+    --cursor-stroke-width: 1px;
+
+    /* ── Edges / links ─────────────────────────────────────────────────── */
+    --edge-color:          rgba(0, 0, 0, 1);
+    --edge-width:          .5px;
+    --edge-shared-color:   rgba(0, 0, 0, 1);  /* cross-trede edges */
+    --edge-shared-width:   .5px;
+    --edge-shared-dash:    5 3;                        /* dashed cross-tree */
+
+    /* ── Node shapes — fill colours by link count ───────────────────────
+       Change these hex values to restyle every node category.           */
+    --color-zero:          #ffffff;  
+    --color-one:           #ffffff;   
+    --color-two:           #ffffff;  
+    --color-multi:         #ffffff; 
+
+    /* ── Node stroke ────────────────────────────────────────────────────── */
+    --node-stroke:         rgba(0, 0, 0, 1);
+    --node-stroke-external: rgba(0,4,255);
+    --node-stroke-width:   .3px;
+
+    /* ── Node hover ─────────────────────────────────────────────────────── */
+    --node-hover-color:       var(--cursor-fill);
+    --node-hover-stroke-width: 1px;
+    --node-hover-scale:        1.2;
+
+    /* ── Leaf nodes (no children) ───────────────────────────────────────── */
+    --leaf-opacity:        1;
+
+    /* ── Top-level (Gen 1) story nodes ─────────────────────────────────── */
+    --toplevel-fill:           #ffffff;
+    --toplevel-stroke:         rgb(0, 0, 0);
+    --toplevel-stroke-width:   2px;
+    --toplevel-scale:          1.5;   /* multiplier applied via CSS scale  */
+
+    /* ── Transitions ────────────────────────────────────────────────────── */
+    --transition:          0.22s ease;
+
+    /* ── Tooltip ────────────────────────────────────────────────────────── */
+    --tt-bg:               #FFFFFF;
+    --tt-border:           .5px solid rgba(0, 0, 0, 1);
+    --tt-shadow:           0 6px 28px rgba(0, 0, 0, 0.55),
+                           0 0 0 1px rgba(90, 130, 210, 0.08);
+    --tt-radius:           0px;
+    --tt-padding:          13px 16px;
+    --tt-max-width:        290px;
+    --tt-blur:             blur(10px);
+
+    /* tooltip text */
+    --tt-name-color:       #000000;
+    --tt-name-size:        12.5px;
+    --tt-name-weight:      600;
+    --tt-name-line-height: 1.2;
+    --tt-gen-color:        rgb(0, 0, 0);
+    --tt-gen-size:         10px;
+    --tt-label-color:      rgb(0, 0, 0);
+    --tt-value-color:      #000000;
+    --tt-broken-color:     #000000;
+    --tt-meta-size:        11px;
+    --tt-hint-color:       #000000;
+    --tt-hint-size:        10px;
+
+    /* ── Legend ─────────────────────────────────────────────────────────── */
+    --legend-bg:           rgba(255, 255, 255, 1);
+    --legend-border:       1px solid rgba(0, 0, 0, 1);
+    --legend-radius:       0px;
+    --legend-padding:      14px 17px;
+    --legend-title-color:  rgba(1, 35, 255, 1);
+    --legend-title-size:   9.5px;
+    --legend-label-color:  rgba(0, 0, 0, 1);
+    --legend-label-size:   10.5px;
+    --legend-icon-size:    20px;
+    --legend-hint-color:   rgba(0, 0, 0, 1);
+    --legend-hint-size:    9.5px;
+    /* ── Node Logos ─────────────────────────────────────────────────────── */
+    --logo-size: 12px;         /* Edit this to change the image size */
+    --logo-offset-x: 2px;      /* Pushes the logo to the right */
+    --logo-offset-y: 2px;      /* Pushes the logo downward */
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RESET & BASE
+   ══════════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg-gradient);
+    background-color: var(--bg-color);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Nimbus Sans', sans-serif;
+}
+
+#container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#main-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    position: relative;
+    z-index: 1;
+}
+
+#main-svg:active {
+    cursor: grabbing;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   EDGES
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.edge {
+    fill:         none;
+    stroke:       var(--edge-color);
+    stroke-width: var(--edge-width);
+    transition:   stroke var(--transition);
+}
+
+/* Cross-tree edges (shared nodes referenced by multiple branches) */
+.edge.edge-shared {
+    stroke:            var(--edge-shared-color);
+    stroke-width:      var(--edge-shared-width);
+    opacity:           0.75;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   NODE GROUPS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.node-grp {
+    cursor: pointer;
+}
+
+/* The actual SVG shape (circle or path) inside each node group */
+.node-grp .node-shape {
+    stroke:       var(--node-stroke);
+    stroke-width: var(--node-stroke-width);
+    transition:
+        fill         var(--transition),
+        stroke       var(--transition),
+        stroke-width var(--transition),
+        transform    var(--transition),
+        opacity      var(--transition);
+
+    /* Ensures CSS scale() transforms from the shape's own centre */
+    transform-box:    fill-box;
+    transform-origin: center;
+}
+.node-grp .node-shape .external {
+    stroke: var(--node-stroke-external);
+}
+
+/* Hover — all nodes */
+.node-grp:hover .node-shape {
+    fill:       var(--node-hover-color);
+    stroke-width: 0px;
+    transform:    scale(var(--node-hover-scale));
+}
+
+
+/* ── Fill colours by shape class ──────────────────────────────────────── */
+.shape-zero  .node-shape { fill: var(--color-zero); }
+.shape-one   .node-shape { fill: var(--color-one);  }
+.shape-two   .node-shape { fill: var(--color-two);  }
+.shape-multi .node-shape { fill: var(--color-multi); }
+
+
+/* ── Top-level (Gen 1) story anchors ───────────────────────────────────── */
+.node-toplevel .node-shape {
+    fill:         var(--toplevel-fill);
+    transform:    scale(var(--toplevel-scale));
+}
+
+.node-toplevel:hover .node-shape {
+    transform: scale(calc(var(--toplevel-scale) * 1.18));
+}
+
+
+/* ── Collapsed node (has hidden children) ──────────────────────────────── */
+.node-grp.is-collapsed .node-shape {
+    fill: var(--node-hover-color);
+    transform: scale(var(var(--node-hover-scale)));
+}
+
+
+/* ── Leaf node (no children at all) ────────────────────────────────────── */
+.node-grp.is-leaf .node-shape {
+    opacity: var(--leaf-opacity);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TOOLTIP
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.tooltip {
+    position:        fixed;
+    pointer-events:  none;
+    z-index:         200;
+
+    background:      var(--tt-bg);
+    border:          var(--tt-border);
+    box-shadow:      var(--tt-shadow);
+    border-radius:   var(--tt-radius);
+    padding:         var(--tt-padding);
+    width:       var(--tt-max-width);
+    backdrop-filter: var(--tt-blur);
+    -webkit-backdrop-filter: var(--tt-blur);
+
+    opacity:         0;
+    transform:       translateY(-6px);
+    transition:      opacity 0.14s ease, transform 0.14s ease;
+}
+
+.tooltip.visible {
+    opacity:   1;
+    transform: translateY(0);
+}
+
+.tt-name {
+    color:       var(--tt-name-color);
+    font-size:   var(--tt-name-size);
+    font-weight: var(--tt-name-weight);
+    line-height: var(--tt-name-line-height);
+    margin-bottom: 5px;
+    word-break: break-word;
+}
+
+/* Source prefix "[News Source]:" rendered slightly dimmer than the title */
+.tt-source {
+    font-weight: 500;
+}
+
+.tt-gen {
+    color:        var(--tt-gen-color);
+    font-size:    var(--tt-gen-size);
+    font-variant: all-small-caps;
+    letter-spacing: 0.06em;
+    margin-bottom: 7px;
+}
+
+.tt-row {
+    display:         flex;
+    justify-content: space-between;
+    gap:             12px;
+    font-size:       var(--tt-meta-size);
+    margin-bottom:   3px;
+    width:100%
+}
+
+.link-flex{
+    display:flex;
+    column-gap:24px;
+}
+.link-dist{
+    width:100%;
+    justify-content:space-between;
+}
+.tt-label {
+    color: var(--tt-label-color);
+}
+
+.bold{
+    font-weight:600;
+}
+
+.tt-value {
+    color:       var(--tt-value-color);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.tt-broken {
+    color: var(--tt-broken-color);
+}
+
+.tt-hint {
+    color:      var(--tt-hint-color);
+    font-size:  var(--tt-hint-size);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* ── Bias score row inside tooltip ───────────────────────────────────── */
+.tt-bias-row {
+    display:         flex;
+    justify-content: space-between;
+    gap:             12px;
+    font-size:       var(--tt-meta-size);
+    margin-bottom:   3px;
+}
+
+.tt-bias-label {
+    font-weight: 600;
+    font-size:   var(--tt-meta-size);
+    color:       var(--tt-value-color);
+}
+
+/* Thin horizontal track containing a marker dot for the bias position */
+.tt-bias-bar-track {
+    position:      relative;
+    height:        5px;
+    background:    linear-gradient(
+                       to right,
+                       var(--bias-color-left),
+                       var(--bias-color-center),
+                       var(--bias-color-right)
+                   );
+    margin-bottom: 7px;
+    margin-top:    1px;
+}
+
+/* Marker dot — positioned at the node's exact bias score on the track */
+.tt-bias-bar-fill {
+    position:     absolute;
+    top:          50%;
+    width:        7px;
+    height:       7px;
+    border-radius: 50%;
+    background:   #000;
+    transform:    translate(-50%, -50%);
+    border:       1.5px solid rgba(255,255,255,0.8);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   LEGEND
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.legend {
+    position:  fixed;
+    bottom:    20px;
+    left:      20px;
+    z-index:   100;
+
+    background:      var(--legend-bg);
+    border:          var(--legend-border);
+    border-radius:   var(--legend-radius);
+    padding:         var(--legend-padding);
+    backdrop-filter: var(--tt-blur);
+    -webkit-backdrop-filter: var(--tt-blur);
+}
+
+.legend-title {
+    color:          var(--legend-title-color);
+    font-size:      var(--legend-title-size);
+    font-weight:    700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin-bottom:  10px;
+}
+
+.legend-items {
+    display:        flex;
+    flex-direction: column;
+    gap:            7px;
+    margin-bottom:  8px;
+}
+
+.legend-item {
+    display:     flex;
+    align-items: center;
+    gap:         10px;
+}
+
+.legend-item span {
+    color:     var(--legend-label-color);
+    font-size: var(--legend-label-size);
+    white-space: nowrap;
+}
+
+.legend-svg {
+    width:       var(--legend-icon-size);
+    height:      var(--legend-icon-size);
+    flex-shrink: 0;
+    overflow:    visible;
+}
+
+/* Legend shape fills — mirrors main node classes */
+.legend-shape {
+    stroke:       var(--node-stroke);
+    stroke-width: var(--node-stroke-width);
+    transform-box:    fill-box;
+    transform-origin: center;
+}
+
+.legend-shape.node-zero  { fill: var(--color-zero); }
+.legend-shape.node-one   { fill: var(--color-one);  }
+.legend-shape.node-two   { fill: var(--color-two);  }
+.legend-shape.node-multi { fill: var(--color-multi); }
+.legend-shape.node-toplevel {
+    fill:         var(--toplevel-fill);
+    stroke:       var(--toplevel-stroke);
+    stroke-width: var(--toplevel-stroke-width);
+    transform:    scale(1.6);
+}
+
+.legend-divider {
+    height:       1px;
+    background:   rgba(90, 130, 210, 0.15);
+    margin:       8px 0;
+}
+
+.legend-hints {
+    display:        flex;
+    flex-direction: column;
+    gap:            3px;
+    margin-top:     8px;
+}
+
+.legend-hint {
+    color:     var(--legend-hint-color);
+    font-size: var(--legend-hint-size);
+}
+
+/* ── Bias gradient strip ─────────────────────────────────────────────── */
+
+.legend-bias-title {
+    color:          var(--legend-title-color);
+    font-size:      var(--legend-title-size);
+    font-weight:    700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin-bottom:  6px;
+}
+
+.legend-bias-bar {
+    height:        10px;
+    background:    linear-gradient(
+                       to right,
+                       var(--bias-color-left),
+                       var(--bias-color-center),
+                       var(--bias-color-right)
+                   );
+    margin-bottom: 4px;
+}
+
+.legend-bias-labels {
+    display:         flex;
+    justify-content: space-between;
+    font-size:       9px;
+    color:           var(--legend-label-color);
+}
+
+/* ── Expand / Collapse controls ─────────────────────────────────────── */
+
+.legend-controls {
+    display: flex;
+    gap:     6px;
+}
+
+.legend-controls button {
+    flex:           1;
+    padding:        5px 6px;
+    font-size:      9px;
+    font-family:    inherit;
+    cursor:         pointer;
+    border:         var(--legend-border);
+    background:     transparent;
+    color:          var(--legend-title-color);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight:    700;
+    transition:     background 0.15s ease, color 0.15s ease;
+}
+
+.legend-controls button:hover {
+    background: var(--legend-title-color);
+    color:      var(--legend-bg);
+}
+
+.node-logo {
+    width: var(--logo-size);
+    height: var(--logo-size);
+    /* Transforms the logo to the bottom right relative to the node's center (0,0) */
+    transform: translate(var(--logo-offset-x), var(--logo-offset-y));
+    pointer-events: none; /* Ensures the image doesn't block node hover/clicking */
+}
+
+/* GPU compositing hint for the halo blur layer */
+.halo-layer {
+    will-change: transform;
+}
+
+/* ── Heatmap canvas ──────────────────────────────────────────────────── */
+#heatmap-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Keep SVG above canvas */
+#main-svg {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Custom square cursor ────────────────────────────────────────────── */
+#main-svg,
+#main-svg * {
+    cursor: none !important;
+}
+
+#custom-cursor {
+    position:   fixed;
+    pointer-events: none;
+    z-index:    9999;
+    /* width:      var(--cursor-size);
+    height:     var(--cursor-size);
+    background: var(--cursor-fill);
+    border:     var(--cursor-stroke-width) solid var(--cursor-stroke);
+    transform:  translate(-50%, -50%);
+    transition: width 0.12s ease, height 0.12s ease;
+    will-change: transform; */
+}
+
+#custom-cursor.is-hovering {
+    width:  var(--cursor-hover-size);
+    height: var(--cursor-hover-size);
+}
+#cursor-site-wide {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+#cursor-site-wide img {
+  width: 20px;
+  display: block;
+  pointer-events: none;
+}
+/* ── Pan / zoom hint ─────────────────────────────────────────────────── */
+.pan-zoom-hint {
+    position:   fixed;
+    top:        18px;
+    left:       50%;
+    transform:  translateX(-50%);
+    z-index:    200;
+    font-size:  10px;
+    font-family: inherit;
+    color:      rgba(0, 0, 0, 0.38);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+/* ── "Not clickable" flash hint ─────────────────────────────────────── */
+.click-hint {
+    position:        fixed;
+    pointer-events:  none;
+    z-index:         300;
+    font-size:       9.5px;
+    font-family:     inherit;
+    color:           rgba(0, 0, 0, 0.55);
+    letter-spacing:  0.06em;
+    background:      rgba(255,255,255,0.85);
+    border:          1px solid rgba(0,0,0,0.12);
+    padding:         4px 8px;
+    white-space:     nowrap;
+    opacity:         0;
+    transition:      opacity 0.15s ease;
+}
+
+.click-hint.visible {
+    opacity: 1;
+}
+
+/* ── Suppress hover style on non-expandable nodes (leaf / zero-link) ── */
+/* These look like clickable targets with the default hover; they aren't */
+.node-grp.is-leaf:hover .node-shape,
+.node-grp.shape-zero.is-leaf:hover .node-shape {
+    fill:      inherit;
+    transform: none;
+    stroke-width: var(--node-stroke-width);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ERROR STATE
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.error-msg {
+    color:       #ef6767;
+    padding:     2rem;
+    font-size:   14px;
+    line-height: 1.2;
+}
+
+.error-msg code {
+    display:          block;
+    margin-top:       8px;
+    font-family:      ui-monospace, monospace;
+    font-size:        12px;
+    color:            rgba(239, 103, 103, 0.75);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ROOT TITLE & CONNECTORS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.root-conn {
+    stroke:       var(--edge-color);
+    stroke-width: var(--edge-width);
+}
+
+.root-title {
+    font-family:    inherit;
+    font-size:      8.5px;
+    font-weight:    600;
+    fill:           black;
+    text-transform: uppercase;
+    pointer-events: none;
+    user-select:    none;
+}
+
+#five{
+  width:700px;
+  height:300px;
+  left:50%;
+  top:50%;
+}
+.textbox{
+  position:absolute;
+  display:flex;
+  transform:translate(-50%,-50%);
+  background-color:#3700ff;
+  border: 1px solid black;
+  transition-delay:0.5s;
+  transition-duration: 0.5s;
+  flex-direction:column;
+  justify-content: space-between;
+  align-items:center;
+  z-index:120;
+}
+h2{
+  font-family:'Nimbus Sans';
+  font-weight:500;
+  font-size:35px;
+  line-height:120%;
+}
+.white{
+  color:white;
+}
+.yellow{
+  color:#ffff4d;
+}
+.blue{
+  color:#3700ff;
+}
+.margins{
+  margin:10px;
+}
+.normtext{
+  margin-top:20px;
+}
+.button{
+  display:flex;
+  height:45px;
+  width:200px;
+  background-color:white;
+  text-align:center;
+  align-items:center;
+  justify-content: center;
+  margin-bottom:30px;
+  border:1px solid black;
+}
+.hover{
+  background-color: #ffff4d;
+}
+.clicked{
+  background-color: #798BFF;
+}
+.clicked h3{
+  color:black;
+}
+h3{
+  font-family:'Nimbus Sans';
+  font-weight: 500;
+  font-size:25px;
+  text-decoration: underline;
+}
+p{
+  font-family:'Nimbus Sans';
+  font-weight: 500;
+  font-size:25px;
+}
+.circles{
+  margin:10px;
+  display:flex;
+  column-gap:6px;
+}
+.circles div{
+  display:block;
+  width:20px;
+  height:20px;
+  border:1px solid black;
+  border-radius:20px;
+  background-color:white;
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyperlink Rabbit Hole</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="icon" type="image/svg+xml" href="/RabbitCursor.svg">
+    <script src="cursor.js" defer></script>
+</head>
+
+<body>
+    <a href="index.html">
+    <div id="sixbutton" class="button margins" style = "position:absolute; left:77%; top:85%; transform:translate(50%,50%); z-index:9999;">
+        <h3 class="blue">Reset</h3>
+    </div>
+    </a>
+    <script>
+        const buttonsix = document.getElementById("sixbutton");
+        buttonsix.addEventListener('mouseenter', () => {
+            buttonsix.classList.add('hover');
+            buttonsix.addEventListener('mouseleave', () => {
+            buttonsix.classList.remove('hover');
+        });
+        });
+        buttonsix.addEventListener('click', () => {
+            buttonsix.classList.add('clicked');
+        });
+    </script>
+    <div id="cursor-site-wide">
+        <img src="RabbitCursor.svg" alt="">
+    </div>
+
+    <div id="centered" class="centered">
+        <div class = "circles">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h1 id="appear">The Hyperlink Rabbit Hole</h1>
+    </div>
+    <div id="one" class="textbox">
+        <div>
+        <div class = "circles">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2 class = "white normtext margins">When you read the news, you may encounter a lot of <span class = "yellow">hyperlinks.</span></h2>
+        </div>
+        <div id="onebutton" class="button margins">
+            <h3 class="blue">Okay</h3>
+        </div>
+    </div>
+    <div id="two" class="textbox">
+        <div>
+        <div class = "circles">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2 class = "white normtext margins"><span><a href="https://academic.oup.com/jcmc/article/19/3/576/4067606" class="link">Preliminary research</a></span> has demonstrated that hyperlinks make readers feel like articles are more credible.</span></h2>
+        </div>
+        <div id="twobutton" class="button margins">
+            <h3 class="blue">Okay</h3>
+        </div>
+    </div>
+    <div id="three" class="textbox">
+        <div>
+        <div class = "circles">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2 class = "white normtext margins">Primarily, hyperlinks serve three purposes...</h2>
+        </div>
+        <div style="background-color:white; border:1px black solid outside">
+        <div style="background-color: white; border-top:black 1px solid">
+            <h2 class = "black normtext margins">1. Linking Facts to Support an Opinion</h2>
+        </div>
+        <div style="background-color: white; border-top:black 1px solid">
+            <h2 class = "black normtext margins">2. Fair Report Privilege</h2>
+            <p class="black normtext" style="margin:10px; margin-top:0px">(Reporting what another individual has already reported)</p>
+        </div>
+        <div style="background-color: white; border-top:black 1px solid">
+            <h2 class = "black normtext margins">3. Providing Context</h2>
+        </div>
+        <div id="threebutton" class="button margins" style="margin-top:50px">
+            <h3 class="blue">Okay</h3>
+        </div>
+        </div>
+    </div>
+    <div id="four" class="textbox">
+        <div>
+        <div class = "circles">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2 class = "white normtext margins">But how many of us actually click on links? Where do they really link to?</h2>
+        </div>
+        <div id="fourbutton" class="button margins">
+            <h3 class="blue">Okay</h3>
+        </div>
+    </div>
+    <div id="five" class="textbox" style = "background-color:white; align-items:center;">
+        <div>
+        <div class = "circles">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2 class = "black normtext margins" style="text-align:center;">I chose articles on the same topic (immigration) from the New York Times, Fox News, and MS Now. I tracked each article’s hyperlinks down three generations to understand more about where the news rabbit holes lead. I’ve visualized how hyperlinks can serve to keep us in political media siloes, particularly as the three stories share very few of the same primary sources, despite their topical overlap.</h2>
+    <p class = "black normtext margins" style="text-align:center"></p>    
+    </div>
+        <a href="visualization.html">
+            <div id="fivebutton" class="button margins">
+                <h3 class="blue">Okay</h3>
+            </div>
+        </a>
+    </div>
+    <script>
+        const appear = document.getElementById("appear");
+        const centered = document.getElementById("centered");
+        const one = document.getElementById("one");
+        const two = document.getElementById("two");
+        const three = document.getElementById("three");
+        const four = document.getElementById("four");
+        const five = document.getElementById("five");
+        const buttonone = document.getElementById("onebutton");
+        const buttontwo = document.getElementById("twobutton");
+        const buttonthree = document.getElementById("threebutton");
+        const buttonfour = document.getElementById("fourbutton");
+        const buttonfive = document.getElementById("fivebutton");
+
+        function fadeIn(el) {
+            el.style.display = 'flex'; // Make it exist in the DOM
+
+            // Use requestAnimationFrame to ensure the display change is rendered
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    el.style.opacity = '1';
+                });
+            });
+        };
+        centered.addEventListener('click', () => {
+        centered.classList.add('centered2');
+        fadeIn(appear);
+            appear.addEventListener('mouseenter', () => {
+            appear.style.color = '#999999';
+            appear.addEventListener('mouseleave', () => {
+                appear.style.color = "#3700ff";
+            });
+        });
+        appear.addEventListener('click', () => {
+            centered.classList.add('big');
+            fadeIn(one);
+        });
+        });
+        buttonone.addEventListener('mouseenter', () => {
+            buttonone.classList.add('hover');
+            buttonone.addEventListener('mouseleave', () => {
+            buttonone.classList.remove('hover');
+        });
+        });
+        buttonone.addEventListener('click', () => {
+            buttonone.classList.add('clicked');
+        });
+        buttonone.addEventListener('click', () => {
+            fadeIn(two);
+        });
+        buttontwo.addEventListener('mouseenter', () => {
+            buttontwo.classList.add('hover');
+            buttontwo.addEventListener('mouseleave', () => {
+            buttontwo.classList.remove('hover');
+        });
+        });
+        buttontwo.addEventListener('click', () => {
+            buttontwo.classList.add('clicked');
+        });
+        buttontwo.addEventListener('click', () => {
+            fadeIn(three);
+        });
+        buttonthree.addEventListener('mouseenter', () => {
+            buttonthree.classList.add('hover');
+            buttonthree.addEventListener('mouseleave', () => {
+            buttonthree.classList.remove('hover');
+        });
+        });
+        buttonthree.addEventListener('click', () => {
+            buttonthree.classList.add('clicked');
+        });
+        buttonthree.addEventListener('click', () => {
+            fadeIn(four);
+        });
+        buttonfour.addEventListener('mouseenter', () => {
+            buttonfour.classList.add('hover');
+            buttonfour.addEventListener('mouseleave', () => {
+            buttonfour.classList.remove('hover');
+        });
+        });
+        buttonfour.addEventListener('click', () => {
+            buttonfour.classList.add('clicked');
+        });
+        buttonfour.addEventListener('click', () => {
+            fadeIn(five);
+        });
+        buttonfive.addEventListener('mouseenter', () => {
+            buttonfive.classList.add('hover');
+            buttonfive.addEventListener('mouseleave', () => {
+            buttonfive.classList.remove('hover');
+        });
+        });
+        buttonfive.addEventListener('click', () => {
+            buttonfive.classList.add('clicked');
+        });
+    </script>
+</body>
+</html>

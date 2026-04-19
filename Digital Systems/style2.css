@@ -1,0 +1,338 @@
+/*CSS RESET */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*CUSTOM CSS */
+
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('fonts/NimbusSanL-ReguCond.ttf') format('truetype');
+  font-style: none;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('fonts/NimbusSanL-ReguCondItal.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('fonts/NimbusSanL-BoldCond.ttf') format('truetype');
+  font-style: none;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('fonts/NimbusSanL-BoldCondItal.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 600;
+}
+
+:root{
+  cursor:none;
+}
+
+body{
+  background-color: #E1E1E1;
+  overflow:hidden;
+}
+
+#cursor-site-wide {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+#cursor-site-wide img {
+  width: 20px;
+  display: block;
+  pointer-events: none;
+}
+
+.centered {
+  position: absolute;
+  width:100px;
+  height:600px;
+  border:1px solid black;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  background-color:white;
+}
+.centered2{
+  transition:.5s ease-in-out; 
+  width:1000px;
+}
+.circles{
+  margin:10px;
+  display:flex;
+  column-gap:6px;
+}
+.circles div{
+  display:block;
+  width:20px;
+  height:20px;
+  border:1px solid black;
+  border-radius:20px;
+  background-color:white;
+}
+#appear{
+  position:absolute;
+  font-family:'Nimbus Sans';
+  font-weight:500;
+  font-size:70px;
+  color: #3700ff;
+  text-decoration: underline;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  opacity:0;
+  transition:0.5s ease-in-out;
+}
+#appear .visible{
+  display:block;
+  opacity:1;
+}
+.big{
+  transform:scale(120000%);
+}
+#one{
+  width:250px;
+  height:600px;
+  left:15%;
+  top:50%;
+}
+#two{
+  width:400px;
+  height:500px;
+  left:30%;
+  top:55%;
+}
+#three{
+  width:400px;
+  height:600px;
+  left:50%;
+  top:40%;
+}
+#four{
+  width:800px;
+  height:250px;
+  left:70%;
+  top:30%;
+}
+#five{
+  width:1200px;
+  height:400px;
+  left:50%;
+  top:50%;
+}
+.textbox{
+  position:absolute;
+  display:none;
+  transform:translate(-50%,-50%);
+  opacity:0;
+  background-color:#3700ff;
+  border: 1px solid black;
+  transition-delay:0.5s;
+  transition-duration: 0.5s;
+  flex-direction:column;
+  justify-content: space-between;
+}
+h2{
+  font-family:'Nimbus Sans';
+  font-weight:500;
+  font-size:35px;
+  line-height:120%;
+}
+.white{
+  color:white;
+}
+.yellow{
+  color:#ffff4d;
+}
+.blue{
+  color:#3700ff;
+}
+.margins{
+  margin:10px;
+}
+.normtext{
+  margin-top:20px;
+}
+.button{
+  display:flex;
+  height:45px;
+  width:200px;
+  background-color:white;
+  text-align:center;
+  align-items:center;
+  justify-content: center;
+  margin-bottom:30px;
+  border:1px solid black;
+}
+.hover{
+  background-color: #ffff4d;
+}
+.clicked{
+  background-color: #798BFF;
+}
+.clicked h3{
+  color:black;
+}
+h3{
+  font-family:'Nimbus Sans';
+  font-weight: 500;
+  font-size:25px;
+  text-decoration: underline;
+}
+p{
+  font-family:'Nimbus Sans';
+  font-weight: 500;
+  font-size:25px;
+}
+.link{
+  color:white;
+  text-decoration:underline;
+}
