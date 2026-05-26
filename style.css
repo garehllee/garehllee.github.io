@@ -229,6 +229,7 @@ h4 {
     font-family: var(--emphasisfam);
     font-size: var(--h4);
     font-weight: var(--bold);
+    letter-spacing:-.5px;
 }
 /* MINI TYPE */
 h5 {
