@@ -6,8 +6,16 @@
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
   <!-- End Google Tag Manager -->
-  <link rel="stylesheet" href="style2.css">
-  <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="style3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="icon" href="images/logo/bearfavi2.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.typekit.net/mpo6yqx.css">
+  <script src="shared.js" defer></script>
 </head>
 
 <!--Linking JavaScript-->
@@ -26,9 +35,8 @@
 
 <body id="wholepage">
     <!-- <div class="top-thing2"></div> -->
-    <script src="cursor.js" defer></script>
     <div class="custom-cursor site-wide" id="cursor-site-wide">
-    <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><defs><style>.cls-1{fill:none;stroke:var(--reg);stroke-miterlimit:10;stroke-width:2px;}</style></defs><rect class="cls-1" x="26.16" y="10.52" width="21.57" height="5.08" transform="translate(1.58 29.95) rotate(-45)"/><path class="cls-1" d="M28.35,19.72S-7.98,30.45,5.79,44.21s24.42-22.64,24.42-22.64l-1.85-1.85Z"/><path class="cls-1" d="M28.7,20.07S-3.15,35.28,5.8,44.22c8.94,8.94,24.1-22.95,24.1-22.95l-1.2-1.2Z"/><path class="cls-1" d="M29.07,20.44S2.39,40.81,5.78,44.21c3.39,3.39,23.75-23.31,23.75-23.31l-.46-.46Z"/><circle class="cls-1" cx="45.71" cy="4.29" r="1.62"/></svg>
+    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><defs><style>.cls-1{fill:none;stroke:var(--reg);stroke-miterlimit:10;stroke-width:2px;}</style></defs><rect class="cls-1" x="26.16" y="10.52" width="21.57" height="5.08" transform="translate(1.58 29.95) rotate(-45)"/><path class="cls-1" d="M28.35,19.72S-7.98,30.45,5.79,44.21s24.42-22.64,24.42-22.64l-1.85-1.85Z"/><path class="cls-1" d="M28.7,20.07S-3.15,35.28,5.8,44.22c8.94,8.94,24.1-22.95,24.1-22.95l-1.2-1.2Z"/><path class="cls-1" d="M29.07,20.44S2.39,40.81,5.78,44.21c3.39,3.39,23.75-23.31,23.75-23.31l-.46-.46Z"/><circle class="cls-1" cx="45.71" cy="4.29" r="1.62"/></svg>
   </div>
 
   <!-- NAVIGATION -->
@@ -54,8 +62,8 @@
         <div class="leftside">
           <p style="text-decoration:dashed;">ARTIFACTS <br></p>
           <p>
-            <span onclick="tobook()">1. Book</span><br>
-            <span onclick="toreflection()">2. Reflection</span>
+            <span onclick="scrollTo('book')">1. Book</span><br>
+            <span onclick="scrollTo('reflection')">2. Reflection</span>
           </p>
           <script>
             function tobook(){ document.getElementById('book').scrollIntoView({ behavior: 'instant', block: 'start' }); }
@@ -322,17 +330,10 @@
     <section class="footer">
       <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
       <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> | <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> | <span id="backtotop" class="footerlink linkhover" onclick="totop()">Back to Top</span></p>
-      <script>
-        function totop(){ window.scroll({ top: 0, left: 0, behavior: 'smooth' }); }
-      </script>
+      
     </section>
   </section>
 
-  <!------JavaScript for Toggle Menu ------>
-  <script>
-    var navLinks = document.getElementById("navLinks");
-    function showMenu(){ navLinks.style.right = "0"; wholepage.classList.add("fixed-position"); }
-    function hideMenu(){ navLinks.style.right = "-100vw"; wholepage.classList.remove("fixed-position"); }
-  </script>
+  
 </body>
 </html>

@@ -1,76 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
   <title>Garrett Lee</title>
+  <!-- Redirect to desktop version on large screens -->
+  <script>
+    if (window.innerWidth >= 1025) window.location.replace("index.html");
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 1025) window.location.replace("index.html");
+    });
+  </script>
   <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MJ6GM4R7');</script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
   <!-- End Google Tag Manager -->
-  <link rel="stylesheet" href="style2.css">
-  <link rel="stylesheet" href="https://use.typekit.net/zuo8kzy.css">
+  <link rel="stylesheet" href="style3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="icon" href="images/logo/bearfavi2.ico">
   <link rel="stylesheet" href="https://use.typekit.net/mpo6yqx.css">
-  <!--LINKING JAVASCRIPT-->
-  <script src="jv.js"></script>
-  <script src="cursor.js" defer></script>
+  <script src="shared.js" defer></script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CLXKYF9R4Y"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
+  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-CLXKYF9R4Y');
 </script>
 
-<body id="wholepage">
-
-  <!-- Cursors -->
+<!-- Dark mode: goes dark at 60% scroll -->
+<body id="wholepage" data-dark-start="0.6">
   <div class="custom-cursor site-wide" id="cursor-site-wide">
-    <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><defs><style>.cls-1{fill:none;stroke:var(--reg);stroke-miterlimit:10;stroke-width:2px;}</style></defs><rect class="cls-1" x="26.16" y="10.52" width="21.57" height="5.08" transform="translate(1.58 29.95) rotate(-45)"/><path class="cls-1" d="M28.35,19.72S-7.98,30.45,5.79,44.21s24.42-22.64,24.42-22.64l-1.85-1.85Z"/><path class="cls-1" d="M28.7,20.07S-3.15,35.28,5.8,44.22c8.94,8.94,24.1-22.95,24.1-22.95l-1.2-1.2Z"/><path class="cls-1" d="M29.07,20.44S2.39,40.81,5.78,44.21c3.39,3.39,23.75-23.31,23.75-23.31l-.46-.46Z"/><circle class="cls-1" cx="45.71" cy="4.29" r="1.62"/></svg>
+    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><defs><style>.cls-1{fill:none;stroke:var(--reg);stroke-miterlimit:10;stroke-width:2px;}</style></defs><rect class="cls-1" x="26.16" y="10.52" width="21.57" height="5.08" transform="translate(1.58 29.95) rotate(-45)"/><path class="cls-1" d="M28.35,19.72S-7.98,30.45,5.79,44.21s24.42-22.64,24.42-22.64l-1.85-1.85Z"/><path class="cls-1" d="M28.7,20.07S-3.15,35.28,5.8,44.22c8.94,8.94,24.1-22.95,24.1-22.95l-1.2-1.2Z"/><path class="cls-1" d="M29.07,20.44S2.39,40.81,5.78,44.21c3.39,3.39,23.75-23.31,23.75-23.31l-.46-.46Z"/><circle class="cls-1" cx="45.71" cy="4.29" r="1.62"/></svg>
   </div>
 
-  <!-- Top thing -->
   <!-- <div class="top-thing"></div> -->
-  <!-- margins -->
   <section class="wholepagemargin">
     <section class="header">
       <nav>
-          <script>
-            function gbnav1(){
-              var gif = document.getElementById('animation');
-              var bear = document.getElementById('bear');
-            gif.style.display = 'block';
-            bear.style.display = 'none';
-            }
-  
-            function gbnav2(){
-              var gif = document.getElementById('animation');
-              var bear = document.getElementById('bear');
-            gif.style.display = 'none';
-            bear.style.display = 'block';
-            }
-          </script>
         <a onpointerenter="gbnav1()" onpointerleave="gbnav2()" href="index3.html" style="text-decoration:none;">
           <div id="animation" style="display:none; height:68.22px;">
-            <div>
             <img src="images/about/ezgif.com-animated-gif-maker (9).gif" alt="" style="width:149px; position:absolute; top:5px;">
-            </div>
           </div>
           <div id="bear">
-            <img src="images/logo/bearlogo.webp" alt="Bear-themed logo"> <span><img
-              src="images/about/cookie.webp" alt="" class="cookie" style="margin-left:10px;"></span>
-          </div></a>
+            <img src="images/logo/bearlogo.webp" alt="Bear-themed logo">
+            <span><img src="images/about/cookie.webp" alt="" class="cookie" style="margin-left:10px;"></span>
+          </div>
+        </a>
         <div class="nav-links" id="navLinks">
           <i class="fa fa-times" onclick="hideMenu()"></i>
           <ul>
@@ -83,188 +63,110 @@
       </nav>
       <hr class="divider">
     </section>
-    <!-- topper -->
+
+    <!-- Topper -->
     <section class="topper hideonmobile">
       <section class="two-column-flex bot-align">
         <div>
-          <h2>Garrett Lee is a graphic designer <br>who thrives on good friends and <br>a chocolate chip cookie.
-          </h2>
+          <h2>Garrett Lee is a graphic designer <br>who thrives on good friends and <br>a chocolate chip cookie.</h2>
           <div>
-              <small><span style="font-family:'Authentic-Sans-130'">EXPERIENCE:</span> <br>
+            <small>
+              <span style="font-family:'Authentic-Sans-130'">EXPERIENCE:</span> <br>
               Design Intern @ Wide Eye Creative <br>
               Creative Director @ Lunar Gala <br>
-              Design + HCI @ Carnegie Mellon</small>
-        </div>
+              Design + HCI @ Carnegie Mellon
+            </small>
+          </div>
         </div>
       </section>
-      <!--showreel-->
+      <!-- Showreel -->
       <div style="padding-top:50px;">
-    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1151280373?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Garrett Lee Showreel 2025"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-  </div>
+        <div style="padding:56.25% 0 0 0; position:relative;">
+          <iframe src="https://player.vimeo.com/video/1151280373?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1"
+            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            style="position:absolute; top:0; left:0; width:100%; height:100%;"
+            title="Garrett Lee Showreel 2025">
+          </iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+      </div>
     </section>
-    <!-- <hr class="divider"> -->
-    <!-- Portfolio Gallery -->
+
+    <!-- Portfolio gallery — hover-swap using shared hoverSwap(id) -->
     <section class="two-column-flex top-align" style="margin-top:10px;">
-      <div onpointerenter="gb4()" onpointerleave="g2b4()">
+
+      <div onpointerenter="hoverSwap('4')" onpointerleave="hoverSwapOut('4')">
         <a href="momath.html" class="project linkhover">
-          <img id="stillImage4" src="images/Pages/Momath/Momathcover.webp" alt="" style="display:block">
-          <img id="movingImage4" src="images/Pages/Momath/Billboard-ezgif.com-video-to-gif-converter.gif"
-            style="display: none;">
+          <img id="still-4" src="images/Pages/Momath/Momathcover.webp" alt="" style="display:block">
+          <img id="moving-4" src="images/Pages/Momath/Billboard-ezgif.com-video-to-gif-converter.gif" style="display:none;">
           <h5>IDENTITY, PRINT, MOTION</h5>
           <h1>National Museum of Mathematics</h1>
           <h4>Sparking mathematical delight and curiosity for mathematicians and families alike.</h4>
         </a>
-        <script>
-          function gb4() {
-            var gif = document.getElementById('movingImage4');
-            var image = document.getElementById('stillImage4');
-            gif.style.display = 'block';
-            image.style.display = 'none'
-
-          }
-          function g2b4() {
-            var gif = document.getElementById('movingImage4');
-            var image = document.getElementById('stillImage4');
-            gif.style.display = 'none'
-            image.style.display = 'block';
-          }
-        </script>
       </div>
-            <div onpointerenter="gb2()" onpointerleave="g2b2()">
+
+      <div onpointerenter="hoverSwap('2')" onpointerleave="hoverSwapOut('2')">
         <a href="idliketogiveup.html" class="project linkhover">
-          <img id="stillImage2" src="images/Pages/bookscans/photosedited/DSC06633.webp" alt="" style="display:block">
-          <video id="movingImage2" muted autoplay loop style="display:none;">
+          <img id="still-2" src="images/Pages/bookscans/photosedited/DSC06633.webp" alt="" style="display:block">
+          <video id="moving-2" muted autoplay loop style="display:none;">
             <source src="images/Pages/bookscans/videos/bookflip2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
           </video>
           <h5>EDITORIAL</h5>
           <h1>I'd Like to Give Up</h1>
           <h4>Exploring Mentalities of Despair and Hope</h4>
         </a>
-        <script>
-          function gb2() {
-            var gif = document.getElementById('movingImage2');
-            var image = document.getElementById('stillImage2');
-            gif.style.display = 'block';
-            image.style.display = 'none'
-
-          }
-          function g2b2() {
-            var gif = document.getElementById('movingImage2');
-            var image = document.getElementById('stillImage2');
-            gif.style.display = 'none'
-            image.style.display = 'block';
-          }
-        </script>
       </div>
-            <div onpointerenter="gb6()" onpointerleave="g2b6()">
+
+      <div onpointerenter="hoverSwap('6')" onpointerleave="hoverSwapOut('6')">
         <a href="tatn.html" class="project linkhover">
-          <img id="stillImage6" src="images/Pages/tatn/Cover.webp" alt="" style="display:block">
-          <video id="movingImage6" muted autoplay loop style="display:none;">
+          <img id="still-6" src="images/Pages/tatn/Cover.webp" alt="" style="display:block">
+          <video id="moving-6" muted autoplay loop style="display:none;">
             <source src="images/Pages/tatn/webp/FlipBook-Color-Corrected.mp4" type="video/mp4">
-            Your browser does not support the video tag.
           </video>
           <h5>CREATIVE CODING, DATA VISUALIZATION, EXHIBITION</h5>
           <h1>Through All This Noise</h1>
           <h4>Visualizing Experiences We Haven't Yet Gotten Over</h4>
         </a>
-        <script>
-          function gb6() {
-            var gif = document.getElementById('movingImage6');
-            var image = document.getElementById('stillImage6');
-            gif.style.display = 'block';
-            image.style.display = 'none'
-
-          }
-          function g2b6() {
-            var gif = document.getElementById('movingImage6');
-            var image = document.getElementById('stillImage6');
-            gif.style.display = 'none'
-            image.style.display = 'block';
-          }
-        </script>
       </div>
-            <div onpointerenter="gb1()" onpointerleave="g2b1()">
+
+      <div onpointerenter="hoverSwap('1')" onpointerleave="hoverSwapOut('1')">
         <a href="lupi.html" class="project linkhover">
-          <img id="stillImage1" src="images/covers/Design Hero/Design Hero.webp" alt="" style="display:block">
-          <img id="movingImage1" src="images/Pages/lupi/video/ezgif.com-video-to-gif-converter (37).gif"
-            style="display: none;">
+          <img id="still-1" src="images/covers/Design Hero/Design Hero.webp" alt="" style="display:block">
+          <img id="moving-1" src="images/Pages/lupi/video/ezgif.com-video-to-gif-converter (37).gif" style="display:none;">
           <h5>PRINT, MOTION</h5>
           <h1>Giorgia Lupi: Design Hero</h1>
           <h4>Celebrating Data, Humanity, & Giorgia Lupi</h4>
         </a>
-        <script>
-          function gb1() {
-            var gif = document.getElementById('movingImage1');
-            var image = document.getElementById('stillImage1');
-            gif.style.display = 'block';
-            image.style.display = 'none'
-
-          }
-          function g2b1() {
-            var gif = document.getElementById('movingImage1');
-            var image = document.getElementById('stillImage1');
-            gif.style.display = 'none'
-            image.style.display = 'block';
-          }
-        </script>
       </div>
-      <div onpointerenter="gb5()" onpointerleave="g2b5()">
+
+      <div onpointerenter="hoverSwap('5')" onpointerleave="hoverSwapOut('5')">
         <a href="wideeye.html" class="project linkhover">
-          <img id="stillImage5" src="images/covers/wideeye/wideeyecover.webp" alt="" style="display:block">
-          <video id="movingImage5" muted autoplay loop style="display:none;">
+          <img id="still-5" src="images/covers/wideeye/wideeyecover.webp" alt="" style="display:block">
+          <video id="moving-5" muted autoplay loop style="display:none;">
             <source src="images/covers/wideeye/Recording 2025-10-09 220239.mp4" type="video/mp4">
-            Your browser does not support the video tag.
           </video>
           <h5>IDENTITY, RAPID RESPONSE, COLLATERAL</h5>
           <h1>Wide Eye Internship</h1>
           <h4>MoveOn, Won't Back Down, Families First, ChildAction</h4>
         </a>
-        <script>
-          function gb5() {
-            var gif = document.getElementById('movingImage5');
-            var image = document.getElementById('stillImage5');
-            gif.style.display = 'block';
-            image.style.display = 'none'
-
-          }
-          function g2b5() {
-            var gif = document.getElementById('movingImage5');
-            var image = document.getElementById('stillImage5');
-            gif.style.display = 'none'
-            image.style.display = 'block';
-          }
-        </script>
       </div>
-      <div onpointerenter="gb3()" onpointerleave="g2b3()">
+
+      <div onpointerenter="hoverSwap('3')" onpointerleave="hoverSwapOut('3')">
         <a href="elysium.html" class="project linkhover">
-          <img id="stillImage3" src="images/covers/lunargala/ezgif-frame-001.jpg" alt="" style="display:block">
-          <img id="movingImage3" src="images/covers/lunargala/ezgif.com-video-to-gif-converter (32).gif"
-            style="display: none;">
+          <img id="still-3" src="images/covers/lunargala/ezgif-frame-001.jpg" alt="" style="display:block">
+          <img id="moving-3" src="images/covers/lunargala/ezgif.com-video-to-gif-converter (32).gif" style="display:none;">
           <h5>MOTION</h5>
           <h1>Lunar Gala 2025: Elysium</h1>
-          <h4>Reimagining Fashion as Motion for Pennsylvania’s Largest Fashion Event</h4>
+          <h4>Reimagining Fashion as Motion for Pennsylvania's Largest Fashion Event</h4>
         </a>
-        <script>
-          function gb3() {
-            var gif = document.getElementById('movingImage3');
-            var image = document.getElementById('stillImage3');
-            gif.style.display = 'block';
-            image.style.display = 'none'
-
-          }
-          function g2b3() {
-            var gif = document.getElementById('movingImage3');
-            var image = document.getElementById('stillImage3');
-            gif.style.display = 'none'
-            image.style.display = 'block';
-          }
-        </script>
       </div>
     </section>
+
     <div style="padding-top:100px">
       <hr class="divider">
     </div>
+
     <!-- Miscellaneous Play -->
     <section class="topper hideonmobile">
       <section class="two-column-flex bot-align">
@@ -278,826 +180,95 @@
         </div>
       </section>
     </section>
+
+    <!-- Draggable misc grid. dragElement() is defined in shared.js.
+         Each item is initialized at the bottom of the page (after DOM ready). -->
     <section class="misc hideonmobile">
       <div id="image1" class="miscimages pos1 thumbnail">
-        <img src="images/misc/1boxboat.gif"
-          alt="Sculpture of a collaged box with a sail. Inside, a collaged illustration can be unfolded to 49 times its folded size.">
+        <img src="images/misc/1boxboat.gif" alt="Sculpture of a collaged box with a sail. Inside, a collaged illustration can be unfolded to 49 times its folded size.">
         <p>Box Boat (2022) | 6.5x6.5", opens to 18.5x18.5"</p>
-        <script>
-          dragElement(document.getElementById("image1"));
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image2" class="miscimages pos2">
         <img src="images/covers/tedxcmu/tedxcmu.gif" alt="">
         <p>Animated Wordmark for TEDxCMU 2025</p>
-        <script>
-          dragElement(document.getElementById("image2"));
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              passive: false;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image3" class="miscimages pos3">
-        <img src="images/misc/photosforwebsite/starkie/starkie7.webp">
+        <img src="images/misc/photosforwebsite/starkie/starkie7.webp" alt="">
         <p>Photo Campaign for a Mental Health Plushie (2024)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image3"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image4" class="miscimages pos4">
-        <img src="images/misc/photosforwebsite/lettertoself/a.webp">
+        <img src="images/misc/photosforwebsite/lettertoself/a.webp" alt="">
         <p>Letter to My Future Self (2024)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image4"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image5" class="miscimages pos5">
         <img src="images/misc/9x12-skull-print.webp" alt="Skull still-life painted in watercolor.">
         <p>Watercolor Skull (2021) | 11x17"</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image5"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image6" class="miscimages pos6">
         <img src="images/misc/janelle concert yellow.png" alt="">
-        <p>Poster for a Friend's Concert (2025)| Timeline: 2 days</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image6"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
+        <p>Poster for a Friend's Concert (2025) | Timeline: 2 days</p>
       </div>
       <div id="image7" class="miscimages pos7">
         <img src="images/misc/croc8x8-print.webp" alt="Digital illustration of a Crocodile in its own milk tea store.">
         <p>Crocodile Boba Shop (2023)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image7"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image8" class="miscimages pos8">
-        <img src="images/misc/photosforwebsite/song/i.webp">
+        <img src="images/misc/photosforwebsite/song/i.webp" alt="">
         <p>Photo based on "33 'God'" by Bon Iver (2024)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image8"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image9" class="miscimages pos9">
         <img src="images/misc/waterbear.webp" alt="Illustration of bear relaxing in a pond with lilypads.">
         <p>Water Bear (2023)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image9"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image10" class="miscimages pos10">
-        <img src="images/misc/ezgif.com-video-to-gif-converter (37).gif">
+        <img src="images/misc/ezgif.com-video-to-gif-converter (37).gif" alt="">
         <p>Filipino Student Association Easter Brunch (2025)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image10"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image11" class="miscimages pos11">
         <img src="images/misc/posterportfolio.webp" alt="Hand-made voting posters.">
         <p>Hand-Made Posters (2021)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image11"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image12" class="miscimages pos12">
         <img src="images/covers/chocolate bars/chococococo (1).gif" alt="Bear-themed packaging design.">
         <p>Happy Bear Chocolate Packaging (2021)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image12"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
-      <!-- <div id="image13" class="miscimages pos13">
-        <video muted controls autoplay loop>
-          <source src="images/misc/capybarawithtext.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <p>Blender-Rendered Intro Sequence to an Imagined TV Show ~ Sound ON (2024)</p>
-        <script>
-          if(window.innerWidth>840){
-          dragElement(document.getElementById("image13"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
-      </div>     -->
+      <!-- image13 (capybara video) intentionally commented out in original -->
       <div id="image14" class="miscimages pos14">
-        <img src="images/Pages/SID/SIDmockup.jpg">
+        <img src="images/Pages/SID/SIDmockup.jpg" alt="">
         <p>S. King Street Elementary Mural (2023)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image14"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image15" class="miscimages pos15">
         <img src="images/misc/product diaries channellogo-04-blueonwhite.png" alt="">
         <p>Channel Logo Option for Client (2024)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image15"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
       <div id="image16" class="miscimages pos16">
         <img src="images/Pages/ScottyDonates/ezgif.com-animated-gif-maker (9).gif" alt="">
         <p>Donation Event Posters (2025)</p>
-        <script>
-          if (window.innerWidth > 840) {
-            dragElement(document.getElementById("image16"));
-          }
-          function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-              // if present, the header is where you move the DIV from:
-              document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-              // otherwise, move the DIV from anywhere inside the DIV:
-              elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // get the mouse cursor position at startup:
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              document.onmouseup = closeDragElement;
-              // call a function whenever the cursor moves:
-              document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-              e = e || window.event;
-              e.preventDefault();
-              // calculate the new cursor position:
-              pos1 = pos3 - e.clientX;
-              pos2 = pos4 - e.clientY;
-              pos3 = e.clientX;
-              pos4 = e.clientY;
-              // set the element's new position:
-              elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-              // stop moving when mouse button is released:
-              document.onmouseup = null;
-              document.onmousemove = null;
-            }
-          }
-        </script>
       </div>
     </section>
+
     <section class="button hideonmobile" href="play.html">
       <a href="play.html" class="button-content">SEE MORE PLAY</a>
     </section>
+
     <section class="footer">
       <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
-      <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> |
-        <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> | <span id="backtotop"
-          class="footerlink linkhover" onclick="totop()">Back to Top</span></p>
-      <script>
-        function totop() {
-          window.scroll({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-          });
-        }
-      </script>
+      <p>Links:
+        <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> |
+        <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> |
+        <span id="backtotop" class="footerlink linkhover" onclick="totop()">Back to Top</span>
+      </p>
     </section>
-
-    <!------JavaScript for Toggle Menu ------>
-    <script>
-      var navLinks = document.getElementById("navLinks")
-
-      function showMenu() {
-        navLinks.style.right = "0";
-        wholepage.classList.add("fixed-position");
-      }
-      function hideMenu() {
-        navLinks.style.right = "-100vw";
-        wholepage.classList.remove("fixed-position");
-      }
-    </script>
   </section>
-</body>
 
+  <!-- Initialize draggable elements (desktop only) -->
+  <script>
+    if (window.innerWidth > 840) {
+      [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16].forEach(function(n) {
+        var el = document.getElementById('image' + n);
+        if (el) dragElement(el);
+      });
+    }
+  </script>
+</body>
 </html>

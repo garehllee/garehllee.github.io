@@ -1,368 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- ----------------------HEAD-------------------- -->
-
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8">
-    <title>Garrett Lee</title>
-        <!-- REDIRECT ON MOBILE -->
-     <script>
-  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    window.location.replace("index3.html");
-  }
-</script>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-MJ6GM4R7');</script>
-    <!-- End Google Tag Manager -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="icon" href="images/logo/bearfavi2.ico">
-    <!--LINKING JAVASCRIPT-->
-    <script src="cursor.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+  <title>Garrett Lee</title>
+  <!-- Redirect to mobile version on small screens -->
+  <script>
+    if (window.innerWidth < 1025) window.location.replace("index3.html");
+    window.addEventListener("resize", function () {
+      if (window.innerWidth < 1025) window.location.replace("index3.html");
+    });
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
+  <!-- End Google Tag Manager -->
+  <link rel="stylesheet" href="style3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="icon" href="images/logo/bearfavi2.ico">
+  <script src="shared.js" defer></script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CLXKYF9R4Y"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-CLXKYF9R4Y');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CLXKYF9R4Y');
 </script>
 
 <body id="wholepage">
+  <div class="custom-cursor site-wide" id="cursor-site-wide">
+    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><defs><style>.cls-1{fill:none;stroke:var(--reg);stroke-miterlimit:10;stroke-width:2px;}</style></defs><rect class="cls-1" x="26.16" y="10.52" width="21.57" height="5.08" transform="translate(1.58 29.95) rotate(-45)"/><path class="cls-1" d="M28.35,19.72S-7.98,30.45,5.79,44.21s24.42-22.64,24.42-22.64l-1.85-1.85Z"/><path class="cls-1" d="M28.7,20.07S-3.15,35.28,5.8,44.22c8.94,8.94,24.1-22.95,24.1-22.95l-1.2-1.2Z"/><path class="cls-1" d="M29.07,20.44S2.39,40.81,5.78,44.21c3.39,3.39,23.75-23.31,23.75-23.31l-.46-.46Z"/><circle class="cls-1" cx="45.71" cy="4.29" r="1.62"/></svg>
+  </div>
 
-    <!-- Cursors -->
-    <div class="custom-cursor site-wide" id="cursor-site-wide">
-        <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-            <defs>
-                <style>
-                    .cls-1 {
-                        fill: none;
-                        stroke: var(--reg);
-                        stroke-miterlimit: 10;
-                        stroke-width: 2px;
-                    }
-                </style>
-            </defs>
-            <rect class="cls-1" x="26.16" y="10.52" width="21.57" height="5.08"
-                transform="translate(1.58 29.95) rotate(-45)" />
-            <path class="cls-1" d="M28.35,19.72S-7.98,30.45,5.79,44.21s24.42-22.64,24.42-22.64l-1.85-1.85Z" />
-            <path class="cls-1" d="M28.7,20.07S-3.15,35.28,5.8,44.22c8.94,8.94,24.1-22.95,24.1-22.95l-1.2-1.2Z" />
-            <path class="cls-1" d="M29.07,20.44S2.39,40.81,5.78,44.21c3.39,3.39,23.75-23.31,23.75-23.31l-.46-.46Z" />
-            <circle class="cls-1" cx="45.71" cy="4.29" r="1.62" />
-        </svg>
-    </div>
+  <!-- <div class="top-thing"></div> -->
+  <section class="wholepagemargin">
+    <section class="header">
+      <nav>
+        <a onpointerenter="gbnav1()" onpointerleave="gbnav2()" href="index.html" style="text-decoration:none;">
+          <div id="animation" style="display:none; height:68.22px;">
+            <img src="images/about/ezgif.com-animated-gif-maker (9).gif" alt="" style="width:149px; position:absolute; top:5px;">
+          </div>
+          <div id="bear">
+            <img src="images/logo/bearlogo.webp" alt="Bear-themed logo">
+            <span><img src="images/about/cookie.webp" alt="" class="cookie" style="margin-left:10px;"></span>
+          </div>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <i class="fa fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="" class="linkhover"><span class="currentpage">GOODS</span></a></li>
+            <li><a href="about.html" class="linkhover">BAKER</a></li>
+            <li><a href="play.html" class="linkhover">TEST KITCHEN</a></li>
+          </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+      <hr class="divider" style="margin-bottom:.5rem">
+      <h5>AT A GLANCE...</h5>
+      <hr class="divider" style="margin-top:.5rem">
 
-    <!-- Gradient -->
-    <!-- <div class="top-thing"></div> -->
-    <!-- margins -->
-    <section class="wholepagemargin">
-        <section class="header">
-            <!-- NAVIGATION -->
-            <nav>
-                <script>
-                    function gbnav1() {
-                        var gif = document.getElementById('animation');
-                        var bear = document.getElementById('bear');
-                        gif.style.display = 'block';
-                        bear.style.display = 'none';
-                    }
-
-                    function gbnav2() {
-                        var gif = document.getElementById('animation');
-                        var bear = document.getElementById('bear');
-                        gif.style.display = 'none';
-                        bear.style.display = 'block';
-                    }
-                </script>
-                <a onpointerenter="gbnav1()" onpointerleave="gbnav2()" href="index.html" style="text-decoration:none;">
-                    <div id="animation" style="display:none; height:68.22px;">
-                        <div>
-                            <img src="images/about/ezgif.com-animated-gif-maker (9).gif" alt=""
-                                style="width:149px; position:absolute; top:5px;">
-                        </div>
-                    </div>
-                    <div id="bear">
-                        <img src="images/logo/bearlogo.webp" alt="Bear-themed logo"> <span><img
-                                src="images/about/cookie.webp" alt="" class="cookie" style="margin-left:10px;"></span>
-                    </div>
-                </a>
-                <div class="nav-links" id="navLinks">
-                    <i class="fa fa-times" onclick="hideMenu()"></i>
-                    <ul>
-                        <li><a href="" class="linkhover"><span class="currentpage">GOODS</span></a></li>
-                        <li><a href="about.html" class="linkhover">BAKER</a></li>
-                        <li><a href="play.html" class="linkhover">TEST KITCHEN</a></li>
-                    </ul>
-                </div>
-                <i class="fa fa-bars" onclick="showMenu()"></i>
-            </nav>
-            <hr class="divider">
-            <h5>AT A GLANCE...</h5>
-            <hr class="divider">
-
-            <!-- TOPPER -->
-            <section class="topper hideonmobile">
-                <section class="two-column-flex top-align">
-                    <div>
-                        <h2>Garrett Lee is a graphic designer <br>who thrives on good friends and <br>a chocolate chip
-                            cookie.</h2>
-                        <section class="three-column-flex" style="margin-top:2rem;">
-                            <div>
-                                <small>
-                                    <p><span style="font-family:'Authentic-Sans-150'">EXPERIENCE:</span> <br>
-                                        Identity + Motion @ Apple <br>
-                                        CD @ Lunar Gala <br>
-                                        Design @ Wide Eye <br>
-                                        Design + HCI @ CMU </p>
-                                </small>
-                            </div>
-                            <div>
-                                <small>
-                                    <p><span style="font-family:'Authentic-Sans-150'">DIRECTORY:</span> <br>
-                                        <a href="momath.html">MoMath</a><br>
-                                        <a href="idliketogiveup.html">I'd Like to Give Up</a><br>
-                                        <a href="tatn.html">Through All This Noise</a><br>
-                                        <a href="lupi.html">Giorgia Lupi</a><br>
-                                        <a href="wideeye.html">Wide Eye</a><br>
-                                        <a href="elysium.html">Elysium</a><br>
-                                    </p>
-                                </small>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="showreel">
-                        <iframe
-                            src="https://player.vimeo.com/video/1195436419?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0"
-                            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-                            title="Garrett Lee Showreel 2025">
-                        </iframe>
-                    </div>
-                </section>
+      <section class="topper hideonmobile">
+        <section class="two-column-flex top-align">
+          <div>
+            <h2>Garrett Lee is a graphic designer <br>who thrives on good friends and <br>a chocolate chip cookie.</h2>
+            <section class="three-column-flex" style="margin-top:2rem;">
+              <div>
+                <small>
+                  <p><span style="font-family:'Authentic-Sans-150'">EXPERIENCE:</span> <br>
+                    Identity + Motion @ Apple <br>
+                    CD @ Lunar Gala <br>
+                    Design @ Wide Eye <br>
+                    Design + HCI @ CMU
+                  </p>
+                </small>
+              </div>
+              <div>
+                <small>
+                  <p><span style="font-family:'Authentic-Sans-150'">DIRECTORY:</span> <br>
+                    <a href="momath.html" style="color:var(--accent)">MoMath [identity]</a><br>
+                    <a href="idliketogiveup.html" style="color:var(--accent)">I'd Like to Give Up [book]</a><br>
+                    <a href="tatn.html" style="color:var(--accent)">Through All This Noise [exhibition]</a><br>
+                    <a href="lupi.html" style="color:var(--accent)">Giorgia Lupi [campaign]</a><br>
+                    <a href="wideeye.html" style="color:var(--accent)">Wide Eye [rapid response graphics]</a><br>
+                    <a href="elysium.html" style="color:var(--accent)">Elysium [motion]</a><br>
+                  </p>
+                </small>
+              </div>
             </section>
+          </div>
+          <div class="showreel">
+            <iframe
+              src="https://player.vimeo.com/video/1195436419?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0"
+              allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+              title="Garrett Lee Showreel 2025">
+            </iframe>
+          </div>
         </section>
-        <!-- PORTFOLIO -->
-        <hr class="divider">
-        <h5>PROJECTS...</h5>
-        <hr class="divider">
-        <!-- PROJECT 1 -->
-        <div class="projectcard"><a href="momath.html">
-                <div class="two-column-flex center-align">
-                    <div>
-                        <h4>National Museum of Mathematics</h4>
-                    </div>
-                    <div class="portfolio-flex center-align">
-                        <div class="portfolio-flex-text">
-                            <small>
-                                <p>Sparking mathematical delight and curiosity for mathematicians and families alike.
-                                </p>
-                            </small>
-                        </div>
-                        <div class="portfolio-flex-tag">
-                            <small>
-                                <p style="font-family: 'Authentic-Sans-Cond-90'">IDENTITY, MOTION</p>
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-image-flex">
-                    <video muted autoplay loop playsinline>
-                        <source src="images/Pages/Momath/Full Wordmark_2.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <img src="images/Pages/Momath/Momathcover.webp" alt="">
-                    <img src="images/Pages/Momath/momathlaptopmockup.webp" alt="">
-                    <video muted autoplay loop playsinline>
-                        <source src="images/Pages/Momath/SubwayBillboardFinal.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </a></div>
-        <!-- PROJECT 2 -->
-        <div class="projectcard"><a href="idliketogiveup.html">
-                <div class="two-column-flex center-align">
-                    <div>
-                        <h4>I'd Like to Give Up</h4>
-                    </div>
-                    <div class="portfolio-flex center-align">
-                        <div class="portfolio-flex-text">
-                            <small>
-                                <p>Exploring Mentalities of Despair and Hope.</p>
-                            </small>
-                        </div>
-                        <div class="portfolio-flex-tag">
-                            <small>
-                                <p style="font-family: 'Authentic-Sans-Cond-90'">EDITORIAL</p>
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-image-flex">
-                    <img src="images/Pages/bookscans/photosedited/DSC06633.webp" alt="">
-                    <video muted autoplay loop playsinline>
-                        <source src="images/Pages/bookscans/videos/bookflip2.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <img src="images/Pages/bookscans/photosedited/DSC06622.webp" alt="">
-                    <img src="images/Pages/bookscans/photosedited/DSC06590.webp" alt="">
-                </div>
-            </a>
-        </div>
-        <!-- PROJECT 3 -->
-        <div class="projectcard"><a href="tatn.html">
-                <div class="two-column-flex center-align">
-                    <div>
-                        <h4>Through All This Noise</h4>
-                    </div>
-                    <div class="portfolio-flex center-align">
-                        <div class="portfolio-flex-text">
-                            <small>
-                                <p>Visualizing Experiences We Haven't Yet Gotten Over.</p>
-                            </small>
-                        </div>
-                        <div class="portfolio-flex-tag">
-                            <small>
-                                <p style="font-family: 'Authentic-Sans-Cond-90'">CODING, EXHIBITION</p>
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-image-flex">
-                    <img src="images/Pages/tatn/webp/Front-Full-Narrow.webp" alt="">
-                    <img src="images/Pages/tatn/Cover.webp" alt="">
-                    <img src="images/Pages/tatn/webp/Back-Full - Copy.png" alt="">
-                    <video muted autoplay loop playsinline>
-                        <source src="images/Pages/tatn/webp/FlipBook-Color-Corrected.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </a>
-        </div>
-        <!-- PROJECT 4 -->
-        <div class="projectcard"><a href="lupi.html">
-                <div class="two-column-flex center-align">
-                    <div>
-                        <h4>Giorgia Lupi</h4>
-                    </div>
-                    <div class="portfolio-flex center-align">
-                        <div class="portfolio-flex-text">
-                            <small>
-                                <p>Celebrating Data, Humanity, & Giorgia Lupi</p>
-                            </small>
-                        </div>
-                        <div class="portfolio-flex-tag">
-                            <small>
-                                <p style="font-family: 'Authentic-Sans-Cond-90'">PRINT, MOTION</p>
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-image-flex">
-                    <img src="images/Pages/lupi/video/ezgif.com-video-to-gif-converter (37).gif" alt="">
-                    <img src="images/Pages/lupi/poster/detail 1.webp" alt="">
-                    <img src="images/Pages/lupi/booklet/ezgif.com-animated-gif-maker (9).gif" alt="">
-                </div>
-            </a>
-        </div>
-        <!-- PROJECT 5 -->
-        <div class="projectcard"><a href="wideeye.html">
-                <div class="two-column-flex center-align">
-                    <div>
-                        <h4>Wide Eye Creative</h4>
-                    </div>
-                    <div class="portfolio-flex center-align">
-                        <div class="portfolio-flex-text">
-                            <small>
-                                <p>MoveOn, Won't Back Down, Families First, ChildAction</p>
-                            </small>
-                        </div>
-                        <div class="portfolio-flex-tag">
-                            <small>
-                                <p style="font-family: 'Authentic-Sans-Cond-90'">IDENTITY, RAPID RESPONSE, COLLATERAL</p>
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-image-flex">
-                    <img src="images/covers/wideeye/wideeyecover.webp" alt="">
-                    <img src="images/Pages/Portfolio/MOV-061725-SOSHA-Toolkit-D-Story.png" alt="">
-                    <img src="images/Pages/Portfolio/Slide deck/image 42.png" alt="">
-                    <img src="images/Pages/Portfolio/MOV-071625-GrabBagKit-B.png" alt="">
-                </div>
-            </a>
-        </div>
-        <!-- PROJECT 6 -->
-        <div class="projectcard"><a href="elysium.html">
-                <div class="two-column-flex center-align">
-                    <div>
-                        <h4>Lunar Gala 2025: Elysium</h4>
-                    </div>
-                    <div class="portfolio-flex center-align">
-                        <div class="portfolio-flex-text">
-                            <small>
-                                <p>Reimagining Fashion as Motion for Pennsylvania’s Largest Fashion Event</p>
-                            </small>
-                        </div>
-                        <div class="portfolio-flex-tag">
-                            <small>
-                                <p style="font-family: 'Authentic-Sans-Cond-90'">MOTION</p>
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-image-flex">
-                    <img src="images/covers/lunargala/ezgif.com-video-to-gif-converter (32).gif" alt="">
-                    <img src="images/Pages/Lunar Gala/DSCF1549.webp" alt="">
-                    <video muted autoplay loop playsinline>
-                        <source src="images/Pages/Lunar Gala/LGcomp1.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <img src="images/Pages/Lunar Gala/R0015454.JPG" alt="">
-                </div>
-            </a>
-        </div>
-        <section class="footer">
-            <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
-            <p>Links: <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/"
-                    class="footerlink linkhover">LinkedIn</a> |
-                <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> | <span
-                    id="backtotop" class="footerlink linkhover" onclick="totop()">Back to Top</span>
-            </p>
-            <script>
-                function totop() {
-                    window.scroll({
-                        top: 0,
-                        left: 0,
-                        behavior: 'smooth'
-                    });
-                }
-            </script>
-        </section>
-
-        <!------JavaScript for Toggle Menu ------>
-        <script>
-            var navLinks = document.getElementById("navLinks")
-
-            function showMenu() {
-                navLinks.style.right = "0";
-                wholepage.classList.add("fixed-position");
-            }
-            function hideMenu() {
-                navLinks.style.right = "-100vw";
-                wholepage.classList.remove("fixed-position");
-            }
-        </script>
+      </section>
     </section>
 
-</body>
+    <hr class="divider" style="margin-bottom:.5rem">
+    <h5>PROJECTS...</h5>
+    <hr class="divider" style="margin-top:.5rem">
 
+    <!-- PROJECT 1 -->
+    <div class="projectcard"><a href="momath.html">
+      <div class="two-column-flex center-align">
+        <div><h4>National Museum of Mathematics</h4></div>
+        <div class="portfolio-flex center-align">
+          <div class="portfolio-flex-text"><small><p>Sparking mathematical delight and curiosity for mathematicians and families alike.</p></small></div>
+          <div class="portfolio-flex-tag"><small><p style="font-family:'Authentic-Sans-Cond-90'">IDENTITY, MOTION</p></small></div>
+        </div>
+      </div>
+      <div class="portfolio-image-flex">
+        <video muted autoplay loop playsinline><source src="images/Pages/Momath/Full Wordmark_2.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+        <img src="images/Pages/Momath/Momathcover.webp" alt="">
+        <img src="images/Pages/Momath/momathlaptopmockup.webp" alt="">
+        <video muted autoplay loop playsinline><source src="images/Pages/Momath/SubwayBillboardFinal.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+      </div>
+    </a></div>
+
+    <!-- PROJECT 2 -->
+    <div class="projectcard"><a href="idliketogiveup.html">
+      <div class="two-column-flex center-align">
+        <div><h4>I'd Like to Give Up</h4></div>
+        <div class="portfolio-flex center-align">
+          <div class="portfolio-flex-text"><small><p>Exploring Mentalities of Despair and Hope.</p></small></div>
+          <div class="portfolio-flex-tag"><small><p style="font-family:'Authentic-Sans-Cond-90'">EDITORIAL</p></small></div>
+        </div>
+      </div>
+      <div class="portfolio-image-flex">
+        <img src="images/Pages/bookscans/photosedited/DSC06633.webp" alt="">
+        <video muted autoplay loop playsinline><source src="images/Pages/bookscans/videos/bookflip2.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+        <img src="images/Pages/bookscans/photosedited/DSC06622.webp" alt="">
+        <img src="images/Pages/bookscans/photosedited/DSC06590.webp" alt="">
+      </div>
+    </a></div>
+
+    <!-- PROJECT 3 -->
+    <div class="projectcard"><a href="tatn.html">
+      <div class="two-column-flex center-align">
+        <div><h4>Through All This Noise</h4></div>
+        <div class="portfolio-flex center-align">
+          <div class="portfolio-flex-text"><small><p>Visualizing Experiences We Haven't Yet Gotten Over.</p></small></div>
+          <div class="portfolio-flex-tag"><small><p style="font-family:'Authentic-Sans-Cond-90'">CODING, EXHIBITION</p></small></div>
+        </div>
+      </div>
+      <div class="portfolio-image-flex">
+        <img src="images/Pages/tatn/webp/Front-Full-Narrow.webp" alt="">
+        <img src="images/Pages/tatn/Cover.webp" alt="">
+        <img src="images/Pages/tatn/webp/Back-Full - Copy.png" alt="">
+        <video muted autoplay loop playsinline><source src="images/Pages/tatn/webp/FlipBook-Color-Corrected.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+      </div>
+    </a></div>
+
+    <!-- PROJECT 4 -->
+    <div class="projectcard"><a href="lupi.html">
+      <div class="two-column-flex center-align">
+        <div><h4>Giorgia Lupi</h4></div>
+        <div class="portfolio-flex center-align">
+          <div class="portfolio-flex-text"><small><p>Celebrating Data, Humanity, & Giorgia Lupi</p></small></div>
+          <div class="portfolio-flex-tag"><small><p style="font-family:'Authentic-Sans-Cond-90'">PRINT, MOTION</p></small></div>
+        </div>
+      </div>
+      <div class="portfolio-image-flex">
+        <img src="images/Pages/lupi/video/ezgif.com-video-to-gif-converter (37).gif" alt="">
+        <img src="images/Pages/lupi/poster/detail 1.webp" alt="">
+        <img src="images/Pages/lupi/booklet/ezgif.com-animated-gif-maker (9).gif" alt="">
+      </div>
+    </a></div>
+
+    <!-- PROJECT 5 -->
+    <div class="projectcard"><a href="wideeye.html">
+      <div class="two-column-flex center-align">
+        <div><h4>Wide Eye Creative</h4></div>
+        <div class="portfolio-flex center-align">
+          <div class="portfolio-flex-text"><small><p>MoveOn, Won't Back Down, Families First, ChildAction</p></small></div>
+          <div class="portfolio-flex-tag"><small><p style="font-family:'Authentic-Sans-Cond-90'">IDENTITY, RAPID RESPONSE, COLLATERAL</p></small></div>
+        </div>
+      </div>
+      <div class="portfolio-image-flex">
+        <img src="images/covers/wideeye/wideeyecover.webp" alt="">
+        <img src="images/Pages/Portfolio/MOV-061725-SOSHA-Toolkit-D-Story.png" alt="">
+        <img src="images/Pages/Portfolio/Slide deck/image 42.png" alt="">
+        <img src="images/Pages/Portfolio/MOV-071625-GrabBagKit-B.png" alt="">
+      </div>
+    </a></div>
+
+    <!-- PROJECT 6 -->
+    <div class="projectcard"><a href="elysium.html">
+      <div class="two-column-flex center-align">
+        <div><h4>Lunar Gala 2025: Elysium</h4></div>
+        <div class="portfolio-flex center-align">
+          <div class="portfolio-flex-text"><small><p>Reimagining Fashion as Motion for Pennsylvania's Largest Fashion Event</p></small></div>
+          <div class="portfolio-flex-tag"><small><p style="font-family:'Authentic-Sans-Cond-90'">MOTION</p></small></div>
+        </div>
+      </div>
+      <div class="portfolio-image-flex">
+        <img src="images/covers/lunargala/ezgif.com-video-to-gif-converter (32).gif" alt="">
+        <img src="images/Pages/Lunar Gala/DSCF1549.webp" alt="">
+        <video muted autoplay loop playsinline><source src="images/Pages/Lunar Gala/LGcomp1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+        <img src="images/Pages/Lunar Gala/R0015454.JPG" alt="">
+      </div>
+    </a></div>
+
+    <section class="footer">
+      <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+      <p>Links:
+        <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> |
+        <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> |
+        <span id="backtotop" class="footerlink linkhover" onclick="totop()">Back to Top</span>
+      </p>
+    </section>
+  </section>
+</body>
 </html>
