@@ -33,7 +33,7 @@
 </script>
 
 <!-- Dark mode: goes dark at 60% scroll -->
-<body id="wholepage" data-dark-start="0.6">
+<body id="wholepage">
   <div class="custom-cursor site-wide" id="cursor-site-wide">
     <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><defs><style>.cls-1{fill:none;stroke:var(--reg);stroke-miterlimit:10;stroke-width:2px;}</style></defs><rect class="cls-1" x="26.16" y="10.52" width="21.57" height="5.08" transform="translate(1.58 29.95) rotate(-45)"/><path class="cls-1" d="M28.35,19.72S-7.98,30.45,5.79,44.21s24.42-22.64,24.42-22.64l-1.85-1.85Z"/><path class="cls-1" d="M28.7,20.07S-3.15,35.28,5.8,44.22c8.94,8.94,24.1-22.95,24.1-22.95l-1.2-1.2Z"/><path class="cls-1" d="M29.07,20.44S2.39,40.81,5.78,44.21c3.39,3.39,23.75-23.31,23.75-23.31l-.46-.46Z"/><circle class="cls-1" cx="45.71" cy="4.29" r="1.62"/></svg>
   </div>
@@ -96,7 +96,28 @@
     <!-- Portfolio gallery — hover-swap using shared hoverSwap(id) -->
     <section class="two-column-flex top-align" style="margin-top:10px;">
 
+      <div onpointerenter="hoverSwap('4')" onpointerleave="hoverSwapOut('4')">
+        <a href="momath.html" class="project linkhover">
+          <img id="still-4" src="images/Pages/Momath/Momathcover.webp" alt="" style="display:block">
+          <img id="moving-4" src="images/Pages/Momath/Billboard-ezgif.com-video-to-gif-converter.gif" style="display:none;">
+          <h5>IDENTITY, PRINT, MOTION</h5>
+          <h1>National Museum of Mathematics</h1>
+          <h4>Sparking mathematical delight and curiosity for mathematicians and families alike.</h4>
+        </a>
+      </div>
+
       <div>
+        <a href="awoa.html" class="project linkhover">
+          <video id="moving-2" muted autoplay loop playsinline style="display:block;">
+            <source src="images/Pages/AllWorthy/awoa-B.mp4" type="video/mp4">
+          </video>
+          <h5>EDITORIAL, DATA VISUALIZATION</h5>
+          <h1>All Worthy of Art</h1>
+          <h4>A story of cultural erasure and propaganda, data visualized.</h4>
+        </a>
+      </div>
+
+            <div>
         <a href="" class="project linkhover">
           <video id="moving-2" muted autoplay loop playsinline style="display:block;">
             <source src="images/Pages/Fable/fableanimatedlogo-blackonwhite.mp4" type="video/mp4">
@@ -107,26 +128,6 @@
         </a>
       </div>
 
-      <div>
-        <a href="" class="project linkhover">
-          <video id="moving-2" muted autoplay loop playsinline style="display:block;">
-            <source src="images/Pages/AllWorthy/AWOA full-small.mp4" type="video/mp4">
-          </video>
-          <h5>EDITORIAL, DATA VISUALIZATION</h5>
-          <h1>All Worthy of Art (coming soon)</h1>
-          <h4>A story of cultural erasure and propaganda, data visualized.</h4>
-        </a>
-      </div>
-
-      <div onpointerenter="hoverSwap('4')" onpointerleave="hoverSwapOut('4')">
-        <a href="momath.html" class="project linkhover">
-          <img id="still-4" src="images/Pages/Momath/Momathcover.webp" alt="" style="display:block">
-          <img id="moving-4" src="images/Pages/Momath/Billboard-ezgif.com-video-to-gif-converter.gif" style="display:none;">
-          <h5>IDENTITY, PRINT, MOTION</h5>
-          <h1>National Museum of Mathematics</h1>
-          <h4>Sparking mathematical delight and curiosity for mathematicians and families alike.</h4>
-        </a>
-      </div>
 
       <div onpointerenter="hoverSwap('2')" onpointerleave="hoverSwapOut('2')">
         <a href="idliketogiveup.html" class="project linkhover">
@@ -187,7 +188,7 @@
 
       <div onpointerenter="hoverSwap('3')" onpointerleave="hoverSwapOut('3')">
         <a href="elysium.html" class="project linkhover">
-          <img id="still-3" src="images/covers/lunargala/ezgif-frame-001.jpg" alt="" style="display:block">
+          <img id="still-3" src="images/covers/lunargala/ezgif-frame-001.webp" alt="" style="display:block">
           <img id="moving-3" src="images/covers/lunargala/ezgif.com-video-to-gif-converter (32).gif" style="display:none;">
           <h5>MOTION</h5>
           <h1>Lunar Gala 2025: Elysium</h1>
@@ -208,96 +209,8 @@
 
     </section>
 
-    <div style="padding-top:100px">
-      <hr class="divider">
-    </div>
-
-    <!-- Miscellaneous Play -->
-    <section class="topper hideonmobile">
-      <section class="two-column-flex bot-align">
-        <div>
-          <h2>Some things require less explanation...</h2>
-        </div>
-        <div>
-          <p>Here's a small archive of fine art 🖌, illustration 📖, commission work 🧧, form 🪞, and graphics 🎞.
-            <br><br><span class="emphasis">Experiment for yourself — Drag stuff around!</span>
-          </p>
-        </div>
-      </section>
-    </section>
-
-    <!-- Draggable misc grid. dragElement() is defined in shared.js.
-         Each item is initialized at the bottom of the page (after DOM ready). -->
-    <section class="misc hideonmobile">
-      <div id="image1" class="miscimages pos1 thumbnail">
-        <img src="images/misc/1boxboat.gif" alt="Sculpture of a collaged box with a sail. Inside, a collaged illustration can be unfolded to 49 times its folded size.">
-        <p>Box Boat (2022) | 6.5x6.5", opens to 18.5x18.5"</p>
-      </div>
-      <div id="image2" class="miscimages pos2">
-        <img src="images/covers/tedxcmu/tedxcmu.gif" alt="">
-        <p>Animated Wordmark for TEDxCMU 2025</p>
-      </div>
-      <div id="image3" class="miscimages pos3">
-        <img src="images/misc/photosforwebsite/starkie/starkie7.webp" alt="">
-        <p>Photo Campaign for a Mental Health Plushie (2024)</p>
-      </div>
-      <div id="image4" class="miscimages pos4">
-        <img src="images/misc/photosforwebsite/lettertoself/a.webp" alt="">
-        <p>Letter to My Future Self (2024)</p>
-      </div>
-      <div id="image5" class="miscimages pos5">
-        <img src="images/misc/9x12-skull-print.webp" alt="Skull still-life painted in watercolor.">
-        <p>Watercolor Skull (2021) | 11x17"</p>
-      </div>
-      <div id="image6" class="miscimages pos6">
-        <img src="images/misc/janelle concert yellow.png" alt="">
-        <p>Poster for a Friend's Concert (2025) | Timeline: 2 days</p>
-      </div>
-      <div id="image7" class="miscimages pos7">
-        <img src="images/misc/croc8x8-print.webp" alt="Digital illustration of a Crocodile in its own milk tea store.">
-        <p>Crocodile Boba Shop (2023)</p>
-      </div>
-      <div id="image8" class="miscimages pos8">
-        <img src="images/misc/photosforwebsite/song/i.webp" alt="">
-        <p>Photo based on "33 'God'" by Bon Iver (2024)</p>
-      </div>
-      <div id="image9" class="miscimages pos9">
-        <img src="images/misc/waterbear.webp" alt="Illustration of bear relaxing in a pond with lilypads.">
-        <p>Water Bear (2023)</p>
-      </div>
-      <div id="image10" class="miscimages pos10">
-        <img src="images/misc/ezgif.com-video-to-gif-converter (37).gif" alt="">
-        <p>Filipino Student Association Easter Brunch (2025)</p>
-      </div>
-      <div id="image11" class="miscimages pos11">
-        <img src="images/misc/posterportfolio.webp" alt="Hand-made voting posters.">
-        <p>Hand-Made Posters (2021)</p>
-      </div>
-      <div id="image12" class="miscimages pos12">
-        <img src="images/covers/chocolate bars/chococococo (1).gif" alt="Bear-themed packaging design.">
-        <p>Happy Bear Chocolate Packaging (2021)</p>
-      </div>
-      <!-- image13 (capybara video) intentionally commented out in original -->
-      <div id="image14" class="miscimages pos14">
-        <img src="images/Pages/SID/SIDmockup.jpg" alt="">
-        <p>S. King Street Elementary Mural (2023)</p>
-      </div>
-      <div id="image15" class="miscimages pos15">
-        <img src="images/misc/product diaries channellogo-04-blueonwhite.png" alt="">
-        <p>Channel Logo Option for Client (2024)</p>
-      </div>
-      <div id="image16" class="miscimages pos16">
-        <img src="images/Pages/ScottyDonates/ezgif.com-animated-gif-maker (9).gif" alt="">
-        <p>Donation Event Posters (2025)</p>
-      </div>
-    </section>
-
-    <section class="button hideonmobile" href="play.html">
-      <a href="play.html" class="button-content">SEE MORE PLAY</a>
-    </section>
-
     <section class="footer">
-      <p>© 2025 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
+      <p>© 2026 Garrett Lee | Coded w/ HTML, CSS, and JavaScript</p>
       <p>Links:
         <a href="https://www.linkedin.com/in/garrett-lee-a250391b4/" class="footerlink linkhover">LinkedIn</a> |
         <a href="https://www.instagram.com/garehllee" class="footerlink linkhover">Instagram</a> |
