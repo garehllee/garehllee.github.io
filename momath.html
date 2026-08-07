@@ -57,11 +57,22 @@
         <div class="leftside">
           <p style="text-decoration:dashed;">ARTIFACTS <br></p>
           <p>
-            <span onclick="scrollTo('brand')">1. Brand Styles</span><br>
+            <span onclick="tobrand()">1. Brand</span><br>
             <!-- <span onclick="scrollTo('explorations')">2. Explorations</span><br> -->
-            <span onclick="scrollTo('reflection')">2. Reflection</span>
+            <span onclick="toreflection()">2. Reflection</span>
           </p>
         </div>
+
+        <script>
+          function tobrand() {
+            const element = document.getElementById("brand");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+          function toreflection() {
+            const element = document.getElementById("reflection");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+        </script>
 
         <div class="rightpart">
           <div class="rightside">

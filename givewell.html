@@ -57,10 +57,23 @@
         <div class="leftside">
           <p style="text-decoration:dashed;">ARTIFACTS <br></p>
           <p>
-            <span onclick="scrollTo('brand')">1. Brand</span><br>
-            <span onclick="scrollTo('collateral')">2. Collateral</span>
+            <span onclick="tobrand()">1. Brand</span><br>
+            <span onclick="tocollateral()">2. Collateral</span>
           </p>
         </div>
+
+        <script>
+          function tobrand() {
+            const element = document.getElementById("brand");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+          function tocollateral() {
+            const element = document.getElementById("collateral");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+        </script>
+
+
 
         <div class="rightpart">
           <div class="rightside">

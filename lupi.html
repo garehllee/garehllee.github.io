@@ -63,18 +63,18 @@
         <section class="titletextbox rightleft">
             <div class="leftside">
               <p style="text-decoration:dashed;">ARTIFACTS <br></p>
-                <p><span onclick="scrollTo('video')">1. Video </span><br><span onclick="scrollTo('process')">2. Booklet</span><br><span onclick="scrollTo('brandidentity')">3. Poster</span><br><span onclick="scrollTo('reflection')">4. Process & Reflection</span></p>
+                <p><span onclick="tovideo()">1. Video </span><br><span onclick="tobooklet()">2. Booklet</span><br><span onclick="toposter()">3. Poster</span><br><span onclick="toreflection()">4. Process & Reflection</span></p>
                 <script>
-                  function tobrandidentity(){
-                    const element = document.getElementById("brandidentity");
-                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
-                  }
-                  function toprocess(){
-                    const element = document.getElementById("process");
-                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
-                  }
                   function tovideo(){
                     const element = document.getElementById("video");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function tobooklet(){
+                    const element = document.getElementById("booklet");
+                      element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+                  }
+                  function toposter(){
+                    const element = document.getElementById("poster");
                       element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
                   }
                   function toreflection(){

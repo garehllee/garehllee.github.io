@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
   <title>Lunar Gala: Fable</title>
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MJ6GM4R7');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MJ6GM4R7');</script>
   <!-- End Google Tag Manager -->
   <link rel="stylesheet" href="style3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
@@ -16,7 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://use.typekit.net/mpo6yqx.css">
   <script src="shared.js" defer></script>
 </head>
@@ -24,16 +29,34 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CLXKYF9R4Y"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
   gtag('config', 'G-CLXKYF9R4Y');
 </script>
 
 <!-- Dark mode: goes dark at 50% scroll, returns to light at 95% -->
+
 <body id="wholepage">
   <!-- <div class="top-thing2"></div> -->
   <div class="custom-cursor site-wide" id="cursor-site-wide">
-    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><defs><style>.cls-1{fill:none;stroke:var(--reg);stroke-miterlimit:10;stroke-width:2px;}</style></defs><rect class="cls-1" x="26.16" y="10.52" width="21.57" height="5.08" transform="translate(1.58 29.95) rotate(-45)"/><path class="cls-1" d="M28.35,19.72S-7.98,30.45,5.79,44.21s24.42-22.64,24.42-22.64l-1.85-1.85Z"/><path class="cls-1" d="M28.7,20.07S-3.15,35.28,5.8,44.22c8.94,8.94,24.1-22.95,24.1-22.95l-1.2-1.2Z"/><path class="cls-1" d="M29.07,20.44S2.39,40.81,5.78,44.21c3.39,3.39,23.75-23.31,23.75-23.31l-.46-.46Z"/><circle class="cls-1" cx="45.71" cy="4.29" r="1.62"/></svg>
+    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+      <defs>
+        <style>
+          .cls-1 {
+            fill: none;
+            stroke: var(--reg);
+            stroke-miterlimit: 10;
+            stroke-width: 2px;
+          }
+        </style>
+      </defs>
+      <rect class="cls-1" x="26.16" y="10.52" width="21.57" height="5.08"
+        transform="translate(1.58 29.95) rotate(-45)" />
+      <path class="cls-1" d="M28.35,19.72S-7.98,30.45,5.79,44.21s24.42-22.64,24.42-22.64l-1.85-1.85Z" />
+      <path class="cls-1" d="M28.7,20.07S-3.15,35.28,5.8,44.22c8.94,8.94,24.1-22.95,24.1-22.95l-1.2-1.2Z" />
+      <path class="cls-1" d="M29.07,20.44S2.39,40.81,5.78,44.21c3.39,3.39,23.75-23.31,23.75-23.31l-.46-.46Z" />
+      <circle class="cls-1" cx="45.71" cy="4.29" r="1.62" />
+    </svg>
   </div>
 
   <section class="wholepagemargin">
@@ -57,15 +80,46 @@
         <div class="leftside">
           <p style="text-decoration:dashed;">ARTIFACTS <br></p>
           <p>
-            <span onclick="scrollTo('lg-refresh')">1. LG Refresh</span><br>
-            <span onclick="scrollTo('fable-brand')">2. Fable Brand</span><br>
-            <span onclick="scrollTo('print')">3. Print</span><br>
-            <span onclick="scrollTo('set')">4. Set</span><br>
-            <span onclick="scrollTo('motion')">5. Motion</span><br>
-            <span onclick="scrollTo('web')">6. Web</span><br>
-            <span onclick="scrollTo('photo')">7. Photo</span>
+            <span onclick="torefresh()">1. LG Refresh</span><br>
+            <span onclick="tobrand()">2. Fable Brand</span><br>
+            <span onclick="toprint()">3. Print</span><br>
+            <span onclick="toset()">4. Set</span><br>
+            <span onclick="tomotion()">5. Motion</span><br>
+            <span onclick="toweb()">6. Web</span><br>
+            <span onclick="tophoto()">7. Photo</span>
           </p>
         </div>
+        <script>
+          function torefresh() {
+            const element = document.getElementById("lg-refresh");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+          function tobrand() {
+            const element = document.getElementById("fable-brand");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+          function toprint() {
+            const element = document.getElementById("print");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+          function toset() {
+            const element = document.getElementById("set");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+          function tomotion() {
+            const element = document.getElementById("motion");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+          function toweb() {
+            const element = document.getElementById("web");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+          function tophoto() {
+            const element = document.getElementById("photo");
+            element.scrollIntoView({ behavior: "instant", block: "start", inline: "nearest" });
+          }
+
+        </script>
 
         <div class="rightpart">
           <div class="rightside">
@@ -76,52 +130,87 @@
             </div>
             <br>
             <div class="otherspace">
-              <div><p>TIMELINE- <br><br>6 Months</p></div>
-              <div><p>ROLE- <br><br>Co-Creative Director</p></div>
-              <div><p>TEAM- <br><br>Michele Hratko, Melissa Qin, Sonya He, Serena Cai, Deeptika Mandha, Isabel Fleck, Joy Leung, Yuktha Vemula, Erin Hsu, Chieri Nnadozie, Maddy Chen, Erik Jiang</p></div>
+              <div>
+                <p>TIMELINE- <br><br>6 Months</p>
+              </div>
+              <div>
+                <p>ROLE- <br><br>Co-Creative Director</p>
+              </div>
+              <div>
+                <p>TEAM- <br><br>Michele Hratko, Melissa Qin, Sonya He, Serena Cai, Deeptika Mandha, Isabel Fleck, Joy
+                  Leung, Yuktha Vemula, Erin Hsu, Chieri Nnadozie, Maddy Chen, Erik Jiang</p>
+              </div>
             </div>
           </div>
-
-          <!-- Hover swap: still → animated cover -->
+          <!-- COVER -->
           <div>
-            <video muted autoplay loop playsinline><source src="images/Pages/Fable/LG-sizzle.mp4" type="video/mp4">Your browser does not support the video tag.</video>
-            <img src="images/Pages/Fable/021526-Fable-Reveal-edited.webp" alt="">
-            <img id="still-FB" src="images/Pages/Fable/Prelim-Photos-26.webp" alt="Fable Identity Cover" style="display:block;">
-        </div>
+            <video muted autoplay loop playsinline>
+              <source rel="preload" src="images/Pages/Fable/LG-sizzle.mp4" type="video/mp4">Your browser does not
+              support the video tag.
+            </video>
+            <div class="photosflex">
+              <div>
+                <img id="still-FB" src="images/Pages/Fable/Prelim-Photos-26.webp" alt="Fable Identity Cover" style="display:block;">
+              </div>
+              <div>
+                <img src="images/Pages/Fable/Prelim-Photos-22.webp" alt="">
+              </div>
+            </div>
+          </div>
       </section>
 
       <!-- CONTEXT -->
       <section class="overview rightleft">
-        <div class="leftside"><p>CONTEXT</p></div>
+        <div class="leftside">
+          <p>CONTEXT</p>
+        </div>
         <div class="rightpart">
           <div class="rightside">
             <div class="textspace">
-              <h3>Lunar Gala is a fashion show attended by thousands, celebrating Lunar New Year and the arts at Carnegie Mellon.</h3>
-              <p>Originally a Taiwanese Student Association event, Lunar Gala has grown to the largest fashion event in Pittsburgh. I co-creative directed the 30th anniversary show, leading a team of over 60 members across print, motion, web, photo, cinematography, and set design.</p>
+              <h3>Lunar Gala is a fashion show attended by thousands, celebrating Lunar New Year and the arts at
+                Carnegie Mellon.</h3>
+              <p>Originally a Taiwanese Student Association event, Lunar Gala has grown to the largest fashion event in
+                Pittsburgh. I co-creative directed the 30th anniversary show, leading a team of over 60 members across
+                print, motion, web, photo, cinematography, and set design.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- 1. LG REFRESH -->
-      <div id="lg-refresh" class="casestudydivider"><h3>LG REFRESH</h3></div>
+      <div id="lg-refresh" class="casestudydivider">
+        <h3>LG REFRESH</h3>
+      </div>
       <section class="rightleft">
-        <div class="leftside"><p>THE BRIEF</p></div>
+        <div class="leftside">
+          <p>THE BRIEF</p>
+        </div>
         <div class="rightpart">
           <div class="rightside">
             <div class="textspace">
-              <h3>Prior to 2026's theme reveal, Creative updated and expanded the general Lunar Gala brand to reflect its origins and generate hype for the 30th Anniversary show.</h3>
+              <h3>Prior to 2026's theme reveal, Creative updated and expanded the general Lunar Gala brand to reflect
+                its origins and generate hype for the 30th Anniversary show.</h3>
             </div>
           </div>
-          <video muted autoplay loop playsinline><source src="images/Pages/Fable/00-lg30/010226-rotating-lg30-ani.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+          <video muted autoplay loop playsinline>
+            <source src="images/Pages/Fable/00-lg30/010226-rotating-lg30-ani.mp4" type="video/mp4">Your browser does not
+            support the video tag.
+          </video>
+          <img src="images/Pages/Fable/00-lg30/brand architecture.png" alt="">
           <img src="images/Pages/Fable/00-lg30/Frame 30.webp" alt="">
-          <div class="photosflex">
-            <div><img src="images/Pages/Fable/00-lg30/brandarchitecture.webp" alt=""></div>
+          <!-- <div class="photosflex">
+            <div><img src="images/Pages/Fable/00-lg30/brand architecture.png" alt=""></div>
             <div><img src="images/Pages/Fable/00-lg30/Frame 16.webp" alt=""></div>
-          </div>
+          </div> -->
           <div class="photosflex">
-            <div><video muted autoplay loop playsinline><source src="images/Pages/Fable/00-lg30/010226-lg30-stamps-grid-slower.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
-            <div><video muted autoplay loop playsinline><source src="images/Pages/Fable/00-lg30/010226-LG30-zodiac-scroll.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+            <div><video muted autoplay loop playsinline>
+                <source src="images/Pages/Fable/00-lg30/010226-lg30-stamps-grid-slower.mp4" type="video/mp4">Your
+                browser does not support the video tag.
+              </video></div>
+            <div><video muted autoplay loop playsinline>
+                <source src="images/Pages/Fable/00-lg30/010226-LG30-zodiac-scroll.mp4" type="video/mp4">Your browser
+                does not support the video tag.
+              </video></div>
           </div>
           <div class="photosflex">
             <div><img src="images/Pages/Fable/00-lg30/Frame 18.webp" alt=""></div>
@@ -137,42 +226,70 @@
       </section>
 
       <!-- 2. FABLE BRAND -->
-      <div id="fable-brand" class="casestudydivider"><h3>FABLE BRAND</h3></div>
+      <div id="fable-brand" class="casestudydivider">
+        <h3>FABLE BRAND</h3>
+      </div>
       <section class="rightleft">
-        <div class="leftside"><p>THE BRIEF</p></div>
+        <div class="leftside">
+          <p>THE BRIEF</p>
+        </div>
         <div class="rightpart">
-          <video muted autoplay loop playsinline><source src="images/Pages/Fable/01-brand/instagrid.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                      <video muted autoplay loop playsinline>
+              <source rel="preload" src="images/Pages/Fable/reveal-video.mp4" type="video/mp4">Your browser does not
+              support the video tag.
+            </video>
           <div class="rightside">
             <div class="textspace">
-              <h3>We selected FABLE as the 2026 theme to explore nostalgia and the conflict between our roots and our futures.</h3>
+              <h3>We selected FABLE as the 2026 theme to explore nostalgia and the conflict between our roots and our
+                futures.</h3>
               <p>Fables are the stories and lessons that we carry, pass down, retell, and reimagine.</p>
             </div>
           </div>
-          <video muted autoplay loop playsinline><source src="images/Pages/Fable/01-brand/fableanimatedlogo-blackonwhite.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+          <video muted autoplay loop playsinline>
+            <source src="images/Pages/Fable/01-brand/fableanimatedlogo-blackonwhite.mp4" type="video/mp4">Your browser
+            does not support the video tag.
+          </video>
           <div class="rightside">
             <div class="textspace">
-              <h3>Drawing from Chinese and Taiwanese tradition, the core motif is a window (漏窗) that creates glimpses into other worlds.</h3>
+              <h3>Drawing from Chinese and Taiwanese tradition, the core motif is a window (漏窗) that creates glimpses
+                into other worlds.</h3>
             </div>
           </div>
-          <video muted autoplay loop playsinline><source src="images/Pages/Fable/01-brand/fablewindowmotif2.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+          <video muted autoplay loop playsinline>
+            <source src="images/Pages/Fable/01-brand/fablewindowmotif2.mp4" type="video/mp4">Your browser does not
+            support the video tag.
+          </video>
           <div class="rightside">
             <div class="textspace">
-              <h3>FABLE is a story in four parts: Follow, Wander, Trace, and Discern. The grid and colors evolve to create intrigue and set each act's tone.</h3>
+              <h3>FABLE is a story in four parts: Follow, Wander, Trace, and Discern. The grid and colors evolve to
+                create intrigue and set each act's tone.</h3>
             </div>
           </div>
-          <video muted autoplay loop playsinline><source src="images/Pages/Fable/01-brand/fable-act-ani.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+          <video muted autoplay loop playsinline>
+            <source src="images/Pages/Fable/01-brand/fable-act-ani.mp4" type="video/mp4">Your browser does not support
+            the video tag.
+          </video>
+          <video muted autoplay loop playsinline>
+            <source src="images/Pages/Fable/01-brand/instagrid.mp4" type="video/mp4">Your browser does not support the
+            video tag.
+          </video>
         </div>
       </section>
       <img src="images/Pages/Fable/01-brand/fable-brand-guide-grid.webp" alt="">
 
       <!-- 3. PRINT -->
-      <div id="print" class="casestudydivider"><h3>PRINT</h3></div>
+      <div id="print" class="casestudydivider">
+        <h3>PRINT</h3>
+      </div>
       <section class="rightleft">
-        <div class="leftside"><p>PRINT</p></div>
+        <div class="leftside">
+          <p>PRINT</p>
+        </div>
         <div class="rightpart">
           <div class="rightside">
             <div class="textspace">
-              <h3>We worked with the Print team to produce posters to advertise the show, a booklet program, and various other collateral.</h3>
+              <h3>We worked with the Print team to produce posters to advertise the show, a booklet program, and various
+                other collateral.</h3>
             </div>
           </div>
           <img src="images/Pages/Fable/02-print/merchgrasshand.webp" alt="">
@@ -186,7 +303,10 @@
             <div><img src="images/Pages/Fable/02-print/book-E.webp" alt=""></div>
             <div><img src="images/Pages/Fable/02-print/book-F.webp" alt=""></div>
           </div>
-          <video muted autoplay loop playsinline><source src="images/Pages/Fable/02-print/fable poster animation.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+          <video muted autoplay loop playsinline>
+            <source src="images/Pages/Fable/02-print/fable poster animation.mp4" type="video/mp4">Your browser does not
+            support the video tag.
+          </video>
           <img src="images/Pages/Fable/02-print/postergrid.webp" alt="">
           <img src="images/Pages/Fable/02-print/hallposters.webp" alt="">
           <div class="photosflex">
@@ -221,7 +341,10 @@
             </div>
           </div>
           <img src="images/Pages/Fable/02-print/bannerstairs.webp" alt="">
-          <video muted autoplay loop playsinline><source src="images/Pages/Fable/02-print/fableshirt.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+          <video muted autoplay loop playsinline>
+            <source src="images/Pages/Fable/02-print/fableshirt.mp4" type="video/mp4">Your browser does not support the
+            video tag.
+          </video>
           <div class="photosflex">
             <div>
               <img src="images/Pages/Fable/02-print/totebag.webp" alt="">
@@ -236,13 +359,18 @@
       </section>
 
       <!-- 4. SET -->
-      <div id="set" class="casestudydivider"><h3>SET</h3></div>
+      <div id="set" class="casestudydivider">
+        <h3>SET</h3>
+      </div>
       <section class="rightleft">
-        <div class="leftside"><p>SET</p></div>
+        <div class="leftside">
+          <p>SET</p>
+        </div>
         <div class="rightpart">
           <div class="rightside">
             <div class="textspace">
-              <h3>We worked with the Set team to create a stage that extended the brand into the physical world without blocking the fashion.</h3>
+              <h3>We worked with the Set team to create a stage that extended the brand into the physical world without
+                blocking the fashion.</h3>
             </div>
           </div>
           <div class="photosflex">
@@ -266,51 +394,82 @@
       </section>
 
       <!-- 5. MOTION -->
-      <div id="motion" class="casestudydivider"><h3>MOTION</h3></div>
+      <div id="motion" class="casestudydivider">
+        <h3>MOTION</h3>
+      </div>
       <section class="rightleft">
-        <div class="leftside"><p>MOTION</p></div>
+        <div class="leftside">
+          <p>MOTION</p>
+        </div>
         <div class="rightpart">
           <div class="rightside">
             <div class="textspace">
               <h3>We worked with the Motion team to create visuals for social media and fashion backdrops.</h3>
             </div>
           </div>
-          <video muted autoplay loop playsinline><source src="images/Pages/Fable/04-motion/fable-screens.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+          <video muted autoplay loop playsinline>
+            <source src="images/Pages/Fable/04-motion/fable-screens.mp4" type="video/mp4">Your browser does not support
+            the video tag.
+          </video>
           <div class="photosflex">
             <div>
-              <video muted autoplay loop playsinline><source src="images/Pages/Fable/04-motion/fable-countdown-ending.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+              <video muted autoplay loop playsinline>
+                <source src="images/Pages/Fable/04-motion/fable-countdown-ending.mp4" type="video/mp4">Your browser does
+                not support the video tag.
+              </video>
             </div>
             <div>
-              <video muted autoplay loop playsinline><source src="images/Pages/Fable/04-motion/fable-passive-animation.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+              <video muted autoplay loop playsinline>
+                <source src="images/Pages/Fable/04-motion/fable-passive-animation.mp4" type="video/mp4">Your browser
+                does not support the video tag.
+              </video>
             </div>
           </div>
           <div class="photosflex">
             <div>
-              <video muted autoplay loop playsinline><source src="images/Pages/Fable/04-motion/b-Frame 36.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+              <video muted autoplay loop playsinline>
+                <source src="images/Pages/Fable/04-motion/b-Frame 36.mp4" type="video/mp4">Your browser does not support
+                the video tag.
+              </video>
             </div>
             <div>
-              <video muted autoplay loop playsinline><source src="images/Pages/Fable/04-motion/f-Joie De Vivre.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+              <video muted autoplay loop playsinline>
+                <source src="images/Pages/Fable/04-motion/f-Joie De Vivre.mp4" type="video/mp4">Your browser does not
+                support the video tag.
+              </video>
             </div>
             <div>
-              <video muted autoplay loop playsinline><source src="images/Pages/Fable/04-motion/o-Faint Blossom.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+              <video muted autoplay loop playsinline>
+                <source src="images/Pages/Fable/04-motion/o-Faint Blossom.mp4" type="video/mp4">Your browser does not
+                support the video tag.
+              </video>
             </div>
           </div>
         </div>
       </section>
 
       <!-- 6. WEB -->
-      <div id="web" class="casestudydivider"><h3>WEB</h3></div>
+      <div id="web" class="casestudydivider">
+        <h3>WEB</h3>
+      </div>
       <section class="rightleft">
-        <div class="leftside"><p>WEB</p></div>
+        <div class="leftside">
+          <p>WEB</p>
+        </div>
         <div class="rightpart">
           <div class="rightside">
             <div class="textspace">
-              <h3>We worked with the Web team to create a branded event website that celebrates the people who made Fable possible. (2026.lunargala.org)</h3>
+              <h3>We worked with the Web team to create a branded event website that celebrates the people who made
+                Fable possible. (2026.lunargala.org)</h3>
             </div>
           </div>
-          <iframe src="https://www.2026.lunargala.org/" width="100%" height="600px" style="border:1px black dashed;"></iframe>
+          <iframe src="https://www.2026.lunargala.org/" width="100%" height="600px"
+            style="border:1px black dashed;"></iframe>
           <div class="photosflex">
-            <div><video muted autoplay loop playsinline><source src="images/Pages/Fable/05-web/web-landing.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+            <div><video muted autoplay loop playsinline>
+                <source src="images/Pages/Fable/05-web/web-landing.mp4" type="video/mp4">Your browser does not support
+                the video tag.
+              </video></div>
             <div><img src="images/Pages/Fable/05-web/linesscreenshot.webp" alt=""></div>
             <div><img src="images/Pages/Fable/05-web/headshots-screenshot.webp" alt=""></div>
           </div>
@@ -318,9 +477,13 @@
       </section>
 
       <!-- 7. PHOTO -->
-      <div id="photo" class="casestudydivider"><h3>PHOTO</h3></div>
+      <div id="photo" class="casestudydivider">
+        <h3>PHOTO</h3>
+      </div>
       <section class="rightleft">
-        <div class="leftside"><p>PHOTO</p></div>
+        <div class="leftside">
+          <p>PHOTO</p>
+        </div>
         <div class="rightpart">
           <div class="rightside">
             <div class="textspace">
@@ -334,14 +497,19 @@
       </section>
 
       <!-- REFLECTION -->
-      <div id="reflection" class="casestudydivider"><h3>REFLECTION</h3></div>
+      <div id="reflection" class="casestudydivider">
+        <h3>REFLECTION</h3>
+      </div>
       <section class="rightleft">
         <div class="leftside"></div>
         <div class="rightpart">
           <img src="images/Pages/Fable/IMG_1740.webp" alt="">
           <div class="rightside">
             <div class="textspace">
-              <p>Leading LG Creative has been the most fulfilling role of my college career, thanks to the extraordinary people I got to work with. Endless gratitude to my Co-CD, Michele, alongside our Heads of Print, Melissa and Sonya, Head of Web, Serena, Heads of Photo, Erin and Chieri, Heads of Stage, Joy and Yuktha, Heads of Motion, Deeptika and Isabel, and Heads of Cinematography, Maddie and Erik.</p>
+              <p>Leading LG Creative has been the most fulfilling role of my college career, thanks to the extraordinary
+                people I got to work with. Endless gratitude to my Co-CD, Michele, alongside our Heads of Print, Melissa
+                and Sonya, Head of Web, Serena, Heads of Photo, Erin and Chieri, Heads of Stage, Joy and Yuktha, Heads
+                of Motion, Deeptika and Isabel, and Heads of Cinematography, Maddie and Erik.</p>
             </div>
           </div>
         </div>
@@ -358,4 +526,5 @@
     </section>
   </section>
 </body>
+
 </html>
