@@ -89,12 +89,18 @@
                     <a href="lupi.html" style="color:var(--accent)">Giorgia Lupi [campaign]</a><br>
                     <a href="wideeye.html" style="color:var(--accent)">Wide Eye [rapid response graphics]</a><br>
                     <a href="elysium.html" style="color:var(--accent)">Elysium [motion]</a><br>
-                    Escandalo<br>
+                    <span onclick="toescandalo()" style="color:var(--accent);" class="escandalo-A">Escandalo [identity]</span><br>
                   </p>
                 </small>
               </div>
             </section>
           </div>
+          <script>
+            function toescandalo(){
+                    const element = document.getElementById("escandalo");
+                      element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+                  }
+          </script>
           <div class="showreel">
             <iframe
               src="https://player.vimeo.com/video/1195436419?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0"
@@ -110,7 +116,7 @@
     <h5>PROJECTS...</h5>
     <hr class="divider" style="margin-top:.5rem">
 
-            <!-- PROJECT 1 -->
+    <!-- FABLE-->
     <div class="projectcard"><a href="fable.html">
       <div class="two-column-flex center-align">
         <div><h4>Lunar Gala 2026: Fable</h4></div>
@@ -121,7 +127,7 @@
       </div>
       <div class="portfolio-image-flex">
         <img src="images/Pages/Fable/Prelim-Photos-30.webp" alt="">
-        <img src="images/Pages/Fable/021526-Fable-Reveal-edited.webp" alt="">
+        <video muted autoplay loop playsinline><source src="images/Pages/Fable/reveal-video.mp4" type="video/mp4">Your browser does not support the video tag.</video>
         <video muted autoplay loop playsinline><source src="images/Pages/Fable/fableanimatedlogo-blackonwhite.mp4" type="video/mp4">Your browser does not support the video tag.</video>
         <img src="images/Pages/Fable/IMG_5881.webp">
         <img src="images/Pages/Fable/IMG_3795.webp">
@@ -132,7 +138,7 @@
       </div>
     </a></div>
 
-    <!-- PROJECT 1 -->
+    <!-- AWOA-->
     <div class="projectcard"><a href="awoa.html">
       <div class="two-column-flex center-align">
         <div><h4>All Worthy of Art</h4></div>
@@ -150,7 +156,7 @@
       </div>
     </a></div>
 
-        <!-- PROJECT 1 -->
+        <!--MOMATH-->
     <div class="projectcard"><a href="momath.html">
       <div class="two-column-flex center-align">
         <div><h4>National Museum of Mathematics</h4></div>
@@ -167,7 +173,7 @@
       </div>
     </a></div>
 
-    <!-- PROJECT 2 -->
+    <!-- IDLIKETOGIVEUP -->
     <div class="projectcard"><a href="idliketogiveup.html">
       <div class="two-column-flex center-align">
         <div><h4>I'd Like to Give Up</h4></div>
@@ -185,7 +191,7 @@
       </div>
     </a></div>
 
-<!-- PROJECT 3 -->
+<!-- GIVEWELL -->
     <div class="projectcard"><a href="givewell.html">
       <div class="two-column-flex center-align">
         <div><h4>GiveWell</h4></div>
@@ -204,7 +210,7 @@
       </div>
     </a></div>
 
-    <!-- PROJECT 4 -->
+    <!-- TATN -->
     <div class="projectcard"><a href="tatn.html">
       <div class="two-column-flex center-align">
         <div><h4>Through All This Noise</h4></div>
@@ -221,7 +227,7 @@
       </div>
     </a></div>
 
-    <!-- PROJECT 5 -->
+    <!-- LUPI -->
     <div class="projectcard"><a href="lupi.html">
       <div class="two-column-flex center-align">
         <div><h4>Giorgia Lupi</h4></div>
@@ -237,7 +243,7 @@
       </div>
     </a></div>
 
-    <!-- PROJECT 6 -->
+    <!-- WIDE EYE -->
     <div class="projectcard"><a href="wideeye.html">
       <div class="two-column-flex center-align">
         <div><h4>Wide Eye Creative</h4></div>
@@ -254,7 +260,7 @@
       </div>
     </a></div>
 
-    <!-- PROJECT 7 -->
+    <!-- ELYSIUM -->
     <div class="projectcard"><a href="elysium.html">
       <div class="two-column-flex center-align">
         <div><h4>Lunar Gala 2025: Elysium</h4></div>
@@ -270,10 +276,11 @@
         <img src="images/Pages/Lunar Gala/R0015454.webp" alt="">
       </div>
     </a></div>
-    <!-- PROJECT 7 -->
-    <div class="projectcard"><a href="">
+
+    <!-- ESCANDALO -->  
+    <div class="projectcard escandalo-B" id="escandalo">
       <div class="two-column-flex center-align">
-        <div><h4>Escandalo (coming soon)</h4></div>
+        <div><h4>Escandalo</h4></div>
         <div class="portfolio-flex center-align">
           <div class="portfolio-flex-text"><small><p>Tacos to die for.</p></small></div>
           <div class="portfolio-flex-tag"><small><p style="font-family:'Authentic-Sans-Cond-90'">IDENTITY</p></small></div>
@@ -282,8 +289,14 @@
       <div class="portfolio-image-flex">
         <img src="images/Pages/Escandalo/tacosAH.webp" alt="">
         <video muted autoplay loop playsinline><source src="images/Pages/Escandalo/escandalo-BLAH.mp4" type="video/mp4">Your browser does not support the video tag.</video>
-        <img src="images/Pages/Escandalo/Escandalo-receipts.webp" alt="">
+        <img src="images/Pages/Escandalo/Escandalo-menus.webp" alt="">
+        <img src="images/Pages/Escandalo/Escandalo-sign.webp" alt="">
         <video muted autoplay loop playsinline><source src="images/Pages/Escandalo/escandalo-illustrations.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+        <img src="images/Pages/Escandalo/Escandalo-receipts.webp" alt="">
+        <img src="images/Pages/Escandalo/escandalohat.webp" alt="">
+        <video muted autoplay loop playsinline><source src="images/Pages/Escandalo/escandalo-sun.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+        <img src="images/Pages/Escandalo/escandalomockup.webp" alt="">
+        <img src="images/Pages/Escandalo/escandalotacopackage.webp" alt="">
       </div>
     </a></div>
 

@@ -389,6 +389,9 @@ nav .fa { display: none; }
 .projectcard        { margin-top: 3rem; }
 .projectcard a      { text-decoration: none; }
 .projectcard:hover * { color: var(--accent); }
+.escandalo-B:hover * {
+  color:black;
+}
 
 .portfolio-flex {
   display: flex;
@@ -422,7 +425,9 @@ nav .fa { display: none; }
 .project:hover h1,
 .project:hover h4,
 .project:hover h5 { color: var(--accent); }
-
+.escandalo-A:hover{
+  text-decoration:underline;
+}
 
 /* ============================================================
    CASE STUDY LAYOUT
