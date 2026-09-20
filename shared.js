@@ -1,3 +1,4 @@
+// Custom Coded by Garrett Lee, Style Adjustments By Claude (Garrett coded this before he knew what styling code meant)
 /* =============================================================
    shared.js — consolidated JavaScript for all pages
    Replaces: cursor.js, jv.js, jv2.js, jvLG.js, jvmomath.js
@@ -298,3 +299,40 @@ function scrollTo(id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'instant', block: 'start', inline: 'nearest' });
 }
+
+/* ─────────────────────────────────────────────────────────────
+   AUTO-SCROLL — slowly scrolls .portfolio-image-flex on hover
+   ───────────────────────────────────────────────────────────── */
+(function () {
+  const SPEED = 1; // pixels per frame
+
+  function initAutoScroll() {
+    document.querySelectorAll('.portfolio-image-flex').forEach((strip) => {
+      let rafId = null;
+      let direction = 1;
+
+      function step() {
+        const maxScroll = strip.scrollWidth - strip.clientWidth;
+
+        if (maxScroll <= 0) return; // nothing to scroll
+
+        if (strip.scrollLeft >= maxScroll) direction = -1;
+        if (strip.scrollLeft <= 0) direction = 1;
+
+        strip.scrollLeft += SPEED * direction;
+        rafId = requestAnimationFrame(step);
+      }
+
+      strip.addEventListener('mouseenter', () => {
+        if (!rafId) rafId = requestAnimationFrame(step);
+      });
+
+      strip.addEventListener('mouseleave', () => {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      });
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', initAutoScroll);
+})();
