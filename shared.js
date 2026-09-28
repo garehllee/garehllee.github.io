@@ -347,13 +347,13 @@ Home hover: groups of 2-3 letters swap to images on hover.
   const IMAGE_SIZE_PX = 100;         // <-- width of each image (square)
   const OVERLAP_PX    = 40;          // how much neighboring images may overlap (0 = none)
   const RIPPLE_MS_PER_100PX = 75;    // ripple speed away from the cursor (lower = faster)
-  const PUSH_DOWN     = 0.25;         // how much images push following lines down:
+  const PUSH_DOWN     = 0.5;         // how much images push following lines down:
                                      // 0 = not at all (images overlap the lines below),
                                      // 1 = lines below move down to fully make room
   const PLACEHOLDER_COLOR = "#d9d9d9"; // gray box shown if an image hasn't loaded yet
   const MIN_GROUP     = 4;           // fewest letters replaced by one image
   const MAX_GROUP     = 6;           // most letters replaced by one image
-  const HOLD_MS       = 600;         // how long a group shows its image
+  const HOLD_MS       = 800;         // how long a group shows its image
   const SNAP_MS       = 100;         // speed of the pop-in / line-widening
   // One entry per line of the h2, in order. Files: `${folder}/${prefix}-${LETTER}.png`
   const LINES = [
