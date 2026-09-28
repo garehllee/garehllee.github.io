@@ -336,3 +336,208 @@ function scrollTo(id) {
 
   window.addEventListener('DOMContentLoaded', initAutoScroll);
 })();
+/* ==========================================================
+coded by claude, inspired by https://codepen.io/Andrea-Catanzaro/pen/bNgyqbp   
+Home hover: groups of 2-3 letters swap to images on hover.
+   Paste this at the bottom of shared.js.
+   Targets: <h2 class="home-hover"> (lines separated by <br>)
+   ========================================================== */
+(function () {
+  // ---- SETTINGS ------------------------------------------
+  const IMAGE_SIZE_PX = 100;         // <-- width of each image (square)
+  const OVERLAP_PX    = 40;          // how much neighboring images may overlap (0 = none)
+  const RIPPLE_MS_PER_100PX = 75;    // ripple speed away from the cursor (lower = faster)
+  const PUSH_DOWN     = 0.25;         // how much images push following lines down:
+                                     // 0 = not at all (images overlap the lines below),
+                                     // 1 = lines below move down to fully make room
+  const PLACEHOLDER_COLOR = "#d9d9d9"; // gray box shown if an image hasn't loaded yet
+  const MIN_GROUP     = 4;           // fewest letters replaced by one image
+  const MAX_GROUP     = 6;           // most letters replaced by one image
+  const HOLD_MS       = 600;         // how long a group shows its image
+  const SNAP_MS       = 100;         // speed of the pop-in / line-widening
+  // One entry per line of the h2, in order. Files: `${folder}/${prefix}-${LETTER}.png`
+  const LINES = [
+    { folder: "images/about/homehover/gd", prefix: "gd", lastLetter: "Q" }, // A–Q
+    { folder: "images/about/homehover/f",  prefix: "f",  lastLetter: "I" }, // A–I
+    { folder: "images/about/homehover/c",  prefix: "c",  lastLetter: "I" }  // A–I
+  ];
+  // --------------------------------------------------------
+
+  function init() {
+    const h2 = document.querySelector("h2.home-hover");
+    if (!h2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Minimal CSS (does not touch the h2's type styling)
+    const style = document.createElement("style");
+    style.textContent = `
+      .hh-group {
+        position: relative; display: inline-block; text-align: center;
+        vertical-align: baseline; white-space: pre;
+        transition: width ${SNAP_MS}ms ease-out, height ${SNAP_MS}ms ease-out;
+      }
+      .hh-group.is-img { color: transparent; }
+      .hh-img {
+        position: absolute; left: 50%; top: 50%;
+        width: var(--hh-img-size, 30px); height: auto; aspect-ratio: 1 / 1; max-width: none; margin: 0;
+        transform: translate(-50%, -50%) scale(0.85);
+        opacity: 0; pointer-events: none;
+        transition: opacity ${SNAP_MS}ms ease-out, transform ${SNAP_MS}ms ease-out;
+      }
+      .hh-img.is-loading { background-color: var(--hh-ph, #d9d9d9); }
+      .hh-group.is-img .hh-img { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    `;
+    document.head.appendChild(style);
+    h2.style.setProperty("--hh-img-size", IMAGE_SIZE_PX + "px");
+    h2.style.setProperty("--hh-ph", PLACEHOLDER_COLOR);
+
+    // Build image pools + preload (remember which URLs have finished loading)
+    const loadedUrls = new Set();
+    const pools = LINES.map(({ folder, prefix, lastLetter }) => {
+      const urls = [];
+      for (let c = 65; c <= lastLetter.charCodeAt(0); c++) {
+        urls.push(`${folder}/${prefix}-${String.fromCharCode(c)}.png`);
+      }
+      urls.forEach((u) => {
+        const im = new Image();
+        im.onload = () => loadedUrls.add(u);
+        im.src = u;
+      });
+      return urls;
+    });
+
+    // Split a word into groups of MIN_GROUP–MAX_GROUP letters, spread evenly.
+    // Words shorter than MIN_GROUP stay as one group.
+    function chunk(word) {
+      const n = word.length;
+      if (n <= MAX_GROUP) return [word];
+      let k = Math.ceil(n / MAX_GROUP);                        // fewest groups that fit MAX
+      k = Math.max(1, Math.min(k, Math.floor(n / MIN_GROUP))); // but keep each >= MIN
+      const base = Math.floor(n / k), extra = n % k;
+      const out = []; let i = 0;
+      for (let j = 0; j < k; j++) {
+        const size = base + (j < extra ? 1 : 0);
+        out.push(word.slice(i, i + size)); i += size;
+      }
+      return out;
+    }
+
+    // Rebuild the h2: each <br>-separated line becomes a .hh-line of .hh-group spans
+    h2.setAttribute("aria-label", h2.textContent.replace(/\s+/g, " ").trim());
+    const nodes = Array.from(h2.childNodes);
+    h2.textContent = "";
+    const lines = [];
+
+    nodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const lineEl = document.createElement("span");
+        lineEl.className = "hh-line";
+        lineEl.setAttribute("aria-hidden", "true");
+        const groups = [];
+        node.textContent.split(/(\s+)/).forEach((tok) => {
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) { lineEl.appendChild(document.createTextNode(tok)); return; }
+          chunk(tok).forEach((piece) => {
+            const g = document.createElement("span");
+            g.className = "hh-group";
+            g.textContent = piece;
+            const img = document.createElement("img");
+            img.className = "hh-img";
+            img.alt = "";
+            img.addEventListener("load", () => {
+              loadedUrls.add(img.dataset.url);
+              img.classList.remove("is-loading");
+            });
+            g.appendChild(img);
+            lineEl.appendChild(g);
+            groups.push(g);
+          });
+        });
+        h2.appendChild(lineEl);
+        lines.push({ el: lineEl, groups, busy: false });
+      } else {
+        h2.appendChild(node); // keep <br>
+      }
+    });
+
+    // Pick just enough images to cover the groups (no repeats until pool runs out)
+    function pickImages(pool, count) {
+      const picks = [];
+      let bag = [];
+      while (picks.length < count) {
+        if (!bag.length) {
+          bag = pool.slice().sort(() => Math.random() - 0.5);
+          if (bag[bag.length - 1] === picks[picks.length - 1] && bag.length > 1) bag.reverse();
+        }
+        picks.push(bag.pop());
+      }
+      return picks;
+    }
+
+    lines.forEach((line, li) => {
+      const pool = pools[li];
+      if (!pool) return;
+      line.el.addEventListener("mouseenter", (e) => {
+        if (line.busy) return;
+        line.busy = true;
+
+        const total = line.groups.length;
+        const imgs = pickImages(pool, total);
+        let finished = 0;
+
+        // Measure natural widths + centers, then lock widths so they can animate.
+        // Each group widens to at least (image width - OVERLAP_PX), so neighboring
+        // images overlap by at most OVERLAP_PX (the line simply gets longer).
+        const rects = line.groups.map((g) => g.getBoundingClientRect());
+        const natural = rects.map((r) => r.width);
+        const naturalH = rects.map((r) => r.height);
+        const push = Math.min(1, Math.max(0, PUSH_DOWN));
+        const centers = rects.map((r) => r.left + r.width / 2);
+        const minBox = Math.max(0, IMAGE_SIZE_PX - Math.max(0, OVERLAP_PX));
+        line.groups.forEach((g, i) => {
+          g.style.width = natural[i] + "px";
+          g.style.height = naturalH[i] + "px";
+        });
+
+        line.groups.forEach((g, i) => {
+          // ripple outward from where the cursor entered
+          const delay = (Math.abs(centers[i] - e.clientX) / 100) * RIPPLE_MS_PER_100PX;
+          const img = g.querySelector(".hh-img");
+          const url = imgs[i];
+          img.dataset.url = url;
+          if (loadedUrls.has(url)) {
+            img.classList.remove("is-loading");
+            img.src = url;
+          } else {
+            // not loaded yet: show a gray box, swap in the image when it arrives
+            img.classList.add("is-loading");
+            img.removeAttribute("src"); // drop the previous image so it can't linger
+            img.src = url;
+          }
+          // extra height so following lines get pushed down (0 to 1 of the image overhang)
+          const extra = Math.max(0, IMAGE_SIZE_PX - naturalH[i]) * push;
+          setTimeout(() => {
+            g.style.width = Math.max(natural[i], minBox) + "px";
+            g.style.height = (naturalH[i] + extra) + "px";
+            g.classList.add("is-img");
+          }, delay);
+          setTimeout(() => {
+            g.style.width = natural[i] + "px";
+            g.style.height = naturalH[i] + "px";
+            g.classList.remove("is-img");
+            if (++finished === total) {
+              // release the locked widths once the last group has shrunk back
+              setTimeout(() => {
+                line.groups.forEach((gr) => { gr.style.width = ""; gr.style.height = ""; });
+                line.busy = false;
+              }, SNAP_MS);
+            }
+          }, delay + HOLD_MS);
+        });
+      });
+    });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
