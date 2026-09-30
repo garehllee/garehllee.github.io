@@ -357,7 +357,7 @@ Home hover: groups of 2-3 letters swap to images on hover.
   const SNAP_MS       = 100;         // speed of the pop-in / line-widening
   // One entry per line of the h2, in order. Files: `${folder}/${prefix}-${LETTER}.png`
   const LINES = [
-    { folder: "images/about/homehover/gd", prefix: "gd", lastLetter: "Q" }, // A–Q
+    { folder: "images/about/homehover/gd", prefix: "gd", lastLetter: "R" }, // A–Q
     { folder: "images/about/homehover/f",  prefix: "f",  lastLetter: "I" }, // A–I
     { folder: "images/about/homehover/c",  prefix: "c",  lastLetter: "I" }  // A–I
   ];
