@@ -336,11 +336,17 @@ function scrollTo(id) {
 
   window.addEventListener('DOMContentLoaded', initAutoScroll);
 })();
+
+
 /* ==========================================================
-coded by claude, inspired by https://codepen.io/Andrea-Catanzaro/pen/bNgyqbp   
-Home hover: groups of 2-3 letters swap to images on hover.
+coded by claude, inspired by https://codepen.io/Andrea-Catanzaro/pen/bNgyqbp
+Home hover: groups of letters within a target phrase swap to
+images on hover. Only the configured phrases react; everything
+else in the h2 is left completely alone. A phrase may itself be
+split across a <br> (e.g. "...motion <br>designer...") and still
+works as a single hoverable unit.
    Paste this at the bottom of shared.js.
-   Targets: <h2 class="home-hover"> (lines separated by <br>)
+   Targets: <h2 class="home-hover">
    ========================================================== */
 (function () {
   // ---- SETTINGS ------------------------------------------
@@ -355,11 +361,13 @@ Home hover: groups of 2-3 letters swap to images on hover.
   const MAX_GROUP     = 6;           // most letters replaced by one image
   const HOLD_MS       = 800;         // how long a group shows its image
   const SNAP_MS       = 100;         // speed of the pop-in / line-widening
-  // One entry per line of the h2, in order. Files: `${folder}/${prefix}-${LETTER}.png`
-  const LINES = [
-    { folder: "images/about/homehover/gd", prefix: "gd", lastLetter: "R" }, // A–Q
-    { folder: "images/about/homehover/f",  prefix: "f",  lastLetter: "I" }, // A–I
-    { folder: "images/about/homehover/c",  prefix: "c",  lastLetter: "I" }  // A–I
+  // One entry per target phrase, found anywhere in the h2's text (can span a <br>).
+  // Everything in the h2 that isn't one of these phrases is left as plain text.
+  // Files are loaded as `${folder}/${prefix}-${LETTER}.png`
+  const PHRASES = [
+    { folder: "images/about/homehover/gd", prefix: "gd", lastLetter: "R", match: "brand & motion designer" },
+    { folder: "images/about/homehover/f",  prefix: "f",  lastLetter: "I", match: "good friends" },
+    { folder: "images/about/homehover/c",  prefix: "c",  lastLetter: "I", match: "chocolate chip cookie" }
   ];
   // --------------------------------------------------------
 
@@ -371,6 +379,7 @@ Home hover: groups of 2-3 letters swap to images on hover.
     // Minimal CSS (does not touch the h2's type styling)
     const style = document.createElement("style");
     style.textContent = `
+      .hh-phrase { cursor: pointer; }
       .hh-group {
         position: relative; display: inline-block; text-align: center;
         vertical-align: baseline; white-space: pre;
@@ -393,7 +402,7 @@ Home hover: groups of 2-3 letters swap to images on hover.
 
     // Build image pools + preload (remember which URLs have finished loading)
     const loadedUrls = new Set();
-    const pools = LINES.map(({ folder, prefix, lastLetter }) => {
+    const pools = PHRASES.map(({ folder, prefix, lastLetter }) => {
       const urls = [];
       for (let c = 65; c <= lastLetter.charCodeAt(0); c++) {
         urls.push(`${folder}/${prefix}-${String.fromCharCode(c)}.png`);
@@ -422,43 +431,118 @@ Home hover: groups of 2-3 letters swap to images on hover.
       return out;
     }
 
-    // Rebuild the h2: each <br>-separated line becomes a .hh-line of .hh-group spans
-    h2.setAttribute("aria-label", h2.textContent.replace(/\s+/g, " ").trim());
-    const nodes = Array.from(h2.childNodes);
-    h2.textContent = "";
-    const lines = [];
+    const norm = (w) => w.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-    nodes.forEach((node) => {
+    // ---- Flatten the h2 into a single token stream ----------
+    // Each token is { type: 'word'|'space'|'br', text? }.
+    // This lets a target phrase span across a <br> element.
+    const originalNodes = Array.from(h2.childNodes);
+    const tokens = [];
+    originalNodes.forEach((node) => {
       if (node.nodeType === Node.TEXT_NODE) {
-        const lineEl = document.createElement("span");
-        lineEl.className = "hh-line";
-        lineEl.setAttribute("aria-hidden", "true");
-        const groups = [];
-        node.textContent.split(/(\s+)/).forEach((tok) => {
-          if (!tok) return;
-          if (/^\s+$/.test(tok)) { lineEl.appendChild(document.createTextNode(tok)); return; }
-          chunk(tok).forEach((piece) => {
-            const g = document.createElement("span");
-            g.className = "hh-group";
-            g.textContent = piece;
-            const img = document.createElement("img");
-            img.className = "hh-img";
-            img.alt = "";
-            img.addEventListener("load", () => {
-              loadedUrls.add(img.dataset.url);
-              img.classList.remove("is-loading");
-            });
-            g.appendChild(img);
-            lineEl.appendChild(g);
-            groups.push(g);
-          });
+        node.textContent.split(/(\s+)/).forEach((piece) => {
+          if (!piece) return;
+          tokens.push({ type: /^\s+$/.test(piece) ? "space" : "word", text: piece });
         });
-        h2.appendChild(lineEl);
-        lines.push({ el: lineEl, groups, busy: false });
+      } else if (node.nodeName === "BR") {
+        tokens.push({ type: "br" });
+      }
+      // other element types are not expected inside this h2; ignored if present
+    });
+
+    // Find the contiguous token range (inclusive, start/end indices into
+    // `tokens`) whose word-tokens match matchWords in order. Non-word
+    // tokens (spaces, <br>) inside that span are irrelevant to matching
+    // but ARE included in the returned range.
+    function findPhraseRange(matchWords, usedRanges) {
+      const wordPositions = [];
+      tokens.forEach((t, i) => { if (t.type === "word") wordPositions.push(i); });
+      const overlaps = (s, e) => usedRanges.some(([us, ue]) => s <= ue && e >= us);
+
+      for (let start = 0; start <= wordPositions.length - matchWords.length; start++) {
+        let ok = true;
+        for (let j = 0; j < matchWords.length; j++) {
+          if (norm(tokens[wordPositions[start + j]].text) !== norm(matchWords[j])) { ok = false; break; }
+        }
+        if (ok) {
+          const range = [wordPositions[start], wordPositions[start + matchWords.length - 1]];
+          if (!overlaps(range[0], range[1])) return range;
+        }
+      }
+      return null;
+    }
+
+    // Figure out which phrase (if any) owns each token.
+    const phraseForToken = new Array(tokens.length).fill(null);
+    const usedRanges = [];
+    const phraseRanges = PHRASES.map((p) => {
+      const words = p.match.split(/\s+/);
+      const range = findPhraseRange(words, usedRanges);
+      if (range) {
+        usedRanges.push(range);
+        for (let i = range[0]; i <= range[1]; i++) phraseForToken[i] = PHRASES.indexOf(p);
+      }
+      return range;
+    });
+
+    // ---- Rebuild the h2 content from the token stream --------
+    h2.setAttribute("aria-label", h2.textContent.replace(/\s+/g, " ").trim());
+    h2.textContent = "";
+    const content = document.createElement("span");
+    content.setAttribute("aria-hidden", "true");
+
+    const phraseData = PHRASES.map(() => ({ el: null, groups: [] }));
+    let openPhraseIdx = null;
+
+    function closeOpenPhrase() {
+      if (openPhraseIdx !== null) {
+        content.appendChild(phraseData[openPhraseIdx].el);
+        openPhraseIdx = null;
+      }
+    }
+
+    tokens.forEach((tok, i) => {
+      const phraseIdx = phraseForToken[i];
+
+      if (phraseIdx !== openPhraseIdx) {
+        closeOpenPhrase();
+        if (phraseIdx !== null) {
+          const el = document.createElement("span");
+          el.className = "hh-phrase";
+          phraseData[phraseIdx].el = el;
+          openPhraseIdx = phraseIdx;
+        }
+      }
+
+      const target = openPhraseIdx !== null ? phraseData[openPhraseIdx].el : content;
+
+      if (tok.type === "br") {
+        target.appendChild(document.createElement("br"));
+      } else if (tok.type === "space") {
+        target.appendChild(document.createTextNode(tok.text));
+      } else if (phraseIdx !== null) {
+        chunk(tok.text).forEach((piece) => {
+          const g = document.createElement("span");
+          g.className = "hh-group";
+          g.textContent = piece;
+          const img = document.createElement("img");
+          img.className = "hh-img";
+          img.alt = "";
+          img.addEventListener("load", () => {
+            loadedUrls.add(img.dataset.url);
+            img.classList.remove("is-loading");
+          });
+          g.appendChild(img);
+          target.appendChild(g);
+          phraseData[phraseIdx].groups.push(g);
+        });
       } else {
-        h2.appendChild(node); // keep <br>
+        target.appendChild(document.createTextNode(tok.text));
       }
     });
+    closeOpenPhrase();
+
+    h2.appendChild(content);
 
     // Pick just enough images to cover the groups (no repeats until pool runs out)
     function pickImages(pool, count) {
@@ -474,32 +558,36 @@ Home hover: groups of 2-3 letters swap to images on hover.
       return picks;
     }
 
-    lines.forEach((line, li) => {
-      const pool = pools[li];
-      if (!pool) return;
-      line.el.addEventListener("mouseenter", (e) => {
-        if (line.busy) return;
-        line.busy = true;
+    PHRASES.forEach((config, idx) => {
+      const range = phraseRanges[idx];
+      const data = phraseData[idx];
+      const pool = pools[idx];
+      if (!range || !data.el || !pool || !data.groups.length) return;
 
-        const total = line.groups.length;
+      const state = { busy: false };
+      data.el.addEventListener("mouseenter", (e) => {
+        if (state.busy) return;
+        state.busy = true;
+
+        const groups = data.groups;
+        const total = groups.length;
         const imgs = pickImages(pool, total);
         let finished = 0;
 
-        // Measure natural widths + centers, then lock widths so they can animate.
-        // Each group widens to at least (image width - OVERLAP_PX), so neighboring
-        // images overlap by at most OVERLAP_PX (the line simply gets longer).
-        const rects = line.groups.map((g) => g.getBoundingClientRect());
+        // Measure natural widths + centers (page coordinates, so this works
+        // correctly even if the phrase's groups sit on two different lines).
+        const rects = groups.map((g) => g.getBoundingClientRect());
         const natural = rects.map((r) => r.width);
         const naturalH = rects.map((r) => r.height);
         const push = Math.min(1, Math.max(0, PUSH_DOWN));
         const centers = rects.map((r) => r.left + r.width / 2);
         const minBox = Math.max(0, IMAGE_SIZE_PX - Math.max(0, OVERLAP_PX));
-        line.groups.forEach((g, i) => {
+        groups.forEach((g, i) => {
           g.style.width = natural[i] + "px";
           g.style.height = naturalH[i] + "px";
         });
 
-        line.groups.forEach((g, i) => {
+        groups.forEach((g, i) => {
           // ripple outward from where the cursor entered
           const delay = (Math.abs(centers[i] - e.clientX) / 100) * RIPPLE_MS_PER_100PX;
           const img = g.querySelector(".hh-img");
@@ -528,8 +616,8 @@ Home hover: groups of 2-3 letters swap to images on hover.
             if (++finished === total) {
               // release the locked widths once the last group has shrunk back
               setTimeout(() => {
-                line.groups.forEach((gr) => { gr.style.width = ""; gr.style.height = ""; });
-                line.busy = false;
+                groups.forEach((gr) => { gr.style.width = ""; gr.style.height = ""; });
+                state.busy = false;
               }, SNAP_MS);
             }
           }, delay + HOLD_MS);
