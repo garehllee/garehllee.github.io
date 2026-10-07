@@ -89,8 +89,8 @@ video { width: 100%; }
    ============================================================ */
 :root {
   /* Colors */
-  --accent:      #ff0051;
-  --lightaccent: rgb(255, 93, 201);
+  --accent:      #0079dc;
+  --lightaccent: rgb(92, 177, 222);
   --reg:         #141414;
   --gridcolor:   #242424;
 
